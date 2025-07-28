@@ -3,35 +3,58 @@
 <head>
   <meta charset="UTF-8" />
   <title>Shobuz.co.uk</title>
-  
+
   <!-- Google Fonts preconnect and Fleur De Leah font -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fleur+De+Leah&display=swap" rel="stylesheet" />
-  
+
   <style>
     body {
       font-family: Arial, sans-serif;
+      font-size: 1.125rem;
+      font-weight: bold;
       margin: 2rem;
       line-height: 1.6;
-      color: #333;
+      background-color: black;
+      color: white;
     }
 
-    h1 {
+    input, textarea {
+      background-color: black;
+      color: white;
+      border: 1px solid white;
+      padding: 0.5rem;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .header-title {
       font-family: 'Fleur De Leah', cursive;
-      font-size: 3em;
-      color: #4B6F44; /* vine green */
-      text-align: center;
-      margin-bottom: 1rem;
+      font-size: 6em; /* doubled from 3em */
+      color: #4B6F44;
+      margin: 0;
+    }
+
+    .header-logo img {
+      width: 240px; /* 20% smaller from 300px */
+      height: auto;
+      float: right;
+      margin-left: 2rem;
     }
 
     .email {
-      font-weight: bold;
-      color: #4B6F44; /* vine green */
+      color: #4B6F44;
     }
 
     .section-title {
-      font-weight: bold;
       text-decoration: underline;
       margin-top: 2rem;
     }
@@ -47,9 +70,10 @@
       flex: 1;
       min-width: 300px;
       padding: 1rem;
-      border: 1px solid #ccc;
+      border: 1px solid white;
       border-radius: 8px;
-      background-color: #f9f9f9;
+      background-color: black;
+      color: white;
     }
 
     ul {
@@ -59,8 +83,10 @@
     .highlight-box {
       margin-top: 2rem;
       padding: 1rem;
-      background-color: #e3f2fd;
+      background-color: black;
+      color: white;
       border-left: 4px solid #2196f3;
+      font-weight: normal;
     }
 
     i {
@@ -69,36 +95,26 @@
     }
 
     a {
-      color: #4B6F44; /* vine green */
+      color: #4B6F44;
     }
 
-    .footer-image {
-      text-align: center;
-      margin-top: 3rem;
-      margin-bottom: 2rem;
-    }
-
-    .footer-image img {
-      max-width: 200px;
-      height: auto;
+    .highlight-goal {
+      color: #4B6F44;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
-  <h1>Shobuz.co.uk</h1>
+  <div class="header-container">
+    <h1 class="header-title">Shobuz.co.uk</h1>
+    <div class="header-logo">
+      <img src="KT.png" alt="KT Logo">
+    </div>
+  </div>
 
-  <p>Get in touch by email: <span class="email">Hello@Shobuz.co.uk</span></p>
+  <p>Welcome to Shobuz.co.uk. Here we’ll be taking you along with our journey in us creating a grassroots insurance services business that focuses on giving back to society. This website is purely journalistic to share updates. Feel free to get in touch at <span class="email">Hello@Shobuz.co.uk</span></p>
 
-  <p>Welcome, Shobuz.co.uk is the foundational work of our grassroots financial lines MGA. We will explain what our goal is, why we are passionate about this, how it benefits society and how we aim to get there.</p>
-
-  <p class="section-title">Background</p>
-  <p>The UK’s insurance market size is estimated to be £290bn. The top insurers are all traded publicly around the world. The majority owners of these companies are institutional investors, including Vanguard, BlackRock and Legal & General.</p>
-  <p>These insurers have a duty to their investors to maximise their returns, with many investors residing outside the UK. This means insurers in the UK prioritise returns over people when providing cover.</p>
-  <p>In more recent years, insurance companies are looked at less favourably. There is a belief that they prioritise profits over people, using unfair tactics like stalling or refusing to pay out fair claims. But insurance wasn’t always like this.</p>
-  <p>The core principle of insurance is spreading risk so that when misfortune strikes, no one suffers catastrophic loss alone. Insurance as a concept dates back thousands of years, emerging across cultures worldwide.</p>
-
-  <p class="section-title">Our Goal</p>
-  <p>Our goal is to create a grassroots financial lines MGA, aiming to become an outright insurer. We will achieve this with hard work, patience, and the British public at the heart of everything we do.</p>
+  <p><span class="highlight-goal">Our Goal</span> is to create a grassroots financial lines MGA with a view of becoming an outright insurer. We will achieve our goals with hard work instead of institutional support; patience instead of leverage; and with the British public at the heart of what we do.</p>
 
   <div class="two-column">
     <div class="column">
@@ -153,12 +169,7 @@
   </div>
 
   <i>That’s it for now...</i>
-  <p>Our next website update is on the 28th of July 2025 at 9am. We’ll see you then. Or email your burning questions to <span class="email">Hello@shobuz.co.uk</span></p>
+  <p>Our next website update is on the 4th of August 2025 at 9am. We’ll see you then. Or email your burning questions to <span class="email">Hello@shobuz.co.uk</span></p>
 
-<div class="footer-image">
-    <img src="KT.png" alt="KT Logo">
-  </div>
-</body>
-  
 </body>
 </html>
