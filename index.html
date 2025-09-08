@@ -302,8 +302,7 @@
 
       <div class="nav-buttons">
         <button class="nav-btn active" onclick="showSection('overview', event)">Overview</button>
-        <button class="nav-btn" onclick="showSection('understanding', event)">Financial Lines</button>
-<style>
+        <style>
  .nav-btn1 {
     background: radial-gradient(circle at top left, #fff8e1, #fff3cd);
     border-radius: 20px;
@@ -318,12 +317,12 @@
     text-align: center;
   }
 
-.nav-btn:hover {
+.nav-btn1:hover {
   transform: scale(1.05);
   box-shadow: 0 6px 20px rgba(255, 223, 0, 0.7);
 }
 
-.nav-btn::after {
+.nav-btn1::after {
   content: '✨';
   position: absolute;
   top: -10px;
@@ -339,16 +338,8 @@
   75% { transform: translate(-3px, 3px) rotate(10deg); opacity: 1; }
 }
 </style>
-
-@keyframes sparkle {
-  0%, 100% { transform: translate(0,0) rotate(0deg); opacity: 0.7; }
-  25% { transform: translate(-5px, 5px) rotate(20deg); opacity: 1; }
-  50% { transform: translate(5px, -5px) rotate(-20deg); opacity: 0.5; }
-  75% { transform: translate(-3px, 3px) rotate(10deg); opacity: 1; }
-}
-</style>
-
 <button class="nav-btn1" onclick="showSection('founder', event)">You✨, Us and Our Supporters</button>
+        <button class="nav-btn" onclick="showSection('understanding', event)">Financial Lines</button>
         <button class="nav-btn" onclick="showSection('strategy', event)">Our Strategy</button>
         <button class="nav-btn" onclick="showSection('future', event)">Our Future</button>
         <button class="nav-btn" onclick="showSection('involved', event)">Get More Involved</button>
