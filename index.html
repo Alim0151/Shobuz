@@ -304,35 +304,47 @@
         <button class="nav-btn active" onclick="showSection('overview', event)">Overview</button>
         <button class="nav-btn" onclick="showSection('understanding', event)">Financial Lines</button>
 <style>
-.nav-btn {
-  background: linear-gradient(90deg, #FFD700, #FFC107, #FFD700);
-  color: white;
-  font-weight: bold;
-  padding: 0.8rem 1.5rem;
-  border: none;
-  border-radius: 12px;
-  font-size: 1rem;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.5);
-  transition: transform 0.2s, box-shadow 0.3s;
-}
+  .highlight-section {
+    background: radial-gradient(circle at top left, #fff8e1, #fff3cd);
+    border-radius: 20px;
+    padding: 2rem;
+    margin: 3rem 0;
+    border: 2px solid gold;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+    position: relative;
+    overflow: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #b8860b;
+    text-align: center;
+  }
 
-.nav-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 20px rgba(255, 223, 0, 0.7);
-}
+  .highlight-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+  }
 
-.nav-btn::after {
-  content: '✨';
-  position: absolute;
-  top: -10px;
-  right: -10px;
-  font-size: 1.5rem;
-  opacity: 0.7;
-  animation: sparkle 2s infinite;
-}
+  .highlight-section p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  /* Sparkle animation */
+  .sparkle {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: gold;
+    border-radius: 50%;
+    animation: sparkleAnim 2s infinite;
+  }
+
+  @keyframes sparkleAnim {
+    0%, 100% { transform: translateY(0) scale(1); opacity: 1; }
+    50% { transform: translateY(-10px) scale(1.5); opacity: 0.6; }
+  }
+</style>
 
 @keyframes sparkle {
   0%, 100% { transform: translate(0,0) rotate(0deg); opacity: 0.7; }
