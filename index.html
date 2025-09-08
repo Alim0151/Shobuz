@@ -303,7 +303,46 @@
       <div class="nav-buttons">
         <button class="nav-btn active" onclick="showSection('overview', event)">Overview</button>
         <button class="nav-btn" onclick="showSection('understanding', event)">Financial Lines</button>
-        <button class="nav-btn" onclick="showSection('founder', event)">You, Us and Our Supporters</button>
+<style>
+.nav-btn {
+  background: linear-gradient(90deg, #FFD700, #FFC107, #FFD700);
+  color: white;
+  font-weight: bold;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.5);
+  transition: transform 0.2s, box-shadow 0.3s;
+}
+
+.nav-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(255, 223, 0, 0.7);
+}
+
+.nav-btn::after {
+  content: '✨';
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  font-size: 1.5rem;
+  opacity: 0.7;
+  animation: sparkle 2s infinite;
+}
+
+@keyframes sparkle {
+  0%, 100% { transform: translate(0,0) rotate(0deg); opacity: 0.7; }
+  25% { transform: translate(-5px, 5px) rotate(20deg); opacity: 1; }
+  50% { transform: translate(5px, -5px) rotate(-20deg); opacity: 0.5; }
+  75% { transform: translate(-3px, 3px) rotate(10deg); opacity: 1; }
+}
+</style>
+
+<button class="nav-btn" onclick="showSection('founder', event)">You✨, Us and Our Supporters</button>
         <button class="nav-btn" onclick="showSection('strategy', event)">Our Strategy</button>
         <button class="nav-btn" onclick="showSection('future', event)">Our Future</button>
         <button class="nav-btn" onclick="showSection('involved', event)">Get More Involved</button>
@@ -463,10 +502,9 @@
 
 <div class="highlight-section">
   <h2>You ✨</h2>
-  <p>By far the most important piece of the project is you.</p>
+  <p>By far the most important piece of the project is <strong>you</strong>.</p>
   <p>Our entire purpose is to improve the lives of everyday Brits using Financial services and doing so in a sustainable way. Simply visiting our website is an important contribution. We are regularly updating our content and plan to provide more educational material, so be sure to keep learning and check back in!</p>
 
-  <!-- Sparkles -->
   <div class="sparkle" style="top:10%; left:20%; animation-delay:0s;"></div>
   <div class="sparkle" style="top:30%; left:70%; animation-delay:0.5s;"></div>
   <div class="sparkle" style="top:60%; left:40%; animation-delay:1s;"></div>
