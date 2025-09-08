@@ -33,4 +33,66 @@
     </iframe>
 
 </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comet Trail Animation</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            margin: 0;
+            overflow: hidden;
+        }
+        .container {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+        }
+        h1 {
+            color: #e0f7fa;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+            margin-top: 0;
+        }
+        .description {
+            color: #fff;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            max-width: 500px;
+            margin: 15px auto;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Comet Trail Animation</h1>
+        <p class="description">This simplified SVG shows two comets following the same path with a time offset, creating a trailing effect against a starry cosmic background.</p>
+        
+        <svg width="300" height="300" viewBox="0 0 100 100">
+            <!-- Motion path -->
+            <path id="a" fill="none" d="M50 5Q33 14 61 35Q89 57 95 35Q77 27 67 57Q58 91 77 91Q83 73 50 72Q17 73 23 91Q43 91 33 57Q23 27 5 35Q11 57 39 35Q67 14 50 5"/>
+            
+            <!-- First comet -->
+            <circle r="1" fill="#e0f7fa">
+                <animateMotion dur="5s" repeatCount="indefinite">
+                    <mpath href="#a"/>
+                </animateMotion>
+            </circle>
+            
+            <!-- Second comet with time offset -->
+            <circle r="1" fill="orange">
+                <animateMotion dur="5s" repeatCount="indefinite" begin="-2.5s">
+                    <mpath href="#a"/>
+                </animateMotion>
+            </circle>
+        </svg>
+    </div>
+</body>
 </html>
