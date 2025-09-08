@@ -304,7 +304,7 @@
         <button class="nav-btn active" onclick="showSection('overview', event)">Overview</button>
         <button class="nav-btn" onclick="showSection('understanding', event)">Financial Lines</button>
 <style>
-  .highlight-section {
+ .nav-btn1 {
     background: radial-gradient(circle at top left, #fff8e1, #fff3cd);
     border-radius: 20px;
     padding: 2rem;
@@ -318,32 +318,26 @@
     text-align: center;
   }
 
-  .highlight-section h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    font-weight: bold;
-  }
+.nav-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(255, 223, 0, 0.7);
+}
 
-  .highlight-section p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    margin-bottom: 1rem;
+.nav-btn::after {
+  content: '✨';
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  font-size: 1.5rem;
+  opacity: 0.7;
+  animation: sparkle 2s infinite;
   }
-
-  /* Sparkle animation */
-  .sparkle {
-    position: absolute;
-    width: 5px;
-    height: 5px;
-    background: gold;
-    border-radius: 50%;
-    animation: sparkleAnim 2s infinite;
-  }
-
-  @keyframes sparkleAnim {
-    0%, 100% { transform: translateY(0) scale(1); opacity: 1; }
-    50% { transform: translateY(-10px) scale(1.5); opacity: 0.6; }
-  }
+@keyframes sparkle {
+  0%, 100% { transform: translate(0,0) rotate(0deg); opacity: 0.7; }
+  25% { transform: translate(-5px, 5px) rotate(20deg); opacity: 1; }
+  50% { transform: translate(5px, -5px) rotate(-20deg); opacity: 0.5; }
+  75% { transform: translate(-3px, 3px) rotate(10deg); opacity: 1; }
+}
 </style>
 
 @keyframes sparkle {
@@ -354,7 +348,7 @@
 }
 </style>
 
-<button class="nav-btn" onclick="showSection('founder', event)">You✨, Us and Our Supporters</button>
+<button class="nav-btn1" onclick="showSection('founder', event)">You✨, Us and Our Supporters</button>
         <button class="nav-btn" onclick="showSection('strategy', event)">Our Strategy</button>
         <button class="nav-btn" onclick="showSection('future', event)">Our Future</button>
         <button class="nav-btn" onclick="showSection('involved', event)">Get More Involved</button>
