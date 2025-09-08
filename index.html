@@ -303,7 +303,7 @@
       <div class="nav-buttons">
         <button class="nav-btn active" onclick="showSection('overview', event)">Overview</button>
         <button class="nav-btn" onclick="showSection('understanding', event)">Financial Lines</button>
-        <button class="nav-btn" onclick="showSection('founder', event)">Us, Supporters & You</button>
+        <button class="nav-btn" onclick="showSection('founder', event)">You, Us and Our Supporters</button>
         <button class="nav-btn" onclick="showSection('strategy', event)">Our Strategy</button>
         <button class="nav-btn" onclick="showSection('future', event)">Our Future</button>
         <button class="nav-btn" onclick="showSection('involved', event)">Get More Involved</button>
@@ -418,6 +418,61 @@
     </div>
 
 <div id="founder" class="content-section">
+<style>
+  .highlight-section {
+    background: radial-gradient(circle at top left, #fff8e1, #fff3cd);
+    border-radius: 20px;
+    padding: 2rem;
+    margin: 3rem 0;
+    border: 2px solid gold;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+    position: relative;
+    overflow: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #b8860b;
+    text-align: center;
+  }
+
+  .highlight-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+  }
+
+  .highlight-section p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  /* Sparkle animation */
+  .sparkle {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: gold;
+    border-radius: 50%;
+    animation: sparkleAnim 2s infinite;
+  }
+
+  @keyframes sparkleAnim {
+    0%, 100% { transform: translateY(0) scale(1); opacity: 1; }
+    50% { transform: translateY(-10px) scale(1.5); opacity: 0.6; }
+  }
+</style>
+
+<div class="highlight-section">
+  <h2>You ✨</h2>
+  <p>By far the most important piece of the project is you.</p>
+  <p>Our entire purpose is to improve the lives of everyday Brits using Financial services and doing so in a sustainable way. Simply visiting our website is an important contribution. We are regularly updating our content and plan to provide more educational material, so be sure to keep learning and check back in!</p>
+
+  <!-- Sparkles -->
+  <div class="sparkle" style="top:10%; left:20%; animation-delay:0s;"></div>
+  <div class="sparkle" style="top:30%; left:70%; animation-delay:0.5s;"></div>
+  <div class="sparkle" style="top:60%; left:40%; animation-delay:1s;"></div>
+  <div class="sparkle" style="top:80%; left:80%; animation-delay:1.5s;"></div>
+</div>
+
   <div class="founder-section">
     <h3>Grassroots Guard Ltd t/a Grassroots Insurance</h3>
     <h3>Strawberry Homes Limited</h3>
@@ -454,11 +509,6 @@
     </p>
   </details>
 </div>
-
-  <div class="founder-section">
-    <h3>Section 5</h3>
-    <p>Placeholder text for section 5. Describe the topic or story here.</p>
-  </div>
 
   <div class="founder-section">
     <h3>Section 6</h3>
