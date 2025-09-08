@@ -300,29 +300,45 @@
           <em>Grassroots Insurance™</em> — we have secured two important domain assets: <strong>Grassrootsinsurance.co.uk</strong> and <strong>Grassrootsguard.co.uk</strong>. We anticipate trading non-regulated services this year and beginning underwriting services in 2026. Check our company record: <a href="https://find-and-update.company-information.service.gov.uk/company/16680312" target="_blank" rel="noopener">GOV.UK company 16680312</a>.
       </div>
 
-      <div class="nav-buttons">
-        <button class="nav-btn active" onclick="showSection('overview', event)">Overview</button>
-        <style>
- .nav-btn1 {
-    background: radial-gradient(circle at top left, #fff8e1, #fff3cd);
-    border-radius: 20px;
-    padding: 2rem;
-    margin: 3rem 0;
-    border: 2px solid gold;
-    box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
-    position: relative;
-    overflow: hidden;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #b8860b;
-    text-align: center;
-  }
+<div class="nav-buttons">
+  <button class="nav-btn active" onclick="showSection('overview', event)">Overview</button>
+  <button class="nav-btn sparkle-btn" onclick="showSection('founder', event)">You✨, Us and Our Supporters</button>
+  <button class="nav-btn" onclick="showSection('understanding', event)">Financial Lines</button>
+  <button class="nav-btn" onclick="showSection('strategy', event)">Our Strategy</button>
+  <button class="nav-btn" onclick="showSection('future', event)">Our Future</button>
+  <button class="nav-btn" onclick="showSection('involved', event)">Get More Involved</button>
+</div>
 
-.nav-btn1:hover {
+<style>
+.nav-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.nav-btn {
+  flex: 1;
+  min-width: 200px;
+  background: radial-gradient(circle at top left, #fff8e1, #fff3cd);
+  border-radius: 20px;
+  padding: 1.5rem 2rem;
+  border: 2px solid gold;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #b8860b;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.nav-btn:hover {
   transform: scale(1.05);
   box-shadow: 0 6px 20px rgba(255, 223, 0, 0.7);
 }
 
-.nav-btn1::after {
+/* Sparkle effect for the special button */
+.sparkle-btn::after {
   content: '✨';
   position: absolute;
   top: -10px;
@@ -330,7 +346,8 @@
   font-size: 1.5rem;
   opacity: 0.7;
   animation: sparkle 2s infinite;
-  }
+}
+
 @keyframes sparkle {
   0%, 100% { transform: translate(0,0) rotate(0deg); opacity: 0.7; }
   25% { transform: translate(-5px, 5px) rotate(20deg); opacity: 1; }
@@ -338,12 +355,6 @@
   75% { transform: translate(-3px, 3px) rotate(10deg); opacity: 1; }
 }
 </style>
-<button class="nav-btn1" onclick="showSection('founder', event)">You✨, Us and Our Supporters</button>
-        <button class="nav-btn" onclick="showSection('understanding', event)">Financial Lines</button>
-        <button class="nav-btn" onclick="showSection('strategy', event)">Our Strategy</button>
-        <button class="nav-btn" onclick="showSection('future', event)">Our Future</button>
-        <button class="nav-btn" onclick="showSection('involved', event)">Get More Involved</button>
-      </div>
     </div>
 
     <div id="overview" class="content-section active">
@@ -544,21 +555,6 @@
     </p>
   </details>
 </div>
-
-  <div class="founder-section">
-    <h3>Section 6</h3>
-    <p>Placeholder text for section 6. Describe the topic or story here.</p>
-  </div>
-
-  <div class="founder-section">
-    <h3>Section 7</h3>
-    <p>Placeholder text for section 7. Describe the topic or story here.</p>
-  </div>
-
-  <div class="founder-section">
-    <h3>Section 8</h3>
-    <p>Placeholder text for section 8. Describe the topic or story here.</p>
-  </div>
 
 </div>
     
