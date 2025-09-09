@@ -119,13 +119,11 @@
     .content-section.active { display: block; }
 
     .intro-text {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
-      animation: fadeInUp 1s ease-out 0.3s both;
-      background: linear-gradient(45deg, #ffffff, #cccccc);
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+  background: linear-gradient(135deg, rgba(0, 225, 0, 0.05), rgba(0, 225, 0, 0.3));
+  border-radius: 20px;
+  padding: 40px;
+  margin: 60px 0;
+  border: 1px dashed var(--primary);
     }
     @keyframes fadeInUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
@@ -321,7 +319,15 @@
             <p class="intro-text">
         Welcome to Shobuz.co.uk. Here we'll be taking you along with our journey in us creating a grassroots insurance services business that focuses on giving back to society. This website is purely journalistic to share updates. Feel free to get in touch at <a href="mailto:hello@shobuz.co.uk">hello@shobuz.co.uk</a>.
       </p>
-      <p>
+	</div>
+      <div class="announcement" role="region" aria-label="Important announcement">
+        <div class="emoji" aria-hidden="true">🎉</div>
+        <p>
+          <strong>Exciting update!</strong> We have officially launched the limited entity and are excited to announce the name of this company:
+          <em>Grassroots Insurance™</em>. We have secured two important domain assets: <strong>Grassrootsinsurance.co.uk</strong> and <strong>Grassrootsguard.co.uk</strong>. We anticipate trading non-regulated services this year and beginning underwriting services in 2026. Check our company record: <a href="https://find-and-update.company-information.service.gov.uk/company/16680312" target="_blank" rel="noopener">GOV.UK company 16680312</a>.
+      </div>
+    <div class="nav-section">
+	  <p class="intro-text">
         <strong>Grassroots Insurance</strong> is a project to create a new Financial Lines Managing General Agent (MGA) founded on the principles of sustainable growth, ethical underwriting, and community benefit. Our mission is to address unmet demand in the UK’s complex financial lines insurance sector by offering fair, principled, and human-centered coverage.
       </p>
       <p>
@@ -330,12 +336,7 @@
       <p>
         Our model combines lean operations, deep underwriting expertise, and digital innovation to deliver competitive pricing, faster claims, and exceptional client relationships without sacrificing safety or compliance.
       </p>
-      <div class="announcement" role="region" aria-label="Important announcement">
-        <div class="emoji" aria-hidden="true">🎉</div>
-        <p>
-          <strong>Exciting update!</strong> We have officially launched the limited entity and are excited to announce the name of this company:
-          <em>Grassroots Insurance™</em>. We have secured two important domain assets: <strong>Grassrootsinsurance.co.uk</strong> and <strong>Grassrootsguard.co.uk</strong>. We anticipate trading non-regulated services this year and beginning underwriting services in 2026. Check our company record: <a href="https://find-and-update.company-information.service.gov.uk/company/16680312" target="_blank" rel="noopener">GOV.UK company 16680312</a>.
-      </div>
+  </div>
 
 <div class="nav-buttons">
   <button class="nav-btn active" onclick="showSection('overview', event)">Overview</button>
