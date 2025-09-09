@@ -9,14 +9,14 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-  font-family: 'Inter', Arial, sans-serif;
-  font-size: 1.125rem;
-  font-weight: 400;
-  line-height: 1.6;
-  background: url('leaves.svg') no-repeat center center fixed;
-  background-size: cover;
-  color: white;
-  overflow-x: hidden;
+      font-family: 'Inter', Arial, sans-serif;
+      font-size: 1.125rem;
+      font-weight: 400;
+      line-height: 1.6;
+      background: url('leaves.svg') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      overflow-x: hidden;
     }
 
     .background-particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; }
@@ -28,19 +28,18 @@
     .header-container { display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem; animation: slideInDown 1s ease-out; }
     @keyframes slideInDown { from { transform: translateY(-50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
-   .header-title {
-  width: 500px;
-  max-width: 40vw;
-  height: auto;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
-}
+    .header-title {
+      width: 500px;
+      height: auto;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
+    }
 
-.header-title:hover {
-  transform: scale(1.05);
-  filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.6));
-}
+    .header-title:hover {
+      transform: scale(1.05);
+      filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.6));
+    }
     .header-logo img { width: 300px; height: auto; transition: transform 0.3s ease; filter: drop-shadow(0 0 10px rgba(75, 111, 68, 0.3)); }
     .header-logo img:hover { transform: scale(1.1); }
 
@@ -275,22 +274,22 @@
   </style>
 </head>
 <body>
-  <div class="loading-overlay">
+  <div class="loading-overlay" id="loadingOverlay" aria-hidden="true">
     <div class="loading-spinner" aria-hidden="true"></div>
   </div>
 
-  <div class="background-particles" id="particles"></div>
+  <div class="background-particles" id="particles" aria-hidden="true"></div>
 
   <div class="container">
     <div class="header-container">
-    <img src="Shobuz.png" alt="Shobuz.co.uk" class="header-title" />
+      <img src="Shobuz.png" alt="Shobuz.co.uk" class="header-title" />
       <div class="header-logo">
         <img src="Collage (3).png" alt="logo">
       </div>
     </div>
-  
+
     <div class="nav-section">
-            <p class="intro-text">
+      <p class="intro-text">
         Welcome to Shobuz.co.uk. Here we'll be taking you along with our journey in us creating a grassroots insurance services business that focuses on giving back to society. This website is purely journalistic to share updates. Feel free to get in touch at hello@shobuz.co.uk.
       </p>
       <div class="announcement" role="region" aria-label="Important announcement">
@@ -298,56 +297,50 @@
         <p>
           <strong>Exciting update!</strong> We have officially launched the limited entity and are excited to announce the name of this company:
           <em>Grassroots Insurance™</em> — we have secured two important domain assets: <strong>Grassrootsinsurance.co.uk</strong> and <strong>Grassrootsguard.co.uk</strong>. We anticipate trading non-regulated services this year and beginning underwriting services in 2026. Check our company record: <a href="https://find-and-update.company-information.service.gov.uk/company/16680312" target="_blank" rel="noopener">GOV.UK company 16680312</a>.
+        </p>
       </div>
 
-<div class="nav-buttons">
-  <button class="nav-btn active" onclick="showSection('overview', event)">Overview</button>
-  <button class="nav-btn sparkle-btn" onclick="showSection('founder', event)">You✨, Us and Our Supporters</button>
-  <button class="nav-btn" onclick="showSection('understanding', event)">Financial Lines</button>
-  <button class="nav-btn" onclick="showSection('strategy', event)">Our Strategy</button>
-  <button class="nav-btn" onclick="showSection('future', event)">Our Future</button>
-  <button class="nav-btn" onclick="showSection('involved', event)">Get More Involved</button>
-</div>
+      <!-- Navigation buttons use data-target rather than inline onclick for reliability -->
+      <div class="nav-buttons" role="tablist" aria-label="Main navigation">
+        <button class="nav-btn active" data-target="overview" role="tab" aria-selected="true">Overview</button>
+        <button class="nav-btn sparkle-btn" data-target="founder" role="tab" aria-selected="false">You✨, Us and Our Supporters</button>
+        <button class="nav-btn" data-target="understanding" role="tab" aria-selected="false">Financial Lines</button>
+        <button class="nav-btn" data-target="strategy" role="tab" aria-selected="false">Our Strategy</button>
+        <button class="nav-btn" data-target="future" role="tab" aria-selected="false">Our Future</button>
+        <button class="nav-btn" data-target="involved" role="tab" aria-selected="false">Get More Involved</button>
+      </div>
 
-<style>
-.nav-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.sparkle-btn {
-  flex: 1;
-  min-width: 200px;
-  background: radial-gradient(circle at top left, #fff8e1, #fff3cd);
-  border-radius: 20px;
-  padding: 1.5rem 2rem;
-  border: 2px solid gold;
-  box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #b8860b;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.nav-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 20px rgba(255, 223, 0, 0.7);
-}
-.sparkle-btn::after {
-  content: '✨';
-  position: absolute;
-  top: -10px;
-  right: -10px;
-  font-size: 1.5rem;
-  opacity: 0.7;
-}
-</style>
+      <style>
+        .nav-buttons { display: flex; flex-wrap: wrap; gap: 1rem; }
+        .sparkle-btn {
+          flex: 1;
+          min-width: 200px;
+          background: radial-gradient(circle at top left, #fff8e1, #fff3cd);
+          border-radius: 20px;
+          padding: 1.5rem 2rem;
+          border: 2px solid gold;
+          box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          color: #b8860b;
+          text-align: center;
+          position: relative;
+          overflow: hidden;
+          transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .nav-btn:hover { transform: scale(1.05); box-shadow: 0 6px 20px rgba(255, 223, 0, 0.7); }
+        .sparkle-btn::after {
+          content: '✨';
+          position: absolute;
+          top: -10px;
+          right: -10px;
+          font-size: 1.5rem;
+          opacity: 0.7;
+        }
+      </style>
     </div>
 
-    <div id="overview" class="content-section active">
+    <!-- CONTENT SECTIONS -->
+    <div id="overview" class="content-section active" role="tabpanel" aria-hidden="false">
       <div class="goal-text">
         <span class="highlight-goal">Our Goal</span> is to create a grassroots financial lines MGA with a view of becoming an outright insurer. We will achieve our goals with hard work instead of institutional support; patience instead of leverage; and with the British public at the heart of what we do.
       </div>
@@ -406,7 +399,7 @@
         <strong>Real Life Case Study</strong>
         <p>USA has "Obamacare", requiring insurers to spend at least 80% of premiums on medical care and quality improvement.</p>
         <p>UnitedHealthcare has faced lawsuits for underpaying claims while maintaining low premiums, allowing them to win business while failing to fairly support their customers. This has led to serious consequences for people's health and well-being.</p>
-        <p><strong>Sources:</strong><br>
+        <p>Sources:<br>
           <a href="https://www.benefitspro.com/2022/12/29/lawsuit-accuses-unitedhealthcare-group-of-underpaying-benefits-for-out-of-network-care/" target="_blank" rel="noopener">BenefitsPro Article</a><br>
           <a href="https://hallbenefitslaw.com/class-action-lawsuit-accuses-unitedhealthcare-group-of-underpaying-claims-for-out-of-network-care/" target="_blank" rel="noopener">Hall Benefits Law Article</a><br>
           <a href="https://www.cms.gov/marketplace/private-health-insurance/medical-loss-ratio" target="_blank" rel="noopener">CMS.gov</a>
@@ -414,7 +407,7 @@
       </div>
     </div>
 
-    <div id="understanding" class="content-section">
+    <div id="understanding" class="content-section" role="tabpanel" aria-hidden="true">
       <h2 class="section-title">Understanding Financial Lines Insurance</h2>
       <p>Financial lines are a category of insurance coverage designed to protect businesses and individuals against specific financial risks. Let's break down the main types:</p>
 
@@ -422,17 +415,13 @@
         <div class="column">
           <strong>Directors and Officers Insurance (D&O)</strong>
           <p>Protects company "officers" from personal financial loss if they are sued for decisions made in their roles. Coverage usually covers legal fees, settlements, discovery, and damages related to claims of mismanagement, breach of duty, or regulatory violations.</p>
-          <div id="do-example">
-            <p><strong>Real Scenario:</strong> A construction company had a contract with a client. They hire and make purchases based off this contract. The client has financial issues and are forced to liquidate before payment is made. As a result, the insured is forced to close the business down. The employees who have been laid off decide to sue the directors personally for their loss of earnings. D&O insurance would protect the directors in this scenario.</p>
-          </div>
+          <p>Real scenario example: A construction company had a contract with a client. They hire and make purchases based off this contract. The client has financial issues and are forced to liquidate before payment is made. As a result, the insured is forced to close the business down. The employees who have been laid off decide to sue the directors personally for their loss of earnings. D&O insurance would protect the directors in this scenario.</p>
         </div>
 
         <div class="column">
           <strong>Professional Indemnity Insurance (PII)</strong>
           <p>Protects businesses and professionals from financial losses arising from claims of negligence, errors, omissions, or inadequate services provided to clients. It covers legal fees, settlements, discovery and damages.</p>
-          <div id="pii-example">
-            <p><strong>Real Scenario:</strong> A marketing consultant advises a retail business on an advertising campaign. Due to an error in compliance, the campaign violates advertising regulations, resulting in fines. The customer suffers a loss of earnings and decides to sue the consultant for £1m plus defence costs. PII would cover these costs, preventing the consultant from paying out of pocket.</p>
-          </div>
+          <p>Real scenario example: A marketing consultant advises a retail business on an advertising campaign. Due to an error in compliance, the campaign violates advertising regulations, resulting in fines. The customer suffers a loss of earnings and decides to sue the consultant for £1m plus defence costs. PII would cover these costs, preventing the consultant from paying out of pocket.</p>
         </div>
       </div>
 
@@ -454,101 +443,124 @@
       </div>
     </div>
 
-<div id="founder" class="content-section">
-<style>
-  .highlight-section {
-    background: radial-gradient(circle at top left, #fff8e1, #fff3cd);
-    border-radius: 20px;
-    padding: 2rem;
-    margin: 3rem 0;
-    border: 2px solid gold;
-    box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
-    position: relative;
-    overflow: hidden;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #b8860b;
-    text-align: center;
-  }
+    <div id="founder" class="content-section" role="tabpanel" aria-hidden="true">
+      <style>
+        .highlight-section {
+          background: radial-gradient(circle at top left, #fff8e1, #fff3cd);
+          border-radius: 20px;
+          padding: 2rem;
+          margin: 3rem 0;
+          border: 2px solid gold;
+          box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+          position: relative;
+          overflow: hidden;
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          color: #b8860b;
+          text-align: center;
+        }
 
-  .highlight-section h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    font-weight: bold;
-  }
+        .highlight-section h2 {
+          font-size: 2rem;
+          margin-bottom: 1rem;
+          font-weight: bold;
+        }
 
-  .highlight-section p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    margin-bottom: 1rem;
-  }
+        .highlight-section p {
+          font-size: 1.1rem;
+          line-height: 1.6;
+          margin-bottom: 1rem;
+        }
 
-  /* Sparkle animation */
-  .sparkle {
-    position: absolute;
-    width: 5px;
-    height: 5px;
-    background: gold;
-    border-radius: 50%;
-    animation: sparkleAnim 2s infinite;
-  }
+        .sparkle {
+          position: absolute;
+          width: 5px;
+          height: 5px;
+          background: gold;
+          border-radius: 50%;
+          animation: sparkleAnim 2s infinite;
+        }
 
-  @keyframes sparkleAnim {
-    0%, 100% { transform: translateY(0) scale(1); opacity: 1; }
-    50% { transform: translateY(-10px) scale(1.5); opacity: 0.6; }
-  }
-</style>
+        @keyframes sparkleAnim {
+          0%, 100% { transform: translateY(0) scale(1); opacity: 1; }
+          50% { transform: translateY(-10px) scale(1.5); opacity: 0.6; }
+        }
+      </style>
 
-<div class="highlight-section">
-  <h2>You ✨</h2>
-  <p>By far the most important piece of the project is <strong>you</strong>.</p>
-  <p>Our entire purpose is to improve the lives of everyday Brits using Financial services and doing so in a sustainable way. Simply visiting our website is an important contribution. We are regularly updating our content and plan to provide more educational material, so be sure to keep learning and check back in!</p>
+      <div class="highlight-section">
+        <h2>You ✨</h2>
+        <p>By far the most important piece of the project is <strong>you</strong>.</p>
+        <p>Our entire purpose is to improve the lives of everyday Brits using Financial services and doing so in a sustainable way. Simply visiting our website is an important contribution. We are regularly updating our content and plan to provide more educational material, so be sure to keep learning and check back in!</p>
 
-  <div class="sparkle" style="top:10%; left:20%; animation-delay:0s;"></div>
-  <div class="sparkle" style="top:30%; left:70%; animation-delay:0.5s;"></div>
-  <div class="sparkle" style="top:60%; left:40%; animation-delay:1s;"></div>
-  <div class="sparkle" style="top:80%; left:80%; animation-delay:1.5s;"></div>
-</div>
+        <div class="sparkle" style="top:10%; left:20%; animation-delay:0s;"></div>
+        <div class="sparkle" style="top:30%; left:70%; animation-delay:0.5s;"></div>
+        <div class="sparkle" style="top:60%; left:40%; animation-delay:1s;"></div>
+        <div class="sparkle" style="top:80%; left:80%; animation-delay:1.5s;"></div>
+      </div>
 
-  <div class="founder-section">
-    <h3>Grassroots Guard Ltd t/a Grassroots Insurance</h3>
-    <h3>Strawberry Homes Limited</h3>
-    <p>Our legal entities. Website is in development.</p>
-  </div>
+      <div class="founder-section">
+        <h3>Grassroots Guard Ltd t/a Grassroots Insurance</h3>
+        <h3>Strawberry Homes Limited</h3>
+        <p>Our legal entities. Website is in development.</p>
+      </div>
 
-  <div class="founder-section">
-    <h3>Abdul Alim - Founder & CEO</h3>
-    <p>I grew up in Liverpool studying Accountancy and Finance at the University of Liverpool. It has always been a dream of mine to own my own financial business that improves its community - not just a typical local firm, but something larger that impacts wider society.</p>
-    <p>My working career has been in finance, starting with work experience at a local accountancy firm on Penny Lane. At TSB, I was inspired by the public when working for various branches in Manchester. I learnt to appreciate my financial literacy and felt a sense of responsibility in helping others with my expertise.</p>
-    <p>I first worked in the insurance industry with the Co-operative insurance in 2019 and first worked as a financial lines underwriter at the Royal and Sun Alliance plc. I instantly realised financial lines underwriting was the career that was best suited to me. It rewarded my learning style, tenacity and creativity.</p>
-    <p>I was head hunted by Aqueous in 2023 to be a Professional Indemnity Underwriter. I was convinced by the plan they had for me, the training opportunities and the opportunity to work closely with some of the most experienced underwriters in the industry.</p>
-    <p>In my spare time, I love learning all about finance and companies. What makes businesses a success, why some businesses fail and how macro events affect local businesses. I've more recently grown an obsession with law in relation to the financial world.</p>
-    <p>My experience within the industry has made me realise there is so much unfulfilled demand and dissatisfaction. The constraints of my role meant I could not satisfy the personal responsibility I feel for others. This is why I am starting my own financial lines MGA.</p>
-  </div>
- 
-  <div class="founder-section">
-    <p><strong> Care Accountancy Chartered Accountants</strong> Our appointed Chartered Accountants careaccountancy.co.uk</p>
-    <p><iframe src="https://careaccountancy.co.uk/" width="100%" height="400" frameborder="0" title="Care Accountancy"></iframe></p>
-  </div>
+      <div class="founder-section">
+        <h3>Abdul Alim - Founder & CEO</h3>
+        <p>I grew up in Liverpool studying Accountancy and Finance at the University of Liverpool. It has always been a dream of mine to own my own financial business that improves its community - not just a typical local firm, but something larger that impacts wider society.</p>
+        <p>My working career has been in finance, starting with work experience at a local accountancy firm on Penny Lane. At TSB, I was inspired by the public when working for various branches in Manchester. I learnt to appreciate my financial literacy and felt a sense of responsibility in helping others with my expertise.</p>
+        <p>I first worked in the insurance industry with the Co-operative insurance in 2019 and first worked as a financial lines underwriter at the Royal and Sun Alliance plc. I instantly realised financial lines underwriting was the career that was best suited to me. It rewarded my learning style, tenacity and creativity.</p>
+        <p>I was head hunted by Aqueous in 2023 to be a Professional Indemnity Underwriter. I was convinced by the plan they had for me, the training opportunities and the opportunity to work closely with some of the most experienced underwriters in the industry.</p>
+        <p>In my spare time, I love learning all about finance and companies. What makes businesses a success, why some businesses fail and how macro events affect local businesses. I've more recently grown an obsession with law in relation to the financial world.</p>
+        <p>My experience within the industry has made me realise there is so much unfulfilled demand and dissatisfaction. The constraints of my role meant I could not satisfy the personal responsibility I feel for others. This is why I am starting my own financial lines MGA.</p>
+      </div>
 
-<div class="founder-section">
-  <h3>Our Principle Firm</h3>
-  <details>
-    <summary> Our Principle Firm will be providing the FCA regulation for us to do our regulated business. We have sourced a principle firm who are undisclosed for the time being due to confidentiality obligations.</summary>
-    <p>
-      Any financial business in the UK must be regulated by the Financial Conduct Authority (FCA). Obtaining FCA approval can take anywhere from six months to a year, with the outcome largely dependent on the strength and clarity of the business plan submitted. The FCA allows certain companies to delegate their regulatory authority through a model known as Appointed Representatives (AR). A company will delegate their authority to their AR; this company is known as the Principle Firm.
-    </p>
-    <p>
-      We have already sourced our Principle Firm who will be offering support beyond just delegated authority. A large part of our regulatory oversight will be assisted by our Principle Firm.
-    </p>
-    <p>
-      In the future, we will be regulated through the FCA directly, losing our reliance on our Principle Firm. This brings us control and opportunity to expand our business. Becoming FCA regulated comes with additional responsibilities and we would be subject to further audits. Therefore, this step will be done when appropriate.
-    </p>
-  </details>
-</div>
+      <div class="founder-section">
+        <p><strong> Care Accountancy Chartered Accountants</strong> Our appointed Chartered Accountants careaccountancy.co.uk</p>
+        <p><iframe src="https://careaccountancy.co.uk/" width="100%" height="400" frameborder="0" title="Care Accountancy"></iframe></p>
+      </div>
 
-</div>
-    
-    <div id="strategy" class="content-section">
+      <div class="founder-section">
+        <h3>Our Principle Firm</h3>
+        <details>
+          <summary> Our Principle Firm will be providing the FCA regulation for us to do our regulated business. We have sourced a principle firm who are undisclosed for the time being due to confidentiality obligations.</summary>
+          <p>
+            Any financial business in the UK must be regulated by the Financial Conduct Authority (FCA). Obtaining FCA approval can take anywhere from six months to a year, with the outcome largely dependent on the strength and clarity of the business plan submitted. The FCA allows certain companies to delegate their regulatory authority through a model known as Appointed Representatives (AR). A company will delegate their authority to their AR; this company is known as the Principle Firm.
+          </p>
+          <p>
+            We have already sourced our Principle Firm who will be offering support beyond just delegated authority. A large part of our regulatory oversight will be assisted by our Principle Firm.
+          </p>
+          <p>
+            In the future, we will be regulated through the FCA directly, losing our reliance on our Principle Firm. This brings us control and opportunity to expand our business. Becoming FCA regulated comes with additional responsibilities and we would be subject to further audits. Therefore, this step will be done when appropriate.
+          </p>
+        </details>
+      </div>
+
+      <div class="founder-section">
+        <div class="columnsoff">
+          <div class="columnoff left">
+            <h3 style="color: red;">The King's Trust</h3>
+            <p>
+              We have been accepted onto the King's Trust program.  
+              <a href="https://www.kingstrust.org.uk/" target="_blank">Visit King's Trust</a>
+            </p>
+          </div>
+          <div class="columnoff right">
+            <h3 style="color: lightblue;">Leeds City Council</h3>
+            <p>
+              We have the support of the Leeds City Council.  
+              <a href="https://www.leeds.gov.uk/" target="_blank">Visit Leeds City Council</a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <style>
+        .columnsoff { display: flex; gap: 2rem; flex-wrap: wrap; }
+        .columnoff { flex: 1; min-width: 250px; }
+        .columnoff p a { color: inherit; text-decoration: underline; font-weight: bold; }
+      </style>
+    </div>
+
+    <div id="strategy" class="content-section" role="tabpanel" aria-hidden="true">
       <h2 class="section-title">Our Strategic Advantages</h2>
       <div class="two-column">
         <div class="column">
@@ -588,7 +600,7 @@
       </div>
     </div>
 
-    <div id="future" class="content-section">
+    <div id="future" class="content-section" role="tabpanel" aria-hidden="true">
       <h2 class="section-title">Our Future Vision</h2>
       <div class="goal-text">
         <span class="highlight-goal">Beyond 5 Years</span> - Our distant 10+ year goal is to create our own grassroots insurance company, transitioning from MGA to full insurer status.
@@ -628,7 +640,7 @@
       </div>
     </div>
 
-    <div id="involved" class="content-section">
+    <div id="involved" class="content-section" role="tabpanel" aria-hidden="true">
       <h2 class="section-title">Get Involved</h2>
       <div class="involvement-box">
         <h3>Join Our Journey</h3>
@@ -655,56 +667,71 @@
       <p> Our next website update is on the 14th of September 2025 at 9am. We potentially will have some exciting news for you then. In the meantime you can email your burning questions to
         <a href="mailto:hello@shobuz.co.uk" class="email">hello@shobuz.co.uk</a>
       </p>
-      </p>
       <p style="text-align: left; font-size: smaller; margin-top: 12px;"> © 2025 Abdul Alim. All rights reserved. This website does not collect, track or store your data or cookies.</p>
     </div>
   </div>
 
   <script>
-    function showSection(sectionId, evt) {
-      const sections = document.querySelectorAll('.content-section');
-      sections.forEach(section => section.classList.remove('active'));
+    /* -------------------------
+       Helper: showSection
+       - sectionId: id string of content section
+       - btnElement: button element that triggered the show (optional)
+       ------------------------- */
+    function showSection(sectionId, btnElement) {
+      // Hide all sections
+      document.querySelectorAll('.content-section').forEach(section => {
+        section.classList.remove('active');
+        section.setAttribute('aria-hidden', 'true');
+      });
+
+      // Show target
       const target = document.getElementById(sectionId);
-      if (target) target.classList.add('active');
-
-      const buttons = document.querySelectorAll('.nav-btn');
-      buttons.forEach(btn => btn.classList.remove('active'));
-
-      if (evt && evt.currentTarget) {
-        evt.currentTarget.classList.add('active');
-      } else {
-        const fallback = Array.from(buttons).find(b => b.textContent.trim().toLowerCase().includes(sectionId));
-        if (fallback) fallback.classList.add('active');
+      if (target) {
+        target.classList.add('active');
+        target.setAttribute('aria-hidden', 'false');
       }
 
+      // Toggle button active state and aria-selected
+      document.querySelectorAll('.nav-btn').forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      });
+      if (btnElement && btnElement.classList) {
+        btnElement.classList.add('active');
+        btnElement.setAttribute('aria-selected', 'true');
+      } else {
+        const fallback = document.querySelector(`.nav-btn[data-target="${sectionId}"]`);
+        if (fallback) {
+          fallback.classList.add('active');
+          fallback.setAttribute('aria-selected', 'true');
+        }
+      }
+
+      // Move to top
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
+    /* -------------------------
+       Particles
+       ------------------------- */
     function createParticles() {
       const particlesContainer = document.getElementById('particles');
+      if (!particlesContainer) return;
       const particleCount = 50;
       for (let i = 0; i < particleCount; i++) {
         const particle = document.createElement('div');
         particle.className = 'particle';
         particle.style.left = Math.random() * 100 + '%';
+        particle.style.top = Math.random() * 100 + '%';
         particle.style.animationDelay = Math.random() * 6 + 's';
         particle.style.animationDuration = (Math.random() * 3 + 6) + 's';
         particlesContainer.appendChild(particle);
       }
     }
 
-    function animateTitle() {
-      const title = document.querySelector('.header-title');
-      title.style.transform = 'scale(1.2) rotate(360deg)';
-      title.style.color = '#5a8a52';
-      setTimeout(() => {
-        title.style.transform = 'scale(1) rotate(0deg)';
-        title.style.color = '#008000';
-      }, 600);
-    }
-
     function downloadDocument() {
       const downloadBox = document.querySelector('.download-box');
+      if (!downloadBox) return;
       downloadBox.style.transform = 'scale(0.95)';
       setTimeout(() => { downloadBox.style.transform = 'scale(1)'; }, 200);
     }
@@ -730,12 +757,16 @@
       });
     }
 
+    /* -------------------------
+       Initialise on DOM ready
+       ------------------------- */
     document.addEventListener('DOMContentLoaded', function() {
       createParticles();
       addHoverEffects();
       window.addEventListener('scroll', revealOnScroll);
       revealOnScroll();
 
+      // Animate benefits list items in (initial)
       const revealElements = document.querySelectorAll('.benefits-list li');
       revealElements.forEach((element, index) => {
         element.style.opacity = '0';
@@ -749,14 +780,49 @@
           }
         }, 100 + index * 60);
       });
+
+      // Attach nav button handlers (reliable approach)
+      const navButtons = document.querySelectorAll('.nav-btn');
+      navButtons.forEach(btn => {
+        const target = btn.getAttribute('data-target');
+        // click
+        btn.addEventListener('click', (e) => {
+          showSection(target, btn);
+        });
+        // keyboard support for accessibility
+        btn.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            btn.click();
+          }
+        });
+      });
+
+      // Ensure correct ARIA states on initial load
+      const activeBtn = document.querySelector('.nav-btn.active');
+      if (activeBtn) {
+        activeBtn.setAttribute('aria-selected', 'true');
+      }
+
+      // Remove loading overlay after animation (safe fallback)
+      const overlay = document.getElementById('loadingOverlay');
+      if (overlay) {
+        // Give CSS fadeOut time to run then remove from DOM
+        setTimeout(() => {
+          if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
+        }, 2200);
+      }
     });
 
+    // Allow download-box activation via keyboard (space/enter)
     document.addEventListener('keydown', function(e) {
-      if (e.key === 'Enter' && e.target.classList.contains('download-box')) {
+      if ((e.key === 'Enter' || e.key === ' ') && document.activeElement && document.activeElement.classList.contains('download-box')) {
+        e.preventDefault();
         downloadDocument();
       }
     });
 
+    // Lazy image observer (keeps your original logic)
     if ('IntersectionObserver' in window) {
       const imageObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
