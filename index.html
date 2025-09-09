@@ -4,8 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Shobuz.co.uk - Grassroots Insurance Revolution</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -274,6 +272,30 @@
   </style>
 </head>
 <body>
+<script>
+function showSection(sectionId, event) {
+  // Hide all content sections
+  document.querySelectorAll('.content-section').forEach(section => {
+    section.classList.remove('active');
+  });
+
+  // Show the selected section
+  const targetSection = document.getElementById(sectionId);
+  if (targetSection) {
+    targetSection.classList.add('active');
+  }
+
+  // Reset all nav buttons
+  document.querySelectorAll('.nav-btn').forEach(btn => {
+    btn.classList.remove('active');
+  });
+
+  // Set the clicked button as active
+  if (event) {
+    event.target.classList.add('active');
+  }
+}
+</script>
   <div class="loading-overlay">
     <div class="loading-spinner" aria-hidden="true"></div>
   </div>
