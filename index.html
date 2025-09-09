@@ -270,6 +270,37 @@
     .loading-spinner { width: 50px; height: 50px; border: 3px solid rgba(75, 111, 68, 0.3); border-radius: 50%; border-top-color: #008000; animation: spin 1s ease-in-out infinite; }
     @keyframes spin { to { transform: rotate(360deg); } }
     @keyframes fadeOut { to { opacity: 0; visibility: hidden; } }
+
+    .risk-box {
+  background: linear-gradient(135deg, transparent, rgba(0, 225, 0, 0.5));
+  border-radius: 20px;
+  padding: 40px;
+  margin: 60px 0;
+  border: 1px dashed var(--primary);
+    }
+
+    .risk-box h3 {
+      color: var(--primary);
+      margin-bottom: 15px;
+      font-size: 1.6rem;
+    }
+
+    .risk-list {
+      list-style-type: none;
+      margin-top: 15px;
+    }
+
+    .risk-list li {
+      margin-bottom: 12px;
+      font-size: 1.05rem;
+      color: var(--gray);
+    }
+
+    .risk-list li::before {
+      content: "✓";
+      color: var(--primary);
+      font-weight: bold;
+      margin-right: 8px;
   </style>
 </head>
 <body>
@@ -399,6 +430,18 @@
           </li>
         </ul>
       </div>
+      
+	  <div class="risk-box">
+      <h3>🛡️ Built to Last</h3>
+      <p>Our business is designed for stability and adaptability:</p>
+      <ul class="risk-list">
+        <li>Minimal market and credit risk due to diversified portfolio.</li>
+        <li>Operational risk kept low via lean structure and automation.</li>
+        <li>5% of revenue ring-fenced for comprehensive professional indemnity insurance.</li>
+        <li>Flexible spending: Actuary fees, software, and marketing can be scaled back in downturns.</li>
+        <li>Long-term tech investments to reduce future costs and increase efficiency.</li>
+      </ul>
+    </div>
 
       <div class="highlight-box">
         <strong>Real Life Case Study</strong>
