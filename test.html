@@ -44,46 +44,8 @@ max-width: 90vw;
 
     .nav-section { text-align: center; margin-bottom: 3rem; animation: fadeInUp 1s ease-out 0.2s both; }
 
-    .announcement {
-      margin: 0 auto 1.5rem auto;
-      max-width: 1100px;
-      padding: 1rem 1.25rem;
-      border-radius: 14px;
-      border: 1px solid rgba(75,111,68,0.25);
-      background: linear-gradient(90deg, rgba(75,111,68,0.05), rgba(255,255,255,0.01));
-      display: flex;
-      gap: 1rem;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-      animation: announcementIn 0.8s ease-out both;
-    }
-    .announcement::before {
-      content: "";
-      position: absolute;
-      left: -40%;
-      top: 0;
-      width: 40%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(75,111,68,0.07), transparent);
-      transform: skewX(-20deg);
-      animation: shimmer 3s linear infinite;
-      pointer-events: none;
-    }
     @keyframes shimmer { 0% { left: -40%; } 100% { left: 140%; } }
     @keyframes announcementIn { from { transform: translateY(-10px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-
-    .announcement .emoji {
-      font-size: 1.5rem;
-      transform-origin: center;
-      animation: emojiBounce 2s infinite;
-      margin-left: 4px;
-    }
-    @keyframes emojiBounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-6px); }
-    }
 
     .announcement p {
       color: #eaf4e9;
@@ -331,12 +293,8 @@ max-width: 90vw;
       <p>
         Our model combines lean operations, deep underwriting expertise, and digital innovation to deliver competitive pricing, faster claims, and exceptional client relationships without sacrificing safety or compliance.
       </p>
-      <div class="announcement" role="region" aria-label="Important announcement">
-        <div class="emoji" aria-hidden="true">🎉</div>
-        <p>
-          <strong>Exciting update!</strong> We have officially launched the limited entity and are excited to announce the name of this company:
+We have officially launched the limited entity and are excited to announce the name of this company:
           <em>Grassroots Insurance™</em>. We have secured two important domain assets: <strong>Grassrootsinsurance.co.uk</strong> and <strong>Grassrootsguard.co.uk</strong>. We anticipate trading non-regulated services this year and beginning underwriting services in 2026. Check our company record: <a href="https://find-and-update.company-information.service.gov.uk/company/16680312" target="_blank" rel="noopener">GOV.UK company 16680312</a>.
-      </div>
 
 <div class="nav-buttons">
   <button class="nav-btn active" onclick="showSection('overview', event)">Overview</button>
@@ -439,7 +397,14 @@ max-width: 90vw;
           </li>
         </ul>
       </div>
-      
+		
+        <div class="highlight-box">
+        <strong>Current Market Context</strong>
+        <p>The world is becoming more litigious, and the UK is no different. Our clients face uncertainties from all angles and need protection. Greater exposure to risk is followed by stricter regulations - creating both challenges and opportunities for innovative, community-focused insurance providers.</p>
+        <p>Recent events like the 2017 Grenfell tragedy have highlighted how quickly regulatory landscapes can change, creating new risks and opportunities in the insurance market. We're positioned to help businesses navigate these evolving challenges.</p>
+      </div>
+    </div>
+	  
 	  <div class="risk-box">
       <h3>🛡️ Built to Last</h3>
       <p>Our business is designed for stability and adaptability:</p>
@@ -694,13 +659,6 @@ max-width: 90vw;
         <p>Click <a href="Grassroots%20Insurance%20public.docx" download>here</a> to download the full latest publicly available presentation with financial projections, operational strategies, and market analysis.</p>
         <p><a href="Grassroots%20Insurance%20public.docx" download>Grassroots Insurance public.docx</a></p>
       </div>
-
-      <div class="highlight-box">
-        <strong>Current Market Context</strong>
-        <p>The world is becoming more litigious, and the UK is no different. Our clients face uncertainties from all angles and need protection. Greater exposure to risk is followed by stricter regulations - creating both challenges and opportunities for innovative, community-focused insurance providers.</p>
-        <p>Recent events like the 2017 Grenfell tragedy have highlighted how quickly regulatory landscapes can change, creating new risks and opportunities in the insurance market. We're positioned to help businesses navigate these evolving challenges.</p>
-      </div>
-    </div>
 
     <div class="footer-section">
       <p> Our next website update is on the 14th of September 2025 at 9am. We potentially will have some exciting news for you then. In the meantime you can email your burning questions to
