@@ -1,17 +1,29 @@
-<svg width="200" height="200" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
-  <path transform="translate(100,100)" d="M50 0Q25 25 0 0q0 80 50 100 50-20 50-100-25 25-50 0" fill="green"/>
-  <defs>
-    <path id="circle" transform="translate(100,100)" d="M 50,50 m -45,0 a 60,50 0 1,1 90,0 45,45 0 1,1 -93,0"/>
-    <path id="bottomCircle" transform="translate(100,100)" d="M50,55 m-55,-60 a80,80 0 1,0 110,0"/>
-  </defs>
-  <text font-size="35" fill="green" text-anchor="middle">
-    <textPath href="#circle" startOffset="32%" textLength="170">
-      Grassroots
-    </textPath>
-  </text>
-  <text font-size="35" fill="green" text-anchor="middle">
-    <textPath href="#bottomCircle" startOffset="50%" textLength="200">
-      Insurance
-    </textPath>
-  </text>
-</svg>
+<svg id="animated-logo" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+
+        <defs>
+            <path id="circlePath" d="M 50,50 m -45,0 a 60,50 0 1,1 90,0 45,45 0 1,1 -93,0" transform="translate(100,100)"/>
+            <path id="bottomCirclePath" d="M50,55 m-55,-60 a80,80 0 1,0 110,0" transform="translate(100,100)"/>
+        </defs>
+
+        <g id="leaf-group" class="pulse-glow">
+            <path
+                d="M50 0Q25 25 0 0q0 80 50 100 50-20 50-100-25 25-50 0"
+                fill="#008000"
+                transform="translate(100,100)"
+            />
+        </g>
+
+        <g id="text-group">
+            <text font-family="Inter, Arial, sans-serif" font-weight="700" font-size="35" fill="#008000" text-anchor="middle">
+                <textPath href="#circlePath" startOffset="32%" textLength="170">
+                    Grassroots
+                </textPath>
+            </text>
+            <text font-family="Inter, Arial, sans-serif" font-weight="700" font-size="35" fill="#008000" text-anchor="middle">
+                <textPath href="#bottomCirclePath" startOffset="50%" textLength="200">
+                    Insurance
+                </textPath>
+            </text>
+        </g>
+
+    </svg>
