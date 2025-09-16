@@ -303,29 +303,30 @@ We have officially launched the limited entity and are excited to announce the n
   gap: 1rem;
 }
 .community-btn {
-  background: linear-gradient(135deg, #8e44ad, #9b59b6); /* purple gradient */
+  flex: 1;
+  min-width: 180px;
+  background: linear-gradient(135deg, #8e44ad, #9b59b6);
   color: #fff;
   font-weight: 600;
   font-size: 1rem;
-  padding: 12px 24px;
+  padding: 1rem 2rem;
   border: none;
   border-radius: 12px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   display: inline-flex;
   align-items: center;
-  gap: 8px; /* space between emojis and text */
+  justify-content: center;
+  gap: 8px;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
-
 .community-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
   background: linear-gradient(135deg, #9b59b6, #8e44ad);
 }
-
 .community-btn:active {
-  transform: translateY(1px);
+  transform: scale(0.98);
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
 }
 .sparkle-btn {
