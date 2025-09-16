@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,46 +45,8 @@ max-width: 90vw;
 
     .nav-section { text-align: center; margin-bottom: 3rem; animation: fadeInUp 1s ease-out 0.2s both; }
 
-    .announcement {
-      margin: 0 auto 1.5rem auto;
-      max-width: 1100px;
-      padding: 1rem 1.25rem;
-      border-radius: 14px;
-      border: 1px solid rgba(75,111,68,0.25);
-      background: linear-gradient(90deg, rgba(75,111,68,0.05), rgba(255,255,255,0.01));
-      display: flex;
-      gap: 1rem;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-      animation: announcementIn 0.8s ease-out both;
-    }
-    .announcement::before {
-      content: "";
-      position: absolute;
-      left: -40%;
-      top: 0;
-      width: 40%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(75,111,68,0.07), transparent);
-      transform: skewX(-20deg);
-      animation: shimmer 3s linear infinite;
-      pointer-events: none;
-    }
     @keyframes shimmer { 0% { left: -40%; } 100% { left: 140%; } }
     @keyframes announcementIn { from { transform: translateY(-10px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-
-    .announcement .emoji {
-      font-size: 1.5rem;
-      transform-origin: center;
-      animation: emojiBounce 2s infinite;
-      margin-left: 4px;
-    }
-    @keyframes emojiBounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-6px); }
-    }
 
     .announcement p {
       color: #eaf4e9;
@@ -301,6 +264,7 @@ max-width: 90vw;
       color: var(--primary);
       font-weight: bold;
       margin-right: 8px;
+	}
   </style>
 </head>
 <body>
@@ -314,36 +278,21 @@ max-width: 90vw;
     <div class="header-container">
     <img src="Shobuz.png" alt="Shobuz.co.uk" class="header-title" />
       <div class="header-logo">
-        <img src="Collage (3).png" alt="logo">
+        <img img src="Grassroots circle.svg" alt="Grassroots Insurance Logo">
       </div>
     </div>
   
     <div class="nav-section">
             <p class="intro-text">
-        Welcome to Shobuz.co.uk. Here we'll be taking you along with our journey in us creating a grassroots insurance services business that focuses on giving back to society. This website is purely journalistic to share updates. Feel free to get in touch at <a href="mailto:hello@shobuz.co.uk">hello@shobuz.co.uk</a>.
-      </p>
-      <p>
-        <strong>Grassroots Insurance</strong> is a project to create a new Financial Lines Managing General Agent (MGA) founded on the principles of sustainable growth, ethical underwriting, and community benefit. Our mission is to address unmet demand in the UK’s complex financial lines insurance sector by offering fair, principled, and human-centered coverage.
-      </p>
-      <p>
-        Unlike profit-driven insurers owned by private equity, we are built from the ground up as a <span class="highlight">community first MGA</span>. We aim to become a full-fledged grassroots insurer within 10 years, serving UK businesses and professionals with integrity, clarity, and long-term value.
-      </p>
-      <p>
-        Our model combines lean operations, deep underwriting expertise, and digital innovation to deliver competitive pricing, faster claims, and exceptional client relationships without sacrificing safety or compliance.
-      </p>
-      <div class="announcement" role="region" aria-label="Important announcement">
-        <div class="emoji" aria-hidden="true">🎉</div>
-        <p>
-          <strong>Exciting update!</strong> We have officially launched the limited entity and are excited to announce the name of this company:
-          <em>Grassroots Insurance™</em>. We have secured two important domain assets: <strong>Grassrootsinsurance.co.uk</strong> and <strong>Grassrootsguard.co.uk</strong>. We anticipate trading non-regulated services this year and beginning underwriting services in 2026. Check our company record: <a href="https://find-and-update.company-information.service.gov.uk/company/16680312" target="_blank" rel="noopener">GOV.UK company 16680312</a>.
-      </div>
+Welcome to Shobuz.co.uk. Here we'll be taking you along with our journey in us creating a grassroots insurance services business that focuses on giving back to society. This website is purely journalistic to share updates. Feel free to get in touch at <a href="mailto:hello@shobuz.co.uk">hello@shobuz.co.uk</a>.
+We have officially launched the limited entity and are excited to announce the name of this company: <em>Grassroots Insurance™</em>. We have secured two important domain assets: <strong>Grassrootsinsurance.co.uk</strong> and <strong>Grassrootsguard.co.uk</strong>. We anticipate trading non-regulated services this year and beginning underwriting services in 2026. Check our company record: <a href="https://find-and-update.company-information.service.gov.uk/company/16680312" target="_blank" rel="noopener">GOV.UK company 16680312</a>.</p>
 
 <div class="nav-buttons">
   <button class="nav-btn active" onclick="showSection('overview', event)">Overview</button>
   <button class="nav-btn sparkle-btn" onclick="showSection('founder', event)">You✨, Us and Our Supporters</button>
   <button class="nav-btn" onclick="showSection('understanding', event)">Financial Lines</button>
-  <button class="nav-btn" onclick="showSection('strategy', event)">Our Strategy</button>
-  <button class="nav-btn" onclick="showSection('future', event)">Our Future</button>
+  <button class="nav-btn" onclick="showSection('Community', event)">Community</button>
+<button class="nav-btn" onclick="showSection('strategy', event)">Our Strategy</button>
   <button class="nav-btn" onclick="showSection('involved', event)">Get More Involved</button>
 </div>
 
@@ -388,6 +337,14 @@ max-width: 90vw;
     <div id="overview" class="content-section active">
       <div class="goal-text">
         <span class="highlight-goal">Our Goal</span> is to create a grassroots financial lines MGA with a view of becoming an outright insurer. We will achieve our goals with hard work instead of institutional support; patience instead of leverage; and with the British public at the heart of what we do.
+		  <p>
+        <strong>Grassroots Insurance</strong> is a project to create a new Financial Lines Managing General Agent (MGA) founded on the principles of sustainable growth, ethical underwriting, and community benefit. Our mission is to address unmet demand in the UK’s complex financial lines insurance sector by offering fair, principled, and human-centered coverage.
+      </p>
+      <p>
+        Unlike profit-driven insurers owned by private equity, we are built from the ground up as a <span class="highlight">community first MGA</span>. We aim to become a full-fledged grassroots insurer within 10 years, serving UK businesses and professionals with integrity, clarity, and long-term value.
+      </p>
+      <p>
+        Our model combines lean operations, deep underwriting expertise, and digital innovation to deliver competitive pricing, faster claims, and exceptional client relationships without sacrificing safety or compliance.</p>
       </div>
 
       <h2 class="section-title">What We're Solving</h2>
@@ -439,7 +396,13 @@ max-width: 90vw;
           </li>
         </ul>
       </div>
-      
+		
+        <div class="highlight-box">
+        <strong>Current Market Context</strong>
+        <p>The world is becoming more litigious, and the UK is no different. Our clients face uncertainties from all angles and need protection. Greater exposure to risk is followed by stricter regulations - creating both challenges and opportunities for innovative, community-focused insurance providers.</p>
+        <p>Recent events like the 2017 Grenfell tragedy have highlighted how quickly regulatory landscapes can change, creating new risks and opportunities in the insurance market. We're positioned to help businesses navigate these evolving challenges.</p>
+      </div>
+	  
 	  <div class="risk-box">
       <h3>🛡️ Built to Last</h3>
       <p>Our business is designed for stability and adaptability:</p>
@@ -461,6 +424,43 @@ max-width: 90vw;
           <a href="https://hallbenefitslaw.com/class-action-lawsuit-accuses-unitedhealthcare-group-of-underpaying-claims-for-out-of-network-care/" target="_blank" rel="noopener">Hall Benefits Law Article</a><br>
           <a href="https://www.cms.gov/marketplace/private-health-insurance/medical-loss-ratio" target="_blank" rel="noopener">CMS.gov</a>
         </p>
+      </div>
+				<h2 class="section-title">Our Future Vision</h2>
+      <div class="goal-text">
+        <span class="highlight-goal">Beyond 5 Years</span> - Our distant 10+ year goal is to create our own grassroots insurance company, transitioning from MGA to full insurer status.
+      </div>
+
+      <div class="two-column">
+        <div class="column">
+          <strong>FCA Direct Regulation</strong>
+          <p>In the future, we will be regulated through the FCA directly, losing our reliance on our Principal Firm. This brings us control and opportunity to expand our business, though it comes with additional responsibilities and audits.</p>
+        </div>
+        <div class="column">
+          <strong>Becoming Our Own Capacity</strong>
+          <p>The key target is to become our own capacity and become an insurer outright. This requires FCA and PRA authorisation. We will select risks most in line with our business strategy and cover part of the capacity ourselves.</p>
+        </div>
+      </div>
+
+      <h3 style="color: #008000; margin-top: 3rem;">Growth Opportunities</h3>
+
+      <div class="benefits-list">
+        <ul>
+          <li><strong>Portfolio Growth Leverage:</strong> As our portfolio grows (e.g., from £10m to £25m), we gain significant leverage to negotiate better commission rates and terms with insurers</li>
+          <li><strong>Financial Optimisation:</strong> Expert accountants will find ways to reduce tax and expenses, uncovering savings and improving cash flow</li>
+          <li><strong>Strategic Marketing:</strong> Cost-effective digital engagement through social media, Google Ads, and influencer partnerships</li>
+          <li><strong>Technology Integration:</strong> Machine learning and large language models will handle daily tasks, generating reports for review and cross-referencing with external data</li>
+          <li><strong>Brokerage Synergies:</strong> Our integrated MGA and brokerage structure offers unique advantages as our client base grows</li>
+        </ul>
+      </div>
+
+      <div class="highlight-box">
+        <strong>Vertical and Horizontal Integration</strong>
+        <p>Our long-term strategy includes both vertical integration (taking control of different stages of our supply chain) and horizontal integration (acquiring or merging with competitors). This will strengthen our market position and create additional value for our community-focused approach.</p>
+      </div>
+
+      <div class="column">
+        <strong>Contingency Planning</strong>
+        <p>Our business is built to withstand various challenges. We're not exposed to typical financial market risks, and our lean operational structure minimises internal risk. We maintain flexibility to reduce spending during economic downturns and commit a percentage of revenue to comprehensive business insurance.</p>
       </div>
     </div>
 
@@ -638,46 +638,29 @@ max-width: 90vw;
       </div>
     </div>
 
-    <div id="future" class="content-section">
-      <h2 class="section-title">Our Future Vision</h2>
-      <div class="goal-text">
-        <span class="highlight-goal">Beyond 5 Years</span> - Our distant 10+ year goal is to create our own grassroots insurance company, transitioning from MGA to full insurer status.
-      </div>
+<div id="Community" class="content-section">
+  <h2 class="section-title">Community</h2>
+  <p>
+    Though we are not trading yet, we decided to make a start in our main goal: to help the community. 
+    We therefore created a website free of charge for a local Cafe: 
+    <a href="https://batley.shobuz.co.uk/BigJoesCafe" target="_blank">Big Joe’s Cafe</a>. 
+    This job was a surprise and well received. Big Joe’s Cafe is named after the founder’s grandad. 
+    The founder, Danni, is a local who has had an exciting life in Batley. 
+    What made me decide this cafe is seeing the importance they had to the community and understanding 
+    that they could not afford a website. We plan to keep this open and provide more free websites 
+    for local businesses and people. We are currently working on the next few free websites.
+  </p>
 
-      <div class="two-column">
-        <div class="column">
-          <strong>FCA Direct Regulation</strong>
-          <p>In the future, we will be regulated through the FCA directly, losing our reliance on our Principal Firm. This brings us control and opportunity to expand our business, though it comes with additional responsibilities and audits.</p>
-        </div>
-        <div class="column">
-          <strong>Becoming Our Own Capacity</strong>
-          <p>The key target is to become our own capacity and become an insurer outright. This requires FCA and PRA authorisation. We will select risks most in line with our business strategy and cover part of the capacity ourselves.</p>
-        </div>
-      </div>
-
-      <h3 style="color: #008000; margin-top: 3rem;">Growth Opportunities</h3>
-
-      <div class="benefits-list">
-        <ul>
-          <li><strong>Portfolio Growth Leverage:</strong> As our portfolio grows (e.g., from £10m to £25m), we gain significant leverage to negotiate better commission rates and terms with insurers</li>
-          <li><strong>Financial Optimisation:</strong> Expert accountants will find ways to reduce tax and expenses, uncovering savings and improving cash flow</li>
-          <li><strong>Strategic Marketing:</strong> Cost-effective digital engagement through social media, Google Ads, and influencer partnerships</li>
-          <li><strong>Technology Integration:</strong> Machine learning and large language models will handle daily tasks, generating reports for review and cross-referencing with external data</li>
-          <li><strong>Brokerage Synergies:</strong> Our integrated MGA and brokerage structure offers unique advantages as our client base grows</li>
-        </ul>
-      </div>
-
-      <div class="highlight-box">
-        <strong>Vertical and Horizontal Integration</strong>
-        <p>Our long-term strategy includes both vertical integration (taking control of different stages of our supply chain) and horizontal integration (acquiring or merging with competitors). This will strengthen our market position and create additional value for our community-focused approach.</p>
-      </div>
-
-      <div class="column">
-        <strong>Contingency Planning</strong>
-        <p>Our business is built to withstand various challenges. We're not exposed to typical financial market risks, and our lean operational structure minimises internal risk. We maintain flexibility to reduce spending during economic downturns and commit a percentage of revenue to comprehensive business insurance.</p>
-      </div>
-    </div>
-
+  <div style="display: flex; justify-content: center; align-items: center; margin: 2rem 0;">
+    <iframe 
+      src="https://batley.shobuz.co.uk/BigJoesCafe" 
+      width="90%" 
+      height="1200" 
+      style="border: none; overflow: auto;">
+    </iframe>
+  </div>
+</div>
+    
     <div id="involved" class="content-section">
       <h2 class="section-title">Get Involved</h2>
       <div class="involvement-box">
@@ -689,29 +672,32 @@ max-width: 90vw;
       </div>
 
       <div class="download-box" onclick="downloadDocument()" role="button" tabindex="0" aria-pressed="false">
-        <p>📄 <strong>Get the Complete Business Plan</strong></p>
-        <p>Click <a href="Project%20Shobuz%20Public.docx" download>here</a> to download the full Project Shobuz Public Presentation with detailed financial projections, operational strategies, and comprehensive market analysis.</p>
-        <p><a href="Project%20Shobuz%20Public.docx" download>Project Shobuz Public.docx</a></p>
+        <p>📄 <strong>Get the latest publicly available Business Plan</strong></p>
+        <p>Click <a href="Grassroots%20Insurance%20public.docx" download>here</a> to download the full latest publicly available presentation with financial projections, operational strategies, and market analysis.</p>
+        <p><a href="Grassroots%20Insurance%20public.docx" download>Grassroots Insurance public.docx</a></p>
       </div>
-
-      <div class="highlight-box">
-        <strong>Current Market Context</strong>
-        <p>The world is becoming more litigious, and the UK is no different. Our clients face uncertainties from all angles and need protection. Greater exposure to risk is followed by stricter regulations - creating both challenges and opportunities for innovative, community-focused insurance providers.</p>
-        <p>Recent events like the 2017 Grenfell tragedy have highlighted how quickly regulatory landscapes can change, creating new risks and opportunities in the insurance market. We're positioned to help businesses navigate these evolving challenges.</p>
-      </div>
-    </div>
-
+</div>
+	  
     <div class="footer-section">
-      <p> Our next website update is on the 14th of September 2025 at 9am. We potentially will have some exciting news for you then. In the meantime you can email your burning questions to
+      <p> Our next website update is on the 29th of September 2025 at 9am. We potentially will have some exciting news for you then. In the meantime you can email your burning questions to
         <a href="mailto:hello@shobuz.co.uk" class="email">hello@shobuz.co.uk</a>
-      </p>
       </p>
       <p style="text-align: left; font-size: smaller; margin-top: 12px;"> © 2025 Abdul Alim. All rights reserved. This website does not collect, track or store your data or cookies.</p>
     </div>
   </div>
 
   <script>
-    function showSection(sectionId, evt) {
+function showSection(sectionId, event) {
+  const sections = document.querySelectorAll('.content-section');
+  sections.forEach(sec => sec.classList.remove('active'));
+
+  const buttons = document.querySelectorAll('.nav-btn');
+  buttons.forEach(btn => btn.classList.remove('active'));
+
+  document.getElementById(sectionId).classList.add('active');
+  event.currentTarget.classList.add('active');
+}
+	  function showSection(sectionId, evt) {
       const sections = document.querySelectorAll('.content-section');
       sections.forEach(section => section.classList.remove('active'));
       const target = document.getElementById(sectionId);
