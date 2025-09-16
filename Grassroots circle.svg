@@ -1,29 +1,68 @@
 <svg id="animated-logo" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <path id="circlePath" d="M 50,50 m -45,0 a 60,50 0 1,1 90,0 45,45 0 1,1 -93,0" transform="translate(100,100)"/>
+  <path id="bottomCirclePath" d="M50,55 m-55,-60 a80,80 0 1,0 110,0" transform="translate(100,100)"/>
 
-        <defs>
-            <path id="circlePath" d="M 50,50 m -45,0 a 60,50 0 1,1 90,0 45,45 0 1,1 -93,0" transform="translate(100,100)"/>
-            <path id="bottomCirclePath" d="M50,55 m-55,-60 a80,80 0 1,0 110,0" transform="translate(100,100)"/>
-        </defs>
+  <!-- Skinnier diagonal shine gradient -->
+  <linearGradient id="shineGradient" x1="0" y1="0" x2="1" y2="0.3" gradientUnits="objectBoundingBox">
+    <stop offset="0" stop-color="white" stop-opacity="0"/>
+    <stop offset="0.48" stop-color="white" stop-opacity="0.9"/>
+    <stop offset="0.52" stop-color="white" stop-opacity="0.9"/>
+    <stop offset="1" stop-color="white" stop-opacity="0"/>
+    <animateTransform attributeName="gradientTransform" type="translate"
+      values="-1,0; 2,0; -1,0" dur="6s" repeatCount="indefinite"/>
+  </linearGradient>
 
-        <g id="leaf-group" class="pulse-glow">
-            <path
-                d="M50 0Q25 25 0 0q0 80 50 100 50-20 50-100-25 25-50 0"
-                fill="#008000"
-                transform="translate(100,100)"
-            />
-        </g>
+  <!-- Mask for shine -->
+  <mask id="shineMask">
+    <rect width="100%" height="100%" fill="url(#shineGradient)" />
+  </mask>
+</defs>
 
-        <g id="text-group">
-            <text font-family="Inter, Arial, sans-serif" font-weight="700" font-size="35" fill="#008000" text-anchor="middle">
-                <textPath href="#circlePath" startOffset="32%" textLength="170">
-                    Grassroots
-                </textPath>
-            </text>
-            <text font-family="Inter, Arial, sans-serif" font-weight="700" font-size="35" fill="#008000" text-anchor="middle">
-                <textPath href="#bottomCirclePath" startOffset="50%" textLength="200">
-                    Insurance
-                </textPath>
-            </text>
-        </g>
+<!-- Outline + text draw (looping ping-pong) -->
+<g id="logo-outline" fill="none" stroke="white" stroke-width="2" stroke-dasharray="2000" stroke-dashoffset="2000">
+  <path d="M50 0Q25 25 0 0q0 80 50 100 50-20 50-100-25 25-50 0" transform="translate(100,100)"/>
+  
+  <text font-family="Inter, Arial, sans-serif" font-weight="700" font-size="35" text-anchor="middle"
+        fill="none" stroke="white" stroke-width="0.5" stroke-dasharray="200" stroke-dashoffset="200">
+    <textPath href="#circlePath" startOffset="32%" textLength="170">Grassroots</textPath>
+    <animate attributeName="stroke-dashoffset"
+             values="200;0;200" keyTimes="0;0.5;1"
+             dur="6s" repeatCount="indefinite"/>
+    <animate attributeName="fill" values="white;#008000;white" keyTimes="0;0.5;1"
+             dur="6s" repeatCount="indefinite"/>
+  </text>
 
-    </svg>
+  <text font-family="Inter, Arial, sans-serif" font-weight="700" font-size="35" text-anchor="middle"
+        fill="none" stroke="white" stroke-width="0.5" stroke-dasharray="250" stroke-dashoffset="250">
+    <textPath href="#bottomCirclePath" startOffset="50%" textLength="200">Insurance</textPath>
+    <animate attributeName="stroke-dashoffset"
+             values="250;0;250" keyTimes="0;0.5;1"
+             dur="6s" begin="1s" repeatCount="indefinite"/>
+    <animate attributeName="fill" values="white;#008000;white" keyTimes="0;0.5;1"
+             dur="6s" begin="1s" repeatCount="indefinite"/>
+  </text>
+</g>
+
+<!-- Base logo (green, visible from start) -->
+<g id="logo-base" fill="#008000">
+  <path d="M50 0Q25 25 0 0q0 80 50 100 50-20 50-100-25 25-50 0" transform="translate(100,100)"/>
+  <text font-family="Inter, Arial, sans-serif" font-weight="700" font-size="35" text-anchor="middle">
+    <textPath href="#circlePath" startOffset="32%" textLength="170">Grassroots</textPath>
+  </text>
+  <text font-family="Inter, Arial, sans-serif" font-weight="700" font-size="35" text-anchor="middle">
+    <textPath href="#bottomCirclePath" startOffset="50%" textLength="200">Insurance</textPath>
+  </text>
+</g>
+
+<!-- Global shine overlay -->
+<g id="logo-shine" mask="url(#shineMask)" fill="white">
+  <path d="M50 0Q25 25 0 0q0 80 50 100 50-20 50-100-25 25-50 0" transform="translate(100,100)"/>
+  <text font-family="Inter, Arial, sans-serif" font-weight="700" font-size="35" text-anchor="middle">
+    <textPath href="#circlePath" startOffset="32%" textLength="170">Grassroots</textPath>
+  </text>
+  <text font-family="Inter, Arial, sans-serif" font-weight="700" font-size="35" text-anchor="middle">
+    <textPath href="#bottomCirclePath" startOffset="50%" textLength="200">Insurance</textPath>
+  </text>
+</g>
+</svg>
