@@ -636,19 +636,9 @@ We have officially launched the limited entity and are excited to announce the n
       </div>
     </div>
 
-<div id="community" class="content-section">
+<div id="Community" class="content-section">
   <h2 class="section-title">Community</h2>
-  <p>Welcome to our community space! Here we share updates, connect with supporters, and highlight community initiatives.</p>
-  <div class="two-column">
-    <div class="column">
-      <strong>Community Events</strong>
-      <p>We host events to educate and involve the local community in financial literacy and grassroots projects.</p>
-    </div>
-    <div class="column">
-      <strong>Supporters</strong>
-      <p>Meet the people who have helped us grow our vision of ethical financial services.</p>
-    </div>
-  </div>
+  <p>Welcome to our community section! Here we showcase our supporters, events, and ways to get involved.</p>
 </div>
     
     <div id="involved" class="content-section">
@@ -677,7 +667,17 @@ We have officially launched the limited entity and are excited to announce the n
   </div>
 
   <script>
-    function showSection(sectionId, evt) {
+function showSection(sectionId, event) {
+  const sections = document.querySelectorAll('.content-section');
+  sections.forEach(sec => sec.classList.remove('active'));
+
+  const buttons = document.querySelectorAll('.nav-btn');
+  buttons.forEach(btn => btn.classList.remove('active'));
+
+  document.getElementById(sectionId).classList.add('active');
+  event.currentTarget.classList.add('active');
+}
+	  function showSection(sectionId, evt) {
       const sections = document.querySelectorAll('.content-section');
       sections.forEach(section => section.classList.remove('active'));
       const target = document.getElementById(sectionId);
