@@ -303,28 +303,32 @@ We have officially launched the limited entity and are excited to announce the n
   gap: 1rem;
 }
 .community-btn {
-  flex: 1;
-  min-width: 180px;
+  flex: 0 0 auto; /* prevent stretching */
+  width: 180px;   /* fixed width, less wide */
   background: linear-gradient(135deg, #8e44ad, #9b59b6);
   color: #fff;
   font-weight: 600;
   font-size: 1rem;
   padding: 1rem 2rem;
   border: none;
-  border-radius: 12px;
+  border-radius: 25px; /* match rest of nav buttons */
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  transition: transform 0.2s, box-shadow 0.2s, background 0.3s ease;
+  gap: 8px; /* space between emojis and text */
+  opacity: 0.5; /* semi-transparent */
+  transition: transform 0.2s, box-shadow 0.2s, background 0.3s ease, opacity 0.3s ease;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
+
 .community-btn:hover {
   transform: scale(1.05);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
   background: linear-gradient(135deg, #9b59b6, #8e44ad);
+  opacity: 1; /* full opacity on hover */
 }
+
 .community-btn:active {
   transform: scale(0.98);
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
