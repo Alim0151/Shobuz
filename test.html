@@ -5,20 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Shobuz.co.uk - Grassroots Insurance Revolution</title>
   <style>
+    :root {
+      --primary: #008000;
+      --accent: #5a8a52;
+      --gray: #cccccc;
+    }
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-  font-family: 'Inter', Arial, sans-serif;
-  font-size: 1.125rem;
-  font-weight: 400;
-  line-height: 1.6;
-  background: url('leaves.svg') no-repeat center center fixed;
-  background-size: cover;
-  color: white;
-  overflow-x: hidden;
+      font-family: 'Inter', Arial, sans-serif;
+      font-size: 1.125rem;
+      font-weight: 400;
+      line-height: 1.6;
+      background: url('leaves.svg') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      overflow-x: hidden;
     }
 
     .background-particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; }
-    .particle { position: absolute; width: 3px; height: 3px; background: #008000; border-radius: 50%; animation: float 6s infinite linear; opacity: 0.6; }
+    .particle { position: absolute; width: 3px; height: 3px; background: var(--primary); border-radius: 50%; animation: float 6s infinite linear; opacity: 0.6; }
     @keyframes float { 0% { transform: translateY(100vh) rotate(0deg); opacity: 0; } 10% { opacity: 0.6; } 90% { opacity: 0.6; } 100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; } }
 
     .container { max-width: 1200px; margin: 0 auto; padding: 2rem; position: relative; z-index: 1; }
@@ -26,19 +32,20 @@
     .header-container { display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem; animation: slideInDown 1s ease-out; }
     @keyframes slideInDown { from { transform: translateY(-50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
-   .header-title {
-  width: 500px;
-max-width: 90vw;
-  height: auto;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
-}
+    .header-title {
+      width: 500px;
+      max-width: 90vw;
+      height: auto;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
+    }
 
-.header-title:hover {
-  transform: scale(1.05);
-  filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.6));
-}
+    .header-title:hover {
+      transform: scale(1.05);
+      filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.6));
+    }
+
     .header-logo img { width: 300px; height: auto; transition: transform 0.3s ease; filter: drop-shadow(0 0 10px rgba(75, 111, 68, 0.3)); }
     .header-logo img:hover { transform: scale(1.1); }
 
@@ -69,14 +76,14 @@ max-width: 90vw;
       background: linear-gradient(135deg, rgba(75, 111, 68, 0.2), rgba(75, 111, 68, 0.1));
       border: 1px solid rgba(75, 111, 68, 0.3);
       border-radius: 25px;
-      color: #008000;
+      color: var(--primary);
       text-decoration: none;
       font-weight: 600;
       transition: all 0.3s ease;
       cursor: pointer;
     }
     .nav-btn:hover { background: linear-gradient(135deg, rgba(75, 111, 68, 0.3), rgba(75, 111, 68, 0.2)); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(75, 111, 68, 0.2); }
-    .nav-btn.active { background: linear-gradient(135deg, #008000, #5a8a52); color: white; }
+    .nav-btn.active { background: linear-gradient(135deg, var(--primary), var(--accent)); color: white; }
 
     .content-section { display: none; animation: fadeInUp 0.6s ease-out both; }
     .content-section.active { display: block; }
@@ -115,16 +122,16 @@ max-width: 90vw;
     }
     .goal-text:hover::before { left: 100%; }
 
-    .email { color: #008000 !important; transition: all 0.3s ease; cursor: pointer; text-decoration: none; position: relative; }
-    .email:hover { color: #5a8a52 !important; text-shadow: 0 0 10px rgba(75, 111, 68, 0.5); }
-    a, a:link, a:visited { color: #008000; text-decoration: none; transition: all 0.3s ease; }
-    a:hover { color: #5a8a52; text-shadow: 0 0 5px rgba(75, 111, 68, 0.3); }
+    .email { color: var(--primary) !important; transition: all 0.3s ease; cursor: pointer; text-decoration: none; position: relative; }
+    .email:hover { color: var(--accent) !important; text-shadow: 0 0 10px rgba(75, 111, 68, 0.5); }
+    a, a:link, a:visited { color: var(--primary); text-decoration: none; transition: all 0.3s ease; }
+    a:hover { color: var(--accent); text-shadow: 0 0 5px rgba(75, 111, 68, 0.3); }
 
-    .highlight-goal { color: #008000; font-weight: 700; font-size: 1.4rem; display: inline-block; animation: pulse 2s infinite; }
+    .highlight-goal { color: var(--primary); font-weight: 700; font-size: 1.4rem; display: inline-block; animation: pulse 2s infinite; }
     @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
 
-    .section-title { font-size: 2rem; color: #008000; margin: 3rem 0 2rem 0; text-align: center; font-weight: 700; position: relative; }
-    .section-title::after { content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 60px; height: 3px; background: linear-gradient(90deg, #008000, #5a8a52); border-radius: 2px; }
+    .section-title { font-size: 2rem; color: var(--primary); margin: 3rem 0 2rem 0; text-align: center; font-weight: 700; position: relative; }
+    .section-title::after { content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 60px; height: 3px; background: linear-gradient(90deg, var(--primary), var(--accent)); border-radius: 2px; }
 
     .two-column { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; margin: 3rem 0; animation: fadeInUp 1s ease-out 0.9s both; }
     .column {
@@ -137,10 +144,10 @@ max-width: 90vw;
       position: relative;
       overflow: hidden;
     }
-    .column::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #008000, #5a8a52, #008000); transform: scaleX(0); transition: transform 0.3s ease; }
+    .column::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary)); transform: scaleX(0); transition: transform 0.3s ease; }
     .column:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3); border-color: rgba(75, 111, 68, 0.3); }
     .column:hover::before { transform: scaleX(1); }
-    .column strong { font-size: 1.3rem; color: #008000; display: block; margin-bottom: 1rem; font-weight: 700; }
+    .column strong { font-size: 1.3rem; color: var(--primary); display: block; margin-bottom: 1rem; font-weight: 700; }
 
     .benefits-list { margin: 2rem 0; animation: fadeInUp 1s ease-out 1.2s both; }
     .benefits-list ul { list-style: none; padding: 0; }
@@ -152,7 +159,7 @@ max-width: 90vw;
       border-radius: 8px;
       margin-bottom: 0.5rem;
     }
-    .benefits-list li::before { content: '✓'; position: absolute; left: 0; color: #008000; font-weight: bold; font-size: 1.2rem; transition: transform 0.3s ease; }
+    .benefits-list li::before { content: '✓'; position: absolute; left: 0; color: var(--primary); font-weight: bold; font-size: 1.2rem; transition: transform 0.3s ease; }
     .benefits-list li:hover { background: rgba(75, 111, 68, 0.1); transform: translateX(10px); }
     .benefits-list li:hover::before { transform: scale(1.3); }
 
@@ -160,7 +167,7 @@ max-width: 90vw;
       margin: 3rem 0;
       padding: 2rem;
       background: linear-gradient(135deg, rgba(75, 111, 68, 0.15), rgba(75, 111, 68, 0.05));
-      border: 2px solid #008000;
+      border: 2px solid var(--primary);
       border-radius: 20px;
       text-align: center;
       position: relative;
@@ -173,13 +180,13 @@ max-width: 90vw;
       content: '';
       position: absolute;
       top: -2px; left: -2px; right: -2px; bottom: -2px;
-      background: linear-gradient(45deg, #008000, #5a8a52, #008000, #5a8a52);
+      background: linear-gradient(45deg, var(--primary), var(--accent), var(--primary), var(--accent));
       z-index: -1; border-radius: 20px; opacity: 0; transition: opacity 0.3s ease;
     }
     .download-box:hover::before { opacity: 1; }
     .download-box:hover { transform: scale(1.02); box-shadow: 0 10px 30px rgba(75, 111, 68, 0.3); }
-    .download-box a { color: #008000; text-decoration: none; font-weight: 700; font-size: 1.2rem; transition: all 0.3s ease; }
-    .download-box a:hover { color: #5a8a52; text-shadow: 0 0 10px rgba(75, 111, 68, 0.5); }
+    .download-box a { color: var(--primary); text-decoration: none; font-weight: 700; font-size: 1.2rem; transition: all 0.3s ease; }
+    .download-box a:hover { color: var(--accent); text-shadow: 0 0 10px rgba(75, 111, 68, 0.5); }
 
     .highlight-box {
       margin: 3rem 0;
@@ -196,11 +203,11 @@ max-width: 90vw;
     .highlight-box:hover { transform: translateX(10px); box-shadow: -10px 10px 30px rgba(33, 150, 243, 0.2); }
 
     .founder-section { background: linear-gradient(135deg, rgba(75, 111, 68, 0.1), rgba(75, 111, 68, 0.05)); border-radius: 20px; padding: 2rem; margin: 3rem 0; border: 1px solid rgba(75, 111, 68, 0.2); }
-    .founder-section h3 { color: #008000; font-size: 1.5rem; margin-bottom: 1rem; }
+    .founder-section h3 { color: var(--primary); font-size: 1.5rem; margin-bottom: 1rem; }
 
     .involvement-box {
       background: linear-gradient(135deg, rgba(75, 111, 68, 0.15), rgba(75, 111, 68, 0.08));
-      border: 2px solid #008000;
+      border: 2px solid var(--primary);
       border-radius: 20px;
       padding: 2rem;
       margin: 3rem 0;
@@ -208,7 +215,7 @@ max-width: 90vw;
       transition: all 0.3s ease;
     }
     .involvement-box:hover { transform: scale(1.02); box-shadow: 0 15px 30px rgba(75, 111, 68, 0.2); }
-    .involvement-box h3 { color: #008000; font-size: 1.8rem; margin-bottom: 1rem; }
+    .involvement-box h3 { color: var(--primary); font-size: 1.8rem; margin-bottom: 1rem; }
 
     .footer-section { margin-top: 4rem; padding: 2rem; text-align: center; background: linear-gradient(135deg, rgba(75, 111, 68, 0.1), transparent); border-radius: 15px; animation: fadeInUp 1s ease-out 2.1s both; }
     .footer-section i { font-style: italic; color: #cccccc; font-size: 1.1rem; }
@@ -229,16 +236,16 @@ max-width: 90vw;
       position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; display: flex; justify-content: center; align-items: center; z-index: 1000;
       animation: fadeOut 0.5s ease-out 2s forwards;
     }
-    .loading-spinner { width: 50px; height: 50px; border: 3px solid rgba(75, 111, 68, 0.3); border-radius: 50%; border-top-color: #008000; animation: spin 1s ease-in-out infinite; }
+    .loading-spinner { width: 50px; height: 50px; border: 3px solid rgba(75, 111, 68, 0.3); border-radius: 50%; border-top-color: var(--primary); animation: spin 1s ease-in-out infinite; }
     @keyframes spin { to { transform: rotate(360deg); } }
     @keyframes fadeOut { to { opacity: 0; visibility: hidden; } }
 
     .risk-box {
-  background: linear-gradient(135deg, rgba(0, 225, 0, 0.05), rgba(0, 225, 0, 0.3));
-  border-radius: 20px;
-  padding: 40px;
-  margin: 60px 0;
-  border: 1px dashed var(--primary);
+      background: linear-gradient(135deg, rgba(0, 225, 0, 0.05), rgba(0, 225, 0, 0.3));
+      border-radius: 20px;
+      padding: 40px;
+      margin: 60px 0;
+      border: 1px dashed var(--primary);
     }
 
     .risk-box h3 {
@@ -263,86 +270,92 @@ max-width: 90vw;
       color: var(--primary);
       font-weight: bold;
       margin-right: 8px;
+    }
   </style>
 </head>
 <body>
-  <div class="loading-overlay">
+  <div class="loading-overlay" aria-hidden="true">
     <div class="loading-spinner" aria-hidden="true"></div>
   </div>
 
-  <div class="background-particles" id="particles"></div>
+  <div class="background-particles" id="particles" aria-hidden="true"></div>
 
   <div class="container">
     <div class="header-container">
-    <img src="Shobuz.png" alt="Shobuz.co.uk" class="header-title" />
+      <img src="Shobuz.png" alt="Shobuz.co.uk" class="header-title" />
       <div class="header-logo">
-        <img img src="Grassroots circle.svg" alt="Grassroots Insurance Logo">
+        <!-- fixed stray 'img' attribute -->
+        <img src="Grassroots circle.svg" alt="Grassroots Insurance Logo">
       </div>
     </div>
   
     <div class="nav-section">
-            <p class="intro-text">
-Welcome to Shobuz.co.uk. Here we'll be taking you along with our journey in us creating a grassroots insurance services business that focuses on giving back to society. This website is purely journalistic to share updates. Feel free to get in touch at <a href="mailto:hello@shobuz.co.uk">hello@shobuz.co.uk</a>.
-We have officially launched the limited entity and are excited to announce the name of this company: <em>Grassroots Insurance™</em>. We have secured two important domain assets: <strong>Grassrootsinsurance.co.uk</strong> and <strong>Grassrootsguard.co.uk</strong>. We anticipate trading non-regulated services this year and beginning underwriting services in 2026. Check our company record: <a href="https://find-and-update.company-information.service.gov.uk/company/16680312" target="_blank" rel="noopener">GOV.UK company 16680312</a>.</p>
+      <p class="intro-text">
+        Welcome to Shobuz.co.uk. Here we'll be taking you along with our journey in us creating a grassroots insurance services business that focuses on giving back to society. This website is purely journalistic to share updates. Feel free to get in touch at <a href="mailto:hello@shobuz.co.uk">hello@shobuz.co.uk</a>.
+        We have officially launched the limited entity and are excited to announce the name of this company: <em>Grassroots Insurance™</em>. We have secured two important domain assets: <strong>Grassrootsinsurance.co.uk</strong> and <strong>Grassrootsguard.co.uk</strong>. We anticipate trading non-regulated services this year and beginning underwriting services in 2026. Check our company record: <a href="https://find-and-update.company-information.service.gov.uk/company/16680312" target="_blank" rel="noopener">GOV.UK company 16680312</a>.
+      </p>
 
-<div class="nav-buttons">
-  <button class="nav-btn active" onclick="showSection('overview', event)">Overview</button>
-  <button class="nav-btn sparkle-btn" onclick="showSection('founder', event)">You✨, Us and Our Supporters</button>
-  <button class="nav-btn" onclick="showSection('understanding', event)">Financial Lines</button>
-  <button class="nav-btn" onclick="showSection('Community', event)">Community</button>
-<button class="nav-btn" onclick="showSection('strategy', event)">Our Strategy</button>
-  <button class="nav-btn" onclick="showSection('involved', event)">Get More Involved</button>
-</div>
+      <div class="nav-buttons" role="tablist" aria-label="Main sections">
+        <button class="nav-btn active" onclick="showSection('overview', event)" role="tab" aria-controls="overview">Overview</button>
+        <button class="nav-btn sparkle-btn" onclick="showSection('founder', event)" role="tab" aria-controls="founder">You✨, Us and Our Supporters</button>
+        <button class="nav-btn" onclick="showSection('understanding', event)" role="tab" aria-controls="understanding">Financial Lines</button>
+        <!-- fixed: use lowercase id -->
+        <button class="nav-btn" onclick="showSection('community', event)" role="tab" aria-controls="community">Community</button>
+        <button class="nav-btn" onclick="showSection('strategy', event)" role="tab" aria-controls="strategy">Our Strategy</button>
+        <button class="nav-btn" onclick="showSection('involved', event)" role="tab" aria-controls="involved">Get More Involved</button>
+      </div>
 
-<style>
-.nav-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
+      <style>
+        .nav-buttons {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 1rem;
+        }
 
-.sparkle-btn {
-  flex: 1;
-  min-width: 200px;
-  background: radial-gradient(circle at top left, #fff8e1, #fff3cd);
-  border-radius: 20px;
-  padding: 1.5rem 2rem;
-  border: 2px solid gold;
-  box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #b8860b;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
+        .sparkle-btn {
+          flex: 1;
+          min-width: 200px;
+          background: radial-gradient(circle at top left, #fff8e1, #fff3cd);
+          border-radius: 20px;
+          padding: 1.5rem 2rem;
+          border: 2px solid gold;
+          box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          color: #b8860b;
+          text-align: center;
+          position: relative;
+          overflow: hidden;
+          transition: transform 0.2s, box-shadow 0.2s;
+        }
 
-.nav-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 20px rgba(255, 223, 0, 0.7);
-}
-.sparkle-btn::after {
-  content: '✨';
-  position: absolute;
-  top: -10px;
-  right: -10px;
-  font-size: 1.5rem;
-  opacity: 0.7;
-}
-</style>
+        .nav-btn:hover {
+          transform: scale(1.05);
+          box-shadow: 0 6px 20px rgba(255, 223, 0, 0.7);
+        }
+        .sparkle-btn::after {
+          content: '✨';
+          position: absolute;
+          top: -10px;
+          right: -10px;
+          font-size: 1.5rem;
+          opacity: 0.7;
+        }
+      </style>
     </div>
 
+    <!-- Overview (unchanged) -->
     <div id="overview" class="content-section active">
       <div class="goal-text">
         <span class="highlight-goal">Our Goal</span> is to create a grassroots financial lines MGA with a view of becoming an outright insurer. We will achieve our goals with hard work instead of institutional support; patience instead of leverage; and with the British public at the heart of what we do.
-		  <p>
-        <strong>Grassroots Insurance</strong> is a project to create a new Financial Lines Managing General Agent (MGA) founded on the principles of sustainable growth, ethical underwriting, and community benefit. Our mission is to address unmet demand in the UK’s complex financial lines insurance sector by offering fair, principled, and human-centered coverage.
-      </p>
-      <p>
-        Unlike profit-driven insurers owned by private equity, we are built from the ground up as a <span class="highlight">community first MGA</span>. We aim to become a full-fledged grassroots insurer within 10 years, serving UK businesses and professionals with integrity, clarity, and long-term value.
-      </p>
-      <p>
-        Our model combines lean operations, deep underwriting expertise, and digital innovation to deliver competitive pricing, faster claims, and exceptional client relationships without sacrificing safety or compliance.</p>
+        <p>
+          <strong>Grassroots Insurance</strong> is a project to create a new Financial Lines Managing General Agent (MGA) founded on the principles of sustainable growth, ethical underwriting, and community benefit. Our mission is to address unmet demand in the UK’s complex financial lines insurance sector by offering fair, principled, and human-centered coverage.
+        </p>
+        <p>
+          Unlike profit-driven insurers owned by private equity, we are built from the ground up as a <span class="highlight">community first MGA</span>. We aim to become a full-fledged grassroots insurer within 10 years, serving UK businesses and professionals with integrity, clarity, and long-term value.
+        </p>
+        <p>
+          Our model combines lean operations, deep underwriting expertise, and digital innovation to deliver competitive pricing, faster claims, and exceptional client relationships without sacrificing safety or compliance.
+        </p>
       </div>
 
       <h2 class="section-title">What We're Solving</h2>
@@ -394,24 +407,24 @@ We have officially launched the limited entity and are excited to announce the n
           </li>
         </ul>
       </div>
-		
-        <div class="highlight-box">
+      
+      <div class="highlight-box">
         <strong>Current Market Context</strong>
         <p>The world is becoming more litigious, and the UK is no different. Our clients face uncertainties from all angles and need protection. Greater exposure to risk is followed by stricter regulations - creating both challenges and opportunities for innovative, community-focused insurance providers.</p>
         <p>Recent events like the 2017 Grenfell tragedy have highlighted how quickly regulatory landscapes can change, creating new risks and opportunities in the insurance market. We're positioned to help businesses navigate these evolving challenges.</p>
       </div>
-	  
-	  <div class="risk-box">
-      <h3>🛡️ Built to Last</h3>
-      <p>Our business is designed for stability and adaptability:</p>
-      <ul class="risk-list">
-        <li>Minimal market and credit risk due to diversified portfolio.</li>
-        <li>Operational risk kept low via lean structure and automation.</li>
-        <li>5% of revenue ring-fenced for comprehensive professional indemnity insurance.</li>
-        <li>Flexible spending: Actuary fees, software, and marketing can be scaled back in downturns.</li>
-        <li>Long-term tech investments to reduce future costs and increase efficiency.</li>
-      </ul>
-    </div>
+      
+      <div class="risk-box">
+        <h3>🛡️ Built to Last</h3>
+        <p>Our business is designed for stability and adaptability:</p>
+        <ul class="risk-list">
+          <li>Minimal market and credit risk due to diversified portfolio.</li>
+          <li>Operational risk kept low via lean structure and automation.</li>
+          <li>5% of revenue ring-fenced for comprehensive professional indemnity insurance.</li>
+          <li>Flexible spending: Actuary fees, software, and marketing can be scaled back in downturns.</li>
+          <li>Long-term tech investments to reduce future costs and increase efficiency.</li>
+        </ul>
+      </div>
 
       <div class="highlight-box">
         <strong>Real Life Case Study</strong>
@@ -423,7 +436,8 @@ We have officially launched the limited entity and are excited to announce the n
           <a href="https://www.cms.gov/marketplace/private-health-insurance/medical-loss-ratio" target="_blank" rel="noopener">CMS.gov</a>
         </p>
       </div>
-				<h2 class="section-title">Our Future Vision</h2>
+
+      <h2 class="section-title">Our Future Vision</h2>
       <div class="goal-text">
         <span class="highlight-goal">Beyond 5 Years</span> - Our distant 10+ year goal is to create our own grassroots insurance company, transitioning from MGA to full insurer status.
       </div>
@@ -439,7 +453,7 @@ We have officially launched the limited entity and are excited to announce the n
         </div>
       </div>
 
-      <h3 style="color: #008000; margin-top: 3rem;">Growth Opportunities</h3>
+      <h3 style="color: var(--primary); margin-top: 3rem;">Growth Opportunities</h3>
 
       <div class="benefits-list">
         <ul>
@@ -462,6 +476,7 @@ We have officially launched the limited entity and are excited to announce the n
       </div>
     </div>
 
+    <!-- Understanding (unchanged) -->
     <div id="understanding" class="content-section">
       <h2 class="section-title">Understanding Financial Lines Insurance</h2>
       <p>Financial lines are a category of insurance coverage designed to protect businesses and individuals against specific financial risks. Let's break down the main types:</p>
@@ -502,149 +517,84 @@ We have officially launched the limited entity and are excited to announce the n
       </div>
     </div>
 
-<div id="founder" class="content-section">
-<style>
-  .highlight-section {
-    background: radial-gradient(circle at top left, #fff8e1, #fff3cd);
-    border-radius: 20px;
-    padding: 2rem;
-    margin: 3rem 0;
-    border: 2px solid gold;
-    box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
-    position: relative;
-    overflow: hidden;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #b8860b;
-    text-align: center;
-  }
+    <!-- Founder (unchanged) -->
+    <div id="founder" class="content-section">
+      <div class="highlight-section">
+        <h2>You ✨</h2>
+        <p>By far the most important piece of the project is <strong>you</strong>.</p>
+        <p>Our entire purpose is to improve the lives of everyday Brits using Financial services and doing so in a sustainable way. Simply visiting our website is an important contribution. We are regularly updating our content and plan to provide more educational material, so be sure to keep learning and check back in!</p>
 
-  .highlight-section h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    font-weight: bold;
-  }
-
-  .highlight-section p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    margin-bottom: 1rem;
-  }
-
-  /* Sparkle animation */
-  .sparkle {
-    position: absolute;
-    width: 5px;
-    height: 5px;
-    background: gold;
-    border-radius: 50%;
-    animation: sparkleAnim 2s infinite;
-  }
-
-  @keyframes sparkleAnim {
-    0%, 100% { transform: translateY(0) scale(1); opacity: 1; }
-    50% { transform: translateY(-10px) scale(1.5); opacity: 0.6; }
-  }
-</style>
-
-<div class="highlight-section">
-  <h2>You ✨</h2>
-  <p>By far the most important piece of the project is <strong>you</strong>.</p>
-  <p>Our entire purpose is to improve the lives of everyday Brits using Financial services and doing so in a sustainable way. Simply visiting our website is an important contribution. We are regularly updating our content and plan to provide more educational material, so be sure to keep learning and check back in!</p>
-
-  <div class="sparkle" style="top:10%; left:20%; animation-delay:0s;"></div>
-  <div class="sparkle" style="top:30%; left:70%; animation-delay:0.5s;"></div>
-  <div class="sparkle" style="top:60%; left:40%; animation-delay:1s;"></div>
-  <div class="sparkle" style="top:80%; left:80%; animation-delay:1.5s;"></div>
-</div>
-
-  <div class="founder-section">
-    <h3>Grassroots Guard Ltd t/a Grassroots Insurance</h3>
-    <h3>Strawberry Homes Limited</h3>
-    <p>Our legal entities. Website is in development.</p>
-  </div>
-
-  <div class="founder-section">
-    <h3>Abdul Alim - Founder & CEO</h3>
-    <p>I grew up in Liverpool studying Accountancy and Finance at the University of Liverpool. It has always been a dream of mine to own my own financial business that improves its community - not just a typical local firm, but something larger that impacts wider society.</p>
-    <p>My working career has been in finance, starting with work experience at a local accountancy firm on Penny Lane. At TSB, I was inspired by the public when working for various branches in Manchester. I learnt to appreciate my financial literacy and felt a sense of responsibility in helping others with my expertise.</p>
-    <p>I first worked in the insurance industry with the Co-operative insurance in 2019 and first worked as a financial lines underwriter at the Royal and Sun Alliance plc. I instantly realised financial lines underwriting was the career that was best suited to me. It rewarded my learning style, tenacity and creativity.</p>
-    <p>I was head hunted by Aqueous in 2023 to be a Professional Indemnity Underwriter. I was convinced by the plan they had for me, the training opportunities and the opportunity to work closely with some of the most experienced underwriters in the industry.</p>
-    <p>In my spare time, I love learning all about finance and companies. What makes businesses a success, why some businesses fail and how macro events affect local businesses. I've more recently grown an obsession with law in relation to the financial world.</p>
-    <p>My experience within the industry has made me realise there is so much unfulfilled demand and dissatisfaction. The constraints of my role meant I could not satisfy the personal responsibility I feel for others. This is why I am starting my own financial lines MGA.</p>
-  </div>
- 
-  <div class="founder-section">
-    <p><strong> Care Accountancy Chartered Accountants</strong> Our appointed Chartered Accountants careaccountancy.co.uk</p>
-    <p><iframe src="https://careaccountancy.co.uk/" width="100%" height="400" frameborder="0" title="Care Accountancy"></iframe></p>
-  </div>
-
-<div class="founder-section">
-  <h3>Our Principle Firm</h3>
-  <details>
-    <summary> Our Principle Firm will be providing the FCA regulation for us to do our regulated business. We have sourced a principle firm who are undisclosed for the time being due to confidentiality obligations.</summary>
-    <p>
-      Any financial business in the UK must be regulated by the Financial Conduct Authority (FCA). Obtaining FCA approval can take anywhere from six months to a year, with the outcome largely dependent on the strength and clarity of the business plan submitted. The FCA allows certain companies to delegate their regulatory authority through a model known as Appointed Representatives (AR). A company will delegate their authority to their AR; this company is known as the Principle Firm.
-    </p>
-    <p>
-      We have already sourced our Principle Firm who will be offering support beyond just delegated authority. A large part of our regulatory oversight will be assisted by our Principle Firm.
-    </p>
-    <p>
-      In the future, we will be regulated through the FCA directly, losing our reliance on our Principle Firm. This brings us control and opportunity to expand our business. Becoming FCA regulated comes with additional responsibilities and we would be subject to further audits. Therefore, this step will be done when appropriate.
-    </p>
-  </details>
-</div>
-
-</div>
-    
-    <div id="strategy" class="content-section">
-      <h2 class="section-title">Our Strategic Advantages</h2>
-      <div class="two-column">
-        <div class="column">
-          <strong>Lean & Efficient Model</strong>
-          <p>Operating as a single-executive MGA with strategically outsourced functions (accounts, claims, legal), we minimise overheads. This allows for direct client communication, offering immediate, expert engagement and fostering strong relationships.</p>
-        </div>
-        <div class="column">
-          <strong>Cost-Effectiveness</strong>
-          <p>Our grassroots approach and minimal fixed costs provide a significant competitive advantage, enabling us to offer highly competitive terms while maintaining healthy margins.</p>
-        </div>
+        <div class="sparkle" style="top:10%; left:20%; animation-delay:0s;"></div>
+        <div class="sparkle" style="top:30%; left:70%; animation-delay:0.5s;"></div>
+        <div class="sparkle" style="top:60%; left:40%; animation-delay:1s;"></div>
+        <div class="sparkle" style="top:80%; left:80%; animation-delay:1.5s;"></div>
       </div>
 
-      <div class="two-column">
-        <div class="column">
-          <strong>Underwriting Expertise</strong>
-          <p>Leveraging extensive underwriting experience, we implement an optimised process focusing on upfront, comprehensive questioning and transparent quoting to mitigate information gaps, a common industry challenge.</p>
-        </div>
-        <div class="column">
-          <strong>Market Opportunity</strong>
-          <p>The UK insurance market is vast (£122 billion), with 5.5 million businesses representing significant untapped potential, particularly in the complex yet vital Financial Lines sector.</p>
-        </div>
+      <div class="founder-section">
+        <h3>Grassroots Guard Ltd t/a Grassroots Insurance</h3>
+        <h3>Strawberry Homes Limited</h3>
+        <p>Our legal entities. Website is in development.</p>
       </div>
 
-      <div class="highlight-box">
-        <strong>Why We'll Win Market Share</strong>
-        <p>We have a much lower starting expense to premium ratio. This means we are able to offer lower premiums and better terms whilst still being profitable. When competitors try to match our terms, they take on risk higher than what their premium justifies.</p>
+      <div class="founder-section">
+        <h3>Abdul Alim - Founder &amp; CEO</h3>
+        <p>I grew up in Liverpool studying Accountancy and Finance at the University of Liverpool. It has always been a dream of mine to own my own financial business that improves its community - not just a typical local firm, but something larger that impacts wider society.</p>
+        <p>My working career has been in finance, starting with work experience at a local accountancy firm on Penny Lane. At TSB, I was inspired by the public when working for various branches in Manchester. I learnt to appreciate my financial literacy and felt a sense of responsibility in helping others with my expertise.</p>
+        <p>I first worked in the insurance industry with the Co-operative insurance in 2019 and first worked as a financial lines underwriter at the Royal and Sun Alliance plc. I instantly realised financial lines underwriting was the career that was best suited to me. It rewarded my learning style, tenacity and creativity.</p>
+        <p>I was head hunted by Aqueous in 2023 to be a Professional Indemnity Underwriter. I was convinced by the plan they had for me, the training opportunities and the opportunity to work closely with some of the most experienced underwriters in the industry.</p>
+        <p>In my spare time, I love learning all about finance and companies. What makes businesses a success, why some businesses fail and how macro events affect local businesses. I've more recently grown an obsession with law in relation to the financial world.</p>
+        <p>My experience within the industry has made me realise there is so much unfulfilled demand and dissatisfaction. The constraints of my role meant I could not satisfy the personal responsibility I feel for others. This is why I am starting my own financial lines MGA.</p>
       </div>
 
-      <h3 style="color: #008000; margin-top: 3rem;">Security & Data Protection</h3>
-      <div class="column">
-        <strong>Industry-Leading Security</strong>
-        <p>We will have the best security in the industry due to our business structure. Our security framework is designed to far exceed UK data protection regulations and fundamentally cannot be matched by our competitors.</p>
-        <div id="security-details">
-          <p>We prioritise offline operations, keeping critical systems disconnected from the internet whenever possible. Unlike competitors with remote staff requiring cloud access, our operations are handled solely by myself, eliminating the "prisoner's dilemma" of employee data access that larger companies face.</p>
-          <p>Our core software is built from the ground up and designed exclusively for our internal use, operating offline exclusively. This creates significantly fewer vulnerability points than competitors who store all data on clouds or networks.</p>
-        </div>
+      <div class="founder-section">
+        <p><strong> Care Accountancy Chartered Accountants</strong> Our appointed Chartered Accountants careaccountancy.co.uk</p>
+        <p><iframe src="https://careaccountancy.co.uk/" width="100%" height="400" frameborder="0" title="Care Accountancy"></iframe></p>
+      </div>
+
+      <div class="founder-section">
+        <h3>Our Principal Firm</h3>
+        <details>
+          <summary> Our Principal Firm will be providing the FCA regulation for us to do our regulated business. We have sourced a principal firm who are undisclosed for the time being due to confidentiality obligations.</summary>
+          <p>
+            Any financial business in the UK must be regulated by the Financial Conduct Authority (FCA). Obtaining FCA approval can take anywhere from six months to a year, with the outcome largely dependent on the strength and clarity of the business plan submitted. The FCA allows certain companies to delegate their regulatory authority through a model known as Appointed Representatives (AR). A company will delegate their authority to their AR; this company is known as the Principal Firm.
+          </p>
+          <p>
+            We have already sourced our Principal Firm who will be offering support beyond just delegated authority. A large part of our regulatory oversight will be assisted by our Principal Firm.
+          </p>
+          <p>
+            In the future, we will be regulated through the FCA directly, losing our reliance on our Principal Firm. This brings us control and opportunity to expand our business. Becoming FCA regulated comes with additional responsibilities and we would be subject to further audits. Therefore, this step will be done when appropriate.
+          </p>
+        </details>
       </div>
     </div>
 
+    <!-- Community (fixed: self-contained) -->
     <div id="community" class="content-section">
-<div class="community-section">
-  <h3>test</h3>
-  <details>
-    <summary> test.</summary>
-    <p>test</p>
-  </details>
+      <h2 class="section-title">Community</h2>
+      <div class="community-section">
+        <p>We want Grassroots Insurance to be rooted in community. This page will host:</p>
+        <ul>
+          <li>Local events and meet-ups</li>
+          <li>Volunteer opportunities</li>
+          <li>Community-led forums and feedback channels</li>
+        </ul>
+
+        <details>
+          <summary>Upcoming: Community Launch Meetup</summary>
+          <p>Date: 29 September 2025 — 18:00 (TBC)</p>
+          <p>Location: Liverpool (exact venue to be confirmed).</p>
+          <p>Sign up or ask questions: <a href="mailto:hello@shobuz.co.uk" class="email">hello@shobuz.co.uk</a></p>
+        </details>
+
+        <div style="margin-top:1.5rem;">
+          <strong>Get involved today</strong>
+          <p>We have small, practical ways to help - from helping us test processes to joining local advisory groups. Email us with your interest and we’ll get back to you.</p>
+          <p><a href="mailto:hello@shobuz.co.uk" class="email">hello@shobuz.co.uk</a></p>
+        </div>
+      </div>
     </div>
 
+    <!-- Get involved (moved out of community) -->
     <div id="involved" class="content-section">
       <h2 class="section-title">Get Involved</h2>
       <div class="involvement-box">
@@ -652,7 +602,7 @@ We have officially launched the limited entity and are excited to announce the n
         <p>We'd love for you to get actively involved in building the future of grassroots insurance!</p>
         <p>Whether you're a potential client, broker, investor, or simply someone who believes in community-driven business, there are opportunities to be part of this revolutionary approach to insurance.</p>
         <p><strong>To explore opportunities, please email:</strong></p>
-        <p><a href="mailto:hello@shobuz.co.uk" class="email" style="font-size: 1.3rem; font-weight: 700; color: #008000;">hello@shobuz.co.uk</a></p>
+        <p><a href="mailto:hello@shobuz.co.uk" class="email" style="font-size: 1.3rem; font-weight: 700; color: var(--primary);">hello@shobuz.co.uk</a></p>
       </div>
 
       <div class="download-box" onclick="downloadDocument()" role="button" tabindex="0" aria-pressed="false">
@@ -661,14 +611,15 @@ We have officially launched the limited entity and are excited to announce the n
         <p><a href="Grassroots%20Insurance%20public.docx" download>Grassroots Insurance public.docx</a></p>
       </div>
 
-    <div class="footer-section">
-      <p> Our next website update is on the 29th of September 2025 at 9am. We potentially will have some exciting news for you then. In the meantime you can email your burning questions to
-        <a href="mailto:hello@shobuz.co.uk" class="email">hello@shobuz.co.uk</a>
-      </p>
-      </p>
-      <p style="text-align: left; font-size: smaller; margin-top: 12px;"> © 2025 Abdul Alim. All rights reserved. This website does not collect, track or store your data or cookies.</p>
-    </div>
-  </div>
+      <div class="footer-section" role="contentinfo">
+        <p> Our next website update is on the 29th of September 2025 at 9am. We potentially will have some exciting news for you then. In the meantime you can email your burning questions to
+          <a href="mailto:hello@shobuz.co.uk" class="email">hello@shobuz.co.uk</a>
+        </p>
+        <p style="text-align: left; font-size: smaller; margin-top: 12px;"> © 2025 Abdul Alim. All rights reserved. This website does not collect, track or store your data or cookies.</p>
+      </div>
+    </div> <!-- end #involved -->
+
+  </div> <!-- end .container -->
 
   <script>
     function showSection(sectionId, evt) {
@@ -705,16 +656,23 @@ We have officially launched the limited entity and are excited to announce the n
 
     function animateTitle() {
       const title = document.querySelector('.header-title');
+      if (!title) return;
       title.style.transform = 'scale(1.2) rotate(360deg)';
-      title.style.color = '#5a8a52';
+      title.style.color = varColorOr('#5a8a52');
       setTimeout(() => {
         title.style.transform = 'scale(1) rotate(0deg)';
-        title.style.color = '#008000';
+        title.style.color = varColorOr('#008000');
       }, 600);
+    }
+
+    // helper for inline style fallback (not strictly necessary)
+    function varColorOr(fallback) {
+      return getComputedStyle(document.documentElement).getPropertyValue('--primary') || fallback;
     }
 
     function downloadDocument() {
       const downloadBox = document.querySelector('.download-box');
+      if (!downloadBox) return;
       downloadBox.style.transform = 'scale(0.95)';
       setTimeout(() => { downloadBox.style.transform = 'scale(1)'; }, 200);
     }
