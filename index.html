@@ -291,7 +291,7 @@ We have officially launched the limited entity and are excited to announce the n
   <button class="nav-btn active" onclick="showSection('overview', event)">Overview</button>
   <button class="nav-btn sparkle-btn" onclick="showSection('founder', event)">You✨, Us and Our Supporters</button>
   <button class="nav-btn" onclick="showSection('understanding', event)">Financial Lines</button>
-  <button class="nav-btn" onclick="showSection('Community', event)">Community</button>
+<button class="community-btn" onclick="showSection('Community', event)">👨‍👩‍👧‍👦🫂 Community</button>
 <button class="nav-btn" onclick="showSection('strategy', event)">Our Strategy</button>
   <button class="nav-btn" onclick="showSection('involved', event)">Get More Involved</button>
 </div>
@@ -302,7 +302,32 @@ We have officially launched the limited entity and are excited to announce the n
   flex-wrap: wrap;
   gap: 1rem;
 }
+.community-btn {
+  background: linear-gradient(135deg, #8e44ad, #9b59b6); /* purple gradient */
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px; /* space between emojis and text */
+}
 
+.community-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(135deg, #9b59b6, #8e44ad);
+}
+
+.community-btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
 .sparkle-btn {
   flex: 1;
   min-width: 200px;
