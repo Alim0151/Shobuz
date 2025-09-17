@@ -264,6 +264,43 @@ max-width: 90vw;
       font-weight: bold;
       margin-right: 8px;
 	}
+.nav-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Sparkle Button */
+.sparkle-btn {
+  flex: 0 0 auto;
+  min-width: 200px;
+  background: radial-gradient(circle at top left, #fff8e1, #fff3cd);
+  border-radius: 25px;
+  padding: 0.6rem 1.2rem;    /* smaller padding for a shorter button */
+  border: 2px solid gold;
+  box-shadow: 0 0 6px rgba(255, 215, 0, 0.4);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #b8860b;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.sparkle-btn::after {
+  content: '✨';
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  font-size: 1.5rem;
+  opacity: 0.7;
+}
+
+.nav-btn:hover,
+.sparkle-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(255, 223, 0, 0.7);
+}
   </style>
 </head>
 <body>
@@ -294,45 +331,6 @@ We have officially launched the limited entity and are excited to announce the n
   <button class="nav-btn" onclick="showSection('strategy', event)">Our Strategy</button>
   <button class="nav-btn" onclick="showSection('involved', event)">Get More Involved</button>
 </div>
-
-<style>
-.nav-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-/* Sparkle Button */
-.sparkle-btn {
-  flex: 1;
-  min-width: 200px;
-  background: radial-gradient(circle at top left, #fff8e1, #fff3cd);
-  border-radius: 25px; /* match other nav buttons */
-  padding: 1.5rem 2rem;
-  border: 2px solid gold;
-  box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #b8860b;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.sparkle-btn::after {
-  content: '✨';
-  position: absolute;
-  top: -10px;
-  right: -10px;
-  font-size: 1.5rem;
-  opacity: 0.7;
-}
-
-.nav-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 20px rgba(255, 223, 0, 0.7);
-}
-</style>
 
     <div id="overview" class="content-section active">
       <div class="goal-text">
