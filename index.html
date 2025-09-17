@@ -1,12 +1,124 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Shobuz.co.uk - Grassroots Insurance Revolution</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+  .highlight-section {
+    background: radial-gradient(circle at top left, #fff8e1, #fff3cd);
+    border-radius: 20px;
+    padding: 2rem;
+    margin: 3rem 0;
+    border: 2px solid gold;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+    position: relative;
+    overflow: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #b8860b;
+    text-align: center;
+  }
+
+  .highlight-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+  }
+
+  .highlight-section p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  /* Sparkle animation */
+  .sparkle {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: gold;
+    border-radius: 50%;
+    animation: sparkleAnim 2s infinite;
+  }
+
+  @keyframes sparkleAnim {
+    0%, 100% { transform: translateY(0) scale(1); opacity: 1; }
+    50% { transform: translateY(-10px) scale(1.5); opacity: 0.6; }
+  }
+
+	.nav-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Community Button */
+.community-btn {
+  flex: 0 0 auto; /* prevent stretching */
+  width: 180px;   /* fixed width */
+  background: linear-gradient(135deg, rgba(142, 68, 173, 0.5), rgba(155, 89, 182, 0.5)); /* semi-transparent background */
+  color: #fff; /* text fully visible */
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 25px; /* match other nav buttons */
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* space between emojis and text */
+  transition: transform 0.2s, box-shadow 0.2s, background 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.community-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+  background: linear-gradient(135deg, #9b59b6, #8e44ad); /* full opacity on hover */
+}
+
+.community-btn:active {
+  transform: scale(0.98);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Sparkle Button */
+.sparkle-btn {
+  flex: 1;
+  min-width: 200px;
+  background: radial-gradient(circle at top left, #fff8e1, #fff3cd);
+  border-radius: 25px; /* match other nav buttons */
+  padding: 1.5rem 2rem;
+  border: 2px solid gold;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #b8860b;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.sparkle-btn::after {
+  content: '✨';
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  font-size: 1.5rem;
+  opacity: 0.7;
+}
+
+.nav-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(255, 223, 0, 0.7);
+}
+	  :root {
+  --primary: #008000;
+  --gray: #ccc;
+}
+	  * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
   font-family: 'Inter', Arial, sans-serif;
   font-size: 1.125rem;
@@ -118,7 +230,7 @@ max-width: 90vw;
 
     .email { color: #008000 !important; transition: all 0.3s ease; cursor: pointer; text-decoration: none; position: relative; }
     .email:hover { color: #5a8a52 !important; text-shadow: 0 0 10px rgba(75, 111, 68, 0.5); }
-    a, a:link, a:visited { color: #008000; text-decoration: none; transition: all 0.3s ease; }
+    a, { color: #008000; text-decoration: none; transition: all 0.3s ease; }
     a:hover { color: #5a8a52; text-shadow: 0 0 5px rgba(75, 111, 68, 0.3); }
 
     .highlight-goal { color: #008000; font-weight: 700; font-size: 1.4rem; display: inline-block; animation: pulse 2s infinite; }
@@ -278,7 +390,7 @@ max-width: 90vw;
     <div class="header-container">
     <img src="Shobuz.png" alt="Shobuz.co.uk" class="header-title" />
       <div class="header-logo">
-        <img src="Grassroots circle.svg" alt="Grassroots Insurance Logo">
+<img src="Grassroots circle.svg" alt="Grassroots Insurance Logo" width="300" height="300" loading="lazy">
       </div>
     </div>
   
@@ -295,76 +407,6 @@ We have officially launched the limited entity and are excited to announce the n
   <button class="nav-btn" onclick="showSection('strategy', event)">Our Strategy</button>
   <button class="nav-btn" onclick="showSection('involved', event)">Get More Involved</button>
 </div>
-
-<style>
-.nav-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-/* Community Button */
-.community-btn {
-  flex: 0 0 auto; /* prevent stretching */
-  width: 180px;   /* fixed width */
-  background: linear-gradient(135deg, rgba(142, 68, 173, 0.5), rgba(155, 89, 182, 0.5)); /* semi-transparent background */
-  color: #fff; /* text fully visible */
-  font-weight: 600;
-  font-size: 1rem;
-  padding: 1rem 2rem;
-  border: none;
-  border-radius: 25px; /* match other nav buttons */
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px; /* space between emojis and text */
-  transition: transform 0.2s, box-shadow 0.2s, background 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.community-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
-  background: linear-gradient(135deg, #9b59b6, #8e44ad); /* full opacity on hover */
-}
-
-.community-btn:active {
-  transform: scale(0.98);
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
-}
-
-/* Sparkle Button */
-.sparkle-btn {
-  flex: 1;
-  min-width: 200px;
-  background: radial-gradient(circle at top left, #fff8e1, #fff3cd);
-  border-radius: 25px; /* match other nav buttons */
-  padding: 1.5rem 2rem;
-  border: 2px solid gold;
-  box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #b8860b;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.sparkle-btn::after {
-  content: '✨';
-  position: absolute;
-  top: -10px;
-  right: -10px;
-  font-size: 1.5rem;
-  opacity: 0.7;
-}
-
-.nav-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 20px rgba(255, 223, 0, 0.7);
-}
-</style>
 
     <div id="overview" class="content-section active">
       <div class="goal-text">
@@ -537,48 +579,6 @@ We have officially launched the limited entity and are excited to announce the n
     </div>
 
 <div id="founder" class="content-section">
-<style>
-  .highlight-section {
-    background: radial-gradient(circle at top left, #fff8e1, #fff3cd);
-    border-radius: 20px;
-    padding: 2rem;
-    margin: 3rem 0;
-    border: 2px solid gold;
-    box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
-    position: relative;
-    overflow: hidden;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #b8860b;
-    text-align: center;
-  }
-
-  .highlight-section h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    font-weight: bold;
-  }
-
-  .highlight-section p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    margin-bottom: 1rem;
-  }
-
-  /* Sparkle animation */
-  .sparkle {
-    position: absolute;
-    width: 5px;
-    height: 5px;
-    background: gold;
-    border-radius: 50%;
-    animation: sparkleAnim 2s infinite;
-  }
-
-  @keyframes sparkleAnim {
-    0%, 100% { transform: translateY(0) scale(1); opacity: 1; }
-    50% { transform: translateY(-10px) scale(1.5); opacity: 0.6; }
-  }
-</style>
 
 <div class="highlight-section">
   <h2>You ✨</h2>
