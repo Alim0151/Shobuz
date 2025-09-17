@@ -342,7 +342,6 @@ body {
     margin-bottom: 1rem;
   }
 
-  /* Sparkle animation */
   .sparkle {
     position: absolute;
     width: 5px;
@@ -351,7 +350,6 @@ body {
     border-radius: 50%;
     animation: sparkleAnim 2s infinite;
   }
-
   @keyframes sparkleAnim {
     0%, 100% { transform: translateY(0) scale(1); opacity: 1; }
     50% { transform: translateY(-10px) scale(1.5); opacity: 0.6; }
