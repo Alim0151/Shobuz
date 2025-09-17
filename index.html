@@ -301,6 +301,46 @@ max-width: 90vw;
   transform: scale(1.05);
   box-shadow: 0 6px 16px rgba(255, 223, 0, 0.7);
 }
+	    .highlight-section {
+    background: radial-gradient(circle at top left, #fff8e1, #fff3cd);
+    border-radius: 20px;
+    padding: 2rem;
+    margin: 3rem 0;
+    border: 2px solid gold;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+    position: relative;
+    overflow: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #b8860b;
+    text-align: center;
+  }
+
+  .highlight-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+  }
+
+  .highlight-section p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  /* Sparkle animation */
+  .sparkle {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: gold;
+    border-radius: 50%;
+    animation: sparkleAnim 2s infinite;
+  }
+
+  @keyframes sparkleAnim {
+    0%, 100% { transform: translateY(0) scale(1); opacity: 1; }
+    50% { transform: translateY(-10px) scale(1.5); opacity: 0.6; }
+  }
   </style>
 </head>
 <body>
@@ -503,48 +543,6 @@ We have officially launched the limited entity and are excited to announce the n
     </div>
 
 <div id="founder" class="content-section">
-<style>
-  .highlight-section {
-    background: radial-gradient(circle at top left, #fff8e1, #fff3cd);
-    border-radius: 20px;
-    padding: 2rem;
-    margin: 3rem 0;
-    border: 2px solid gold;
-    box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
-    position: relative;
-    overflow: hidden;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #b8860b;
-    text-align: center;
-  }
-
-  .highlight-section h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    font-weight: bold;
-  }
-
-  .highlight-section p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    margin-bottom: 1rem;
-  }
-
-  /* Sparkle animation */
-  .sparkle {
-    position: absolute;
-    width: 5px;
-    height: 5px;
-    background: gold;
-    border-radius: 50%;
-    animation: sparkleAnim 2s infinite;
-  }
-
-  @keyframes sparkleAnim {
-    0%, 100% { transform: translateY(0) scale(1); opacity: 1; }
-    50% { transform: translateY(-10px) scale(1.5); opacity: 0.6; }
-  }
-</style>
 
 <div class="highlight-section">
   <h2>You ✨</h2>
