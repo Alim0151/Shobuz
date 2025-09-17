@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Shobuz.co.uk - Grassroots Insurance Revolution</title>
-  <link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="loading-overlay">
@@ -30,7 +30,7 @@ We have officially launched the limited entity and are excited to announce the n
   <button class="nav-btn active" onclick="showSection('overview', event)">Overview</button>
   <button class="nav-btn sparkle-btn" onclick="showSection('founder', event)">You✨, Us and Our Supporters</button>
   <button class="nav-btn" onclick="showSection('understanding', event)">Financial Lines</button>
-  <button class="nav-btn community-btn" onclick="showSection('Community', event)">👨‍👩‍👧‍👦🫂 Community</button>
+  <button class="nav-btn" onclick="showSection('Community', event)">👨‍👩‍👧‍👦🫂 Community</button>
   <button class="nav-btn" onclick="showSection('strategy', event)">Our Strategy</button>
   <button class="nav-btn" onclick="showSection('involved', event)">Get More Involved</button>
 </div>
@@ -467,29 +467,6 @@ function showSection(sectionId, event) {
       });
       document.querySelectorAll('img[data-src]').forEach(img => { imageObserver.observe(img); });
     }
-    // Toggle content sections
-    function showSection(sectionId, event) {
-      // Hide all sections
-      const sections = document.querySelectorAll(".content-section");
-      sections.forEach(sec => sec.classList.remove("active"));
-
-      // Remove "active" from all buttons
-      const buttons = document.querySelectorAll(".nav-btn");
-      buttons.forEach(btn => btn.classList.remove("active"));
-
-      // Show the selected section
-      const target = document.getElementById(sectionId);
-      if (target) target.classList.add("active");
-
-      // Highlight the clicked button
-      if (event) event.currentTarget.classList.add("active");
-    }
-
-    // Optional: Set default section on load
-    document.addEventListener("DOMContentLoaded", () => {
-      showSection("overview"); // "overview" will be the default visible one
-    });
-
   </script>
 </body>
 </html>
