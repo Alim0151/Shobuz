@@ -1,1435 +1,845 @@
+
 <!DOCTYPE html>
-<html lang="en" class="theme-dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Grassroots Insurance - A journalistic journey into creating a community-focused financial lines MGA in the UK.">
-  <title>Grassroots Insurance | Shobuz.co.uk</title>
-
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
-
+  <title>Shobuz.co.uk - Grassroots Insurance Revolution</title>
   <style>
-    /* ==========================================================================
-       1. CSS RESET & GLOBAL SETUP
-       ========================================================================== */
-    :root {
-      /* Colors - Dark Theme (Default) */
-      --color-primary: #2ECC71;
-      --color-primary-rgb: 46, 204, 113;
-      --color-secondary: #3498DB;
-      --color-accent: #F1C40F;
-      --color-background: #0A0F1E;
-      --color-surface: #131A2B;
-      --color-surface-light: #1E2A47;
-      --color-text: #E0E6F0;
-      --color-text-muted: #A0A8B8;
-      --color-border: rgba(255, 255, 255, 0.05);
-      --color-shadow: rgba(0, 0, 0, 0.3);
-
-      /* Typography */
-      --font-main: 'Outfit', sans-serif;
-      --font-mono: 'Source Code Pro', monospace;
-
-      /* Sizing & Spacing */
-      --header-height: 80px;
-      --container-width: 1280px;
-      --spacing-xs: 0.5rem;
-      --spacing-sm: 1rem;
-      --spacing-md: 1.5rem;
-      --spacing-lg: 2rem;
-      --spacing-xl: 3rem;
-      --spacing-xxl: 5rem;
-
-      /* Effects */
-      --radius-sm: 8px;
-      --radius-md: 16px;
-      --radius-lg: 24px;
-      --transition-fast: 0.15s ease;
-      --transition-normal: 0.3s ease;
-      --transition-slow: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-      --glass-blur: blur(16px);
-    }
-
-    /* Light Theme Variables */
-    html.theme-light {
-      --color-background: #F8FAFC;
-      --color-surface: #FFFFFF;
-      --color-surface-light: #F1F5F9;
-      --color-text: #1E293B;
-      --color-text-muted: #64748B;
-      --color-border: rgba(0, 0, 0, 0.05);
-      --color-shadow: rgba(0, 0, 0, 0.05);
-    }
-
-    *, *::before, *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      font-size: 16px;
-      scroll-behavior: smooth;
-      overflow-x: hidden;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: var(--font-main);
-      background-color: var(--color-background);
-      color: var(--color-text);
-      line-height: 1.6;
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      transition: background-color var(--transition-normal), color var(--transition-normal);
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1.6;
+  background: url('leaves.svg') no-repeat center center fixed;
+  background-size: cover;
+  color: white;
+  overflow-x: hidden;
     }
 
-    /* ==========================================================================
-       2. BACKGROUND & PARTICLES
-       ========================================================================== */
-    .background-canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -2;
-      opacity: 0.6;
-      transition: opacity var(--transition-normal);
-    }
+    .background-particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; }
+    .particle { position: absolute; width: 3px; height: 3px; background: #008000; border-radius: 50%; animation: float 6s infinite linear; opacity: 0.6; }
+    @keyframes float { 0% { transform: translateY(100vh) rotate(0deg); opacity: 0; } 10% { opacity: 0.6; } 90% { opacity: 0.6; } 100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; } }
 
-    /* Animated Gradient Overlay */
-    .background-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle at center, transparent 0%, var(--color-background) 70%);
-      z-index: -1;
-      animation: rotateGradient 120s linear infinite;
-    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 2rem; position: relative; z-index: 1; }
 
-    @keyframes rotateGradient {
-      0% { transform: rotate(0deg) translate(-25%, -25%); }
-      100% { transform: rotate(360deg) translate(-25%, -25%); }
-    }
+    .header-container { display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem; animation: slideInDown 1s ease-out; }
+    @keyframes slideInDown { from { transform: translateY(-50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
-    /* ==========================================================================
-       3. LAYOUT & CONTAINERS
-       ========================================================================== */
-    .container {
-      max-width: var(--container-width);
-      margin: 0 auto;
-      padding: var(--spacing-lg);
-      position: relative;
-      z-index: 1;
-    }
+   .header-title {
+  width: 500px;
+max-width: 90vw;
+  height: auto;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
+}
 
-    .section {
-      padding: var(--spacing-xxl) 0;
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity var(--transition-slow), transform var(--transition-slow);
-    }
+.header-title:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.6));
+}
+    .header-logo img { width: 300px; height: auto; transition: transform 0.3s ease; filter: drop-shadow(0 0 10px rgba(75, 111, 68, 0.3)); }
+    .header-logo img:hover { transform: scale(1.1); }
 
-    .section.is-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .nav-section { text-align: center; margin-bottom: 3rem; animation: fadeInUp 1s ease-out 0.2s both; }
 
-    /* ==========================================================================
-       4. TYPOGRAPHY
-       ========================================================================== */
-    h1, h2, h3, h4 {
-      font-weight: 700;
-      line-height: 1.2;
-      color: var(--color-text);
-      margin-bottom: var(--spacing-md);
-    }
+    @keyframes shimmer { 0% { left: -40%; } 100% { left: 140%; } }
+    @keyframes announcementIn { from { transform: translateY(-10px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
-    h1 { font-size: 3rem; }
-    h2 { font-size: 2.25rem; }
-    h3 { font-size: 1.5rem; }
-
-    p {
-      margin-bottom: var(--spacing-md);
-      color: var(--color-text-muted);
-    }
-
-    .section-title {
-      font-size: 2.5rem;
-      margin-bottom: var(--spacing-xl);
-      text-align: center;
-      position: relative;
-      display: inline-block;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .section-title::after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 0;
-      width: 60px;
-      height: 4px;
-      background: var(--color-primary);
-      border-radius: var(--radius-sm);
-    }
-
-    /* ==========================================================================
-       5. LINKS & BUTTONS
-       ========================================================================== */
-    a {
-      color: var(--color-primary);
-      text-decoration: none;
-      transition: color var(--transition-fast), text-shadow var(--transition-fast);
-      position: relative;
-    }
-
-    a:hover {
-      color: var(--color-primary-dark, #27AE60);
-      text-shadow: 0 0 8px rgba(46, 204, 113, 0.4);
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.75rem 1.5rem;
-      border-radius: 50px;
+    .announcement p {
+      color: #eaf4e9;
       font-weight: 600;
-      cursor: pointer;
-      transition: all var(--transition-normal);
-      border: none;
-      font-family: var(--font-main);
-      position: relative;
-      overflow: hidden;
-      z-index: 1;
+      text-align: left;
+      font-size: 0.98rem;
+      line-height: 1.3;
+      max-width: 1000px;
     }
 
-    .btn::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0));
-      transform: translateX(-100%);
-      transition: transform 0.5s ease;
-      z-index: -1;
-    }
-
-    .btn:hover::before {
-      transform: translateX(100%);
-    }
-
-    .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    }
-
-    .btn-primary {
-      background: var(--color-primary);
-      color: #fff;
-    }
-
-    .btn-text {
-      background: transparent;
-      color: var(--color-primary);
-      padding: 0;
-    }
-    .btn-text:hover {
-      background: transparent;
-      transform: none;
-      box-shadow: none;
+    .announcement a {
+      color: #cfe9ce;
       text-decoration: underline;
+      font-weight: 700;
     }
+    .announcement a:hover { text-decoration: none; }
 
-    /* ==========================================================================
-       6. HEADER & NAVIGATION
-       ========================================================================== */
-    .header-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: var(--spacing-md) 0;
-      margin-bottom: var(--spacing-xl);
-      border-bottom: 1px solid var(--color-border);
-      animation: slideDown var(--transition-slow);
-    }
-
-    @keyframes slideDown {
-      from { transform: translateY(-20px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
-    .header-logo-group {
-      display: flex;
-      align-items: center;
-      gap: var(--spacing-md);
-    }
-
-    .header-title {
-      max-width: 300px;
-      height: auto;
-      transition: transform var(--transition-normal), filter var(--transition-normal);
-    }
-
-    .header-title:hover {
-      transform: scale(1.03);
-      filter: drop-shadow(0 0 15px rgba(46, 204, 113, 0.3));
-    }
-
-    .header-logo-mark {
-      width: 80px;
-      height: auto;
-      animation: float 6s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-
-    /* Theme Toggle */
-    .theme-toggle {
-      background: var(--color-surface-light);
-      border: none;
-      border-radius: 50%;
-      width: 45px;
-      height: 45px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--color-text);
-      transition: all var(--transition-normal);
-    }
-
-    .theme-toggle:hover {
-      transform: rotate(30deg);
-      background: var(--color-primary);
-      color: white;
-    }
-
-    /* Navigation Bar */
-    .nav-section {
-      margin-bottom: var(--spacing-xl);
-      text-align: center;
-    }
-
-    .nav-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--spacing-sm);
-      justify-content: center;
-      margin-top: var(--spacing-xl);
-    }
-
+    .nav-buttons { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-bottom: 2rem; }
     .nav-btn {
       padding: 0.8rem 1.5rem;
-      background: var(--color-surface-light);
-      border: 1px solid var(--color-border);
-      border-radius: 30px;
-      color: var(--color-text);
+      background: linear-gradient(135deg, rgba(75, 111, 68, 0.2), rgba(75, 111, 68, 0.1));
+      border: 1px solid rgba(75, 111, 68, 0.3);
+      border-radius: 25px;
+      color: #008000;
+      text-decoration: none;
       font-weight: 600;
+      transition: all 0.3s ease;
       cursor: pointer;
-      transition: all var(--transition-normal);
-      backdrop-filter: var(--glass-blur);
     }
+    .nav-btn:hover { background: linear-gradient(135deg, rgba(75, 111, 68, 0.3), rgba(75, 111, 68, 0.2)); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(75, 111, 68, 0.2); }
+    .nav-btn.active { background: linear-gradient(135deg, #008000, #5a8a52); color: white; }
 
-    .nav-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px var(--color-shadow);
-      border-color: var(--color-primary);
-    }
+    .content-section { display: none; animation: fadeInUp 0.6s ease-out both; }
+    .content-section.active { display: block; }
 
-    .nav-btn.active {
-      background: var(--color-primary);
-      color: #fff;
-      border-color: var(--color-primary);
+    .intro-text {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      animation: fadeInUp 1s ease-out 0.3s both;
+      background: linear-gradient(45deg, #ffffff, #cccccc);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
+    @keyframes fadeInUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
-    /* Special Buttons (as requested) */
-    .nav-btn.community-btn {
-      background: linear-gradient(135deg, #8E44AD, #9B59B6);
-      color: #fff;
-      border: none;
-    }
-    .nav-btn.community-btn.active, .nav-btn.community-btn:hover {
-      background: linear-gradient(135deg, #9B59B6, #8E44AD);
-      box-shadow: 0 5px 15px rgba(142, 68, 173, 0.4);
-    }
-
-    .nav-btn.sparkle-btn {
-      background: linear-gradient(135deg, #F1C40F, #F39C12);
-      color: #fff;
-      border: none;
+    .goal-text {
+      font-size: 1.3rem;
+      margin-bottom: 3rem;
+      padding: 1.5rem;
+      background: linear-gradient(135deg, rgba(75, 111, 68, 0.1), rgba(75, 111, 68, 0.05));
+      border-radius: 15px;
+      border: 1px solid rgba(75, 111, 68, 0.3);
+      animation: fadeInUp 1s ease-out 0.6s both;
       position: relative;
       overflow: hidden;
     }
-
-    .nav-btn.sparkle-btn::after {
-      content: '✨';
-      position: absolute;
-      right: 10px;
-      animation: sparkle 1.5s infinite;
-    }
-    @keyframes sparkle { 0%, 100% { opacity: 1; transform: scale(1) rotate(0deg); } 50% { opacity: 0.5; transform: scale(1.2) rotate(10deg); } }
-
-    /* ==========================================================================
-       7. CONTENT SECTIONS & CARDS
-       ========================================================================== */
-    .content-section {
-      display: none;
-      animation: fadeInScale 0.5s ease-out;
-    }
-
-    @keyframes fadeInScale {
-      from { opacity: 0; transform: scale(0.98); }
-      to { opacity: 1; transform: scale(1); }
-    }
-
-    .content-section.active {
-      display: block;
-    }
-
-    /* Intro Announcement Banner */
-    .announcement-banner {
-      background: linear-gradient(45deg, var(--color-surface-light), var(--color-surface));
-      border-left: 4px solid var(--color-primary);
-      padding: var(--spacing-lg);
-      border-radius: var(--radius-md);
-      margin-bottom: var(--spacing-xl);
-      box-shadow: 0 4px 20px var(--color-shadow);
-      animation: bannerGlow 3s infinite alternate;
-    }
-
-    @keyframes bannerGlow {
-      from { box-shadow: 0 4px 20px rgba(46, 204, 113, 0.1); }
-      to { box-shadow: 0 4px 30px rgba(46, 204, 113, 0.3); }
-    }
-
-    .announcement-banner p {
-      color: var(--color-text);
-      font-size: 1rem;
-      margin-bottom: 0.5rem;
-    }
-
-    /* Goal / Mission Statement */
-    .mission-box {
-      font-size: 1.25rem;
-      padding: var(--spacing-xl);
-      background: linear-gradient(135deg, rgba(46, 204, 113, 0.05), rgba(52, 152, 219, 0.05));
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--color-border);
-      backdrop-filter: var(--glass-blur);
-      margin-bottom: var(--spacing-xxl);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .mission-box::before {
+    .goal-text::before {
       content: '';
       position: absolute;
       top: 0;
       left: -100%;
-      width: 50%;
+      width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-      transform: skewX(-20deg);
+      background: linear-gradient(90deg, transparent, rgba(75, 111, 68, 0.1), transparent);
       transition: left 0.8s ease;
     }
+    .goal-text:hover::before { left: 100%; }
 
-    .mission-box:hover::before {
-      left: 150%;
-    }
+    .email { color: #008000 !important; transition: all 0.3s ease; cursor: pointer; text-decoration: none; position: relative; }
+    .email:hover { color: #5a8a52 !important; text-shadow: 0 0 10px rgba(75, 111, 68, 0.5); }
+    a, a:link, a:visited { color: #008000; text-decoration: none; transition: all 0.3s ease; }
+    a:hover { color: #5a8a52; text-shadow: 0 0 5px rgba(75, 111, 68, 0.3); }
 
-    .highlight-goal {
-      color: var(--color-primary);
-      font-weight: 700;
-      font-size: 1.5rem;
-      display: inline-block;
-      position: relative;
-    }
+    .highlight-goal { color: #008000; font-weight: 700; font-size: 1.4rem; display: inline-block; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
 
-    .highlight-goal::after {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 30%;
-      background: rgba(46, 204, 113, 0.2);
-      bottom: 0;
-      left: 0;
-      z-index: -1;
-      transform: scaleX(0);
-      transform-origin: bottom right;
-      transition: transform 0.4s ease-out;
-    }
+    .section-title { font-size: 2rem; color: #008000; margin: 3rem 0 2rem 0; text-align: center; font-weight: 700; position: relative; }
+    .section-title::after { content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 60px; height: 3px; background: linear-gradient(90deg, #008000, #5a8a52); border-radius: 2px; }
 
-    .mission-box:hover .highlight-goal::after {
-      transform: scaleX(1);
-      transform-origin: bottom left;
-    }
-
-    /* Grid Layouts */
-    .grid-two {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: var(--spacing-lg);
-      margin: var(--spacing-xl) 0;
-    }
-
-    /* Cards */
-    .card {
-      background: var(--color-surface-light);
-      border-radius: var(--radius-md);
-      padding: var(--spacing-xl);
-      box-shadow: 0 10px 30px var(--color-shadow);
-      transition: all var(--transition-normal);
-      border: 1px solid var(--color-border);
+    .two-column { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; margin: 3rem 0; animation: fadeInUp 1s ease-out 0.9s both; }
+    .column {
+      padding: 2rem;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
       position: relative;
       overflow: hidden;
     }
+    .column::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #008000, #5a8a52, #008000); transform: scaleX(0); transition: transform 0.3s ease; }
+    .column:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3); border-color: rgba(75, 111, 68, 0.3); }
+    .column:hover::before { transform: scaleX(1); }
+    .column strong { font-size: 1.3rem; color: #008000; display: block; margin-bottom: 1rem; font-weight: 700; }
 
-    .card::after {
+    .benefits-list { margin: 2rem 0; animation: fadeInUp 1s ease-out 1.2s both; }
+    .benefits-list ul { list-style: none; padding: 0; }
+    .benefits-list li {
+      padding: 0.8rem 0;
+      padding-left: 2rem;
+      position: relative;
+      transition: all 0.3s ease;
+      border-radius: 8px;
+      margin-bottom: 0.5rem;
+    }
+    .benefits-list li::before { content: '✓'; position: absolute; left: 0; color: #008000; font-weight: bold; font-size: 1.2rem; transition: transform 0.3s ease; }
+    .benefits-list li:hover { background: rgba(75, 111, 68, 0.1); transform: translateX(10px); }
+    .benefits-list li:hover::before { transform: scale(1.3); }
+
+    .download-box {
+      margin: 3rem 0;
+      padding: 2rem;
+      background: linear-gradient(135deg, rgba(75, 111, 68, 0.15), rgba(75, 111, 68, 0.05));
+      border: 2px solid #008000;
+      border-radius: 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      animation: fadeInUp 1s ease-out 1.5s both;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .download-box::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: var(--color-primary);
-      transform: scaleX(0);
-      transition: transform var(--transition-normal);
+      top: -2px; left: -2px; right: -2px; bottom: -2px;
+      background: linear-gradient(45deg, #008000, #5a8a52, #008000, #5a8a52);
+      z-index: -1; border-radius: 20px; opacity: 0; transition: opacity 0.3s ease;
     }
+    .download-box:hover::before { opacity: 1; }
+    .download-box:hover { transform: scale(1.02); box-shadow: 0 10px 30px rgba(75, 111, 68, 0.3); }
+    .download-box a { color: #008000; text-decoration: none; font-weight: 700; font-size: 1.2rem; transition: all 0.3s ease; }
+    .download-box a:hover { color: #5a8a52; text-shadow: 0 0 10px rgba(75, 111, 68, 0.5); }
 
-    .card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-    }
-
-    .card:hover::after {
-      transform: scaleX(1);
-    }
-
-    .card-title {
-      font-size: 1.3rem;
-      color: var(--color-primary);
-      margin-bottom: var(--spacing-md);
-      display: flex;
-      align-items: center;
-      gap: var(--spacing-sm);
-    }
-
-    /* Highlight Boxes (Alerts/Info) */
-    .info-box {
-      margin: var(--spacing-xl) 0;
-      padding: var(--spacing-lg);
-      background: linear-gradient(135deg, rgba(52, 152, 219, 0.1), rgba(52, 152, 219, 0.05));
-      border-left: 4px solid var(--color-secondary);
-      border-radius: var(--radius-sm);
+    .highlight-box {
+      margin: 3rem 0;
+      padding: 2rem;
+      background: linear-gradient(135deg, rgba(33, 150, 243, 0.1), rgba(33, 150, 243, 0.05));
+      border-left: 5px solid #2196f3;
+      border-radius: 15px;
       position: relative;
+      animation: fadeInUp 1s ease-out 1.8s both;
+      transition: all 0.3s ease;
+    }
+    .highlight-box::before { content: '💡'; position: absolute; top: 1rem; right: 1rem; font-size: 1.5rem; animation: bounce 2s infinite; }
+    @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-10px); } 60% { transform: translateY(-5px); } }
+    .highlight-box:hover { transform: translateX(10px); box-shadow: -10px 10px 30px rgba(33, 150, 243, 0.2); }
+
+    .founder-section { background: linear-gradient(135deg, rgba(75, 111, 68, 0.1), rgba(75, 111, 68, 0.05)); border-radius: 20px; padding: 2rem; margin: 3rem 0; border: 1px solid rgba(75, 111, 68, 0.2); }
+    .founder-section h3 { color: #008000; font-size: 1.5rem; margin-bottom: 1rem; }
+
+    .involvement-box {
+      background: linear-gradient(135deg, rgba(75, 111, 68, 0.15), rgba(75, 111, 68, 0.08));
+      border: 2px solid #008000;
+      border-radius: 20px;
+      padding: 2rem;
+      margin: 3rem 0;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    .involvement-box:hover { transform: scale(1.02); box-shadow: 0 15px 30px rgba(75, 111, 68, 0.2); }
+    .involvement-box h3 { color: #008000; font-size: 1.8rem; margin-bottom: 1rem; }
+
+    .footer-section { margin-top: 4rem; padding: 2rem; text-align: center; background: linear-gradient(135deg, rgba(75, 111, 68, 0.1), transparent); border-radius: 15px; animation: fadeInUp 1s ease-out 2.1s both; }
+    .footer-section i { font-style: italic; color: #cccccc; font-size: 1.1rem; }
+
+    @media (max-width: 768px) {
+      .container { padding: 1rem; }
+      .header-container { flex-direction: column; text-align: center; gap: 1rem; }
+      .header-logo img { width: 270px; }
+      .two-column { grid-template-columns: 1fr; }
+      .column { padding: 1.5rem; }
+      .nav-buttons { flex-direction: column; align-items: center; }
+      .nav-btn { width: 200px; text-align: center; }
     }
 
-    .info-box::before {
-      content: '💡';
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      font-size: 1.5rem;
-      animation: bounce 2s infinite;
-    }
+    html { scroll-behaviour: smooth; }
 
-    @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-      40% {transform: translateY(-15px);}
-      60% {transform: translateY(-7px);}
+    .loading-overlay {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; display: flex; justify-content: center; align-items: center; z-index: 1000;
+      animation: fadeOut 0.5s ease-out 2s forwards;
     }
+    .loading-spinner { width: 50px; height: 50px; border: 3px solid rgba(75, 111, 68, 0.3); border-radius: 50%; border-top-color: #008000; animation: spin 1s ease-in-out infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes fadeOut { to { opacity: 0; visibility: hidden; } }
 
-    /* Risk Box (Green variant) */
     .risk-box {
-      background: linear-gradient(135deg, rgba(46, 204, 113, 0.1), rgba(46, 204, 113, 0.05));
-      border: 1px dashed var(--color-primary);
-      padding: var(--spacing-xl);
-      border-radius: var(--radius-md);
-      margin-top: var(--spacing-xl);
+  background: linear-gradient(135deg, rgba(0, 225, 0, 0.05), rgba(0, 225, 0, 0.3));
+  border-radius: 20px;
+  padding: 40px;
+  margin: 60px 0;
+  border: 1px dashed var(--primary);
+    }
+
+    .risk-box h3 {
+      color: var(--primary);
+      margin-bottom: 15px;
+      font-size: 1.6rem;
     }
 
     .risk-list {
-      list-style: none;
-      margin-top: var(--spacing-md);
+      list-style-type: none;
+      margin-top: 15px;
     }
 
     .risk-list li {
-      margin-bottom: 0.8rem;
-      padding-left: 1.5rem;
-      position: relative;
+      margin-bottom: 12px;
+      font-size: 1.05rem;
+      color: var(--gray);
     }
 
     .risk-list li::before {
-      content: '✓';
-      position: absolute;
-      left: 0;
-      color: var(--color-primary);
+      content: "✓";
+      color: var(--primary);
       font-weight: bold;
-    }
-
-    /* Benefits List */
-    .benefits-list ul {
-      list-style: none;
-      margin-top: var(--spacing-md);
-    }
-
-    .benefits-list li {
-      padding: 0.8rem 0 0.8rem 2.5rem;
-      position: relative;
-      transition: transform var(--transition-fast);
-    }
-
-    .benefits-list li:hover {
-      transform: translateX(10px);
-      color: var(--color-text);
-    }
-
-    .benefits-list li::before {
-      content: '→';
-      position: absolute;
-      left: 0;
-      color: var(--color-primary);
-      font-weight: bold;
-      transition: transform var(--transition-fast);
-    }
-
-    .benefits-list li:hover::before {
-      transform: translateX(5px);
-    }
-
-    /* ==========================================================================
-       8. INTERACTIVE COMPONENTS (Modals, Toggles, etc.)
-       ========================================================================== */
-
-    /* Details/Accordion */
-    details {
-      background: var(--color-surface-light);
-      margin-bottom: var(--spacing-sm);
-      border-radius: var(--radius-sm);
-      overflow: hidden;
-      border: 1px solid var(--color-border);
-    }
-
-    summary {
-      padding: var(--spacing-md);
-      cursor: pointer;
-      font-weight: 600;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: background-color var(--transition-fast);
-    }
-
-    summary:hover {
-      background: rgba(255,255,255,0.03);
-    }
-
-    summary::after {
-      content: '+';
-      font-size: 1.5rem;
-      transition: transform var(--transition-normal);
-    }
-
-    details[open] summary::after {
-      transform: rotate(45deg);
-    }
-
-    details p {
-      padding: 0 var(--spacing-md) var(--spacing-md);
-    }
-
-    /* Download Box */
-    .download-box {
-      margin-top: var(--spacing-xl);
-      padding: var(--spacing-xl);
-      background: linear-gradient(135deg, var(--color-surface-light), var(--color-surface));
-      border: 2px solid var(--color-primary);
-      border-radius: var(--radius-md);
-      text-align: center;
-      cursor: pointer;
-      transition: all var(--transition-normal);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .download-box:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 30px rgba(46, 204, 113, 0.2);
-    }
-
-    .download-box::before {
-        content: '';
-        position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 200%;
-        height: 200%;
-        background: radial-gradient(circle, rgba(46, 204, 113, 0.1) 0%, transparent 70%);
-        opacity: 0;
-        transition: opacity 0.3s;
-    }
-    .download-box:hover::before {
-        opacity: 1;
-        animation: radarPing 2s linear infinite;
-    }
-
-    @keyframes radarPing {
-        0% { transform: scale(0.5); opacity: 0; }
-        50% { opacity: 0.5; }
-        100% { transform: scale(1.5); opacity: 0; }
-    }
-
-    /* Browser Frame for Embeds */
-    .browser-frame {
-      background: var(--color-surface);
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      box-shadow: 0 20px 50px var(--color-shadow);
-      margin-top: var(--spacing-xl);
-      border: 1px solid var(--color-border);
-    }
-
-    .browser-header {
-      background: var(--color-surface-light);
-      padding: 0.5rem 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .browser-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-    }
-    .browser-dot.red { background: #FF5F57; }
-    .browser-dot.yellow { background: #FFBD2E; }
-    .browser-dot.green { background: #28C840; }
-
-    .browser-content {
-      width: 100%;
-      height: 800px;
-      border: none;
-      display: block;
-    }
-
-    /* ==========================================================================
-       9. FOUNDER & COMMUNITY SECTIONS
-       ========================================================================== */
-
-    /* "You" Highlight Section (The Sparkle Section) */
-    .highlight-section {
-      background: linear-gradient(135deg, rgba(241, 196, 15, 0.1), rgba(243, 156, 18, 0.05));
-      border: 2px solid var(--color-accent);
-      border-radius: var(--radius-lg);
-      padding: var(--spacing-xl);
-      margin: var(--spacing-xxl) 0;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .sparkle {
-      position: absolute;
-      color: var(--color-accent);
-      font-size: 1.5rem;
-      animation: floatSparkle 4s infinite ease-in-out;
-      pointer-events: none;
-    }
-
-    @keyframes floatSparkle {
-      0%, 100% { transform: translate(0, 0) rotate(0deg); opacity: 1; }
-      50% { transform: translate(20px, -20px) rotate(180deg); opacity: 0.7; }
-    }
-
-    /* Founder Bio */
-    .bio-section {
-      margin-top: var(--spacing-xxl);
-    }
-
-    .bio-grid {
-        display: grid;
-        grid-template-columns: 1fr 2fr;
-        gap: var(--spacing-xl);
-        align-items: start;
-    }
-
-    .bio-image-container {
-        position: relative;
-    }
-
-    .bio-avatar {
-        width: 100%;
-        border-radius: var(--radius-md);
-        box-shadow: 0 10px 30px var(--color-shadow);
-        border: 3px solid var(--color-primary);
-    }
-
-    .bio-content h3 {
-        color: var(--color-primary);
-        margin-bottom: var(--spacing-sm);
-    }
-
-    /* ==========================================================================
-       10. FOOTER
-       ========================================================================== */
-    .footer-section {
-      margin-top: var(--spacing-xxl);
-      padding-top: var(--spacing-xl);
-      border-top: 1px solid var(--color-border);
-      text-align: center;
-      color: var(--color-text-muted);
-      font-size: 0.9rem;
-    }
-
-    .footer-section a {
-      font-weight: 600;
-    }
-
-    /* ==========================================================================
-       11. MEDIA QUERIES (RESPONSIVE DESIGN)
-       ========================================================================== */
-    @media (max-width: 1024px) {
-        .bio-grid {
-            grid-template-columns: 1fr;
-        }
-        .bio-image-container {
-            max-width: 300px;
-            margin: 0 auto;
-        }
-    }
-
-    @media (max-width: 768px) {
-      h1 { font-size: 2rem; }
-      .section-title { font-size: 1.8rem; }
-
-      .header-container {
-        flex-direction: column;
-        gap: var(--spacing-md);
-        text-align: center;
-      }
-
-      .header-logo-group {
-        flex-direction: column;
-      }
-
-      .nav-buttons {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .nav-btn {
-        text-align: center;
-      }
-
-      .grid-two {
-        grid-template-columns: 1fr;
-      }
-
-      .mission-box {
-        font-size: 1rem;
-        padding: var(--spacing-lg);
-      }
-    }
-
-    /* ==========================================================================
-       12. LOADING OVERLAY
-       ========================================================================== */
-    .loading-overlay {
-      position: fixed;
-      inset: 0;
-      background: var(--color-background);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-      transition: opacity 0.5s ease, visibility 0.5s ease;
-    }
-
-    .loading-overlay.hidden {
-      opacity: 0;
-      visibility: hidden;
-    }
-
-    .loading-spinner {
-      width: 50px;
-      height: 50px;
-      border: 3px solid var(--color-surface-light);
-      border-radius: 50%;
-      border-top-color: var(--color-primary);
-      animation: spin 1s linear infinite;
-    }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
-    /* ==========================================================================
-       13. SCROLLBAR STYLING
-       ========================================================================== */
-    ::-webkit-scrollbar {
-      width: 10px;
-    }
-
-    ::-webkit-scrollbar-track {
-      background: var(--color-background);
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: var(--color-surface-light);
-      border-radius: 5px;
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-      background: var(--color-primary);
-    }
-
+      margin-right: 8px;
+	}
   </style>
 </head>
 <body>
-
-  <!-- Loading Screen -->
-  <div class="loading-overlay" id="loadingOverlay">
-    <div class="loading-spinner"></div>
+  <div class="loading-overlay">
+    <div class="loading-spinner" aria-hidden="true"></div>
   </div>
 
-  <!-- Background Effects -->
-  <canvas class="background-canvas" id="particleCanvas"></canvas>
-  <div class="background-overlay"></div>
+  <div class="background-particles" id="particles"></div>
 
   <div class="container">
-
-    <!-- HEADER -->
-    <header class="header-container">
-      <div class="header-logo-group">
-        <!-- Replace Shobuz.png with your actual path -->
-        <img src="https://placehold.co/300x60/2ECC71/FFFFFF/png?text=Grassroots+Insurance" alt="Shobuz.co.uk" class="header-title">
-        <!-- Replace Grassroots circle.svg with your actual path -->
-        <img src="https://placehold.co/80x80/1E2A47/2ECC71/svg?text=GI" alt="Grassroots Insurance Logo" class="header-logo-mark">
+    <div class="header-container">
+    <img src="Shobuz.png" alt="Shobuz.co.uk" class="header-title" />
+      <div class="header-logo">
+        <img src="Grassroots circle.svg" alt="Grassroots Insurance Logo">
       </div>
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode">
-        <span class="theme-icon">🌓</span>
-      </button>
-    </header>
+    </div>
+  
+    <div class="nav-section">
+            <p class="intro-text">
+Welcome to Shobuz.co.uk. Here we'll be taking you along with our journey in us creating a grassroots insurance services business that focuses on giving back to society. This website is purely journalistic to share updates. Feel free to get in touch at <a href="mailto:hello@shobuz.co.uk">hello@shobuz.co.uk</a>.
+We have officially launched the limited entity and are excited to announce the name of this company: <em>Grassroots Insurance™</em>. We have secured two important domain assets: <strong>Grassrootsinsurance.co.uk</strong> and <strong>Grassrootsguard.co.uk</strong>. We anticipate trading non-regulated services this year and beginning underwriting services in 2026. Check our company record: <a href="https://find-and-update.company-information.service.gov.uk/company/16680312" target="_blank" rel="noopener">GOV.UK company 16680312</a>.</p>
 
-    <!-- INTRO & NAVIGATION -->
-    <section class="nav-section">
-      <div class="announcement-banner">
-        <p>Welcome to Shobuz.co.uk. We are documenting our journey creating a grassroots insurance MGA focused on community impact. This site is purely journalistic.</p>
-        <p>
-          <strong>Update:</strong> We have launched <em>Grassroots Insurance™</em> (Company 16680312) and secured our domains.
-          <a href="mailto:hello@shobuz.co.uk">Get in touch</a>.
-        </p>
-      </div>
+<div class="nav-buttons">
+  <button class="nav-btn active" onclick="showSection('overview', event)">Overview</button>
+  <button class="nav-btn sparkle-btn" onclick="showSection('founder', event)">You✨, Us and Our Supporters</button>
+  <button class="nav-btn" onclick="showSection('understanding', event)">Financial Lines</button>
+  <button class="nav-btn community-btn" onclick="showSection('Community', event)">👨‍👩‍👧‍👦🫂 Community</button>
+  <button class="nav-btn" onclick="showSection('strategy', event)">Our Strategy</button>
+  <button class="nav-btn" onclick="showSection('involved', event)">Get More Involved</button>
+</div>
 
-      <nav class="nav-buttons">
-        <button class="nav-btn active" data-section="overview">Overview</button>
-        <button class="nav-btn sparkle-btn" data-section="founder">The Journey ✨</button>
-        <button class="nav-btn" data-section="understanding">Financial Lines</button>
-        <button class="nav-btn community-btn" data-section="Community">Community 👨‍👩‍👧‍👦</button>
-        <button class="nav-btn" data-section="strategy">Strategy</button>
-        <button class="nav-btn" data-section="involved">Get Involved</button>
-      </nav>
-    </section>
+<style>
+.nav-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
 
-    <!-- MAIN CONTENT -->
+/* Community Button */
+.community-btn {
+  flex: 0 0 auto; /* prevent stretching */
+  width: 180px;   /* fixed width */
+  background: linear-gradient(135deg, rgba(142, 68, 173, 0.5), rgba(155, 89, 182, 0.5)); /* semi-transparent background */
+  color: #fff; /* text fully visible */
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 25px; /* match other nav buttons */
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* space between emojis and text */
+  transition: transform 0.2s, box-shadow 0.2s, background 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
 
-    <!-- OVERVIEW SECTION -->
-    <section id="overview" class="content-section active section">
-      <div class="mission-box">
-        <p><span class="highlight-goal">Our Goal</span> is to create a grassroots financial lines MGA and eventually become an outright insurer. Built on hard work, patience, and the British public interest—not institutional leverage.</p>
-        <p>
-          <strong>Grassroots Insurance</strong> is a community-first MGA addressing unmet demand in the UK’s financial lines sector. We prioritize fair, human-centered coverage over short-term profit.
-        </p>
-      </div>
+.community-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+  background: linear-gradient(135deg, #9b59b6, #8e44ad); /* full opacity on hover */
+}
 
-      <h2 class="section-title">The Core Problem</h2>
-      <div class="info-box">
-        <p>The insurance industry is powerful and often dominated by private equity, prioritizing shareholder value over client outcomes. This leads to unfulfilled demand, client dissatisfaction, high overheads, and inefficiency in the Financial Lines market.</p>
-      </div>
+.community-btn:active {
+  transform: scale(0.98);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
 
-      <div class="grid-two">
-        <article class="card">
-          <h3 class="card-title">What is a Financial Lines MGA?</h3>
-          <p>A Managing General Agent (MGA) is entrusted by insurers to underwrite policies—assessing risk and setting fair premiums. "Financial Lines" is our specific area of expertise. We are the experts who decide if and how to cover complex financial risks.</p>
-        </article>
+/* Sparkle Button */
+.sparkle-btn {
+  flex: 1;
+  min-width: 200px;
+  background: radial-gradient(circle at top left, #fff8e1, #fff3cd);
+  border-radius: 25px; /* match other nav buttons */
+  padding: 1.5rem 2rem;
+  border: 2px solid gold;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #b8860b;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
 
-        <article class="card">
-          <h3 class="card-title">What "Grassroots" Means</h3>
-          <p>We are built from the ground up, backed by the King's Trust and our community. Our commitment:</p>
-          <ul class="benefits-list">
-            <li>Zero equity for private institutions.</li>
-            <li>Minimal financial leverage.</li>
-            <li>Stakeholders who share our community values.</li>
-          </ul>
-        </article>
-      </div>
+.sparkle-btn::after {
+  content: '✨';
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  font-size: 1.5rem;
+  opacity: 0.7;
+}
 
-      <div class="benefits-list card" style="margin-top: var(--spacing-lg);">
-        <h3 class="card-title">Our Commitment to You</h3>
-        <ul>
-          <li>Clear, jargon-free policy wording.</li>
-          <li>Proactive support to protect your business.</li>
-          <li>Fair pricing with no hidden fees or arbitrary hikes.</li>
-          <li>A promise of no unfair claim denials.</li>
-        </ul>
-      </div>
+.nav-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(255, 223, 0, 0.7);
+}
+</style>
 
-      <div class="risk-box">
-        <h3 class="card-title">🛡️ Built for Stability</h3>
-        <p>Our structure ensures long-term resilience:</p>
-        <ul class="risk-list">
-          <li>Diversified portfolio minimizes market risk.</li>
-          <li>Lean, automated operations reduce overhead.</li>
-          <li>5% of revenue ring-fenced for our own professional indemnity.</li>
-          <li>Scalable spending during downturns.</li>
-        </ul>
-      </div>
-
-      <!-- Future Vision -->
-      <h2 class="section-title" style="margin-top: var(--spacing-xxl);">Future Vision (10+ Years)</h2>
-      <div class="mission-box">
-        <p><span class="highlight-goal">The Horizon:</span> Transitioning from an MGA to a fully authorized, grassroots insurer regulated directly by the FCA and PRA, utilizing our own capacity.</p>
-      </div>
-
-      <div class="grid-two">
-        <article class="card">
-          <h3 class="card-title">Growth Levers</h3>
-          <ul class="benefits-list">
-            <li>Portfolio leverage for better insurer terms.</li>
-            <li>Aggressive cost optimization.</li>
-            <li>AI and ML integration for efficiency.</li>
-          </ul>
-        </article>
-         <article class="card">
-          <h3 class="card-title">Integration</h3>
-          <p>Long-term strategy includes vertical integration (controlling more of the supply chain) and horizontal integration (strategic mergers) to strengthen our community offering.</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- UNDERSTANDING FINANCIAL LINES -->
-    <section id="understanding" class="content-section section">
-      <h2 class="section-title">Financial Lines Explained</h2>
-      <p style="text-align: center; max-width: 800px; margin: 0 auto var(--spacing-xl);">Essential coverage protecting businesses and individuals against complex financial risks. Here are the cornerstones of our offering.</p>
-
-      <div class="grid-two">
-        <!-- D&O Card -->
-        <article class="card">
-          <h3 class="card-title">Directors & Officers (D&O)</h3>
-          <p>Protects company officers personally if sued for decisions made in their roles (mismanagement, regulatory breaches).</p>
-
-          <details>
-            <summary>View Real Scenario</summary>
-            <p>A construction firm's client liquidates before payment. The firm closes, and laid-off employees sue the directors personally for lost earnings. D&O covers the directors' defense and damages.</p>
-          </details>
-        </article>
-
-        <!-- PII Card -->
-        <article class="card">
-          <h3 class="card-title">Professional Indemnity (PII)</h3>
-          <p>Covers claims of negligence, errors, or omissions in services provided to clients.</p>
-
-          <details>
-            <summary>View Real Scenario</summary>
-            <p>A consultant's marketing advice leads to regulatory fines for a client. The client sues the consultant for £1M in lost earnings. PII covers the defense and settlement.</p>
-          </details>
-        </article>
-      </div>
-
-      <div class="grid-two" style="margin-top: var(--spacing-lg);">
-        <article class="card">
-          <h3 class="card-title">Corporate Liability (CPL)</h3>
-          <p>Protects the business itself from wrongful acts, regulatory breaches, or shareholder disputes. Often an extension of D&O.</p>
-        </article>
-        <article class="card">
-          <h3 class="card-title">Employment Practices (EPL)</h3>
-          <p>Covers claims from employees regarding discrimination, harassment, or wrongful termination.</p>
-        </article>
-      </div>
-
-      <div class="info-box" style="margin-top: var(--spacing-xl);">
-        <strong>Why It Matters</strong>
-        <p>Financial Lines is a high-growth, high-profit sector essential for UK businesses. Its complexity often leaves clients underserved. We aim to bridge this gap with education and transparent coverage.</p>
-      </div>
-    </section>
-
-    <!-- THE JOURNEY (Founder) -->
-    <section id="founder" class="content-section section">
-      <h2 class="section-title">The Journey & The Team</h2>
-
-      <!-- The "You" Sparkle Box -->
-      <div class="highlight-section">
-        <span class="sparkle" style="top: 15%; left: 10%;">✨</span>
-        <span class="sparkle" style="top: 60%; right: 15%; animation-delay: 1s;">✨</span>
-
-        <h2>You Are The Foundation</h2>
-        <p>The most critical part of this project is <strong>you</strong>. Our purpose is to improve the lives of everyday Brits. By engaging with our journey, you're contributing to the movement. Stay tuned for educational resources.</p>
-      </div>
-
-      <!-- Founder Bio -->
-      <div class="bio-section">
-        <div class="bio-grid">
-          <div class="bio-image-container">
-             <!-- Replace with a real image or keep placeholder -->
-            <img src="https://placehold.co/400x500/1E2A47/2ECC71/png?text=Abdul+Alim" alt="Abdul Alim" class="bio-avatar">
-          </div>
-          <div class="bio-content">
-            <h3 class="card-title">Abdul Alim - Founder & CEO</h3>
-            <p>My dream has always been to build a financial business that gives back. Growing up in Liverpool, studying Accounting & Finance, and working at TSB and Co-op Insurance, I developed a sense of responsibility to use my financial literacy for public good.</p>
-            <p>As a Financial Lines Underwriter at RSA and later Aqueous, I found my calling but grew frustrated with industry constraints that prevented me from fully serving clients. This frustration is the fuel for Grassroots Insurance.</p>
-            <p>I am obsessed with the mechanics of business success and failure, and the intersection of finance and law. I am building the MGA I wish I could have worked for.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Partners -->
-      <div class="grid-two" style="margin-top: var(--spacing-xxl);">
-         <article class="card">
-            <h3 class="card-title">Our Partners</h3>
-            <p><strong>Care Accountancy Chartered Accountants:</strong> Our trusted accounting partners.</p>
-            <a href="https://careaccountancy.co.uk/" target="_blank" class="btn btn-text">Visit Care Accountancy →</a>
-         </article>
-
-         <article class="card">
-            <details>
-                <summary>Our Principal Firm (FCA Regulation)</summary>
-                <p>To operate, we must be regulated by the FCA. We use the Appointed Representative (AR) model, partnering with an established Principal Firm (currently undisclosed) who oversees our compliance. This allows us to trade while we work towards direct FCA authorization.</p>
-            </details>
-         </article>
-      </div>
-
-    </section>
-
-    <!-- STRATEGY -->
-    <section id="strategy" class="content-section section">
-      <h2 class="section-title">Strategic Advantages</h2>
-
-      <div class="grid-two">
-        <article class="card">
-          <h3 class="card-title">Lean & Agile</h3>
-          <p>Single-executive leadership with strategic outsourcing means minimal overhead. This enables direct, expert client communication and rapid decision-making.</p>
-        </article>
-        <article class="card">
-          <h3 class="card-title">Cost Leadership</h3>
-          <p>Our low fixed costs allow us to offer superior terms and lower premiums while remaining profitable, putting pressure on legacy competitors.</p>
-        </article>
-         <article class="card">
-          <h3 class="card-title">Expert Underwriting</h3>
-          <p>Optimized processes focus on comprehensive upfront questioning, reducing information gaps that plague the industry.</p>
-        </article>
-        <article class="card">
-          <h3 class="card-title">Market Gap</h3>
-          <p>The £122bn UK insurance market has 5.5 million businesses. We are uniquely positioned to capture share in the underserved Financial Lines niche.</p>
-        </article>
-      </div>
-
-      <h3 class="section-title" style="font-size: 2rem; margin-top: var(--spacing-xxl);">Unmatched Security</h3>
-      <div class="card">
-         <p>Our security posture is inherently superior. We operate primarily offline using bespoke, internal software. Unlike competitors reliant on cloud access for remote staff, our vulnerability points are minimal, ensuring your data is protected.</p>
-      </div>
-
-    </section>
-
-    <!-- COMMUNITY -->
-    <section id="Community" class="content-section section">
-      <h2 class="section-title">Community Impact</h2>
-      <p style="text-align: center; max-width: 800px; margin: 0 auto var(--spacing-xl);">
-        We started giving back before our first trade. We build free websites for local businesses who need an online presence.
+    <div id="overview" class="content-section active">
+      <div class="goal-text">
+        <span class="highlight-goal">Our Goal</span> is to create a grassroots financial lines MGA with a view of becoming an outright insurer. We will achieve our goals with hard work instead of institutional support; patience instead of leverage; and with the British public at the heart of what we do.
+		  <p>
+        <strong>Grassroots Insurance</strong> is a project to create a new Financial Lines Managing General Agent (MGA) founded on the principles of sustainable growth, ethical underwriting, and community benefit. Our mission is to address unmet demand in the UK’s complex financial lines insurance sector by offering fair, principled, and human-centered coverage.
       </p>
-
-      <div class="info-box">
-        <strong>Project: Big Joe's Cafe (Batley)</strong>
-        <p>We created a free website for Danni at Big Joe's Cafe. They are vital to their community but couldn't afford a web presence. We are now working on our next free community projects.</p>
-      </div>
-
-      <div class="browser-frame">
-        <div class="browser-header">
-          <span class="browser-dot red"></span>
-          <span class="browser-dot yellow"></span>
-          <span class="browser-dot green"></span>
-          <span style="margin-left: auto; font-size: 0.9rem; color: var(--color-text-muted);">batley.shobuz.co.uk/BigJoesCafe</span>
-        </div>
-        <iframe
-          class="browser-content"
-          src="https://batley.shobuz.co.uk/BigJoesCafe"
-          title="Big Joe's Cafe Website">
-        </iframe>
-      </div>
-    </section>
-
-    <!-- GET INVOLVED -->
-    <section id="involved" class="content-section section">
-      <h2 class="section-title">Join The Revolution</h2>
-
-      <div class="card" style="text-align: center;">
-        <h3 class="card-title" style="justify-content: center;">Be Part of the Journey</h3>
-        <p>We are looking for potential clients, broker partners, and supporters who believe in a better way to do insurance.</p>
-        <p><strong>Contact us:</strong></p>
-        <a href="mailto:hello@shobuz.co.uk" class="btn btn-primary" style="margin-top: var(--spacing-md);">
-          Email hello@shobuz.co.uk
-        </a>
-      </div>
-
-      <!-- Updated Download Box with Interaction -->
-      <div class="download-box" id="downloadBox" role="button" tabindex="0">
-        <h3 style="color: var(--color-primary); margin-bottom: 1rem;">📄 Public Business Plan</h3>
-        <p>Download our latest public presentation, including financial projections and market analysis.</p>
-        <a href="Grassroots%20Insurance%20public.docx" download class="btn btn-text" style="margin-top: 1rem;" onclick="event.stopPropagation();">
-          Download Grassroots Insurance public.docx (DOCX)
-        </a>
-      </div>
-
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="footer-section">
       <p>
-        Next Update: <strong>September 29, 2025, at 9:00 AM</strong>.
-        Have questions? <a href="mailto:hello@shobuz.co.uk">hello@shobuz.co.uk</a>.
+        Unlike profit-driven insurers owned by private equity, we are built from the ground up as a <span class="highlight">community first MGA</span>. We aim to become a full-fledged grassroots insurer within 10 years, serving UK businesses and professionals with integrity, clarity, and long-term value.
       </p>
-      <p style="margin-top: var(--spacing-sm);">
-        © 2025 Abdul Alim. All rights reserved. This website respects your privacy and does not use tracking cookies.
+      <p>
+        Our model combines lean operations, deep underwriting expertise, and digital innovation to deliver competitive pricing, faster claims, and exceptional client relationships without sacrificing safety or compliance.</p>
+      </div>
+
+      <h2 class="section-title">What We're Solving</h2>
+
+      <div class="highlight-box">
+        <strong>The Problem</strong>
+        <p>Insurance companies are essential to society. This has made insurers and facilitators extremely powerful. The majority of these are owned by private equity and traded publicly which can incentivise maximising shareholder value over other outcomes.</p>
+        <p>We're seeing unfulfilled demand and client dissatisfaction in the Financial Lines insurance market, compounded by high overheads and inefficiency in competitors.</p>
+      </div>
+
+      <div class="two-column">
+        <div class="column">
+          <strong>What is a Financial Lines MGA?</strong>
+          <p>MGA stands for "Managing General Agent". It's an entity trusted by a larger insurer to underwrite policies.</p>
+          <p>Underwriting is the practice of pricing risk for a premium. Underwriters decide how much is fair to accept a risk on someone else's behalf. In our case, that focus is on insurance.</p>
+          <p>Financial Lines is a type of insurance, which we will discuss more later.</p>
+          <p>So, a Financial Lines MGA is trusted to assess how much a financial risk is worth and offer cover accordingly.</p>
+        </div>
+
+        <div class="column">
+          <strong>What do we mean by Grassroots?</strong>
+          <p>A grassroots business is community-driven and built from the ground up.</p>
+          <p>This business will be started by myself, backed by the King's Trust and our community.</p>
+          <p>We will minimise institutional involvement by:</p>
+          <ul>
+            <li>No equity or options available to private entities or institutions</li>
+            <li>Starting and maintaining minimal leverage</li>
+            <li>Ensuring future stakeholders align with our values</li>
+          </ul>
+          <p>We want insurance with its feet and ears to the ground, bringing it closer to the community. Your underwriters should truly believe in you.</p>
+        </div>
+      </div>
+
+      <div class="benefits-list">
+        <p><strong>This includes:</strong></p>
+        <ul>
+          <li>More clarity on what you're covered for</li>
+          <li>Proactive support to protect your business</li>
+          <li>Free, accessible underwriting information</li>
+          <li>No unfair claim denials or delays</li>
+          <li>Clear, honest language at all times</li>
+          <li>Fairer pricing:
+            <ul style="margin-left: 2rem; margin-top: 0.5rem;">
+              <li>No hidden fees or unclear excesses</li>
+              <li>No inflated prices to maximise profits</li>
+              <li>No arbitrary price hikes</li>
+              <li>No undercutting that leads to unfair practices</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+		
+        <div class="highlight-box">
+        <strong>Current Market Context</strong>
+        <p>The world is becoming more litigious, and the UK is no different. Our clients face uncertainties from all angles and need protection. Greater exposure to risk is followed by stricter regulations - creating both challenges and opportunities for innovative, community-focused insurance providers.</p>
+        <p>Recent events like the 2017 Grenfell tragedy have highlighted how quickly regulatory landscapes can change, creating new risks and opportunities in the insurance market. We're positioned to help businesses navigate these evolving challenges.</p>
+      </div>
+	  
+	  <div class="risk-box">
+      <h3>🛡️ Built to Last</h3>
+      <p>Our business is designed for stability and adaptability:</p>
+      <ul class="risk-list">
+        <li>Minimal market and credit risk due to diversified portfolio.</li>
+        <li>Operational risk kept low via lean structure and automation.</li>
+        <li>5% of revenue ring-fenced for comprehensive professional indemnity insurance.</li>
+        <li>Flexible spending: Actuary fees, software, and marketing can be scaled back in downturns.</li>
+        <li>Long-term tech investments to reduce future costs and increase efficiency.</li>
+      </ul>
+    </div>
+
+      <div class="highlight-box">
+        <strong>Real Life Case Study</strong>
+        <p>USA has "Obamacare", requiring insurers to spend at least 80% of premiums on medical care and quality improvement.</p>
+        <p>UnitedHealthcare has faced lawsuits for underpaying claims while maintaining low premiums, allowing them to win business while failing to fairly support their customers. This has led to serious consequences for people's health and well-being.</p>
+        <p><strong>Sources:</strong><br>
+          <a href="https://www.benefitspro.com/2022/12/29/lawsuit-accuses-unitedhealthcare-group-of-underpaying-benefits-for-out-of-network-care/" target="_blank" rel="noopener">BenefitsPro Article</a><br>
+          <a href="https://hallbenefitslaw.com/class-action-lawsuit-accuses-unitedhealthcare-group-of-underpaying-claims-for-out-of-network-care/" target="_blank" rel="noopener">Hall Benefits Law Article</a><br>
+          <a href="https://www.cms.gov/marketplace/private-health-insurance/medical-loss-ratio" target="_blank" rel="noopener">CMS.gov</a>
+        </p>
+      </div>
+				<h2 class="section-title">Our Future Vision</h2>
+      <div class="goal-text">
+        <span class="highlight-goal">Beyond 5 Years</span> - Our distant 10+ year goal is to create our own grassroots insurance company, transitioning from MGA to full insurer status.
+      </div>
+
+      <div class="two-column">
+        <div class="column">
+          <strong>FCA Direct Regulation</strong>
+          <p>In the future, we will be regulated through the FCA directly, losing our reliance on our Principal Firm. This brings us control and opportunity to expand our business, though it comes with additional responsibilities and audits.</p>
+        </div>
+        <div class="column">
+          <strong>Becoming Our Own Capacity</strong>
+          <p>The key target is to become our own capacity and become an insurer outright. This requires FCA and PRA authorisation. We will select risks most in line with our business strategy and cover part of the capacity ourselves.</p>
+        </div>
+      </div>
+
+      <h3 style="color: #008000; margin-top: 3rem;">Growth Opportunities</h3>
+
+      <div class="benefits-list">
+        <ul>
+          <li><strong>Portfolio Growth Leverage:</strong> As our portfolio grows (e.g., from £10m to £25m), we gain significant leverage to negotiate better commission rates and terms with insurers</li>
+          <li><strong>Financial Optimisation:</strong> Expert accountants will find ways to reduce tax and expenses, uncovering savings and improving cash flow</li>
+          <li><strong>Strategic Marketing:</strong> Cost-effective digital engagement through social media, Google Ads, and influencer partnerships</li>
+          <li><strong>Technology Integration:</strong> Machine learning and large language models will handle daily tasks, generating reports for review and cross-referencing with external data</li>
+          <li><strong>Brokerage Synergies:</strong> Our integrated MGA and brokerage structure offers unique advantages as our client base grows</li>
+        </ul>
+      </div>
+
+      <div class="highlight-box">
+        <strong>Vertical and Horizontal Integration</strong>
+        <p>Our long-term strategy includes both vertical integration (taking control of different stages of our supply chain) and horizontal integration (acquiring or merging with competitors). This will strengthen our market position and create additional value for our community-focused approach.</p>
+      </div>
+
+      <div class="column">
+        <strong>Contingency Planning</strong>
+        <p>Our business is built to withstand various challenges. We're not exposed to typical financial market risks, and our lean operational structure minimises internal risk. We maintain flexibility to reduce spending during economic downturns and commit a percentage of revenue to comprehensive business insurance.</p>
+      </div>
+    </div>
+
+    <div id="understanding" class="content-section">
+      <h2 class="section-title">Understanding Financial Lines Insurance</h2>
+      <p>Financial lines are a category of insurance coverage designed to protect businesses and individuals against specific financial risks. Let's break down the main types:</p>
+
+      <div class="two-column">
+        <div class="column">
+          <strong>Directors and Officers Insurance (D&O)</strong>
+          <p>Protects company "officers" from personal financial loss if they are sued for decisions made in their roles. Coverage usually covers legal fees, settlements, discovery, and damages related to claims of mismanagement, breach of duty, or regulatory violations.</p>
+          <div id="do-example">
+            <p><strong>Real Scenario:</strong> A construction company had a contract with a client. They hire and make purchases based off this contract. The client has financial issues and are forced to liquidate before payment is made. As a result, the insured is forced to close the business down. The employees who have been laid off decide to sue the directors personally for their loss of earnings. D&O insurance would protect the directors in this scenario.</p>
+          </div>
+        </div>
+
+        <div class="column">
+          <strong>Professional Indemnity Insurance (PII)</strong>
+          <p>Protects businesses and professionals from financial losses arising from claims of negligence, errors, omissions, or inadequate services provided to clients. It covers legal fees, settlements, discovery and damages.</p>
+          <div id="pii-example">
+            <p><strong>Real Scenario:</strong> A marketing consultant advises a retail business on an advertising campaign. Due to an error in compliance, the campaign violates advertising regulations, resulting in fines. The customer suffers a loss of earnings and decides to sue the consultant for £1m plus defence costs. PII would cover these costs, preventing the consultant from paying out of pocket.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="two-column">
+        <div class="column">
+          <strong>Corporate Practices Liability (CPL)</strong>
+          <p>Protects businesses from claims related to wrongful corporate activities, including regulatory breaches, compliance failures, unfair competition, and shareholder disputes. Often an extension of D&O Insurance.</p>
+        </div>
+        <div class="column">
+          <strong>Employment Practices Liability (EPL)</strong>
+          <p>Protects businesses from claims related to workplace disputes including wrongful termination, discrimination, harassment, retaliation, and wage disputes. Claimants can include employees, former employees, unions or job applicants.</p>
+        </div>
+      </div>
+
+      <div class="highlight-box">
+        <strong>Why This Matters</strong>
+        <p>Financial Lines insurance offers comprehensive protection, making it essential for nearly all businesses in the UK. As one of the most profitable and high-growth sectors in the industry, it presents significant untapped potential. However, its complexity often leads to it being overlooked by clients and brokers alike.</p>
+        <p><strong>Our mission is to bridge this gap by educating the market and providing businesses with the coverage they need to safeguard against claims that could otherwise lead to financial ruin.</strong></p>
+      </div>
+    </div>
+
+<div id="founder" class="content-section">
+<style>
+  .highlight-section {
+    background: radial-gradient(circle at top left, #fff8e1, #fff3cd);
+    border-radius: 20px;
+    padding: 2rem;
+    margin: 3rem 0;
+    border: 2px solid gold;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+    position: relative;
+    overflow: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #b8860b;
+    text-align: center;
+  }
+
+  .highlight-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+  }
+
+  .highlight-section p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  /* Sparkle animation */
+  .sparkle {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: gold;
+    border-radius: 50%;
+    animation: sparkleAnim 2s infinite;
+  }
+
+  @keyframes sparkleAnim {
+    0%, 100% { transform: translateY(0) scale(1); opacity: 1; }
+    50% { transform: translateY(-10px) scale(1.5); opacity: 0.6; }
+  }
+</style>
+
+<div class="highlight-section">
+  <h2>You ✨</h2>
+  <p>By far the most important piece of the project is <strong>you</strong>.</p>
+  <p>Our entire purpose is to improve the lives of everyday Brits using Financial services and doing so in a sustainable way. Simply visiting our website is an important contribution. We are regularly updating our content and plan to provide more educational material, so be sure to keep learning and check back in!</p>
+
+  <div class="sparkle" style="top:10%; left:20%; animation-delay:0s;"></div>
+  <div class="sparkle" style="top:30%; left:70%; animation-delay:0.5s;"></div>
+  <div class="sparkle" style="top:60%; left:40%; animation-delay:1s;"></div>
+  <div class="sparkle" style="top:80%; left:80%; animation-delay:1.5s;"></div>
+</div>
+
+  <div class="founder-section">
+    <h3>Grassroots Guard Ltd t/a Grassroots Insurance</h3>
+    <h3>Strawberry Homes Limited</h3>
+    <p>Our legal entities. Website is in development.</p>
+  </div>
+
+  <div class="founder-section">
+    <h3>Abdul Alim - Founder & CEO</h3>
+    <p>I grew up in Liverpool studying Accountancy and Finance at the University of Liverpool. It has always been a dream of mine to own my own financial business that improves its community - not just a typical local firm, but something larger that impacts wider society.</p>
+    <p>My working career has been in finance, starting with work experience at a local accountancy firm on Penny Lane. At TSB, I was inspired by the public when working for various branches in Manchester. I learnt to appreciate my financial literacy and felt a sense of responsibility in helping others with my expertise.</p>
+    <p>I first worked in the insurance industry with the Co-operative insurance in 2019 and first worked as a financial lines underwriter at the Royal and Sun Alliance plc. I instantly realised financial lines underwriting was the career that was best suited to me. It rewarded my learning style, tenacity and creativity.</p>
+    <p>I was head hunted by Aqueous in 2023 to be a Professional Indemnity Underwriter. I was convinced by the plan they had for me, the training opportunities and the opportunity to work closely with some of the most experienced underwriters in the industry.</p>
+    <p>In my spare time, I love learning all about finance and companies. What makes businesses a success, why some businesses fail and how macro events affect local businesses. I've more recently grown an obsession with law in relation to the financial world.</p>
+    <p>My experience within the industry has made me realise there is so much unfulfilled demand and dissatisfaction. The constraints of my role meant I could not satisfy the personal responsibility I feel for others. This is why I am starting my own financial lines MGA.</p>
+  </div>
+ 
+  <div class="founder-section">
+    <p><strong> Care Accountancy Chartered Accountants</strong> Our appointed Chartered Accountants careaccountancy.co.uk</p>
+    <p><iframe src="https://careaccountancy.co.uk/" width="100%" height="400" frameborder="0" title="Care Accountancy"></iframe></p>
+  </div>
+
+<div class="founder-section">
+  <h3>Our Principle Firm</h3>
+  <details>
+    <summary> Our Principle Firm will be providing the FCA regulation for us to do our regulated business. We have sourced a principle firm who are undisclosed for the time being due to confidentiality obligations.</summary>
+    <p>
+      Any financial business in the UK must be regulated by the Financial Conduct Authority (FCA). Obtaining FCA approval can take anywhere from six months to a year, with the outcome largely dependent on the strength and clarity of the business plan submitted. The FCA allows certain companies to delegate their regulatory authority through a model known as Appointed Representatives (AR). A company will delegate their authority to their AR; this company is known as the Principle Firm.
+    </p>
+    <p>
+      We have already sourced our Principle Firm who will be offering support beyond just delegated authority. A large part of our regulatory oversight will be assisted by our Principle Firm.
+    </p>
+    <p>
+      In the future, we will be regulated through the FCA directly, losing our reliance on our Principle Firm. This brings us control and opportunity to expand our business. Becoming FCA regulated comes with additional responsibilities and we would be subject to further audits. Therefore, this step will be done when appropriate.
+    </p>
+  </details>
+</div>
+
+</div>
+    
+    <div id="strategy" class="content-section">
+      <h2 class="section-title">Our Strategic Advantages</h2>
+      <div class="two-column">
+        <div class="column">
+          <strong>Lean & Efficient Model</strong>
+          <p>Operating as a single-executive MGA with strategically outsourced functions (accounts, claims, legal), we minimise overheads. This allows for direct client communication, offering immediate, expert engagement and fostering strong relationships.</p>
+        </div>
+        <div class="column">
+          <strong>Cost-Effectiveness</strong>
+          <p>Our grassroots approach and minimal fixed costs provide a significant competitive advantage, enabling us to offer highly competitive terms while maintaining healthy margins.</p>
+        </div>
+      </div>
+
+      <div class="two-column">
+        <div class="column">
+          <strong>Underwriting Expertise</strong>
+          <p>Leveraging extensive underwriting experience, we implement an optimised process focusing on upfront, comprehensive questioning and transparent quoting to mitigate information gaps, a common industry challenge.</p>
+        </div>
+        <div class="column">
+          <strong>Market Opportunity</strong>
+          <p>The UK insurance market is vast (£122 billion), with 5.5 million businesses representing significant untapped potential, particularly in the complex yet vital Financial Lines sector.</p>
+        </div>
+      </div>
+
+      <div class="highlight-box">
+        <strong>Why We'll Win Market Share</strong>
+        <p>We have a much lower starting expense to premium ratio. This means we are able to offer lower premiums and better terms whilst still being profitable. When competitors try to match our terms, they take on risk higher than what their premium justifies.</p>
+      </div>
+
+      <h3 style="color: #008000; margin-top: 3rem;">Security & Data Protection</h3>
+      <div class="column">
+        <strong>Industry-Leading Security</strong>
+        <p>We will have the best security in the industry due to our business structure. Our security framework is designed to far exceed UK data protection regulations and fundamentally cannot be matched by our competitors.</p>
+        <div id="security-details">
+          <p>We prioritise offline operations, keeping critical systems disconnected from the internet whenever possible. Unlike competitors with remote staff requiring cloud access, our operations are handled solely by myself, eliminating the "prisoner's dilemma" of employee data access that larger companies face.</p>
+          <p>Our core software is built from the ground up and designed exclusively for our internal use, operating offline exclusively. This creates significantly fewer vulnerability points than competitors who store all data on clouds or networks.</p>
+        </div>
+      </div>
+    </div>
+
+<div id="Community" class="content-section">
+  <h2 class="section-title">Community</h2>
+  <p>
+    Though we are not trading yet, we decided to make a start in our main goal: to help the community. 
+    We therefore created a website free of charge for a local Cafe: 
+    <a href="https://batley.shobuz.co.uk/BigJoesCafe" target="_blank">Big Joe’s Cafe</a>. 
+    This job was a surprise and well received. Big Joe’s Cafe is named after the founder’s grandad. 
+    The founder, Danni, is a local who has had an exciting life in Batley. 
+    What made me decide this cafe is seeing the importance they had to the community and understanding 
+    that they could not afford a website. We plan to keep this open and provide more free websites 
+    for local businesses and people. We are currently working on the next few free websites.
+  </p>
+
+  <div style="display: flex; justify-content: center; align-items: center; margin: 2rem 0;">
+    <iframe 
+      src="https://batley.shobuz.co.uk/BigJoesCafe" 
+      width="90%" 
+      height="1200" 
+      style="border: none; overflow: auto;">
+    </iframe>
+  </div>
+</div>
+    
+    <div id="involved" class="content-section">
+      <h2 class="section-title">Get Involved</h2>
+      <div class="involvement-box">
+        <h3>Join Our Journey</h3>
+        <p>We'd love for you to get actively involved in building the future of grassroots insurance!</p>
+        <p>Whether you're a potential client, broker, investor, or simply someone who believes in community-driven business, there are opportunities to be part of this revolutionary approach to insurance.</p>
+        <p><strong>To explore opportunities, please email:</strong></p>
+        <p><a href="mailto:hello@shobuz.co.uk" class="email" style="font-size: 1.3rem; font-weight: 700; color: #008000;">hello@shobuz.co.uk</a></p>
+      </div>
+
+      <div class="download-box" onclick="downloadDocument()" role="button" tabindex="0" aria-pressed="false">
+        <p>📄 <strong>Get the latest publicly available Business Plan</strong></p>
+        <p>Click <a href="Grassroots%20Insurance%20public.docx" download>here</a> to download the full latest publicly available presentation with financial projections, operational strategies, and market analysis.</p>
+        <p><a href="Grassroots%20Insurance%20public.docx" download>Grassroots Insurance public.docx</a></p>
+      </div>
+</div>
+	  
+    <div class="footer-section">
+      <p> Our next website update is on the 29th of September 2025 at 9am. We potentially will have some exciting news for you then. In the meantime you can email your burning questions to
+        <a href="mailto:hello@shobuz.co.uk" class="email">hello@shobuz.co.uk</a>
       </p>
-    </footer>
+      <p style="text-align: left; font-size: smaller; margin-top: 12px;"> © 2025 Abdul Alim. All rights reserved. This website does not collect, track or store your data or cookies.</p>
+    </div>
+  </div>
 
-  </div> <!-- /.container -->
-
-  <!-- ==========================================================================
-       14. JAVASCRIPT (Interactions, Animations, Particles)
-       ========================================================================== -->
   <script>
-    // --- Configuration & State ---
-    const CONFIG = {
-      sectionFadeDelay: 300,
-      particleCount: 70,
-      particleColor: getComputedStyle(document.documentElement).getPropertyValue('--color-primary').trim(),
-    };
+function showSection(sectionId, event) {
+  const sections = document.querySelectorAll('.content-section');
+  sections.forEach(sec => sec.classList.remove('active'));
 
-    let particles = [];
-    let canvas, ctx;
+  const buttons = document.querySelectorAll('.nav-btn');
+  buttons.forEach(btn => btn.classList.remove('active'));
 
-    // --- 1. Loading Screen ---
-    window.addEventListener('load', () => {
-      const overlay = document.getElementById('loadingOverlay');
-      setTimeout(() => {
-        overlay.classList.add('hidden');
-        // Initialize animations after load
-        initAnimations();
-      }, 1000);
-    });
+  document.getElementById(sectionId).classList.add('active');
+  event.currentTarget.classList.add('active');
+}
+	  function showSection(sectionId, evt) {
+      const sections = document.querySelectorAll('.content-section');
+      sections.forEach(section => section.classList.remove('active'));
+      const target = document.getElementById(sectionId);
+      if (target) target.classList.add('active');
 
-    // --- 2. Theme Toggling ---
-    const themeToggle = document.getElementById('themeToggle');
-    const rootElement = document.documentElement;
+      const buttons = document.querySelectorAll('.nav-btn');
+      buttons.forEach(btn => btn.classList.remove('active'));
 
-    function toggleTheme() {
-      if (rootElement.classList.contains('theme-dark')) {
-        rootElement.classList.remove('theme-dark');
-        rootElement.classList.add('theme-light');
-        localStorage.setItem('theme', 'light');
+      if (evt && evt.currentTarget) {
+        evt.currentTarget.classList.add('active');
       } else {
-        rootElement.classList.remove('theme-light');
-        rootElement.classList.add('theme-dark');
-        localStorage.setItem('theme', 'dark');
-      }
-      // Update particle color based on theme
-      CONFIG.particleColor = getComputedStyle(document.documentElement).getPropertyValue('--color-primary').trim();
-    }
-
-    // Persist theme selection
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    rootElement.classList.add(`theme-${savedTheme}`);
-    themeToggle.addEventListener('click', toggleTheme);
-
-    // --- 3. Navigation & Section Switching ---
-    const navButtons = document.querySelectorAll('.nav-btn[data-section]');
-    const contentSections = document.querySelectorAll('.content-section');
-
-    navButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        const targetSectionId = button.getAttribute('data-section');
-
-        // Update active button
-        navButtons.forEach(btn => btn.classList.remove('active'));
-        button.classList.add('active');
-
-        // Fade out current section
-        const currentSection = document.querySelector('.content-section.active');
-        if (currentSection) {
-          currentSection.style.opacity = 0;
-          currentSection.style.transform = 'scale(0.98)';
-        }
-
-        // Show new section after delay
-        setTimeout(() => {
-          contentSections.forEach(section => section.classList.remove('active'));
-          const targetSection = document.getElementById(targetSectionId);
-          targetSection.classList.add('active');
-
-          // Trigger reflow for animation
-          void targetSection.offsetWidth;
-
-          targetSection.style.opacity = 1;
-          targetSection.style.transform = 'scale(1)';
-
-          // Re-observe elements in the new section for scroll animations
-          observeElements(targetSection);
-
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }, CONFIG.sectionFadeDelay);
-      });
-    });
-
-    // --- 4. Scroll Animations (Intersection Observer) ---
-    function initAnimations() {
-      const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-      };
-
-      const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            observer.unobserve(entry.target); // Animate only once
-          }
-        });
-      }, observerOptions);
-
-      // Observe all sections and cards
-      document.querySelectorAll('.section, .card, .info-box, .risk-box').forEach(el => {
-        observer.observe(el);
-      });
-
-      // Initial check for elements already in view
-      document.querySelectorAll('.content-section.active .section').forEach(el => {
-          if (el.getBoundingClientRect().top < window.innerHeight) {
-              el.classList.add('is-visible');
-          }
-      });
-    }
-
-    // Helper to observe elements in newly activated sections
-    function observeElements(container) {
-         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if(entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                }
-            });
-         }, { threshold: 0.1 });
-
-         container.querySelectorAll('.card, .info-box, .risk-box').forEach(el => {
-             observer.observe(el);
-         });
-    }
-
-    // --- 5. Canvas Particle Background ---
-    function initParticles() {
-      canvas = document.getElementById('particleCanvas');
-      ctx = canvas.getContext('2d');
-
-      resizeCanvas();
-      createParticles();
-      animateParticles();
-
-      window.addEventListener('resize', resizeCanvas);
-    }
-
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-
-    class Particle {
-      constructor() {
-        this.reset();
-        this.y = Math.random() * canvas.height;
+        const fallback = Array.from(buttons).find(b => b.textContent.trim().toLowerCase().includes(sectionId));
+        if (fallback) fallback.classList.add('active');
       }
 
-      reset() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height + canvas.height; // Start below
-        this.speed = Math.random() * 0.5 + 0.1;
-        this.opacity = Math.random() * 0.5 + 0.1;
-        this.radius = Math.random() * 2 + 1;
-        this.drift = (Math.random() - 0.5) * 0.5;
-      }
-
-      update() {
-        this.y -= this.speed;
-        this.x += this.drift;
-
-        if (this.y < 0) {
-          this.reset();
-          this.y = canvas.height;
-        }
-
-        // Wrap around horizontally
-        if (this.x > canvas.width) this.x = 0;
-        if (this.x < 0) this.x = canvas.width;
-      }
-
-      draw() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = CONFIG.particleColor;
-        ctx.globalAlpha = this.opacity;
-        ctx.fill();
-      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     function createParticles() {
-      particles = [];
-      for (let i = 0; i < CONFIG.particleCount; i++) {
-        particles.push(new Particle());
+      const particlesContainer = document.getElementById('particles');
+      const particleCount = 50;
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 6 + 's';
+        particle.style.animationDuration = (Math.random() * 3 + 6) + 's';
+        particlesContainer.appendChild(particle);
       }
     }
 
-    function animateParticles() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    function animateTitle() {
+      const title = document.querySelector('.header-title');
+      title.style.transform = 'scale(1.2) rotate(360deg)';
+      title.style.color = '#5a8a52';
+      setTimeout(() => {
+        title.style.transform = 'scale(1) rotate(0deg)';
+        title.style.color = '#008000';
+      }, 600);
+    }
 
-      particles.forEach(p => {
-        p.update();
-        p.draw();
+    function downloadDocument() {
+      const downloadBox = document.querySelector('.download-box');
+      downloadBox.style.transform = 'scale(0.95)';
+      setTimeout(() => { downloadBox.style.transform = 'scale(1)'; }, 200);
+    }
+
+    function revealOnScroll() {
+      const elements = document.querySelectorAll('.column, .highlight-box, .benefits-list li');
+      elements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const elementVisible = 150;
+        if (elementTop < window.innerHeight - elementVisible) {
+          element.style.opacity = '1';
+          element.style.transform = 'translateY(0)';
+        }
       });
-
-      ctx.globalAlpha = 1.0;
-      requestAnimationFrame(animateParticles);
     }
 
-    // --- 6. Download Box Interaction ---
-    const downloadBox = document.getElementById('downloadBox');
-    if (downloadBox) {
-        downloadBox.addEventListener('click', function(e) {
-            // The link inside handles the download, this adds the animation.
-            this.style.transform = 'scale(0.97)';
-            setTimeout(() => {
-                this.style.transform = '';
-            }, 150);
+    function addHoverEffects() {
+      const interactiveElements = document.querySelectorAll('.column, .download-box, a, .email');
+      interactiveElements.forEach(element => {
+        element.addEventListener('mouseenter', function() {
+          this.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
         });
+      });
     }
 
-    // Initialize Particles
-    document.addEventListener('DOMContentLoaded', initParticles);
+    document.addEventListener('DOMContentLoaded', function() {
+      createParticles();
+      addHoverEffects();
+      window.addEventListener('scroll', revealOnScroll);
+      revealOnScroll();
 
+      const revealElements = document.querySelectorAll('.benefits-list li');
+      revealElements.forEach((element, index) => {
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(20px)';
+        element.style.transition = `all 0.6s ease ${index * 0.1}s`;
+        setTimeout(() => {
+          const rect = element.getBoundingClientRect();
+          if (rect.top < window.innerHeight) {
+            element.style.opacity = '1';
+            element.style.transform = 'translateY(0)';
+          }
+        }, 100 + index * 60);
+      });
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' && e.target.classList.contains('download-box')) {
+        downloadDocument();
+      }
+    });
+
+    if ('IntersectionObserver' in window) {
+      const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            if (img.dataset && img.dataset.src) {
+              img.src = img.dataset.src;
+              img.classList.remove('lazy');
+            }
+            imageObserver.unobserve(img);
+          }
+        });
+      });
+      document.querySelectorAll('img[data-src]').forEach(img => { imageObserver.observe(img); });
+    }
   </script>
-
 </body>
 </html>
