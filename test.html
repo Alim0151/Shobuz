@@ -467,7 +467,29 @@ function showSection(sectionId, event) {
       });
       document.querySelectorAll('img[data-src]').forEach(img => { imageObserver.observe(img); });
     }
+    // Toggle content sections
+    function showSection(sectionId, event) {
+      // Hide all sections
+      const sections = document.querySelectorAll(".content-section");
+      sections.forEach(sec => sec.classList.remove("active"));
+
+      // Remove "active" from all buttons
+      const buttons = document.querySelectorAll(".nav-btn");
+      buttons.forEach(btn => btn.classList.remove("active"));
+
+      // Show the selected section
+      const target = document.getElementById(sectionId);
+      if (target) target.classList.add("active");
+
+      // Highlight the clicked button
+      if (event) event.currentTarget.classList.add("active");
+    }
+
+    // Optional: Set default section on load
+    document.addEventListener("DOMContentLoaded", () => {
+      showSection("overview"); // "overview" will be the default visible one
+    });
+
   </script>
 </body>
 </html>
-/*Utilities*/
