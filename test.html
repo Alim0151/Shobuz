@@ -37,77 +37,13 @@
     GOV.UK company 16680312
   </a>.
 </div>
-	<div class="announcement" style="animation: announcementIn 0.8s ease-out forwards; padding: 1.5rem; background: linear-gradient(135deg, #4b6f44, #2f4f28); border-radius: 15px; margin: 2rem 0;">
-  <p>
+	<div class="announcement hero-card" 
+     style="animation: announcementIn 0.8s ease-out forwards; padding: 1.5rem; background: linear-gradient(135deg, #4b6f44, #2f4f28); border-radius: 15px; margin: 2rem 0;">
     Exciting news! We are ecstatic to announce a new member of the team: <strong>Harry Hayward</strong>! Harry is a consultant and graduate of the University of Exeter.<br><br>
     Harry brings a lot of talent and competency to the project at this early stage. His tenacity, personal passions and core beliefs are perfect attributes for him to be immediately impactful and a great long term decision.<br><br>
     Harry is relatively early in his professional career and was not part of the insurance industry. His potential is exciting and he will have fresh ideas based on real world experience.<br><br>
     Harry's role will be a director and shareholder. In the near future he will be in charge of the tech, long term operations, finances and long term goals. This allows me to shift more attention to the day to day tasks, networking, market research and current operations.
-  </p>
 </div>
-
-<!-- TEST HERO: Paste this block into your page for an isolated check -->
-<style>
-  /* Specific test scope to avoid clashes with site CSS */
-  .test-hero-root { --t-primary:#2d5016; --t-primary-light:#4a7c2e; --t-accent:#8bc34a; --t-glass: rgba(255,255,255,0.04); --t-glass-border: rgba(255,255,255,0.08); }
-
-  .test-hero-root .hero-card-test {
-    background: var(--t-glass);
-    backdrop-filter: blur(16px);
-    border: 1px solid var(--t-glass-border);
-    border-radius: 20px;
-    padding: 2rem;
-    position: relative;
-    overflow: hidden;
-    margin: 2rem auto;
-    max-width: 980px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.35);
-  }
-
-  .test-hero-root .hero-card-test::before {
-    content: "";
-    position: absolute;
-    top: -40%;
-    right: -40%;
-    width: 200%; height: 200%;
-    background: radial-gradient(circle, rgba(139,195,74,0.08) 0%, transparent 60%);
-    animation: test-rotate 24s linear infinite;
-    z-index: 0;
-    pointer-events: none;
-  }
-  @keyframes test-rotate { from{transform:rotate(0)} to{transform:rotate(360deg)} }
-
-  .test-hero-root .hero-title-test {
-    font-size: 1.9rem;
-    font-weight: 700;
-    color: var(--t-accent);
-    margin-bottom: 0.6rem;
-    z-index: 1;
-    position: relative;
-  }
-  .test-hero-root .hero-text-test { color: rgba(255,255,255,0.95); line-height: 1.7; margin-bottom: 0.8rem; z-index:1; position:relative; }
-
-  .test-hero-root .hero-actions-test { display:flex; gap:0.6rem; z-index:1; position:relative; flex-wrap:wrap; margin-top:0.8rem; }
-  .test-hero-root .btn-test { padding:0.55rem 0.95rem; border-radius:10px; font-weight:600; text-decoration:none; display:inline-block; }
-  .test-hero-root .btn-primary-test { background: linear-gradient(135deg,var(--t-primary-light),var(--t-primary)); color:#fff; border:1px solid rgba(255,255,255,0.03); }
-  .test-hero-root .btn-ghost-test { background:transparent; color:var(--t-accent); border:1px solid rgba(139,195,74,0.12); }
-
-  /* ensure it wins over other rules (temporary for testing) */
-  .test-hero-root .hero-card-test,
-  .test-hero-root .hero-card-test * { all: unset; }
-  /* now reapply only what's needed (keeps the test isolated) */
-  .test-hero-root .hero-card-test { all: initial; box-sizing: border-box; }
-
-  /* re-declare the above essential styles again so the isolation works */
-  .test-hero-root .hero-card-test { background:var(--t-glass); backdrop-filter: blur(16px); border:1px solid var(--t-glass-border); border-radius:20px; padding:2rem; position:relative; overflow:hidden; margin:2rem auto; max-width:980px; box-shadow:0 20px 40px rgba(0,0,0,0.35); }
-  .test-hero-root .hero-card-test::before { content:""; position:absolute; top:-40%; right:-40%; width:200%; height:200%; background:radial-gradient(circle, rgba(139,195,74,0.08) 0%, transparent 60%); animation:test-rotate 24s linear infinite; z-index:0; pointer-events:none; }
-  .test-hero-root .hero-title-test { font-size:1.9rem; font-weight:700; color:var(--t-accent); margin-bottom:0.6rem; z-index:1; position:relative; }
-  .test-hero-root .hero-text-test { color:rgba(255,255,255,0.95); line-height:1.7; margin-bottom:0.8rem; z-index:1; position:relative; }
-  .test-hero-root .hero-actions-test { display:flex; gap:0.6rem; z-index:1; position:relative; flex-wrap:wrap; margin-top:0.8rem; }
-  .test-hero-root .btn-test { padding:0.55rem 0.95rem; border-radius:10px; font-weight:600; text-decoration:none; display:inline-block; }
-  .test-hero-root .btn-primary-test { background: linear-gradient(135deg,var(--t-primary-light),var(--t-primary)); color:#fff; border:1px solid rgba(255,255,255,0.03); }
-  .test-hero-root .btn-ghost-test { background:transparent; color:var(--t-accent); border:1px solid rgba(139,195,74,0.12); }
-</style>
 
 <div class="test-hero-root">
   <section class="hero-card-test" aria-labelledby="test-hero-title">
