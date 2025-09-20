@@ -35,7 +35,7 @@ max-width: 90vw;
     .header-logo img { width: 300px; height: auto; transition: transform 0.3s ease; filter: drop-shadow(0 0 10px rgba(75, 111, 68, 0.3)); }
     .header-logo img:hover { transform: scale(1.1); }
 
-    .nav-section { text-align: center; margin-bottom: 3rem; animation: fadeInUp 1s ease-out 0.2s both; }
+    .nav-section { text-align: left; margin-bottom: 3rem; animation: fadeInUp 1s ease-out 0.2s both; }
 
     @keyframes shimmer { 0% { left: -40%; } 100% { left: 140%; } }
     @keyframes announcementIn { from { transform: translateY(-10px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
@@ -148,7 +148,7 @@ max-width: 90vw;
     .highlight-goal { color: #008000; font-weight: 700; font-size: 1.4rem; display: inline-block; animation: pulse 2s infinite; }
     @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
 
-    .section-title { font-size: 2rem; color: #008000; margin: 3rem 0 2rem 0; text-align: center; font-weight: 700; position: relative; }
+    .section-title { font-size: 2rem; color: #008000; margin: 3rem 0 2rem 0; text-align: left; font-weight: 700; position: relative; }
     .section-title::after { content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 60px; height: 3px; background: linear-gradient(90deg, #008000, #5a8a52); border-radius: 2px; }
 
     .two-column { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; margin: 3rem 0; animation: fadeInUp 1s ease-out 0.9s both; }
@@ -187,7 +187,7 @@ max-width: 90vw;
       background: linear-gradient(135deg, rgba(75, 111, 68, 0.15), rgba(75, 111, 68, 0.05));
       border: 2px solid #008000;
       border-radius: 20px;
-      text-align: center;
+      text-align: left;
       position: relative;
       overflow: hidden;
       animation: fadeInUp 1s ease-out 1.5s both;
@@ -229,18 +229,18 @@ max-width: 90vw;
       border-radius: 20px;
       padding: 2rem;
       margin: 3rem 0;
-      text-align: center;
+      text-align: left;
       transition: all 0.3s ease;
     }
     .involvement-box:hover { transform: scale(1.02); box-shadow: 0 15px 30px rgba(75, 111, 68, 0.2); }
     .involvement-box h3 { color: #008000; font-size: 1.8rem; margin-bottom: 1rem; }
 
-    .footer-section { margin-top: 4rem; padding: 2rem; text-align: center; background: linear-gradient(135deg, rgba(75, 111, 68, 0.1), transparent); border-radius: 15px; animation: fadeInUp 1s ease-out 2.1s both; }
+    .footer-section { margin-top: 4rem; padding: 2rem; text-align: left; background: linear-gradient(135deg, rgba(75, 111, 68, 0.1), transparent); border-radius: 15px; animation: fadeInUp 1s ease-out 2.1s both; }
     .footer-section i { font-style: italic; color: #cccccc; font-size: 1.1rem; }
 
     @media (max-width: 768px) {
       .container { padding: 1rem; }
-      .header-container { flex-direction: column; text-align: center; gap: 1rem; }
+      .header-container { flex-direction: column; text-align: left; gap: 1rem; }
       .header-logo img { width: 270px; }
       .two-column { grid-template-columns: 1fr; }
       .column { padding: 1.5rem; }
@@ -337,7 +337,7 @@ max-width: 90vw;
     overflow: hidden;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #b8860b;
-    text-align: center;
+    text-align: left;
   }
 
   .highlight-section h2 {
