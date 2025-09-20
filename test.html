@@ -46,26 +46,80 @@
   </p>
 </div>
 
-		<section class="hero-card hero-card--with-cta" aria-labelledby="hero-title">
-  <div class="hero-card__inner">
-    <h2 id="hero-title" class="hero-title">Building Insurance Differently</h2>
+<!-- TEST HERO: Paste this block into your page for an isolated check -->
+<style>
+  /* Specific test scope to avoid clashes with site CSS */
+  .test-hero-root { --t-primary:#2d5016; --t-primary-light:#4a7c2e; --t-accent:#8bc34a; --t-glass: rgba(255,255,255,0.04); --t-glass-border: rgba(255,255,255,0.08); }
 
-    <p class="hero-text">
-      <strong>Grassroots Insurance™</strong> is revolutionising UK financial lines insurance through community-focused underwriting,
-      ethical practices, and sustainable growth. We're creating an MGA that puts people before profits,
-      transparency before complexity, and long-term relationships before short-term gains.
-    </p>
+  .test-hero-root .hero-card-test {
+    background: var(--t-glass);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--t-glass-border);
+    border-radius: 20px;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    margin: 2rem auto;
+    max-width: 980px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+  }
 
-    <p class="hero-text" style="margin-top:1.25rem;">
-      Our mission: provide fair, principled, and human-centred coverage for UK businesses and professionals,
-      with a 10-year vision to become a full-fledged grassroots insurer.
-    </p>
+  .test-hero-root .hero-card-test::before {
+    content: "";
+    position: absolute;
+    top: -40%;
+    right: -40%;
+    width: 200%; height: 200%;
+    background: radial-gradient(circle, rgba(139,195,74,0.08) 0%, transparent 60%);
+    animation: test-rotate 24s linear infinite;
+    z-index: 0;
+    pointer-events: none;
+  }
+  @keyframes test-rotate { from{transform:rotate(0)} to{transform:rotate(360deg)} }
 
-    <div class="hero-actions" aria-hidden="false">
-      <a href="#get-involved" class="btn btn--primary">Get involved</a>
-      <a href="#about" class="btn btn--ghost" aria-label="Learn more about Grassroots Insurance">Learn more</a>
+  .test-hero-root .hero-title-test {
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: var(--t-accent);
+    margin-bottom: 0.6rem;
+    z-index: 1;
+    position: relative;
+  }
+  .test-hero-root .hero-text-test { color: rgba(255,255,255,0.95); line-height: 1.7; margin-bottom: 0.8rem; z-index:1; position:relative; }
+
+  .test-hero-root .hero-actions-test { display:flex; gap:0.6rem; z-index:1; position:relative; flex-wrap:wrap; margin-top:0.8rem; }
+  .test-hero-root .btn-test { padding:0.55rem 0.95rem; border-radius:10px; font-weight:600; text-decoration:none; display:inline-block; }
+  .test-hero-root .btn-primary-test { background: linear-gradient(135deg,var(--t-primary-light),var(--t-primary)); color:#fff; border:1px solid rgba(255,255,255,0.03); }
+  .test-hero-root .btn-ghost-test { background:transparent; color:var(--t-accent); border:1px solid rgba(139,195,74,0.12); }
+
+  /* ensure it wins over other rules (temporary for testing) */
+  .test-hero-root .hero-card-test,
+  .test-hero-root .hero-card-test * { all: unset; }
+  /* now reapply only what's needed (keeps the test isolated) */
+  .test-hero-root .hero-card-test { all: initial; box-sizing: border-box; }
+
+  /* re-declare the above essential styles again so the isolation works */
+  .test-hero-root .hero-card-test { background:var(--t-glass); backdrop-filter: blur(16px); border:1px solid var(--t-glass-border); border-radius:20px; padding:2rem; position:relative; overflow:hidden; margin:2rem auto; max-width:980px; box-shadow:0 20px 40px rgba(0,0,0,0.35); }
+  .test-hero-root .hero-card-test::before { content:""; position:absolute; top:-40%; right:-40%; width:200%; height:200%; background:radial-gradient(circle, rgba(139,195,74,0.08) 0%, transparent 60%); animation:test-rotate 24s linear infinite; z-index:0; pointer-events:none; }
+  .test-hero-root .hero-title-test { font-size:1.9rem; font-weight:700; color:var(--t-accent); margin-bottom:0.6rem; z-index:1; position:relative; }
+  .test-hero-root .hero-text-test { color:rgba(255,255,255,0.95); line-height:1.7; margin-bottom:0.8rem; z-index:1; position:relative; }
+  .test-hero-root .hero-actions-test { display:flex; gap:0.6rem; z-index:1; position:relative; flex-wrap:wrap; margin-top:0.8rem; }
+  .test-hero-root .btn-test { padding:0.55rem 0.95rem; border-radius:10px; font-weight:600; text-decoration:none; display:inline-block; }
+  .test-hero-root .btn-primary-test { background: linear-gradient(135deg,var(--t-primary-light),var(--t-primary)); color:#fff; border:1px solid rgba(255,255,255,0.03); }
+  .test-hero-root .btn-ghost-test { background:transparent; color:var(--t-accent); border:1px solid rgba(139,195,74,0.12); }
+</style>
+
+<div class="test-hero-root">
+  <section class="hero-card-test" aria-labelledby="test-hero-title">
+    <h2 id="test-hero-title" class="hero-title-test">Building Insurance Differently</h2>
+    <p class="hero-text-test"><strong>Grassroots Insurance™</strong> is revolutionising UK financial lines insurance through community-focused underwriting, ethical practices, and sustainable growth.</p>
+    <p class="hero-text-test">Our mission: provide fair, principled, human-centred coverage with a 10-year vision to become a full-fledged grassroots insurer.</p>
+    <div class="hero-actions-test">
+      <a href="#get-involved" class="btn-test btn-primary-test">Get involved</a>
+      <a href="#about" class="btn-test btn-ghost-test">Learn more</a>
     </div>
-  </div>
+  </section>
+</div>
 			
 <div class="nav-buttons">
   <button class="nav-btn active" onclick="showSection('overview', event)">Overview</button>
