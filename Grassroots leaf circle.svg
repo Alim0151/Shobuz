@@ -1,76 +1,61 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
-  <g id="logo-base">
-  <path d="M110.6 32.017c-17.38.147-42.175.293-55.1.325L32 32.4v128.8h116.992l-7.79-7.798-7.791-7.798-42.805-.102L47.8 145.4V48.2l31.8-.242c17.49-.133 42.019-.268 54.508-.3l22.709-.058-.709-7.9.492-7.9-7.2-.025c-3.96-.014-21.42.095-38.8.242" fill="#043433"/>
-  <path d="M205.875 81.058c-.151.151-.273 25.76-.27 56.909l.005 56.633 7.522 7.5c4.136 4.125 7.645 7.5 7.796 7.5s.229-28.935.173-64.3L221 81l-7.425-.109c-4.083-.059-7.548.016-7.7.167" fill="#043433"/>
-  <path d="M122.407 89.1l-22.192.107 7.788 7.796 7.789 7.797h14.461c12.818 0 14.489.072 14.704.633.134.348.243 6.963.243 14.7V134.2l7.8 7.79 7.8 7.791V89.324l-5.7-.26c-3.135-.144-6.78-.218-8.1-.166s-12.387.143-24.593.202" fill="#043433"/>
-  <path d="M262.267 124.267c-.147.146-.267 28.705-.267 63.463v63.197l7.57 7.536c4.163 4.146 7.673 7.537 7.8 7.537s.23-31.95.23-71v-71h-7.533c-4.144 0-7.654.12-7.8.267" fill="#043433"/>
-  <path d="M318.4 237.901v69.501l26.701 26.7c14.686 14.684 26.915 26.698 27.176 26.698.354 0 .484-2.72.51-10.675l.035-10.676-19.211-19.238-19.211-19.238V168.4h-16z" fill="#043433"/>
-  <path d="M54.2 183.065a9425 9425 0 0 1 25.809 25.099 15929 15929 0 0 0 20.809 20.227c12.684 12.305 16.203 15.731 35.391 34.46a5001 5001 0 0 0 15 14.574 6923 6923 0 0 1 28.6 27.822c10.486 10.251 20.813 20.283 24.8 24.093l3.2 3.057 112.383.003-7.792-7.8-7.792-7.8h-90.344l-5.432-5.325a5833 5833 0 0 0-19.967-19.478c-.989-.923-5.405-5.215-9.813-9.538a6114 6114 0 0 0-20.8-20.25 11350 11350 0 0 1-19.586-19.021c-21.963-21.416-30.956-30.166-43.583-42.41L71.8 178.018l-22.8.007z" fill="#043433"/>
-</g>
-<defs>
-  <path id="circlePath" d="M 50,50 m -45,0 a 60,50 0 1,1 90,0 45,45 0 1,1 -93,0" transform="translate(100,100)"/>
-  <path id="bottomCirclePath" d="M50,55 m-55,-60 a80,80 0 1,0 110,0" transform="translate(100,100)"/>
-
-  <!-- Skinnier diagonal shine gradient -->
-  <linearGradient id="shineGradient" x1="0" y1="0" x2="1" y2="0.3" gradientUnits="objectBoundingBox">
-    <stop offset="0" stop-color="white" stop-opacity="0"/>
-    <stop offset="0.48" stop-color="white" stop-opacity="0.9"/>
-    <stop offset="0.52" stop-color="white" stop-opacity="0.9"/>
-    <stop offset="1" stop-color="white" stop-opacity="0"/>
-    <animateTransform attributeName="gradientTransform" type="translate"
-      values="-1,0; 2,0; -1,0" dur="6s" repeatCount="indefinite"/>
-  </linearGradient>
-
-  <!-- Mask for shine -->
-  <mask id="shineMask">
-    <rect width="100%" height="100%" fill="url(#shineGradient)" />
-  </mask>
-</defs>
-
-<!-- Outline + text draw (looping ping-pong) -->
-<g id="logo-outline" fill="none" stroke="white" stroke-width="2" stroke-dasharray="2000" stroke-dashoffset="2000">
-  <path d="M50 0Q25 25 0 0q0 80 50 100 50-20 50-100-25 25-50 0" transform="translate(100,100)"/>
-  
-  <text font-family="Inter, Arial, sans-serif" font-weight="700" font-size="35" text-anchor="middle"
-        fill="none" stroke="white" stroke-width="0.5" stroke-dasharray="200" stroke-dashoffset="200">
-    <textPath href="#circlePath" startOffset="32%" textLength="170">Grassroots</textPath>
-    <animate attributeName="stroke-dashoffset"
-             values="200;0;200" keyTimes="0;0.5;1"
-             dur="6s" repeatCount="indefinite"/>
-    <animate attributeName="fill" values="white;#008000;white" keyTimes="0;0.5;1"
-             dur="6s" repeatCount="indefinite"/>
-  </text>
-
-  <text font-family="Inter, Arial, sans-serif" font-weight="700" font-size="35" text-anchor="middle"
-        fill="none" stroke="white" stroke-width="0.5" stroke-dasharray="250" stroke-dashoffset="250">
-    <textPath href="#bottomCirclePath" startOffset="50%" textLength="200">Insurance</textPath>
-    <animate attributeName="stroke-dashoffset"
-             values="250;0;250" keyTimes="0;0.5;1"
-             dur="6s" begin="1s" repeatCount="indefinite"/>
-    <animate attributeName="fill" values="white;#008000;white" keyTimes="0;0.5;1"
-             dur="6s" begin="1s" repeatCount="indefinite"/>
-  </text>
-</g>
-
-<!-- Base logo (green, visible from start) -->
-<g id="logo-base" fill="#008000">
-  <path d="M50 0Q25 25 0 0q0 80 50 100 50-20 50-100-25 25-50 0" transform="translate(100,100)"/>
-  <text font-family="Inter, Arial, sans-serif" font-weight="700" font-size="35" text-anchor="middle">
-    <textPath href="#circlePath" startOffset="32%" textLength="170">Grassroots</textPath>
-  </text>
-  <text font-family="Inter, Arial, sans-serif" font-weight="700" font-size="35" text-anchor="middle">
-    <textPath href="#bottomCirclePath" startOffset="50%" textLength="200">Insurance</textPath>
-  </text>
-</g>
-
-<!-- Global shine overlay -->
-<g id="logo-shine" mask="url(#shineMask)" fill="white">
-  <path d="M50 0Q25 25 0 0q0 80 50 100 50-20 50-100-25 25-50 0" transform="translate(100,100)"/>
-  <text font-family="Inter, Arial, sans-serif" font-weight="700" font-size="35" text-anchor="middle">
-    <textPath href="#circlePath" startOffset="32%" textLength="170">Grassroots</textPath>
-  </text>
-  <text font-family="Inter, Arial, sans-serif" font-weight="700" font-size="35" text-anchor="middle">
-    <textPath href="#bottomCirclePath" startOffset="50%" textLength="200">Insurance</textPath>
-  </text>
-</g>
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1000"> 
+  <defs> 
+    <path id="circlePath" d="M 50,50 m -45,0 a 60,50 0 1,1 90,0 45,45 0 1,1 -93,0" transform="translate(100,100)"/> 
+    <path id="bottomCirclePath" d="M50,55 m-55,-60 a80,80 0 1,0 110,0" transform="translate(100,100)"/> 
+    <linearGradient id="shineGradient" x1="0" y1="0" x2="1" y2="0.3" gradientUnits="objectBoundingBox"> 
+      <stop offset="0" stop-color="white" stop-opacity="0"/> 
+      <stop offset="0.48" stop-color="white" stop-opacity="0.9"/> 
+      <stop offset="0.52" stop-color="white" stop-opacity="0.9"/> 
+      <stop offset="1" stop-color="white" stop-opacity="0"/> 
+      <animateTransform attributeName="gradientTransform" type="translate" values="-1,0; 2,0; -1,0" dur="6s" repeatCount="indefinite"/> 
+    </linearGradient> 
+    <mask id="combinedShapeMask"> 
+      <text font-family="Inter, Arial, sans-serif" font-weight="700" font-size="35" text-anchor="middle" fill="white"> 
+        <textPath href="#circlePath" startOffset="32%" textLength="170">Grassroots</textPath> 
+      </text> 
+      <text font-family="Inter, Arial, sans-serif" font-weight="700" font-size="35" text-anchor="middle" fill="white"> 
+        <textPath href="#bottomCirclePath" startOffset="50%" textLength="200">Insurance</textPath> 
+      </text> 
+      <g fill="white" transform="scale(0.21) translate(500, 500)"> 
+        <path d="M110.6 32.017c-17.38.147-42.175.293-55.1.325L32 32.4v128.8h116.992l-7.79-7.798-7.791-7.798-42.805-.102L47.8 145.4V48.2l31.8-.242c17.49-.133 42.019-.268 54.508-.3l22.709-.058-.709-7.9.492-7.9-7.2-.025c-3.96-.014-21.42.095-38.8.242" /> 
+        <path d="M205.875 81.058c-.151.151-.273 25.76-.27 56.909l.005 56.633 7.522 7.5c4.136 4.125 7.645 7.5 7.796 7.5s.229-28.935.173-64.3L221 81l-7.425-.109c-4.083-.059-7.548.016-7.7.167" /> 
+        <path d="M122.407 89.1l-22.192.107 7.788 7.796 7.789 7.797h14.461c12.818 0 14.489.072 14.704.633.134.348.243 6.963.243 14.7V134.2l7.8 7.79 7.8 7.791V89.324l-5.7-.26c-3.135-.144-6.78-.218-8.1-.166s-12.387.143-24.593.202" /> 
+        <path d="M262.267 124.267c-.147.146-.267 28.705-.267 63.463v63.197l7.57 7.536c4.163 4.146 7.673 7.537 7.8 7.537s.23-31.95.23-71v-71h-7.533c-4.144 0-7.654.12-7.8.267" /> 
+        <path d="M318.4 237.901v69.501l26.701 26.7c14.686 14.684 26.915 26.698 27.176 26.698.354 0 .484-2.72.51-10.675l.035-10.676-19.211-19.238-19.211-19.238V168.4h-16z" /> 
+        <path d="M54.2 183.065a9425 9425 0 0 1 25.809 25.099 15929 15929 0 0 0 20.809 20.227c12.684 12.305 16.203 15.731 35.391 34.46a5001 5001 0 0 0 15 14.574 6923 6923 0 0 1 28.6 27.822c10.486 10.251 20.813 20.283 24.8 24.093l3.2 3.057 112.383.003-7.792-7.8-7.792-7.8h-90.344l-5.432-5.325a5833 5833 0 0 0-19.967-19.478c-.989-.923-5.405-5.215-9.813-9.538a6114 6114 0 0 0-20.8-20.25 11350 11350 0 0 1-19.586-19.021c-21.963-21.416-30.956-30.166-43.583-42.41L71.8 178.018l-22.8.007z" /> 
+      </g> 
+    </mask> 
+  </defs> 
+  <g transform="scale(3) translate(0, 0)"> 
+    <g id="original" transform="scale(0.21) translate(500, 500)"> 
+      <path d="M110.6 32.017c-17.38.147-42.175.293-55.1.325L32 32.4v128.8h116.992l-7.79-7.798-7.791-7.798-42.805-.102L47.8 145.4V48.2l31.8-.242c17.49-.133 42.019-.268 54.508-.3l22.709-.058-.709-7.9.492-7.9-7.2-.025c-3.96-.014-21.42.095-38.8.242" fill="#043433"/> 
+      <path d="M205.875 81.058c-.151.151-.273 25.76-.27 56.909l.005 56.633 7.522 7.5c4.136 4.125 7.645 7.5 7.796 7.5s.229-28.935.173-64.3L221 81l-7.425-.109c-4.083-.059-7.548.016-7.7.167" fill="#043433"/> 
+      <path d="M122.407 89.1l-22.192.107 7.788 7.796 7.789 7.797h14.461c12.818 0 14.489.072 14.704.633.134.348.243 6.963.243 14.7V134.2l7.8 7.79 7.8 7.791V89.324l-5.7-.26c-3.135-.144-6.78-.218-8.1-.166s-12.387.143-24.593.202" fill="#043433"/> 
+      <path d="M262.267 124.267c-.147.146-.267 28.705-.267 63.463v63.197l7.57 7.536c4.163 4.146 7.673 7.537 7.8 7.537s.23-31.95.23-71v-71h-7.533c-4.144 0-7.654.12-7.8.267" fill="#043433"/> 
+      <path d="M318.4 237.901v69.501l26.701 26.7c14.686 14.684 26.915 26.698 27.176 26.698.354 0 .484-2.72.51-10.675l.035-10.676-19.211-19.238-19.211-19.238V168.4h-16z" fill="#043433"/> 
+      <path d="M54.2 183.065a9425 9425 0 0 1 25.809 25.099 15929 15929 0 0 0 20.809 20.227c12.684 12.305 16.203 15.731 35.391 34.46a5001 5001 0 0 0 15 14.574 6923 6923 0 0 1 28.6 27.822c10.486 10.251 20.813 20.283 24.8 24.093l3.2 3.057 112.383.003-7.792-7.8-7.792-7.8h-90.344l-5.432-5.325a5833 5833 0 0 0-19.967-19.478c-.989-.923-5.405-5.215-9.813-9.538a6114 6114 0 0 0-20.8-20.25 11350 11350 0 0 1-19.586-19.021c-21.963-21.416-30.956-30.166-43.583-42.41L71.8 178.018l-22.8.007z" fill="#043433"/> 
+    </g> 
+    <g id="logo-animations"> 
+      <g stroke="white" stroke-width="2" stroke-dasharray="2000" stroke-dashoffset="2000" transform="scale(0.21) translate(500, 500)" fill="none"> 
+        <path d="M110.6 32.017c-17.38.147-42.175.293-55.1.325L32 32.4v128.8h116.992l-7.79-7.798-7.791-7.798-42.805-.102L47.8 145.4V48.2l31.8-.242c17.49-.133 42.019-.268 54.508-.3l22.709-.058-.709-7.9.492-7.9-7.2-.025c-3.96-.014-21.42.095-38.8.242" /> 
+        <path d="M205.875 81.058c-.151.151-.273 25.76-.27 56.909l.005 56.633 7.522 7.5c4.136 4.125 7.645 7.5 7.796 7.5s.229-28.935.173-64.3L221 81l-7.425-.109c-4.083-.059-7.548.016-7.7.167" /> 
+        <path d="M122.407 89.1l-22.192.107 7.788 7.796 7.789 7.797h14.461c12.818 0 14.489.072 14.704.633.134.348.243 6.963.243 14.7V134.2l7.8 7.79 7.8 7.791V89.324l-5.7-.26c-3.135-.144-6.78-.218-8.1-.166s-12.387.143-24.593.202" /> 
+        <path d="M262.267 124.267c-.147.146-.267 28.705-.267 63.463v63.197l7.57 7.536c4.163 4.146 7.673 7.537 7.8 7.537s.23-31.95.23-71v-71h-7.533c-4.144 0-7.654.12-7.8.267" /> 
+        <path d="M318.4 237.901v69.501l26.701 26.7c14.686 14.684 26.915 26.698 27.176 26.698.354 0 .484-2.72.51-10.675l.035-10.676-19.211-19.238-19.211-19.238V168.4h-16z" /> 
+        <path d="M54.2 183.065a9425 9425 0 0 1 25.809 25.099 15929 15929 0 0 0 20.809 20.227c12.684 12.305 16.203 15.731 35.391 34.46a5001 5001 0 0 0 15 14.574 6923 6923 0 0 1 28.6 27.822c10.486 10.251 20.813 20.283 24.8 24.093l3.2 3.057 112.383.003-7.792-7.8-7.792-7.8h-90.344l-5.432-5.325a5833 5833 0 0 0-19.967-19.478c-.989-.923-5.405-5.215-9.813-9.538a6114 6114 0 0 0-20.8-20.25 11350 11350 0 0 1-19.586-19.021c-21.963-21.416-30.956-30.166-43.583-42.41L71.8 178.018l-22.8.007z" /> 
+        <animate attributeName="stroke-dashoffset" values="2000;0;2000" keyTimes="0;0.5;1" dur="6s" repeatCount="indefinite"/> 
+      </g> 
+      <text font-family="Inter, Arial, sans-serif" font-weight="700" font-size="35" text-anchor="middle" fill="#043433" stroke="white" stroke-width="0.42" stroke-dasharray="200" stroke-dashoffset="200"> 
+        <textPath href="#circlePath" startOffset="32%" textLength="170">Grassroots</textPath> 
+        <animate attributeName="stroke-dashoffset" values="200;0;200" keyTimes="0;0.5;1" dur="6s" repeatCount="indefinite"/> 
+      </text> 
+      <text font-family="Inter, Arial, sans-serif" font-weight="700" font-size="35" text-anchor="middle" fill="#043433" stroke="white" stroke-width="0.42" stroke-dasharray="250" stroke-dashoffset="250"> 
+        <textPath href="#bottomCirclePath" startOffset="50%" textLength="200">Insurance</textPath> 
+        <animate attributeName="stroke-dashoffset" values="250;0;250" keyTimes="0;0.5;1" dur="6s" repeatCount="indefinite"/> 
+      </text> 
+    </g> 
+    <g id="logo-shine" mask="url(#combinedShapeMask)"> 
+      <rect x="0" y="0" width="400" height="400" fill="url(#shineGradient)" /> 
+    </g> 
+  </g> 
 </svg>
