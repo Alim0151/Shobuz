@@ -39,10 +39,10 @@
     </g>
 
     <!-- Text -->
-    <text font-family="Inter, Arial, sans-serif" font-weight="700" font-size="35" text-anchor="middle" fill="#043433" stroke="white" stroke-width="0.1">
+    <text font-family="Inter, Arial, sans-serif" font-weight="700" font-size="35" text-anchor="middle" fill="#043433" stroke="white" stroke-width="0.2">
       <textPath href="#circlePath" startOffset="32%" textLength="170">Grassroots</textPath>
     </text>
-    <text font-family="Inter, Arial, sans-serif" font-weight="700" font-size="35" text-anchor="middle" fill="#043433" stroke="white" stroke-width="0.1">
+    <text font-family="Inter, Arial, sans-serif" font-weight="700" font-size="35" text-anchor="middle" fill="#043433" stroke="white" stroke-width="0.2">
       <textPath href="#bottomCirclePath" startOffset="50%" textLength="200">Insurance</textPath>
     </text>
 
