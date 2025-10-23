@@ -10,18 +10,25 @@
 
   <link rel="stylesheet" href="style1.css">
   <style>
-    /* Fix logo placement */
+    /* Fix logo placement inside masthead */
+    .masthead {
+      position: relative;
+    }
+
     .header-logo {
-      display: flex;
-      justify-content: center;
-      align-items: flex-start; /* higher up */
-      margin-top: 2rem; /* adjust as needed */
+      position: absolute;
+      top: 10%; /* adjust to move higher/lower */
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      z-index: 10; /* ensure it's above parallax layers */
     }
 
     .header-logo img {
-      max-width: 200px; /* proportional size */
-      width: 20%; /* responsive */
+      max-width: 200px; /* maximum size */
+      width: 20vw; /* responsive */
       height: auto;
+      display: block;
     }
   </style>
 </head>
@@ -62,7 +69,7 @@
       <div class="parallax-layer parallax-grass" data-depth="0.90"></div>
       <div class="parallax-layer parallax-overlay" data-depth="1.00"></div>
 
-      <!-- PNG/JPG image layers for the Firewatch look (place these images in the same folder) -->
+      <!-- PNG/JPG image layers -->
       <div class="fw-layer fw-layer-0" data-depth="0.08" aria-hidden="true"></div>
       <div class="fw-layer fw-layer-1" data-depth="0.12" aria-hidden="true"></div>
       <div class="fw-layer fw-layer-2" data-depth="0.18" aria-hidden="true"></div>
