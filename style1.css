@@ -140,9 +140,9 @@ nav a.nav-link:hover, nav a.nav-link.active { color: var(--primary-2); border-bo
   z-index: 25;
 }
 .header-logo img {
-  width: 35vw;      /* scales with viewport width */
-  max-width: 500px; /* very big on large screens */
-  min-width: 180px; /* don’t shrink too much on mobile */
+  width: 35vw;
+  max-width: 500px;
+  min-width: 180px;
   height: auto;
   display: block;
   filter: drop-shadow(0 0 12px rgba(255,179,71,0.15));
@@ -162,9 +162,21 @@ nav a.nav-link:hover, nav a.nav-link.active { color: var(--primary-2); border-bo
 @keyframes float { 0% { transform: translateY(100vh) rotate(0deg); opacity:0; } 10% { opacity:0.6; } 90% { opacity:0.6; } 100% { transform: translateY(-100vh) rotate(360deg); opacity:0; } }
 
 /* =========================
-   HERO CARD (glass etc) — from user CSS
+   HERO CARD (glass etc)
    ========================= */
-.hero-card { /* ... keep your previous hero-card CSS intact ... */ }
+.hero-card {
+  background: var(--glass);
+  backdrop-filter: blur(14px);
+  border-radius: 20px;
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow);
+  padding: 2rem;
+  max-width: 900px;
+  margin: 3rem auto;
+  color: var(--white);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.hero-card:hover { transform: translateY(-6px); box-shadow: 0 15px 40px rgba(0,0,0,0.45); }
 
 /* =========================
    SECTIONS / CONTENT
@@ -173,15 +185,13 @@ main { position:relative; z-index:100; background: transparent; }
 section { padding: 5vw 0; min-height: 60vh; width:100%; box-sizing:border-box; scroll-margin-top:84px; opacity:0; transform: translateY(40px); transition: all .6s ease; }
 section.visible { opacity:1; transform:none; }
 
-/* Keep all other content styles (announcement, columns, highlights, risk-box, footer, timeline, etc.) intact from your CSS */
-
 /* =========================
    RESPONSIVE
    ========================= */
 @media (max-width: 900px) {
   .container { padding: 1rem; }
   .header-container { flex-direction: column; text-align: left; gap: 1rem; }
-  .header-logo img { width: 45vw; max-width: 400px; } /* scale better for tablets */
+  .header-logo img { width: 45vw; max-width: 400px; }
   .two-column { grid-template-columns: 1fr; }
   .column { padding: 1.5rem; }
   .nav-buttons { flex-direction: column; align-items: center; }
@@ -192,5 +202,5 @@ section.visible { opacity:1; transform:none; }
   nav { height:52px; }
   .fw-subtitle { font-size:1.05rem; }
   .section-title { font-size:1.4rem; }
-  .header-logo img { width: 60vw; max-width: 350px; } /* mobile logo */
+  .header-logo img { width: 60vw; max-width: 350px; }
 }
