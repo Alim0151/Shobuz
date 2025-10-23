@@ -9,6 +9,21 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style1.css">
+  <style>
+    /* Fix logo placement */
+    .header-logo {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start; /* higher up */
+      margin-top: 2rem; /* adjust as needed */
+    }
+
+    .header-logo img {
+      max-width: 200px; /* proportional size */
+      width: 20%; /* responsive */
+      height: auto;
+    }
+  </style>
 </head>
 <body>
   <!-- Loading -->
@@ -63,6 +78,7 @@
       <div class="header-container">
         <div class="header-logo" aria-hidden="false">
           <img src="Grassroots leaf circle.svg" alt="Grassroots Insurance Logo" />
+        </div>
       </div>
     </div>
   </header>
