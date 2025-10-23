@@ -134,7 +134,7 @@ nav a.nav-link:hover, nav a.nav-link.active { color: var(--primary-2); border-bo
 /* ==== FIXED LOGO ==== */
 .header-logo {
   position: absolute;
-  top: 12%; /* Move higher on the masthead */
+  top: 80px; /* Adjusted to a fixed pixel value to ensure placement just below the 64px tall nav bar */
   left: 50%;
   transform: translateX(-50%);
   z-index: 25;
