@@ -134,19 +134,21 @@ nav a.nav-link:hover, nav a.nav-link.active { color: var(--primary-2); border-bo
 /* ==== FIXED LOGO ==== */
 .header-logo {
   position: absolute;
-  top: 0;
+  top: 12%; /* Move higher on the masthead */
   left: 50%;
   transform: translateX(-50%);
   z-index: 25;
+  transition: transform 0.3s ease, top 0.3s ease;
 }
+
 .header-logo img {
-  width: 35vw;
-  max-width: 500px;
-  min-width: 180px;
+  width: 35vw;        /* scales with viewport */
+  max-width: 500px;   /* prevents it from being too big */
+  min-width: 180px;   /* keeps it readable on tiny screens */
   height: auto;
   display: block;
   filter: drop-shadow(0 0 12px rgba(255,179,71,0.15));
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, width 0.3s ease;
 }
 
 /* Titles */
