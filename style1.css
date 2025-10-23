@@ -134,7 +134,7 @@ nav a.nav-link:hover, nav a.nav-link.active { color: var(--primary-2); border-bo
 /* ==== FIXED LOGO ==== */
 .header-logo {
   position: absolute;
-  top: 2%;
+  top: 0;
   left: 50%;
   transform: translateX(-50%);
   z-index: 25;
