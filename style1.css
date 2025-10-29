@@ -108,7 +108,7 @@ nav a.nav-link:hover, nav a.nav-link.active { color: var(--primary-2); border-bo
 .fw-layer-6 { z-index:19; background-image: url('Firewatch green 7A.png'); }
 
 /* overlay for readability above layers */
-.masthead .overlay-dark { position:absolute; inset:0; background: linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.42)); z-index:20; pointer-events:none; }
+.masthead .overlay-dark { position:absolute; inset:0; background: linear-gradient(180deg, rgba(0,0,0,0.1), rgba(0,0,0,0.1)); z-index:20; pointer-events:none; }
 
 /* masthead content */
 .masthead-content { position: relative; z-index:25; width:100%; max-width:1200px; margin:0 auto; padding:3rem 2rem; display:flex; flex-direction:column; align-items:center; text-align:center; }
@@ -118,8 +118,7 @@ nav a.nav-link:hover, nav a.nav-link.active { color: var(--primary-2); border-bo
 
 /* ==== FIXED LOGO ==== */
 .header-logo {
-  position: relative; /* Ensure it respects z-index if needed */
-  z-index: 25;
+  z-index: 0;
   margin-bottom: 2rem; /* Add space below the logo */
   transition: transform 0.3s ease;
 }
