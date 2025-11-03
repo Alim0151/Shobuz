@@ -192,3 +192,36 @@ section.visible { opacity:1; transform:none; }
   .section-title { font-size:1.4rem; }
   .header-logo img { width: 60vw; max-width: 350px; }
 }
+/* =========================
+   CARD FUNCTION - FROSTED GLASS
+   ========================= */
+.frosted-card {
+  /* Translucent Background with Black Tint (25% black) */
+  /* This uses rgba: red, green, blue, alpha (opacity). */
+  /* A 25% black tint means 75% transparency (alpha: 0.75) from the black. */
+  /* Or if you want the *content* to be visible through a black overlay: */
+  background-color: rgba(0, 0, 0, 0.25); /* 25% opaque black tint */
+
+  /* Frosted Glass Effect */
+  backdrop-filter: blur(10px); /* Adjust the blur strength as desired */
+  -webkit-backdrop-filter: blur(10px); /* For Safari support */
+
+  /* Rounded Edges */
+  border-radius: 15px; /* Adjust the radius to your preference */
+
+  /* Light Shadow */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Horizontal, Vertical, Blur, Color with opacity */
+
+  /* Optional: Padding for content inside the card */
+  padding: 20px 25px;
+
+  /* Optional: A subtle border to enhance the glass effect */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Very light white border */
+
+  /* Optional: Max-width and margin for common usage */
+  max-width: 600px; /* Example max width */
+  margin: 2rem auto; /* Center the card horizontally on the page */
+
+  /* Optional: Text color for content within the card, assuming dark background */
+  color: var(--white); /* Using your defined white variable */
+}
