@@ -10,45 +10,45 @@
   --muted-white: rgba(245,245,245,0.93);
   --glass: rgba(255, 255, 255, 0.03);
   --glass-strong: rgba(255, 255, 255, 0.05);
-  --glass-border: rgba(255, 255, 255, 0.07);
+  --glass-border: rgba(255, 255, 0.07);
   --shadow: 0 12px 30px rgba(0,0,0,0.35);
-  --fw-dark: #2d1b13;
+  --fw-dark: #263933; /* used as darker background */
+  --max-width: 1200px;
 }
 
 /* =========================
-   RESET & BASE
-   ========================= */
+   RESET & BASE
+   ========================= */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behaviour: smooth; }
 body {
-  font-family: 'Inter', Arial, sans-serif;
-  font-size: 1.125rem;
-  font-weight: 400;
-  line-height: 1.6;
-  /* --- FIX: Changed background color from #000000 to #263933 --- */
-  background: #263933; 
-  color: var(--white);
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.6;
+  background: var(--fw-dark);
+  color: var(--white);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* link defaults */
-a, a:link, a:visited { color: var(--primary); text-decoration: none; transition: all .2s ease; }
-a:hover { color: var(--primary-2); text-shadow: 0 0 5px rgba(90,138,82,0.15); }
+a, a:link, a:visited { color: var(--primary); text-decoration: none; transition: all .18s ease; }
+a:hover, a:focus { color: var(--primary-2); text-shadow: 0 0 5px rgba(90,138,82,0.12); outline: none; }
 
 /* container */
-.container { max-width: 1200px; margin: 0 auto; padding: 2rem; position: relative; z-index: 1; }
+.container { max-width: var(--max-width); margin: 0 auto; padding: 2rem; position: relative; z-index: 1; }
 
 /* =========================
    LOADING OVERLAY
    ========================= */
 .loading-overlay {
-  position: fixed; top:0; left:0; width:100%; height:100%; background:#000; display:flex; align-items:center; justify-content:center; z-index:1000;
+  position: fixed; top:0; left:0; width:100%; height:100%; background:#000; display:flex; align-items:center; justify-content:center; z-index:10000;
   animation: fadeOut 0.5s ease-out 2s forwards;
 }
 .loading-spinner {
-  width:50px; height:50px; border-radius:50%; border:3px solid rgba(75,111,68,0.3); border-top-color: var(--primary); animation: spin 1s linear infinite;
+  width:50px; height:50px; border-radius:50%; border:3px solid rgba(75,111,68,0.25); border-top-color: var(--primary); animation: spin 1s linear infinite;
 }
 @keyframes spin { to { transform: rotate(360deg); } }
 @keyframes fadeOut { to { opacity:0; visibility:hidden; } }
@@ -59,48 +59,50 @@ a:hover { color: var(--primary-2); text-shadow: 0 0 5px rgba(90,138,82,0.15); }
 nav {
   position: fixed; left:0; right:0; top:0; height:64px; z-index:1200; display:flex; align-items:center; justify-content:center;
   background: rgba(0,0,0,0.45); backdrop-filter: blur(8px); box-shadow: 0 4px 18px rgba(0,0,0,0.45);
+  padding: 0 1rem;
 }
-nav ul { display:flex; gap:1.25rem; align-items:center; padding:0 1rem; list-style:none; }
+nav ul { display:flex; gap:1.25rem; align-items:center; list-style:none; }
 nav li { display:inline-block; }
 nav a.nav-link {
-  color: var(--white); font-weight:700; text-transform:uppercase; letter-spacing:0.12em; font-size:0.9rem;
-  padding: .35rem .2rem; border-bottom:2px solid transparent; transition:color .18s, border-color .18s, transform .12s;
+  color: var(--white); font-weight:700; text-transform:uppercase; letter-spacing:0.12em; font-size:0.85rem;
+  padding: .5rem .5rem; border-bottom:2px solid transparent; transition:color .18s, border-color .18s, transform .12s;
+  border-radius:4px;
 }
 nav a.nav-link:hover, nav a.nav-link.active { color: var(--primary-2); border-bottom:2px solid var(--primary-2); transform: translateY(-2px); }
+nav a.nav-link:focus { box-shadow: 0 0 0 3px rgba(80,150,80,0.12); }
 
-/* nav button */
+/* nav button group (if used elsewhere) */
 .nav-buttons { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-bottom: 1rem; }
 .nav-btn {
-  padding: .8rem 1.2rem; border-radius: 25px; font-weight:600; cursor:pointer; display:inline-block; text-align:center;
+  padding: .6rem 1.1rem; border-radius: 25px; font-weight:600; cursor:pointer; display:inline-block; text-align:center;
   transition: transform .18s, box-shadow .18s, background .18s;
-}
-.nav-btn {
-  background: linear-gradient(135deg, rgba(75,111,68,0.12), rgba(75,111,68,0.06));
-  border: 1px solid rgba(75,111,68,0.18);
+  background: linear-gradient(135deg, rgba(75,111,68,0.08), rgba(75,111,68,0.04));
+  border: 1px solid rgba(75,111,68,0.12);
   color: var(--primary);
 }
-.nav-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(75,111,68,0.12); }
+.nav-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(75,111,68,0.08); }
 .nav-btn.active { background: linear-gradient(135deg, var(--primary), var(--primary-2)); color: white; border-color: rgba(0,0,0,0.12); }
 
 /* =========================
    MASTHEAD + PARALLAX LAYERS
    ========================= */
 .masthead {
-  position: relative; width:100vw; min-height:100vh; display:flex; align-items:center; justify-content:center; margin-top:64px; overflow:hidden;
+  position: relative; width:100vw; min-height:78vh; display:flex; align-items:center; justify-content:center; margin-top:64px; overflow:hidden;
   background: linear-gradient(to top, var(--fw-dark), rgba(0,0,0,0));
 }
 
-/* Parallax layers */
+/* Parallax container */
 .parallax-container { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; overflow:hidden; z-index:1; }
-.parallax-layer { position:absolute; left:0; top:0; width:100%; height:100%; will-change:transform; background-position:center bottom; background-size:cover; }
-.parallax-sky { z-index:2; background: linear-gradient(to top, rgba(226,88,34,0.18), rgba(255,217,102,0.18)); }
-.parallax-sun { z-index:3; background: radial-gradient(circle at 60% 30%, var(--gold-2) 0%, rgba(255,217,102,0.35) 60%, transparent 80%); opacity:.85; mix-blend-mode:screen; }
-.parallax-mountains-back, .parallax-mountains-mid, .parallax-mountains-front { opacity:.75; }
-.parallax-trees-back, .parallax-trees-mid, .parallax-trees-front { background-repeat: repeat-x; background-position: bottom; }
-.parallax-overlay { z-index:12; background: linear-gradient(to top, rgba(0,0,0,0.6), transparent 80%); pointer-events:none; }
 
-/* Firewatch layers */
-.fw-layer { position:absolute; left:0; top:0; width:100%; height:100%; background-position:center bottom; background-size:cover; will-change:transform; pointer-events:none; opacity:0.98; }
+/* Parallax generic layer styles */
+.parallax-layer { position:absolute; left:0; top:0; width:100%; height:100%; will-change:transform; background-position:center bottom; background-size:cover; }
+.parallax-sky { z-index:2; background: linear-gradient(to top, rgba(226,88,34,0.08), rgba(255,217,102,0.06)); }
+.parallax-sun { z-index:3; background: radial-gradient(circle at 60% 30%, var(--gold-2) 0%, rgba(255,217,102,0.12) 60%, transparent 80%); opacity:.85; mix-blend-mode:screen; }
+.parallax-mountains-back, .parallax-mountains-mid, .parallax-mountains-front { opacity:.85; }
+.parallax-trees-back, .parallax-trees-mid, .parallax-trees-front { background-repeat: repeat-x; background-position: bottom; }
+
+/* Firewatch layers (kept as-is referencing the PNGs) */
+.fw-layer { position:absolute; left:0; top:0; width:100%; height:100%; background-position:center bottom; background-size:cover; will-change:transform; pointer-events:none; opacity:0.99; }
 .fw-layer-0 { z-index:13; background-image: url('Firewatch greenA.jpg'); }
 .fw-layer-1 { z-index:14; background-image: url('Firewatch green 2A.png'); }
 .fw-layer-2 { z-index:15; background-image: url('Firewatch green 3A.png'); }
@@ -110,46 +112,27 @@ nav a.nav-link:hover, nav a.nav-link.active { color: var(--primary-2); border-bo
 .fw-layer-6 { z-index:19; background-image: url('Firewatch green 7A.png'); }
 
 /* overlay for readability above layers */
-.masthead .overlay-dark { position:absolute; inset:0; background: linear-gradient(180deg, rgba(0,0,0,0.1), rgba(0,0,0,0.1)); z-index:20; pointer-events:none; }
+.masthead .overlay-dark { position:absolute; inset:0; background: linear-gradient(180deg, rgba(0,0,0,0.28), rgba(0,0,0,0.12)); z-index:20; pointer-events:none; }
 
 /* masthead content */
-.masthead-content { position: relative; z-index:25; width:100%; max-width:1200px; margin:0 auto; padding:3rem 2rem; display:flex; flex-direction:column; align-items:center; text-align:center; }
+.masthead-content { position: relative; z-index:25; width:100%; max-width:var(--max-width); margin:0 auto; padding:3rem 2rem; display:flex; flex-direction:column; align-items:center; text-align:center; }
 
-/* Header container - I recommend keeping this but note it handles surrounding content */
-.header-container { display:flex; gap:2rem; align-items:center; justify-content:space-between; width:100%; max-width:1200px; margin-bottom:1rem; animation: slideInDown 1s ease-out; }
-
-/* ==== FIXED LOGO ==== */
+/* Header wrapper & logo */
+.header-logo-wrapper { width:100%; display:flex; justify-content:center; align-items:center; margin-bottom:2.5rem; }
 .header-logo {
-  z-index: 0;
-  margin-bottom: 2rem; /* Add space below the logo */
-  transition: transform 0.3s ease;
-  /* --- FIX 1: Add margin auto to horizontally center a block-level element --- */
-  /* This assumes .header-logo is a block-level element. */
-  /* Since it's inside a flex container (.header-container) with space-between, */
-  /* you might need to adjust the flex behavior of .header-container or its siblings */
-  /* if other elements are present. */
-  /* If the logo is the *only* item in its parent, you can use: */
-  margin-left: auto;
-  margin-right: auto;
+  z-index: 26; transition: transform 0.3s ease;
+}
+.header-logo img {
+  width: clamp(160px, 34vw, 500px); /* responsive sizing */
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  filter: drop-shadow(0 8px 18px rgba(0,0,0,0.45));
+  transition: transform 0.3s ease, width 0.3s ease;
 }
 
-.header-logo img {
-  width: 35vw; /* scales with viewport */
-  max-width: 500px; /* prevents it from being too big */
-  min-width: 180px; /* keeps it readable on tiny screens */
-  height: auto;
-  /* --- FIX 2: An image is an inline element, so 'display: block' makes it a block. */
-  display: block;
-  /* --- FIX 3: With display: block, margin: auto will center it within its parent. --- */
-  margin-left: auto;
-  margin-right: auto;
-  filter: drop-shadow(0 0 12px rgba(255,179,71,0.15));
-  transition: transform 0.3s ease, width 0.3s ease;
-
-/* Titles */
-.header-title { max-width: 48vw; filter: drop-shadow(0 0 20px rgba(255,255,255,0.18)); transition: transform .25s; cursor:pointer; }
-.header-title:hover { transform: scale(1.04); }
-.fw-subtitle { font-size:1.35rem; color: var(--gold); letter-spacing:0.12em; margin-top:.75rem; font-weight:700; }
+/* subtitle */
+.fw-subtitle { font-size:1.15rem; color: var(--gold); letter-spacing:0.12em; margin-top:.5rem; font-weight:700; display:block; }
 
 /* =========================
    HERO CARD (glass etc)
@@ -157,12 +140,12 @@ nav a.nav-link:hover, nav a.nav-link.active { color: var(--primary-2); border-bo
 .hero-card {
   background: var(--glass);
   backdrop-filter: blur(14px);
-  border-radius: 20px;
+  border-radius: 16px;
   border: 1px solid var(--glass-border);
   box-shadow: var(--shadow);
-  padding: 2rem;
+  padding: 1.6rem;
   max-width: 900px;
-  margin: 3rem auto;
+  margin: 1.8rem auto;
   color: var(--white);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -172,58 +155,85 @@ nav a.nav-link:hover, nav a.nav-link.active { color: var(--primary-2); border-bo
    SECTIONS / CONTENT
    ========================= */
 main { position:relative; z-index:100; background: transparent; }
-section { padding: 5vw 0; min-height: 60vh; width:100%; box-sizing:border-box; scroll-margin-top:84px; opacity:0; transform: translateY(40px); transition: all .6s ease; }
+section { padding: 4.5vw 0; min-height: 40vh; width:100%; box-sizing:border-box; scroll-margin-top:84px; opacity:0; transform: translateY(40px); transition: all .6s ease; }
 section.visible { opacity:1; transform:none; }
+
+/* headings and text helpers */
+.section-title {
+  font-size: clamp(1.25rem, 2.2vw, 2rem);
+  margin: 1.25rem 0;
+  color: var(--white);
+  text-align:left;
+}
+.highlight-goal { display:inline-block; font-weight:700; background: rgba(255,255,255,0.03); padding:6px 10px; border-radius:8px; margin-bottom:0.6rem; }
+
+/* two column layout using grid */
+.two-column { display:grid; grid-template-columns: repeat(2, 1fr); gap:1.25rem; margin-top:1rem; align-items:start; }
+.column { padding: 1rem; }
+
+/* frosted card (re-usable) */
+.frosted-card {
+  background-color: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  padding: 18px;
+  border: 1px solid rgba(255,255,255,0.06);
+  color: var(--white);
+  margin-bottom: 1rem;
+}
+
+/* highlight / risk boxes */
+.highlight-box, .risk-box, .goal-text, .founder-section, .highlight-section, .involvement-box {
+  margin-top: 1rem;
+}
+
+/* founder / card lists */
+.founder-section { padding: 12px; }
+
+/* download box */
+.download-box {
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+  padding: 1rem 1.25rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.04);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.download-box:focus, .download-box:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.28); }
+
+/* lists */
+.risk-list, ul { margin-top: 0.5rem; margin-left: 1.1rem; line-height:1.5; }
+ul ul { margin-left: 1rem; }
+
+/* iframe responsiveness */
+iframe { max-width: 100%; border: none; border-radius: 8px; background: #fff; }
+
+/* footer */
+.footer-section { padding: 2rem 1rem; text-align:center; color: rgba(255,255,255,0.9); background: transparent; margin-top: 1.25rem; }
 
 /* =========================
    RESPONSIVE
    ========================= */
-@media (max-width: 900px) {
-  .container { padding: 1rem; }
-  .header-container { flex-direction: column; text-align: left; gap: 1rem; }
-  .header-logo img { width: 45vw; max-width: 400px; }
+@media (max-width: 1100px) {
   .two-column { grid-template-columns: 1fr; }
-  .column { padding: 1.5rem; }
-  .nav-buttons { flex-direction: column; align-items: center; }
-  .nav-btn { width: 200px; text-align: center; }
-  .timeline-content { width: 100%; }
+  .container { padding: 1.25rem; }
 }
-@media (max-width:520px) {
+@media (max-width: 900px) {
+  .header-logo img { width: clamp(140px, 45vw, 420px); }
+  nav { height:56px; }
+  .masthead { min-height:70vh; margin-top:56px; }
+}
+@media (max-width: 520px) {
   nav { height:52px; }
   .fw-subtitle { font-size:1.05rem; }
-  .section-title { font-size:1.4rem; }
-  .header-logo img { width: 60vw; max-width: 350px; }
+  .section-title { font-size:1.25rem; }
+  .header-logo img { width: clamp(120px, 60vw, 350px); }
+  .container { padding: 0.85rem; }
 }
-/* =========================
-   CARD FUNCTION - FROSTED GLASS
-   ========================= */
-.frosted-card {
-  /* Translucent Background with Black Tint (25% black) */
-  /* This uses rgba: red, green, blue, alpha (opacity). */
-  /* A 25% black tint means 75% transparency (alpha: 0.75) from the black. */
-  /* Or if you want the *content* to be visible through a black overlay: */
-  background-color: rgba(0, 0, 0, 0.25); /* 25% opaque black tint */
 
-  /* Frosted Glass Effect */
-  backdrop-filter: blur(10px); /* Adjust the blur strength as desired */
-  -webkit-backdrop-filter: blur(10px); /* For Safari support */
-
-  /* Rounded Edges */
-  border-radius: 15px; /* Adjust the radius to your preference */
-
-  /* Light Shadow */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Horizontal, Vertical, Blur, Color with opacity */
-
-  /* Optional: Padding for content inside the card */
-  padding: 20px 25px;
-
-  /* Optional: A subtle border to enhance the glass effect */
-  border: 1px solid rgba(255, 255, 255, 0.1); /* Very light white border */
-
-  /* Optional: Max-width and margin for common usage */
-  max-width: 600px; /* Example max width */
-  margin: 2rem auto; /* Center the card horizontally on the page */
-
-  /* Optional: Text color for content within the card, assuming dark background */
-  color: var(--white); /* Using your defined white variable */
-}
+/* small utilities */
+.text-centre { text-align:center; }
+.hidden { display:none !important; }
