@@ -16,20 +16,22 @@
 }
 
 /* =========================
-   RESET & BASE
-   ========================= */
+   RESET & BASE
+   ========================= */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behaviour: smooth; }
 body {
-  font-family: 'Inter', Arial, sans-serif;
-  font-size: 1.125rem;
-  font-weight: 400;
-  line-height: 1.6;
-  background: #000000;
-  color: var(--white);
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1.6;
+  /* --- FIX: Changed background color from #000000 to #263933 --- */
+  background: #263933; 
+  color: var(--white);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
 /* link defaults */
 a, a:link, a:visited { color: var(--primary); text-decoration: none; transition: all .2s ease; }
