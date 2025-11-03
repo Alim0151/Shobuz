@@ -1,408 +1,393 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <link rel="stylesheet" href="style1.css">
+  <link rel="stylesheet" href="style1.css">
 </head>
 <body>
-  <!-- Loading -->
-  <div class="loading-overlay" aria-hidden="true">
-    <div class="loading-spinner" role="status" aria-label="Loading"></div>
-  </div>
+    <div class="loading-overlay" aria-hidden="true">
+    <div class="loading-spinner" role="status" aria-label="Loading"></div>
+  </div>
 
-  <nav role="navigation" aria-label="Main navigation">
-    <ul>
-      <li><a class="nav-link active" href="#overview">Overview</a></li>
-      <li><a class="nav-link sparkle-btn" href="#founder">You, Us & Supporters</a></li>
-      <li><a class="nav-link" href="#understanding">Financial Lines</a></li>
-      <li><a class="nav-link" href="#Community">Community</a></li>
-      <li><a class="nav-link" href="#strategy">Strategy</a></li>
-      <li><a class="nav-link" href="#involved">Get Involved</a></li>
-    </ul>
-  </nav>
+  <nav role="navigation" aria-label="Main navigation">
+    <ul>
+      <li><a class="nav-link active" href="#overview">Overview</a></li>
+      <li><a class="nav-link sparkle-btn" href="#founder">You, Us & Supporters</a></li>
+      <li><a class="nav-link" href="#understanding">Financial Lines</a></li>
+      <li><a class="nav-link" href="#Community">Community</a></li>
+      <li><a class="nav-link" href="#strategy">Strategy</a></li>
+      <li><a class="nav-link" href="#involved">Get Involved</a></li>
+    </ul>
+  </nav>
 
-  <!-- Masthead -->
-  <header class="masthead" id="top" role="banner" aria-label="Masthead with parallax">
-    <div class="parallax-container" aria-hidden="true">
-      <!-- SVG-style layers -->
-      <div class="parallax-layer parallax-sky" data-depth="0.05"></div>
-      <div class="parallax-layer parallax-sun" data-depth="0.10"></div>
-      <div class="parallax-layer parallax-mountains-back" data-depth="0.15"></div>
-      <div class="parallax-layer parallax-mountains-mid" data-depth="0.22"></div>
-      <div class="parallax-layer parallax-mountains-front" data-depth="0.28"></div>
-      <div class="parallax-layer parallax-trees-back" data-depth="0.35"></div>
-      <div class="parallax-layer parallax-trees-mid" data-depth="0.45"></div>
-      <div class="parallax-layer parallax-trees-front" data-depth="0.60"></div>
-      <div class="parallax-layer parallax-bushes" data-depth="0.75"></div>
-      <div class="parallax-layer parallax-grass" data-depth="0.90"></div>
-      <div class="parallax-layer parallax-overlay" data-depth="1.00"></div>
+    <header class="masthead" id="top" role="banner" aria-label="Masthead with parallax">
+    <div class="parallax-container" aria-hidden="true">
+            <div class="parallax-layer parallax-sky" data-depth="0.05"></div>
+      <div class="parallax-layer parallax-sun" data-depth="0.10"></div>
+      <div class="parallax-layer parallax-mountains-back" data-depth="0.15"></div>
+      <div class="parallax-layer parallax-mountains-mid" data-depth="0.22"></div>
+      <div class="parallax-layer parallax-mountains-front" data-depth="0.28"></div>
+      <div class="parallax-layer parallax-trees-back" data-depth="0.35"></div>
+      <div class="parallax-layer parallax-trees-mid" data-depth="0.45"></div>
+      <div class="parallax-layer parallax-trees-front" data-depth="0.60"></div>
+      <div class="parallax-layer parallax-bushes" data-depth="0.75"></div>
+      <div class="parallax-layer parallax-grass" data-depth="0.90"></div>
+      <div class="parallax-layer parallax-overlay" data-depth="1.00"></div>
 
-      <!-- PNG/JPG image layers -->
-      <div class="fw-layer fw-layer-0" data-depth="0.08" aria-hidden="true"></div>
-      <div class="fw-layer fw-layer-1" data-depth="0.12" aria-hidden="true"></div>
-      <div class="fw-layer fw-layer-2" data-depth="0.18" aria-hidden="true"></div>
-      <div class="fw-layer fw-layer-3" data-depth="0.26" aria-hidden="true"></div>
-      <div class="fw-layer fw-layer-4" data-depth="0.42" aria-hidden="true"></div>
-      <div class="fw-layer fw-layer-5" data-depth="0.62" aria-hidden="true"></div>
-      <div class="fw-layer fw-layer-6" data-depth="0.82" aria-hidden="true"></div>
-    </div>
+            <div class="fw-layer fw-layer-0" data-depth="0.08" aria-hidden="true"></div>
+      <div class="fw-layer fw-layer-1" data-depth="0.12" aria-hidden="true"></div>
+      <div class="fw-layer fw-layer-2" data-depth="0.18" aria-hidden="true"></div>
+      <div class="fw-layer fw-layer-3" data-depth="0.26" aria-hidden="true"></div>
+      <div class="fw-layer fw-layer-4" data-depth="0.42" aria-hidden="true"></div>
+      <div class="fw-layer fw-layer-5" data-depth="0.62" aria-hidden="true"></div>
+      <div class="fw-layer fw-layer-6" data-depth="0.82" aria-hidden="true"></div>
+    </div>
 
-    <div class="overlay-dark" aria-hidden="true"></div>
+    <div class="overlay-dark" aria-hidden="true"></div>
 
-    <div class="masthead-content" role="region" aria-label="Main header content">
-      <div class="header-container">
-        <div class="header-logo" aria-hidden="false">
-          <img src="Grassroots leaf circle.svg" alt="Grassroots Insurance Logo" />
-        </div>
-      </div>
-    </div>
-  </header>
+    <div class="masthead-content" role="region" aria-label="Main header content">
+            <div class="header-logo-wrapper" style="width: 100%; display: flex; justify-content: center; margin-bottom: 3rem;"> 
+        <div class="header-logo" aria-hidden="false">
+          <img src="Grassroots leaf circle.svg" alt="Grassroots Insurance Logo" />
+        </div>
+      </div>
+    </div>
+  </header>
 
-  <!-- Main content -->
-  <main>
-    <!-- Announcement -->
-    <section id="announcement" class="container" aria-labelledby="announcement-heading">
-      <div class="announcement" id="announcement-heading">
-        <p>Welcome to <strong>Shobuz.co.uk</strong>. Here we'll be taking you along with our journey in creating a grassroots insurance services business that focuses on giving back to society. This website is purely journalistic to share updates. Feel free to get in touch at <a href="mailto:hello@shobuz.co.uk">hello@shobuz.co.uk</a>.</p>
+    <main>
+        <section id="announcement" class="container" aria-labelledby="announcement-heading">
+      <div class="announcement frosted-card" id="announcement-heading">
+        <p>Welcome to <strong>Shobuz.co.uk</strong>. Here we'll be taking you along with our journey in creating a grassroots insurance services business that focuses on giving back to society. This website is purely journalistic to share updates. Feel free to get in touch at <a href="mailto:hello@shobuz.co.uk">hello@shobuz.co.uk</a>.</p>
 
-        <p>We have officially launched the limited entity and are excited to announce the company name: <em>Grassroots Insurance™</em>. We have secured two important domain assets: <strong>Grassrootsinsurance.co.uk</strong> and <strong>Grassrootsguard.co.uk</strong>. We anticipate trading non-regulated services this year and beginning underwriting services in 2026. Check our company record: <a href="https://find-and-update.company-information.service.gov.uk/company/16680312" target="_blank" rel="noopener">GOV.UK company 16680312</a>.</p>
+        <p>We have officially launched the limited entity and are excited to announce the company name: <em>Grassroots Insurance™</em>. We have secured two important domain assets: <strong>Grassrootsinsurance.co.uk</strong> and <strong>Grassrootsguard.co.uk</strong>. We anticipate trading non-regulated services this year and beginning underwriting services in 2026. Check our company record: <a href="https://find-and-update.company-information.service.gov.uk/company/16680312" target="_blank" rel="noopener">GOV.UK company 16680312</a>.</p>
 
-        <p>Since our last website update, we don’t have any major announcements just yet — we’re still working hard behind the scenes and look forward to sharing exciting news soon.</p>
+        <p>Since our last website update, we don’t have any major announcements just yet — we’re still working hard behind the scenes and look forward to sharing exciting news soon.</p>
 
-        <p>- If you’re new to the site, there’s plenty to explore and learn about what we do.</p>
-        <p>- If you’re a returning visitor, feel free to email us for the latest updates or to find out how you can get involved.</p>
-      </div>
-    </section>
+        <p>- If you’re new to the site, there’s plenty to explore and learn about what we do.</p>
+        <p>- If you’re a returning visitor, feel free to email us for the latest updates or to find out how you can get involved.</p>
+      </div>
+    </section>
 
-    <!-- Overview -->
-    <section id="overview" class="container" aria-labelledby="overview-heading">
-      <div class="goal-text" id="overview-heading">
-        <span class="highlight-goal">Our Goal</span> is to create a grassroots financial lines MGA with a view of becoming an outright insurer. We will achieve our goals with hard work instead of institutional support; patience instead of leverage; and with the British public at the heart of what we do.
-        <p><strong>Grassroots Insurance</strong> is a project to create a new Financial Lines Managing General Agent (MGA) founded on the principles of sustainable growth, ethical underwriting, and community benefit. Our mission is to address unmet demand in the UK’s complex financial lines insurance sector by offering fair, principled, and human-centred coverage.</p>
-      </div>
+        <section id="overview" class="container" aria-labelledby="overview-heading">
+            <div class="goal-text frosted-card" id="overview-heading">
+        <span class="highlight-goal">Our Goal</span> is to create a grassroots financial lines MGA with a view of becoming an outright insurer. We will achieve our goals with hard work instead of institutional support; patience instead of leverage; and with the British public at the heart of what we do.
+        <p><strong>Grassroots Insurance</strong> is a project to create a new Financial Lines Managing General Agent (MGA) founded on the principles of sustainable growth, ethical underwriting, and community benefit. Our mission is to address unmet demand in the UK’s complex financial lines insurance sector by offering fair, principled, and human-centred coverage.</p>
+      </div>
 
-      <h2 class="section-title">What We're Solving</h2>
+      <h2 class="section-title">What We're Solving</h2>
 
-      <div class="highlight-box" role="region" aria-label="Problem statement">
-        <strong>The Problem</strong>
-        <p>Insurance is essential to society. Many providers are owned by private equity or large corporate interests; that can create incentives misaligned with long-term public good. We see unfulfilled demand and client dissatisfaction, particularly in Financial Lines.</p>
-      </div>
+            <div class="highlight-box frosted-card" role="region" aria-label="Problem statement">
+        <strong>The Problem</strong>
+        <p>Insurance is essential to society. Many providers are owned by private equity or large corporate interests; that can create incentives misaligned with long-term public good. We see unfulfilled demand and client dissatisfaction, particularly in Financial Lines.</p>
+      </div>
 
-      <div class="two-column">
-        <div class="column" aria-hidden="false">
-          <strong>What is a Financial Lines MGA?</strong>
-          <p>An MGA (Managing General Agent) is trusted by an insurer to underwrite policies on their behalf. Underwriting is the pricing of risk — in our case, financial-lines exposures.</p>
-          <p>Financial lines focus on professional risks (D&O, PII, EPL, CPL). A Financial Lines MGA assesses that risk and places it with capacity providers.</p>
-        </div>
+      <div class="two-column">
+                <div class="column frosted-card" aria-hidden="false">
+          <strong>What is a Financial Lines MGA?</strong>
+          <p>An MGA (Managing General Agent) is trusted by an insurer to underwrite policies on their behalf. Underwriting is the pricing of risk — in our case, financial-lines exposures.</p>
+          <p>Financial lines focus on professional risks (D&O, PII, EPL, CPL). A Financial Lines MGA assesses that risk and places it with capacity providers.</p>
+        </div>
 
-        <div class="column">
-          <strong>What do we mean by Grassroots?</strong>
-          <p>A grassroots business is community-driven and built from the ground up. This business will be started by myself, backed by the King's Trust and our community.</p>
-          <p>We will minimise institutional involvement by:</p>
-          <ul>
-            <li>No equity or options available to private entities or institutions</li>
-            <li>Starting and maintaining minimal leverage</li>
-            <li>Ensuring future stakeholders align with our values</li>
-          </ul>
-        </div>
-      </div>
+        <div class="column frosted-card">
+          <strong>What do we mean by Grassroots?</strong>
+          <p>A grassroots business is community-driven and built from the ground up. This business will be started by myself, backed by the King's Trust and our community.</p>
+          <p>We will minimise institutional involvement by:</p>
+          <ul>
+            <li>No equity or options available to private entities or institutions</li>
+            <li>Starting and maintaining minimal leverage</li>
+            <li>Ensuring future stakeholders align with our values</li>
+          </ul>
+        </div>
+      </div>
 
-      <div class="benefits-list" aria-label="Benefits list">
-        <p><strong>This includes:</strong></p>
-        <ul>
-          <li>More clarity on what you're covered for</li>
-          <li>Proactive support to protect your business</li>
-          <li>Free, accessible underwriting information</li>
-          <li>No unfair claim denials or delays</li>
-          <li>Clear, honest language at all times</li>
-          <li>Fairer pricing:
-            <ul>
-              <li>No hidden fees or unclear excesses</li>
-              <li>No inflated prices to maximise profits</li>
-              <li>No arbitrary price hikes</li>
-              <li>No undercutting that leads to unfair practices</li>
-            </ul>
-          </li>
-        </ul>
-      </div>
+      <div class="benefits-list" aria-label="Benefits list">
+        <p><strong>This includes:</strong></p>
+        <ul>
+          <li>More clarity on what you're covered for</li>
+          <li>Proactive support to protect your business</li>
+          <li>Free, accessible underwriting information</li>
+          <li>No unfair claim denials or delays</li>
+          <li>Clear, honest language at all times</li>
+          <li>Fairer pricing:
+            <ul>
+              <li>No hidden fees or unclear excesses</li>
+              <li>No inflated prices to maximise profits</li>
+              <li>No arbitrary price hikes</li>
+              <li>No undercutting that leads to unfair practices</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
 
-      <div class="highlight-box">
-        <strong>Current Market Context</strong>
-        <p>The world is becoming more litigious and regulatory frameworks continue to shift — creating both challenges and opportunities for community-focused insurers. We are positioned to help businesses navigate these changes.</p>
-      </div>
+            <div class="highlight-box frosted-card">
+        <strong>Current Market Context</strong>
+        <p>The world is becoming more litigious and regulatory frameworks continue to shift — creating both challenges and opportunities for community-focused insurers. We are positioned to help businesses navigate these changes.</p>
+      </div>
 
-      <div class="risk-box" role="region" aria-label="Risk & resilience">
-        <h3>🛡️ Built to Last</h3>
-        <p>Our business is designed for stability and adaptability:</p>
-        <ul class="risk-list">
-          <li>Minimal market and credit risk due to a diversified portfolio.</li>
-          <li>Operational risk kept low via lean structure and automation.</li>
-          <li>5% of revenue ring-fenced for comprehensive professional indemnity insurance.</li>
-          <li>Flexible spending: actuary fees, software, and marketing can be scaled back in downturns.</li>
-        </ul>
-      </div>
-    </section>
+            <div class="risk-box frosted-card" role="region" aria-label="Risk & resilience">
+        <h3>🛡️ Built to Last</h3>
+        <p>Our business is designed for stability and adaptability:</p>
+        <ul class="risk-list">
+          <li>Minimal market and credit risk due to a diversified portfolio.</li>
+          <li>Operational risk kept low via lean structure and automation.</li>
+          <li>5% of revenue ring-fenced for comprehensive professional indemnity insurance.</li>
+          <li>Flexible spending: actuary fees, software, and marketing can be scaled back in downturns.</li>
+        </ul>
+      </div>
+    </section>
 
-    <!-- Understanding financial lines -->
-    <section id="understanding" class="container" aria-labelledby="understanding-heading">
-      <h2 class="section-title" id="understanding-heading">Understanding Financial Lines Insurance</h2>
-      <p>Financial lines are a category of insurance coverage designed to protect businesses and individuals against financial risks.</p>
+        <section id="understanding" class="container" aria-labelledby="understanding-heading">
+      <h2 class="section-title" id="understanding-heading">Understanding Financial Lines Insurance</h2>
+      <p>Financial lines are a category of insurance coverage designed to protect businesses and individuals against financial risks.</p>
 
-      <div class="two-column">
-        <div class="column">
-          <strong>Directors and Officers Insurance (D&O)</strong>
-          <p>Protects officers from personal financial loss if they are sued for decisions made in their roles.</p>
-          <div id="do-example">
-            <p><strong>Real Scenario:</strong> If a client company becomes insolvent before paying a large invoice and the insured directors are sued by employees or creditors, D&O would assist with defence costs and settlements.</p>
-          </div>
-        </div>
+      <div class="two-column">
+                <div class="column frosted-card">
+          <strong>Directors and Officers Insurance (D&O)</strong>
+          <p>Protects officers from personal financial loss if they are sued for decisions made in their roles.</p>
+                      <p><strong>Real Scenario:</strong> If a client company becomes insolvent before paying a large invoice and the insured directors are sued by employees or creditors, D&O would assist with defence costs and settlements.</p>
+        </div>
 
-        <div class="column">
-          <strong>Professional Indemnity Insurance (PII)</strong>
-          <p>Protects professionals against claims of negligence, errors or omissions.</p>
-          <div id="pii-example">
-            <p><strong>Real Scenario:</strong> A marketing consultant advises a campaign that breaches compliance, leading to fines and claims — PII covers defence and settlement costs.</p>
-          </div>
-        </div>
-      </div>
+                <div class="column frosted-card">
+          <strong>Professional Indemnity Insurance (PII)</strong>
+          <p>Protects professionals against claims of negligence, errors or omissions.</p>
+                      <p><strong>Real Scenario:</strong> A marketing consultant advises a campaign that breaches compliance, leading to fines and claims — PII covers defence and settlement costs.</p>
+        </div>
+      </div>
 
-      <div class="two-column">
-        <div class="column">
-          <strong>Corporate Practices Liability (CPL)</strong>
-          <p>Protects businesses from claims related to wrongful corporate activities including regulatory breaches and shareholder disputes.</p>
-        </div>
-        <div class="column">
-          <strong>Employment Practices Liability (EPL)</strong>
-          <p>Protects against employment-related claims (discrimination, unfair dismissal, etc.).</p>
-        </div>
-      </div>
+      <div class="two-column">
+                <div class="column frosted-card">
+          <strong>Corporate Practices Liability (CPL)</strong>
+          <p>Protects businesses from claims related to wrongful corporate activities including regulatory breaches and shareholder disputes.</p>
+        </div>
+                <div class="column frosted-card">
+          <strong>Employment Practices Liability (EPL)</strong>
+          <p>Protects against employment-related claims (discrimination, unfair dismissal, etc.).</p>
+        </div>
+      </div>
 
-      <div class="highlight-box">
-        <strong>Why This Matters</strong>
-        <p>Financial lines protection can be the difference between an organisation surviving a claim and losing everything. We aim to educate and provide the right cover — clearly and fairly.</p>
-      </div>
-    </section>
+            <div class="highlight-box frosted-card">
+        <strong>Why This Matters</strong>
+        <p>Financial lines protection can be the difference between an organisation surviving a claim and losing everything. We aim to educate and provide the right cover — clearly and fairly.</p>
+      </div>
+    </section>
 
-    <!-- Founder -->
-    <section id="founder" class="container" aria-labelledby="founder-heading">
-      <h2 class="section-title" id="founder-heading">You ✨</h2>
-      <div class="highlight-section">
-        <p>By far the most important piece of the project is <strong>you</strong>. Our entire purpose is to improve the lives of everyday Brits using financial services and doing so sustainably. Visiting the site, reading and sharing are important contributions.</p>
+        <section id="founder" class="container" aria-labelledby="founder-heading">
+      <h2 class="section-title" id="founder-heading">You ✨</h2>
+            <div class="highlight-section frosted-card">
+        <p>By far the most important piece of the project is <strong>you</strong>. Our entire purpose is to improve the lives of everyday Brits using financial services and doing so sustainably. Visiting the site, reading and sharing are important contributions.</p>
 
-        <div style="display:flex; gap:0.5rem; margin-top:1rem;">
-          <div class="sparkle" style="width:6px;height:6px;border-radius:50%;"></div>
-          <div class="sparkle" style="width:6px;height:6px;border-radius:50%;"></div>
-          <div class="sparkle" style="width:6px;height:6px;border-radius:50%;"></div>
-        </div>
-      </div>
+        <div style="display:flex; gap:0.5rem; margin-top:1rem;">
+          <div class="sparkle" style="width:6px;height:6px;border-radius:50%;"></div>
+          <div class="sparkle" style="width:6px;height:6px;border-radius:50%;"></div>
+          <div class="sparkle" style="width:6px;height:6px;border-radius:50%;"></div>
+        </div>
+      </div>
 
-      <div class="founder-section">
-        <h3>Grassroots Guard Ltd t/a Grassroots Insurance</h3>
-        <h3>Strawberry Homes Limited</h3>
-        <p>Our legal entities. Website is in development.</p>
-      </div>
+            <div class="founder-section frosted-card">
+        <strong>Grassroots Guard Ltd t/a Grassroots Insurance</strong>
+        <br><strong>Strawberry Homes Limited</strong>
+        <p>Our legal entities. Website is in development.</p>
+      </div>
 
-      <div class="founder-section">
-        <h3>Abdul Alim - Founder & CEO</h3>
-        <p>I grew up in Liverpool studying Accountancy and Finance at the University of Liverpool. I first worked in insurance with Co-operative Insurance and later at Royal & Sun Alliance plc. My time in underwriting convinced me community-first insurance is needed.</p>
-      </div>
+            <div class="founder-section frosted-card">
+        <strong>Abdul Alim - Founder & CEO</strong>
+        <p>I grew up in Liverpool studying Accountancy and Finance at the University of Liverpool. I first worked in insurance with Co-operative Insurance and later at Royal & Sun Alliance plc. My time in underwriting convinced me community-first insurance is needed.</p>
+      </div>
 
-      <div class="founder-section">
-        <h3>Harry Hayward - Executive Director & Joint owner</h3>
-        <p>Harry brings technical and operational strength to the project and will help lead long-term systems, finance and growth planning.</p>
-      </div>
+            <div class="founder-section frosted-card">
+        <strong>Harry Hayward - Executive Director & Joint owner</strong>
+        <p>Harry brings technical and operational strength to the project and will help lead long-term systems, finance and growth planning.</p>
+      </div>
 
-      <div class="founder-section">
-        <p><strong>Care Accountancy Chartered Accountants</strong> — our appointed accountants.</p>
-        <iframe src="https://careaccountancy.co.uk/" width="100%" height="360" title="Care Accountancy" loading="lazy"></iframe>
-      </div>
+            <div class="founder-section frosted-card">
+        <p><strong>Care Accountancy Chartered Accountants</strong> — our appointed accountants.</p>
+        <iframe src="https://careaccountancy.co.uk/" style="max-width: 100%;" width="100%" height="360" title="Care Accountancy" loading="lazy"></iframe>
+      </div>
 
-      <div class="founder-section">
-        <h3>Our Principle Firm</h3>
-        <details>
-          <summary>About our Principle Firm (summary)</summary>
-          <p>We have sourced a Principle Firm to provide delegated FCA oversight while we establish and grow the MGA. Over time we intend to apply for direct FCA/PRA authorisation.</p>
-        </details>
-      </div>
-    </section>
+            <div class="founder-section frosted-card">
+        <strong>Our Principle Firm</strong>
+        <details>
+          <summary>About our Principle Firm (summary)</summary>
+          <p>We have sourced a Principle Firm to provide delegated FCA oversight while we establish and grow the MGA. Over time we intend to apply for direct FCA/PRA authorisation.</p>
+        </details>
+      </div>
+    </section>
 
-    <!-- Strategy -->
-    <section id="strategy" class="container" aria-labelledby="strategy-heading">
-      <h2 class="section-title" id="strategy-heading">Our Strategic Advantages</h2>
-      <div class="two-column">
-        <div class="column">
-          <strong>Lean & Efficient Model</strong>
-          <p>Operating as a single-executive MGA with outsourced functions we minimise overheads and deliver direct client engagement.</p>
-        </div>
-        <div class="column">
-          <strong>Cost-Effectiveness</strong>
-          <p>Our grassroots model and low fixed costs allow competitive terms while protecting margins.</p>
-        </div>
-      </div>
+        <section id="strategy" class="container" aria-labelledby="strategy-heading">
+      <h2 class="section-title" id="strategy-heading">Our Strategic Advantages</h2>
+      <div class="two-column">
+                <div class="column frosted-card">
+          <strong>Lean & Efficient Model</strong>
+          <p>Operating as a single-executive MGA with outsourced functions we minimise overheads and deliver direct client engagement.</p>
+        </div>
+                <div class="column frosted-card">
+          <strong>Cost-Effectiveness</strong>
+          <p>Our grassroots model and low fixed costs allow competitive terms while protecting margins.</p>
+        </div>
+      </div>
 
-      <div class="highlight-box">
-        <strong>Why We'll Win Market Share</strong>
-        <p>Lower expense-to-premium ratio means better client terms while retaining profitability. Competitors trying to match us often underprice risk.</p>
-      </div>
+            <div class="highlight-box frosted-card">
+        <strong>Why We'll Win Market Share</strong>
+        <p>Lower expense-to-premium ratio means better client terms while retaining profitability. Competitors trying to match us often underprice risk.</p>
+      </div>
 
-      <div class="column">
-        <strong>Security & Data Protection</strong>
-        <p>We prioritise resilience: critical systems kept offline wherever possible, bespoke internal software and strict operational controls reduce our vulnerability surface.</p>
-      </div>
-    </section>
+            <div class="column frosted-card">
+        <strong>Security & Data Protection</strong>
+        <p>We prioritise resilience: critical systems kept offline wherever possible, bespoke internal software and strict operational controls reduce our vulnerability surface.</p>
+      </div>
+    </section>
 
-    <!-- Community -->
-    <section id="Community" class="container" aria-labelledby="community-heading">
-      <h2 class="section-title" id="community-heading">Community</h2>
-      <p>We created a free site for a local cafe — <a href="https://batley.shobuz.co.uk/BigJoesCafe" target="_blank" rel="noopener">Big Joe’s Cafe</a>. We plan more free websites for small local businesses.</p>
+        <section id="Community" class="container" aria-labelledby="community-heading">
+      <h2 class="section-title" id="community-heading">Community</h2>
+      <p>We created a free site for a local cafe — <a href="https://batley.shobuz.co.uk/BigJoesCafe" target="_blank" rel="noopener">Big Joe’s Cafe</a>. We plan more free websites for small local businesses.</p>
 
-      <div style="display:flex; justify-content:center; margin:1.25rem 0;">
-        <iframe src="https://batley.shobuz.co.uk/BigJoesCafe" width="90%" height="900" title="Big Joe's Cafe" loading="lazy"></iframe>
-      </div>
-    </section>
+            <div style="display:flex; justify-content:center; margin:1.25rem 0;">
+        <iframe src="https://batley.shobuz.co.uk/BigJoesCafe" style="max-width: 100%;" width="90%" height="900" title="Big Joe's Cafe" loading="lazy"></iframe>
+      </div>
+    </section>
 
-    <!-- Get involved -->
-    <section id="involved" class="container" aria-labelledby="involved-heading">
-      <h2 class="section-title" id="involved-heading">Get Involved</h2>
+        <section id="involved" class="container" aria-labelledby="involved-heading">
+      <h2 class="section-title" id="involved-heading">Get Involved</h2>
 
-      <div class="involvement-box" role="region">
-        <h3>Join Our Journey</h3>
-        <p>We'd love you to get involved — whether as a potential client, broker, investor or supporter.</p>
-        <p><strong>Contact:</strong> <a href="mailto:hello@shobuz.co.uk" class="email">hello@shobuz.co.uk</a></p>
-      </div>
+            <div class="involvement-box frosted-card" role="region">
+        <h3>Join Our Journey</h3>
+        <p>We'd love you to get involved — whether as a potential client, broker, investor or supporter.</p>
+        <p><strong>Contact:</strong> <a href="mailto:hello@shobuz.co.uk" class="email">hello@shobuz.co.uk</a></p>
+      </div>
 
-      <div class="download-box" onclick="downloadDocument()" role="button" tabindex="0" aria-pressed="false">
-        <p>📄 <strong>Get the latest publicly available Business Plan</strong></p>
-        <p>Click <a href="Grassroots%20Insurance%20public.docx" download>here</a> to download the full presentation with financial projections and market analysis.</p>
-      </div>
-    </section>
-  </main>
+      <div class="download-box frosted-card" onclick="downloadDocument()" role="button" tabindex="0">
+        <p>📄 <strong>Get the latest publicly available Business Plan</strong></p>
+        <p>Click <span style="font-weight: 700;">here</span> to download the full presentation with financial projections and market analysis.</p>
+        <a href="Grassroots%20Insurance%20public.docx" download style="position: absolute; inset: 0; opacity: 0; cursor: pointer;" aria-label="Download the latest publicly available Business Plan"></a>
+      </div>
+    </section>
+  </main>
 
-  <!-- Footer -->
-  <footer class="footer-section" role="contentinfo">
-    <div style="display:flex; justify-content:center; gap:1.25rem; margin-bottom:.5rem; flex-wrap:wrap;">
-      <a href="mailto:hello@shobuz.co.uk" style="font-weight:700;">Contact</a>
-      <a href="#" style="font-weight:700;">Privacy</a>
-      <a href="#" style="font-weight:700;">Legal</a>
-    </div>
-    <p>You can email your burning questions to <a href="mailto:hello@shobuz.co.uk" class="email">hello@shobuz.co.uk</a></p>
-    <div style="opacity:0.8; margin-top:0.6rem;">© 2025 Abdul Alim. All rights reserved. This website does not collect, track or store your data or cookies.</div>
-  </footer>
+    <footer class="footer-section" role="contentinfo">
+    <div style="display:flex; justify-content:center; gap:1.25rem; margin-bottom:.5rem; flex-wrap:wrap;">
+      <a href="mailto:hello@shobuz.co.uk" style="font-weight:700;">Contact</a>
+      <a href="#" style="font-weight:700;">Privacy</a>
+      <a href="#" style="font-weight:700;">Legal</a>
+    </div>
+    <p>You can email your burning questions to <a href="mailto:hello@shobuz.co.uk" class="email">hello@shobuz.co.uk</a></p>
+    <div style="opacity:0.8; margin-top:0.6rem;">© 2025 Abdul Alim. All rights reserved. This website does not collect, track or store your data or cookies.</div>
+  </footer>
 
-  <!-- SCRIPTS (parallax, particles, interactions) -->
-  <script>
-    /* Parallax: synchronised for parallax-layer and fw-layer */
-    (function(){
-      const layers = Array.from(document.querySelectorAll('.parallax-layer, .fw-layer'));
-      const masthead = document.querySelector('.masthead');
-      let ticking = false;
-      function updateParallax() {
-        const scrollY = window.scrollY;
-        const mh = masthead ? masthead.offsetHeight : window.innerHeight;
-        const progress = Math.min(1, Math.max(0, scrollY / (mh * 0.85)));
-        layers.forEach(layer => {
-          const depth = parseFloat(layer.dataset.depth) || 0;
-          const translateY = -progress * depth * mh * 0.7;
-          layer.style.transform = `translate3d(0, ${translateY}px, 0)`;
-        });
-        ticking = false;
-      }
-      function onScroll() {
-        if (!ticking) {
-          window.requestAnimationFrame(updateParallax);
-          ticking = true;
-        }
-      }
-      window.addEventListener('scroll', onScroll, { passive:true });
-      window.addEventListener('resize', updateParallax);
-      updateParallax();
-    })();
+    <script>
+    /* Parallax: synchronised for parallax-layer and fw-layer */
+    (function(){
+      const layers = Array.from(document.querySelectorAll('.parallax-layer, .fw-layer'));
+      const masthead = document.querySelector('.masthead');
+      let ticking = false;
+      function updateParallax() {
+        const scrollY = window.scrollY;
+        const mh = masthead ? masthead.offsetHeight : window.innerHeight;
+        const progress = Math.min(1, Math.max(0, scrollY / (mh * 0.85)));
+        layers.forEach(layer => {
+          const depth = parseFloat(layer.dataset.depth) || 0;
+          const translateY = -progress * depth * mh * 0.7;
+          layer.style.transform = `translate3d(0, ${translateY}px, 0)`;
+        });
+        ticking = false;
+      }
+      function onScroll() {
+        if (!ticking) {
+          window.requestAnimationFrame(updateParallax);
+          ticking = true;
+        }
+      }
+      window.addEventListener('scroll', onScroll, { passive:true });
+      window.addEventListener('resize', updateParallax);
+      updateParallax();
+    })();
 
-    /* Particles generation */
-    function createParticles(){
-      const container = document.getElementById('particles');
-      if (!container) return;
-      const count = 50;
-      for (let i=0;i<count;i++){
-        const p = document.createElement('div');
-        p.className = 'particle';
-        p.style.left = Math.random()*100 + '%';
-        p.style.top = Math.random()*100 + '%';
-        p.style.width = (2 + Math.random()*4) + 'px';
-        p.style.height = p.style.width;
-        p.style.animationDelay = (Math.random()*6) + 's';
-        p.style.animationDuration = (6 + Math.random()*6) + 's';
-        container.appendChild(p);
-      }
-    }
+    /* Particles generation */
+    function createParticles(){
+      const container = document.getElementById('particles');
+      if (!container) return;
+      const count = 50;
+      for (let i=0;i<count;i++){
+        const p = document.createElement('div');
+        p.className = 'particle';
+        p.style.left = Math.random()*100 + '%';
+        p.style.top = Math.random()*100 + '%';
+        p.style.width = (2 + Math.random()*4) + 'px';
+        p.style.height = p.style.width;
+        p.style.animationDelay = (Math.random()*6) + 's';
+        p.style.animationDuration = (6 + Math.random()*6) + 's';
+        container.appendChild(p);
+      }
+    }
 
-    /* reveal on scroll */
-    function revealOnScroll(){
-      const items = document.querySelectorAll('section, .column, .highlight-box, .founder-section, .download-box');
-      items.forEach(el=>{
-        const rect = el.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 120) el.classList.add('visible');
-      });
-    }
+    /* reveal on scroll */
+    function revealOnScroll(){
+      const items = document.querySelectorAll('section, .column, .highlight-box, .founder-section, .download-box, .frosted-card');
+      items.forEach(el=>{
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 120) el.classList.add('visible');
+      });
+    }
 
-    /* download micro-interaction */
-    function downloadDocument(){
-      const box = document.querySelector('.download-box');
-      if (!box) return;
-      box.style.transform = 'scale(.975)';
-      setTimeout(()=> box.style.transform = '', 220);
-    }
+    /* download micro-interaction */
+    function downloadDocument(){
+      const box = document.querySelector('.download-box');
+      if (!box) return;
+      box.style.transform = 'scale(.975)';
+      setTimeout(()=> box.style.transform = '', 220);
+      // Trigger the actual download via the hidden link inside
+      box.querySelector('a[download]').click();
+    }
 
-    /* nav switching */
-    function showSection(sectionId, clickedLink){
-      const sections = document.querySelectorAll('section');
-      sections.forEach(s => s.classList.remove('visible'));
-      const target = document.getElementById(sectionId);
-      if (target) {
-        target.classList.add('visible');
-        const top = target.offsetTop - 64;
-        window.scrollTo({ top, behavior:'smooth' });
-      }
-      document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-      if (clickedLink) clickedLink.classList.add('active');
-    }
+    /* nav switching */
+    function showSection(sectionId, clickedLink){
+      const sections = document.querySelectorAll('section');
+      sections.forEach(s => s.classList.remove('visible'));
+      const target = document.getElementById(sectionId);
+      if (target) {
+        target.classList.add('visible');
+        const top = target.offsetTop - 64;
+        window.scrollTo({ top, behavior:'smooth' });
+      }
+      document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+      if (clickedLink) clickedLink.classList.add('active');
+    }
 
-    /* DOM ready */
-    document.addEventListener('DOMContentLoaded', function(){
-      createParticles();
-      revealOnScroll();
-      window.addEventListener('scroll', revealOnScroll, { passive:true });
+    /* DOM ready */
+    document.addEventListener('DOMContentLoaded', function(){
+      createParticles();
+      revealOnScroll();
+      window.addEventListener('scroll', revealOnScroll, { passive:true });
 
-      document.querySelectorAll('.nav-link').forEach(link=>{
-        link.addEventListener('click', function(e){
-          e.preventDefault();
-          const href = this.getAttribute('href') || '#overview';
-          const id = href.replace('#','');
-          showSection(id, this);
-        });
-      });
+      document.querySelectorAll('.nav-link').forEach(link=>{
+        link.addEventListener('click', function(e){
+          e.preventDefault();
+          const href = this.getAttribute('href') || '#overview';
+          const id = href.replace('#','');
+          showSection(id, this);
+        });
+      });
 
-      document.querySelectorAll('.download-box').forEach(box=>{
-        box.addEventListener('keydown', function(e){
-          if (e.key === 'Enter' || e.key === ' ') {
-            downloadDocument();
-          }
-        });
-      });
+      document.querySelectorAll('.download-box').forEach(box=>{
+        box.addEventListener('keydown', function(e){
+          if (e.key === 'Enter' || e.key === ' ') {
+            downloadDocument();
+          }
+        });
+      });
 
-      ['announcement','overview'].forEach(id=>{
-        const s = document.getElementById(id); if (s) s.classList.add('visible');
-      });
+      ['announcement','overview'].forEach(id=>{
+        const s = document.getElementById(id); if (s) s.classList.add('visible');
+      });
 
-      setTimeout(()=> {
-        const loader = document.querySelector('.loading-overlay');
-        if (loader) loader.style.display = 'none';
-      }, 900);
-    });
+      setTimeout(()=> {
+        const loader = document.querySelector('.loading-overlay');
+        if (loader) loader.style.display = 'none';
+      }, 900);
+    });
 
-    window.downloadDocument = downloadDocument;
-  </script>
+    window.downloadDocument = downloadDocument;
+  </script>
 </body>
 </html>
