@@ -95,7 +95,7 @@ nav a.nav-link:focus { box-shadow: 0 0 0 3px rgba(80,150,80,0.12); }
    MASTHEAD + PARALLAX LAYERS
    ========================= */
 .masthead {
-  position: relative; width:100vw; min-height:78vh; display:flex; align-items:center; justify-content:center; margin-top:64px; overflow:hidden;
+  position: relative; width:100vw; min-height:100vh; display:flex; align-items:center; justify-content:center; margin-top:64px; overflow:hidden;
   background: linear-gradient(to top, var(--fw-dark), rgba(0,0,0,0));
 }
 
