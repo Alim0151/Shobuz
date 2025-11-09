@@ -102,21 +102,40 @@
   <div class="loading-overlay">
     <div class="loading-spinner" aria-hidden="true"></div>
   </div>
-<header class="masthead" role="banner" aria-label="Parallax masthead">
-  <div class="parallax-container" aria-hidden="true">
-    <!-- Layers: adjust data-depth values (0 = no move, larger = more move) -->
-    <div class="parallax-layer parallax-sky"        data-depth="0.03"></div>
-    <div class="parallax-layer parallax-sun"        data-depth="0.08"></div>
-    <div class="parallax-layer parallax-mountains"  data-depth="0.20"></div>
-    <div class="parallax-layer parallax-foreground" data-depth="0.45"></div>
-  </div>
+<header class="masthead" id="top" role="banner" aria-label="Masthead with parallax">
+    <div class="parallax-container" aria-hidden="true">
+        <div class="parallax-layer parallax-sky" data-depth="0.05"></div>
+      <div class="parallax-layer parallax-sun" data-depth="0.10"></div>
+      <div class="parallax-layer parallax-mountains-back" data-depth="0.15"></div>
+      <div class="parallax-layer parallax-mountains-mid" data-depth="0.22"></div>
+      <div class="parallax-layer parallax-mountains-front" data-depth="0.28"></div>
+      <div class="parallax-layer parallax-trees-back" data-depth="0.35"></div>
+      <div class="parallax-layer parallax-trees-mid" data-depth="0.45"></div>
+      <div class="parallax-layer parallax-trees-front" data-depth="0.60"></div>
+      <div class="parallax-layer parallax-bushes" data-depth="0.75"></div>
+      <div class="parallax-layer parallax-grass" data-depth="0.90"></div>
+      <div class="parallax-layer parallax-overlay" data-depth="1.00"></div>
 
-  <div class="overlay-dark" aria-hidden="true"></div>
+        <div class="fw-layer fw-layer-0" data-depth="0.08" aria-hidden="true"></div>
+      <div class="fw-layer fw-layer-1" data-depth="0.12" aria-hidden="true"></div>
+      <div class="fw-layer fw-layer-2" data-depth="0.18" aria-hidden="true"></div>
+      <div class="fw-layer fw-layer-3" data-depth="0.26" aria-hidden="true"></div>
+      <div class="fw-layer fw-layer-4" data-depth="0.42" aria-hidden="true"></div>
+      <div class="fw-layer fw-layer-5" data-depth="0.62" aria-hidden="true"></div>
+      <div class="fw-layer fw-layer-6" data-depth="0.82" aria-hidden="true"></div>
+    </div>
 
-  <div class="masthead-content">
-    <h1 style="font-size:clamp(1.6rem,4vw,3rem);margin-bottom:0.5rem">Parallax demo</h1>
-    <p style="opacity:.9">Layers move at different speeds based on their <code>data-depth</code>.</p>
-  </div>
+    <div id="particles" aria-hidden="true"></div>
+
+    <div class="overlay-dark" aria-hidden="true"></div>
+
+    <div class="masthead-content" role="region" aria-label="Main header content">
+        <div class="header-logo-wrapper">
+        <div class="header-logo" aria-hidden="false">
+          <img src="Grassroots leaf circle.svg" alt="Grassroots Insurance Logo" />
+        </div>
+      </div>
+    </div>
 </header>
   <div class="container">
     <div class="header-container">
