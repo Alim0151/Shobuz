@@ -79,16 +79,27 @@
     .fw-layer-3 { z-index: 16; background-image: url('Firewatch green 4A.png'); }
     .fw-layer-4 { z-index: 17; background-image: url('Firewatch green 5A.png'); }
     .fw-layer-5 { z-index: 18; background-image: url('Firewatch green 6A.png'); }
-    .fw-layer-6 {
-      z-index: 19;
-      background-image: url('Firewatch green 7B.png');
-      width: 100%;
-      min-height: 150%;
-      top: 140px;
-      background-size: cover;
-      background-position: center bottom;
-      background-repeat: no-repeat;
-    }
+.fw-layer-6 {
+  z-index: 19;
+  background-image: url('Firewatch green 7B.png');
+  left: 0;
+  top: 0;                     /* align top with others (keeps stacking consistent) */
+  width: 100%;
+  height: 160%;               /* taller than the other layers but anchored at top */
+  background-size: 150% auto; /* zoom in while preserving aspect ratio */
+  background-position: center 75%; /* move image content lower (0% = top, 100% = bottom) */
+  background-repeat: no-repeat;
+  transform-origin: center bottom;
+}
+    @media (max-width: 768px) {
+  .masthead {
+    min-height: 65vh; /* shorter masthead on phones */
+  }
+  .fw-layer-6 {
+    height: 140%;               /* still taller, but less extreme */
+    background-size: 180% auto; /* more zoom on small screens so the subject stays visible */
+    background-position: center 85%; /* push the visible area down more */
+  }
 
     .masthead-content {
       position: relative;
@@ -101,7 +112,7 @@
 
     .header-logo img {
       width: 500px;
-      max-width: 90vw;
+      max-width: 60vw;
       height: auto;
       filter: drop-shadow(0 8px 24px rgba(139, 195, 74, 0.4));
       transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -710,6 +721,9 @@
         right: 1rem;
       }
     }
+        .fw-layer,
+  .parallax-layer {
+    will-change: auto;
   </style>
 </head>
 <body>
@@ -1046,39 +1060,52 @@
   </div>
 
   <script>
-    // ========== PARALLAX SCROLLING ==========
-    (function () {
-      const layers = Array.from(document.querySelectorAll('.parallax-layer, .fw-layer'));
-      if (!layers.length) return;
+(function () {
+  const layers = Array.from(document.querySelectorAll('.parallax-layer, .fw-layer'));
+  if (!layers.length) return;
 
-      const masthead = document.querySelector('.masthead');
-      let ticking = false;
+  const masthead = document.querySelector('.masthead');
+  let ticking = false;
 
-      function updateParallax() {
-        const scrollY = window.scrollY || window.pageYOffset || 0;
-        const mh = masthead ? masthead.offsetHeight : window.innerHeight;
-        const progress = Math.min(1, Math.max(0, scrollY / (mh * 0.85)));
+  // media query to detect mobile
+  const mobileQuery = window.matchMedia('(max-width: 768px)');
 
-        layers.forEach(layer => {
-          const depth = parseFloat(layer.dataset.depth) || 0;
-          const translateY = -progress * depth * mh * 0.7;
-          layer.style.transform = `translate3d(0, ${translateY}px, 0)`;
-        });
+  function updateParallax() {
+    const scrollY = window.scrollY || window.pageYOffset || 0;
+    const mh = masthead ? masthead.offsetHeight : window.innerHeight;
+    const progress = Math.min(1, Math.max(0, scrollY / (mh * 0.85)));
 
-        ticking = false;
-      }
+    // reduce intensity on mobile to avoid jumpy behaviour
+    const deviceFactor = mobileQuery.matches ? 0.45 : 1; // tweak 0.45 -> smaller movement on phones
 
-      function onScroll() {
-        if (!ticking) {
-          window.requestAnimationFrame(updateParallax);
-          ticking = true;
-        }
-      }
+    layers.forEach(layer => {
+      const depth = parseFloat(layer.dataset.depth) || 0;
+      const translateY = -progress * depth * mh * 0.7 * deviceFactor;
+      layer.style.transform = `translate3d(0, ${translateY}px, 0)`;
+    });
 
-      window.addEventListener('scroll', onScroll, { passive: true });
-      window.addEventListener('resize', updateParallax);
-      updateParallax();
-    })();
+    ticking = false;
+  }
+
+  function onScroll() {
+    if (!ticking) {
+      window.requestAnimationFrame(updateParallax);
+      ticking = true;
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', updateParallax);
+  // also listen for changes to the media query to re-run immediately
+  if (mobileQuery.addEventListener) {
+    mobileQuery.addEventListener('change', updateParallax);
+  } else if (mobileQuery.addListener) {
+    mobileQuery.addListener(updateParallax);
+  }
+
+  // initial positions
+  updateParallax();
+})();
 
     // ========== SECTION NAVIGATION ==========
     function showSection(sectionId, evt) {
