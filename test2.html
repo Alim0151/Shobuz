@@ -20,8 +20,6 @@
 
 /* Parallax container */ .parallax-container { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; overflow:hidden; z-index:1; } 
 
-/* Parallax generic layer styles */ .parallax-layer { position:absolute; left:0; top:0; width:100%; height:100%; will-change:transform; background-position:center bottom; background-size:cover; } .parallax-sky { z-index:2; background: linear-gradient(to top, rgba(226,88,34,0.08), rgba(255,217,102,0.06)); } .parallax-sun { z-index:3; background: radial-gradient(circle at 60% 30%, var(--gold-2) 0%, rgba(255,217,102,0.12) 60%, transparent 80%); opacity:.85; mix-blend-mode:screen; } .parallax-mountains-back, .parallax-mountains-mid, .parallax-mountains-front { opacity:.85; } .parallax-trees-back, .parallax-trees-mid, .parallax-trees-front { background-repeat: repeat-x; background-position: bottom; } 
-
 /* Firewatch layers (unchanged image references) */ .fw-layer { position:absolute; left:0; top:0; width:100%; height:100%; background-position:center bottom; background-size:cover; will-change:transform; pointer-events:none; opacity:0.99; } .fw-layer-0 { z-index:13; background-image: url('Firewatch greenA.jpg'); } .fw-layer-1 { z-index:14; background-image: url('Firewatch green 2A.png'); } .fw-layer-2 { z-index:15; background-image: url('Firewatch green 3A.png'); } .fw-layer-3 { z-index:16; background-image: url('Firewatch green 4A.png'); } .fw-layer-4 { z-index:17; background-image: url('Firewatch green 5A.png'); } .fw-layer-5 { z-index:18; background-image: url('Firewatch green 6A.png'); } .fw-layer-6 { z-index:19; background-image: url('Firewatch green 7A.png'); } 
 
 /* overlay for readability above layers */ .masthead .overlay-dark { position:absolute; inset:0; background: linear-gradient(180deg, rgba(0,0,0,0.28), rgba(0,0,0,0.12)); z-index:20; pointer-events:none; } 
@@ -129,11 +127,6 @@
   .hero-actions { justify-content: flex-start; }
   .hero-decor { width: 100px; height: 100px; right: -8px; top: -8px; opacity: 0.08; }
 }
-
-    .background-particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; }
-    .particle { position: absolute; width: 3px; height: 3px; background: #008000; border-radius: 50%; animation: float 6s infinite linear; opacity: 0.6; }
-    @keyframes float { 0% { transform: translateY(100vh) rotate(0deg); opacity: 0; } 10% { opacity: 0.6; } 90% { opacity: 0.6; } 100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; } }
-
     .container { max-width: 1200px; margin: 0 auto; padding: 2rem; position: relative; z-index: 1; }
 
     .header-container { display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem; animation: slideInDown 1s ease-out; }
@@ -646,18 +639,6 @@ max-width: 90vw;
   </div>
 <header class="masthead" id="top" role="banner" aria-label="Masthead with parallax">
     <div class="parallax-container" aria-hidden="true">
-        <div class="parallax-layer parallax-sky" data-depth="0.05"></div>
-      <div class="parallax-layer parallax-sun" data-depth="0.10"></div>
-      <div class="parallax-layer parallax-mountains-back" data-depth="0.15"></div>
-      <div class="parallax-layer parallax-mountains-mid" data-depth="0.22"></div>
-      <div class="parallax-layer parallax-mountains-front" data-depth="0.28"></div>
-      <div class="parallax-layer parallax-trees-back" data-depth="0.35"></div>
-      <div class="parallax-layer parallax-trees-mid" data-depth="0.45"></div>
-      <div class="parallax-layer parallax-trees-front" data-depth="0.60"></div>
-      <div class="parallax-layer parallax-bushes" data-depth="0.75"></div>
-      <div class="parallax-layer parallax-grass" data-depth="0.90"></div>
-      <div class="parallax-layer parallax-overlay" data-depth="1.00"></div>
-
         <div class="fw-layer fw-layer-0" data-depth="0.08" aria-hidden="true"></div>
       <div class="fw-layer fw-layer-1" data-depth="0.12" aria-hidden="true"></div>
       <div class="fw-layer fw-layer-2" data-depth="0.18" aria-hidden="true"></div>
@@ -666,8 +647,6 @@ max-width: 90vw;
       <div class="fw-layer fw-layer-5" data-depth="0.62" aria-hidden="true"></div>
       <div class="fw-layer fw-layer-6" data-depth="0.82" aria-hidden="true"></div>
     </div>
-
-    <div id="particles" aria-hidden="true"></div>
 
     <div class="overlay-dark" aria-hidden="true"></div>
 
@@ -1036,26 +1015,6 @@ max-width: 90vw;
   </div>
 
  <script>
-    // Small particles generator (optional, lightweight)
-    function createParticles(count = 40) {
-      const container = document.getElementById('particles');
-      if (!container) return;
-      container.innerHTML = '';
-      const w = window.innerWidth;
-      const h = window.innerHeight;
-      for (let i = 0; i < count; i++) {
-        const el = document.createElement('div');
-        el.className = 'particle';
-        const size = 2 + Math.random() * 4;
-        el.style.width = el.style.height = size + 'px';
-        el.style.left = Math.random() * 100 + '%';
-        el.style.top = Math.random() * 100 + '%';
-        el.style.opacity = (0.25 + Math.random() * 0.6).toString();
-        el.style.transform = `translate3d(0,0,0)`;
-        container.appendChild(el);
-      }
-    }
-
     // Parallax: supports both .parallax-layer and .fw-layer
     (function () {
       const layers = Array.from(document.querySelectorAll('.parallax-layer, .fw-layer'));
@@ -1133,7 +1092,6 @@ max-width: 90vw;
 
     // DOM ready
     document.addEventListener('DOMContentLoaded', function() {
-      createParticles(60);
       addHoverEffects();
       revealOnScroll();
       window.addEventListener('scroll', revealOnScroll, { passive:true });
