@@ -48,20 +48,26 @@
       </circle>
     </g>
   </g>
+<!-- Define new gradient for clouds -->
+<radialGradient id="cloudSoftGlow1" cx="50%" cy="50%" r="70%">
+  <stop offset="0%" stop-color="white" stop-opacity="0.5"/>
+  <stop offset="100%" stop-color="#FFD700" stop-opacity="0.01"/>
+</radialGradient>
+
+
 
   <!-- Clouds group (softer shapes, gradient shading, slower movement, subtle bobbing) -->
   <g filter="url(#cloudBlur)" fill="url(#cloudGrad)" opacity="0.95">
     <!-- NEW Cloud 4: centred in the green, much bigger, yellow at 10% opacity -->
-    <g id="cloud4" fill="#FFD700" opacity="0.30">
-      <!-- large, soft composite cloud centred roughly at x=1720 y=360 -->
-      <ellipse cx="1720" cy="1100" rx="50%" ry="50%"/>
-      <ellipse cx="10%" cy="35%" rx="500" ry="250"/>
-      <ellipse cx="90%" cy="35%" rx="500" ry="250"/>
-      <!-- tiny, slow bob to keep it feeling alive (very subtle) -->
-      <animateTransform attributeName="transform" attributeType="XML" type="translate"
-        values="0,0;200,0;-200,0;0,0" dur="45s" repeatCount="indefinite" />
-    </g>
-
+  <g id="cloud4" fill="url(#cloudSoftGlow1)" opacity="0.60">
+    <!-- large, soft composite cloud centred roughly at x=1720 y=360 -->
+    <ellipse cx="1720" cy="1100" rx="50%" ry="50%"/>
+    <ellipse cx="10%" cy="35%" rx="500" ry="250"/>
+    <ellipse cx="90%" cy="35%" rx="500" ry="250"/>
+    <!-- tiny, slow bob to keep it feeling alive (very subtle) -->
+    <animateTransform attributeName="transform" attributeType="XML" type="translate"
+      values="0,0;200,0;-200,0;0,0" dur="45s" repeatCount="indefinite" />
+  </g>
     <!-- Cloud 1: left -> right slow -->
     <g id="cloud1" transform="translate(0,0)">
       <!-- horizontal slow travel -->
