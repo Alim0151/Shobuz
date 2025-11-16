@@ -716,10 +716,7 @@
   <div class="loading-overlay">
     <div class="loading-spinner"></div>
   </div>
-<audio controls autoplay>
-  <source src="https://raw.githubusercontent.com/Alim0151/Shobuz/main/test.m4a" type="audio/mp4">
-  Your browser does not support the audio element.
-</audio>
+
   <header class="masthead" id="top">
     <div class="parallax-container">
       <div class="fw-layer fw-layer-0" data-depth="0.08"></div>
@@ -750,16 +747,20 @@
       </div>
     </div>
 
-    <div class="announcement">
-      <p>Welcome to Shobuz.co.uk. Here we'll be taking you along with our journey in us creating a grassroots insurance services business that focuses on giving back to society. This website is purely journalistic to share updates. Feel free to get in touch at <a href="mailto:hello@shobuz.co.uk">hello@shobuz.co.uk</a>.</p>
-      
-      <p>We have officially launched the limited entity and are excited to announce the name of this company: <em>Grassroots Insurance™</em>. We have secured two important domain assets: <strong>Grassrootsinsurance.co.uk</strong> and <strong>Grassrootsguard.co.uk</strong>. We anticipate trading non-regulated services this year and beginning underwriting services in 2026. Check our company record: <a href="https://find-and-update.company-information.service.gov.uk/company/16680312" target="_blank" rel="noopener">GOV.UK company 16680312</a>.</p>
-      
-      <p>Since our last website update, we don't have any new major announcements just yet. We're still working hard behind the scenes and look forward to sharing some exciting news soon.</p>
-      
-      <p>- If you're new to the site, there's plenty to explore and learn about what we do.</p>
-      <p>- If you're a returning visitor, feel free to email us for the latest updates or to find out how you can get involved.</p>
-    </div>
+<div class="announcement">
+  <p>Welcome to Shobuz.co.uk. Here we'll be taking you along with our journey in us creating a grassroots insurance services business that focuses on giving back to society. This website is purely journalistic to share updates. Feel free to get in touch at <a href="mailto:hello@shobuz.co.uk">hello@shobuz.co.uk</a>.</p>
+  
+  <p>We have officially launched the limited entity and are excited to announce the name of this company: <em>Grassroots Insurance™</em>. We have secured two important domain assets: <strong>Grassrootsinsurance.co.uk</strong> and <strong>Grassrootsguard.co.uk</strong>. We anticipate trading non-regulated services this year and beginning underwriting services in 2026. Check our company record: <a href="https://find-and-update.company-information.service.gov.uk/company/16680312" target="_blank" rel="noopener">GOV.UK company 16680312</a>.</p>
+  
+  <p>Since our last website update, we don't have any new major announcements just yet. We're still working hard behind the scenes and look forward to sharing some exciting news soon.</p>
+  
+  <p>- If you're new to the site, there's plenty to explore and learn about what we do.</p>
+  <p>- If you're a returning visitor, feel free to email us for the latest updates or to find out how you can get involved.</p>
+
+  <!-- Audio button -->
+  <button id="playAudioBtn">Click here to play audio</button>
+  <audio id="announcementAudio" src="https://raw.githubusercontent.com/Alim0151/Shobuz/main/test.m4a" type="audio/mp4"></audio>
+</div>
 
     <!-- OVERVIEW SECTION -->
     <div id="overview" class="content-section active">
@@ -1162,6 +1163,13 @@
         });
       }
     });
+
+      const button = document.getElementById('playAudioBtn');
+  const audio = document.getElementById('announcementAudio');
+
+  button.addEventListener('click', () => {
+    audio.play();
+  });
   </script>
 </body>
 </html>
