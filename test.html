@@ -31,7 +31,135 @@
       margin: 0;
       padding: 0;
     }
+#tourButton{
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 99999;
+  display: none;               /* shown by JS after 1s */
+  align-items: center;
+  gap: 10px;
+  padding: 0;
+  width: 64px;
+  height: 64px;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(180deg, rgba(139,195,74,0.95), rgba(75,111,68,0.95));
+  box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+  cursor: pointer;
+  transform-origin: center;
+  transition: transform 220ms cubic-bezier(.2,.9,.3,1), box-shadow .2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 12px;
+}
 
+/* pulsing outer ring */
+#tourButton .tour-ring {
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  border-radius: 999px;
+  box-shadow: 0 0 0 0 rgba(139,195,74,0.25);
+  animation: tourPulse 2.2s infinite;
+  pointer-events: none;
+}
+
+@keyframes tourPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(139,195,74,0.22); transform: scale(1); }
+  50%  { box-shadow: 0 0 0 12px rgba(139,195,74,0.06); transform: scale(1.03); }
+  100% { box-shadow: 0 0 0 0 rgba(139,195,74,0.00); transform: scale(1); }
+}
+
+/* inner play core */
+#tourButton .tour-core{
+  position: relative;
+  width: 46px;
+  height: 46px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ffffff, rgba(255,255,255,0.9));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  transform: translateX(-6px);
+}
+
+/* small label to the right (keeps button compact) */
+#tourButton .tour-label{
+  margin-left: 8px;
+  font-size: 12px;
+  color: #0b2a0b;
+  font-weight:700;
+  padding-right: 6px;
+  display: none; /* hide on tiny screens */
+}
+
+/* show label on wider screens */
+@media(min-width:720px){
+  #tourButton { width: auto; padding: 0 12px 0 0; }
+  #tourButton .tour-core { transform: translateX(0); }
+  #tourButton .tour-label { display: inline-block; }
+}
+
+/* hover / active */
+#tourButton:hover { transform: translateY(-6px) scale(1.02); }
+#tourButton:active { transform: translateY(-2px) scale(.995); }
+
+/* --- Overlay --- */
+#videoOverlay{
+  position: fixed;
+  inset: 0;
+  display: none;                /* toggled by JS */
+  z-index: 100000;
+  background: rgba(0,0,0,0.95);
+  align-items: center;
+  justify-content: center;
+}
+
+/* video wrapper to request fullscreen on */
+.videoWrapper{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-width: 1920px;
+  max-height: 1080px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* responsive iframe */
+#tourIframe{
+  width: 100%;
+  height: 100%;
+  border: 0;
+  max-width: 100%;
+  max-height: 100%;
+  background: black;
+}
+
+/* close button */
+#closeVideo{
+  position: fixed;
+  top: 22px;
+  right: 22px;
+  z-index: 100001;
+  background: transparent;
+  color: #fff;
+  border: 0;
+  font-size: 30px;
+  cursor: pointer;
+  padding: 6px 10px;
+}
+
+/* mobile tweak: the wrapper is full screen on small viewports */
+@media(max-width:900px){
+  .videoWrapper { width: 100%; height: 100%; }
+  #tourIframe { height: 100%; }
+  #closeVideo { top: 10px; right: 10px; font-size: 26px; }
+}
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
       font-size: 1.0625rem;
@@ -747,20 +875,16 @@
       </div>
     </div>
 
-<div class="announcement">
-  <p>Welcome to Shobuz.co.uk. Here we'll be taking you along with our journey in us creating a grassroots insurance services business that focuses on giving back to society. This website is purely journalistic to share updates. Feel free to get in touch at <a href="mailto:hello@shobuz.co.uk">hello@shobuz.co.uk</a>.</p>
-  
-  <p>We have officially launched the limited entity and are excited to announce the name of this company: <em>Grassroots Insurance™</em>. We have secured two important domain assets: <strong>Grassrootsinsurance.co.uk</strong> and <strong>Grassrootsguard.co.uk</strong>. We anticipate trading non-regulated services this year and beginning underwriting services in 2026. Check our company record: <a href="https://find-and-update.company-information.service.gov.uk/company/16680312" target="_blank" rel="noopener">GOV.UK company 16680312</a>.</p>
-  
-  <p>Since our last website update, we don't have any new major announcements just yet. We're still working hard behind the scenes and look forward to sharing some exciting news soon.</p>
-  
-  <p>- If you're new to the site, there's plenty to explore and learn about what we do.</p>
-  <p>- If you're a returning visitor, feel free to email us for the latest updates or to find out how you can get involved.</p>
-
-  <!-- Audio button -->
-  <button id="playAudioBtn">Click here to play audio</button>
-  <audio id="announcementAudio" src="https://raw.githubusercontent.com/Alim0151/Shobuz/main/test.m4a" type="audio/mp4"></audio>
-</div>
+    <div class="announcement">
+      <p>Welcome to Shobuz.co.uk. Here we'll be taking you along with our journey in us creating a grassroots insurance services business that focuses on giving back to society. This website is purely journalistic to share updates. Feel free to get in touch at <a href="mailto:hello@shobuz.co.uk">hello@shobuz.co.uk</a>.</p>
+      
+      <p>We have officially launched the limited entity and are excited to announce the name of this company: <em>Grassroots Insurance™</em>. We have secured two important domain assets: <strong>Grassrootsinsurance.co.uk</strong> and <strong>Grassrootsguard.co.uk</strong>. We anticipate trading non-regulated services this year and beginning underwriting services in 2026. Check our company record: <a href="https://find-and-update.company-information.service.gov.uk/company/16680312" target="_blank" rel="noopener">GOV.UK company 16680312</a>.</p>
+      
+      <p>Since our last website update, we don't have any new major announcements just yet. We're still working hard behind the scenes and look forward to sharing some exciting news soon.</p>
+      
+      <p>- If you're new to the site, there's plenty to explore and learn about what we do.</p>
+      <p>- If you're a returning visitor, feel free to email us for the latest updates or to find out how you can get involved.</p>
+    </div>
 
     <!-- OVERVIEW SECTION -->
     <div id="overview" class="content-section active">
@@ -1042,6 +1166,32 @@
       </div>
     </div>
 
+<button id="tourButton" aria-label="Click for narrated website tour" title="Click for narrated website tour">
+  <span class="tour-ring"></span>
+  <span class="tour-core" aria-hidden="true">
+    <!-- Play icon -->
+    <svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" focusable="false">
+      <circle cx="32" cy="32" r="30" fill="transparent"></circle>
+      <path d="M26 20 L46 32 L26 44 Z" fill="white"/>
+    </svg>
+  </span>
+  <span class="tour-label">Click here for a narrated website tour</span>
+</button>
+
+<!-- FULLSCREEN VIDEO OVERLAY (replace previous overlay) -->
+<div id="videoOverlay" aria-hidden="true">
+  <div class="videoWrapper" role="dialog" aria-modal="true" aria-label="Website tour video">
+    <iframe id="tourIframe"
+      src=""
+      frameborder="0"
+      allow="autoplay; fullscreen; picture-in-picture"
+      allowfullscreen
+      title="Website tour">
+    </iframe>
+    <button id="closeVideo" aria-label="Close tour">✕</button>
+  </div>
+</div>
+    
     <!-- FOOTER -->
     <div class="footer-section">
       <p>You can email your burning questions to <a href="mailto:hello@shobuz.co.uk" class="email">hello@shobuz.co.uk</a></p>
@@ -1164,12 +1314,83 @@
       }
     });
 
-      const button = document.getElementById('playAudioBtn');
-  const audio = document.getElementById('announcementAudio');
+// ========== VIDEO PLAYER LOGIC (UPDATED) ==========
+    (() => {
+      document.addEventListener('DOMContentLoaded', () => {
+        const tourButton = document.getElementById('tourButton');
+        const videoOverlay = document.getElementById('videoOverlay');
+        const closeVideo = document.getElementById('closeVideo');
+        const tourIframe = document.getElementById('tourIframe');
+        const videoWrapper = document.querySelector('.videoWrapper');
 
-  button.addEventListener('click', () => {
-    audio.play();
-  });
+        if (!tourButton || !videoOverlay || !closeVideo || !tourIframe) return;
+
+        const youtubeID = 'iM85K7eNKKw';
+        const baseEmbed = `https://www.youtube.com/embed/${youtubeID}?rel=0&modestbranding=1&iv_load_policy=3&autoplay=1&enablejsapi=1&playsinline=1`;
+
+        window.addEventListener('load', () => {
+          setTimeout(() => { tourButton.style.display = 'flex'; }, 1000);
+        });
+
+        // 1. OPEN VIDEO
+        tourButton.addEventListener('click', () => {
+          tourIframe.src = baseEmbed; // Load video
+          videoOverlay.style.display = 'flex'; // Show overlay
+          videoOverlay.setAttribute('aria-hidden', 'false');
+          
+          // Enter fullscreen
+          if (videoWrapper.requestFullscreen) videoWrapper.requestFullscreen();
+          else if (videoWrapper.webkitRequestFullscreen) videoWrapper.webkitRequestFullscreen();
+          else if (videoWrapper.msRequestFullscreen) videoWrapper.msRequestFullscreen();
+        });
+
+        // 2. CLOSE HELPER FUNCTION (Stops video & Hides Overlay)
+        function fullyCloseVideo() {
+          tourIframe.src = ''; // This stops the sound
+          videoOverlay.style.display = 'none';
+          videoOverlay.setAttribute('aria-hidden', 'true');
+        }
+
+        // 3. LISTEN FOR BROWSER EXIT FULLSCREEN (The key fix!)
+        function onFullscreenChange() {
+          // If the browser says we are NO LONGER in fullscreen...
+          if (!document.fullscreenElement && 
+              !document.webkitFullscreenElement && 
+              !document.mozFullScreenElement && 
+              !document.msFullscreenElement) {
+            
+            // ...force the overlay to close.
+            fullyCloseVideo();
+          }
+        }
+
+        // Add listeners for Esc key / Browser Back button
+        document.addEventListener('fullscreenchange', onFullscreenChange);
+        document.addEventListener('webkitfullscreenchange', onFullscreenChange);
+        document.addEventListener('mozfullscreenchange', onFullscreenChange);
+        document.addEventListener('MSFullscreenChange', onFullscreenChange);
+
+        // 4. MANUAL CLOSE BUTTON
+        closeVideo.addEventListener('click', () => {
+          // If we are in fullscreen, exit it first. 
+          // This will trigger the 'fullscreenchange' event above, which handles the closing.
+          if (document.fullscreenElement) {
+            document.exitFullscreen();
+          } else {
+            // If not in fullscreen, just close immediately
+            fullyCloseVideo();
+          }
+        });
+
+        // 5. CLICK OUTSIDE TO CLOSE
+        videoOverlay.addEventListener('click', (ev) => {
+          if (ev.target === videoOverlay) {
+             if (document.fullscreenElement) document.exitFullscreen();
+             else fullyCloseVideo();
+          }
+        });
+      });
+    })();
   </script>
 </body>
 </html>
