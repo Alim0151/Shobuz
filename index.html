@@ -1314,73 +1314,80 @@
       }
     });
 
-// ========== VIDEO PLAYER LOGIC (FIXED) ==========
+// ========== VIDEO PLAYER LOGIC (UPDATED) ==========
     (() => {
       document.addEventListener('DOMContentLoaded', () => {
         const tourButton = document.getElementById('tourButton');
         const videoOverlay = document.getElementById('videoOverlay');
         const closeVideo = document.getElementById('closeVideo');
         const tourIframe = document.getElementById('tourIframe');
+        const videoWrapper = document.querySelector('.videoWrapper');
 
-        if (!tourButton || !videoOverlay || !closeVideo || !tourIframe) {
-          console.error('Tour elements missing');
-          return;
-        }
+        if (!tourButton || !videoOverlay || !closeVideo || !tourIframe) return;
 
         const youtubeID = 'iM85K7eNKKw';
         const baseEmbed = `https://www.youtube.com/embed/${youtubeID}?rel=0&modestbranding=1&iv_load_policy=3&autoplay=1&enablejsapi=1&playsinline=1`;
 
         window.addEventListener('load', () => {
-          setTimeout(() => {
-            tourButton.style.display = 'flex';
-          }, 1000);
+          setTimeout(() => { tourButton.style.display = 'flex'; }, 1000);
         });
 
-        function tryRequestFullscreen(el) {
-          if (!el) return;
-          const req = el.requestFullscreen || el.webkitRequestFullscreen || el.mozRequestFullScreen || el.msRequestFullscreen;
-          try { if (req) req.call(el); } catch (err) { /* ignore */ }
+        // 1. OPEN VIDEO
+        tourButton.addEventListener('click', () => {
+          tourIframe.src = baseEmbed; // Load video
+          videoOverlay.style.display = 'flex'; // Show overlay
+          videoOverlay.setAttribute('aria-hidden', 'false');
+          
+          // Enter fullscreen
+          if (videoWrapper.requestFullscreen) videoWrapper.requestFullscreen();
+          else if (videoWrapper.webkitRequestFullscreen) videoWrapper.webkitRequestFullscreen();
+          else if (videoWrapper.msRequestFullscreen) videoWrapper.msRequestFullscreen();
+        });
+
+        // 2. CLOSE HELPER FUNCTION (Stops video & Hides Overlay)
+        function fullyCloseVideo() {
+          tourIframe.src = ''; // This stops the sound
+          videoOverlay.style.display = 'none';
+          videoOverlay.setAttribute('aria-hidden', 'true');
         }
-        function tryExitFullscreen() {
-          const exit = document.exitFullscreen || document.webkitExitFullscreen || document.mozCancelFullScreen || document.msExitFullscreen;
-          try { if (exit) exit.call(document); } catch (err) { /* ignore */ }
+
+        // 3. LISTEN FOR BROWSER EXIT FULLSCREEN (The key fix!)
+        function onFullscreenChange() {
+          // If the browser says we are NO LONGER in fullscreen...
+          if (!document.fullscreenElement && 
+              !document.webkitFullscreenElement && 
+              !document.mozFullScreenElement && 
+              !document.msFullscreenElement) {
+            
+            // ...force the overlay to close.
+            fullyCloseVideo();
+          }
         }
 
-        tourButton.addEventListener('click', (e) => {
-          try {
-            // FIX: Force the src assignment every time. 
-            // Removed the "if (!src)" check because it often fails in modern browsers.
-            tourIframe.src = baseEmbed;
+        // Add listeners for Esc key / Browser Back button
+        document.addEventListener('fullscreenchange', onFullscreenChange);
+        document.addEventListener('webkitfullscreenchange', onFullscreenChange);
+        document.addEventListener('mozfullscreenchange', onFullscreenChange);
+        document.addEventListener('MSFullscreenChange', onFullscreenChange);
 
-            videoOverlay.style.display = 'flex';
-            videoOverlay.setAttribute('aria-hidden', 'false');
-
-            const wrapper = document.querySelector('.videoWrapper');
-            tryRequestFullscreen(wrapper);
-
-            setTimeout(() => {
-              try { tourIframe.focus(); } catch (err) {}
-            }, 200);
-          } catch (err) {
-            console.error('Error opening tour:', err);
+        // 4. MANUAL CLOSE BUTTON
+        closeVideo.addEventListener('click', () => {
+          // If we are in fullscreen, exit it first. 
+          // This will trigger the 'fullscreenchange' event above, which handles the closing.
+          if (document.fullscreenElement) {
+            document.exitFullscreen();
+          } else {
+            // If not in fullscreen, just close immediately
+            fullyCloseVideo();
           }
         });
 
-        closeVideo.addEventListener('click', () => {
-          try {
-            tourIframe.src = ''; // Stops the video
-          } catch (err) { console.warn(err); }
-
-          videoOverlay.style.display = 'none';
-          videoOverlay.setAttribute('aria-hidden', 'true');
-          tryExitFullscreen();
-        });
-
-        document.addEventListener('keydown', (ev) => {
-          if (ev.key === 'Escape' && videoOverlay.style.display === 'flex') closeVideo.click();
-        });
+        // 5. CLICK OUTSIDE TO CLOSE
         videoOverlay.addEventListener('click', (ev) => {
-          if (ev.target === videoOverlay) closeVideo.click();
+          if (ev.target === videoOverlay) {
+             if (document.fullscreenElement) document.exitFullscreen();
+             else fullyCloseVideo();
+          }
         });
       });
     })();
