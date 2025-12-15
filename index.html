@@ -1314,84 +1314,76 @@
       }
     });
 
-(() => {
-  // Wait for DOM content loaded so elements exist
-  document.addEventListener('DOMContentLoaded', () => {
-    const tourButton = document.getElementById('tourButton');
-    const videoOverlay = document.getElementById('videoOverlay');
-    const closeVideo = document.getElementById('closeVideo');
-    const tourIframe = document.getElementById('tourIframe');
+// ========== VIDEO PLAYER LOGIC (FIXED) ==========
+    (() => {
+      document.addEventListener('DOMContentLoaded', () => {
+        const tourButton = document.getElementById('tourButton');
+        const videoOverlay = document.getElementById('videoOverlay');
+        const closeVideo = document.getElementById('closeVideo');
+        const tourIframe = document.getElementById('tourIframe');
 
-    if (!tourButton || !videoOverlay || !closeVideo || !tourIframe) {
-      console.error('Tour elements missing:', { tourButton, videoOverlay, closeVideo, tourIframe });
-      return;
-    }
+        if (!tourButton || !videoOverlay || !closeVideo || !tourIframe) {
+          console.error('Tour elements missing');
+          return;
+        }
 
-    // YouTube embed (loaded only when user clicks)
-    const youtubeID = 'iM85K7eNKKw';
-    const baseEmbed = `https://www.youtube.com/embed/${youtubeID}?rel=0&modestbranding=1&iv_load_policy=3&autoplay=1&enablejsapi=1&playsinline=1`;
+        const youtubeID = 'iM85K7eNKKw';
+        const baseEmbed = `https://www.youtube.com/embed/${youtubeID}?rel=0&modestbranding=1&iv_load_policy=3&autoplay=1&enablejsapi=1&playsinline=1`;
 
-    // show button 1s after load (use load to ensure all assets)
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        tourButton.style.display = 'flex';
-      }, 1000);
-    });
+        window.addEventListener('load', () => {
+          setTimeout(() => {
+            tourButton.style.display = 'flex';
+          }, 1000);
+        });
 
-    // request fullscreen helper (safe)
-    function tryRequestFullscreen(el) {
-      if (!el) return;
-      const req = el.requestFullscreen || el.webkitRequestFullscreen || el.mozRequestFullScreen || el.msRequestFullscreen;
-      try { if (req) req.call(el); } catch (err) { /* ignore */ }
-    }
-    function tryExitFullscreen() {
-      const exit = document.exitFullscreen || document.webkitExitFullscreen || document.mozCancelFullScreen || document.msExitFullscreen;
-      try { if (exit) exit.call(document); } catch (err) { /* ignore */ }
-    }
+        function tryRequestFullscreen(el) {
+          if (!el) return;
+          const req = el.requestFullscreen || el.webkitRequestFullscreen || el.mozRequestFullScreen || el.msRequestFullscreen;
+          try { if (req) req.call(el); } catch (err) { /* ignore */ }
+        }
+        function tryExitFullscreen() {
+          const exit = document.exitFullscreen || document.webkitExitFullscreen || document.mozCancelFullScreen || document.msExitFullscreen;
+          try { if (exit) exit.call(document); } catch (err) { /* ignore */ }
+        }
 
-    // Clicking the tour button
-    tourButton.addEventListener('click', (e) => {
-      try {
-        if (!tourIframe.src) tourIframe.src = baseEmbed;
+        tourButton.addEventListener('click', (e) => {
+          try {
+            // FIX: Force the src assignment every time. 
+            // Removed the "if (!src)" check because it often fails in modern browsers.
+            tourIframe.src = baseEmbed;
 
-        // show overlay
-        videoOverlay.style.display = 'flex';
-        videoOverlay.setAttribute('aria-hidden', 'false');
+            videoOverlay.style.display = 'flex';
+            videoOverlay.setAttribute('aria-hidden', 'false');
 
-        // request fullscreen on wrapper (user gesture)
-        const wrapper = document.querySelector('.videoWrapper');
-        tryRequestFullscreen(wrapper);
+            const wrapper = document.querySelector('.videoWrapper');
+            tryRequestFullscreen(wrapper);
 
-        // small delay then focus
-        setTimeout(() => {
-          try { tourIframe.focus(); } catch (err) {}
-        }, 200);
-      } catch (err) {
-        console.error('Error opening tour:', err);
-      }
-    });
+            setTimeout(() => {
+              try { tourIframe.focus(); } catch (err) {}
+            }, 200);
+          } catch (err) {
+            console.error('Error opening tour:', err);
+          }
+        });
 
-    // Close handler
-    closeVideo.addEventListener('click', () => {
-      try {
-        // clear src to stop playback immediately
-        tourIframe.src = '';
-      } catch (err) { console.warn(err); }
+        closeVideo.addEventListener('click', () => {
+          try {
+            tourIframe.src = ''; // Stops the video
+          } catch (err) { console.warn(err); }
 
-      videoOverlay.style.display = 'none';
-      videoOverlay.setAttribute('aria-hidden', 'true');
-      tryExitFullscreen();
-    });
+          videoOverlay.style.display = 'none';
+          videoOverlay.setAttribute('aria-hidden', 'true');
+          tryExitFullscreen();
+        });
 
-    // Escape key and outside-click to close
-    document.addEventListener('keydown', (ev) => {
-      if (ev.key === 'Escape' && videoOverlay.style.display === 'flex') closeVideo.click();
-    });
-    videoOverlay.addEventListener('click', (ev) => {
-      if (ev.target === videoOverlay) closeVideo.click();
-    });
-  });
-})();
+        document.addEventListener('keydown', (ev) => {
+          if (ev.key === 'Escape' && videoOverlay.style.display === 'flex') closeVideo.click();
+        });
+        videoOverlay.addEventListener('click', (ev) => {
+          if (ev.target === videoOverlay) closeVideo.click();
+        });
+      });
+    })();
   </script>
 </body>
 </html>
