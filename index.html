@@ -31,7 +31,57 @@
       margin: 0;
       padding: 0;
     }
+#tourButton {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 12px 18px;
+  font-size: 14px;
+  background: #111;
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  z-index: 9999;
+  display: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
 
+#tourButton:hover {
+  background: #333;
+}
+
+/* Video overlay */
+#videoOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+  display: none;
+  z-index: 10000;
+}
+
+.videoWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.videoWrapper iframe {
+  width: 100%;
+  height: 100%;
+}
+
+/* Close button */
+#closeVideo {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: transparent;
+  color: white;
+  font-size: 30px;
+  border: none;
+  cursor: pointer;
+}
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
       font-size: 1.0625rem;
@@ -73,8 +123,8 @@
       pointer-events: none;
     }
 
-    .fw-layer-0 { z-index: 13; background-image: url('Firewatch greenA.jpg'); }
-    .fw-layer-1 { z-index: 14; background-image: url('Firewatch green 2A.png'); }
+    .fw-layer-0 { z-index: 13; background-image: url('1B.svg'); }
+    .fw-layer-1 { z-index: 14; background-image: url('2A.svg'); }
     .fw-layer-2 { z-index: 15; background-image: url('Firewatch green 3A.png'); }
     .fw-layer-3 { z-index: 16; background-image: url('Firewatch green 4A.png'); }
     .fw-layer-4 { z-index: 17; background-image: url('Firewatch green 5A.png'); }
@@ -1038,6 +1088,23 @@
       </div>
     </div>
 
+<button id="tourButton">
+  Click here for a narrated website tour
+</button>
+
+<!-- Fullscreen Video Overlay -->
+<div id="videoOverlay">
+  <div class="videoWrapper">
+    <iframe
+      src="https://www.youtube.com/embed/iM85K7eNKKw?autoplay=1"
+      frameborder="0"
+      allow="autoplay; fullscreen"
+      allowfullscreen>
+    </iframe>
+    <button id="closeVideo">✕</button>
+  </div>
+</div>
+    
     <!-- FOOTER -->
     <div class="footer-section">
       <p>You can email your burning questions to <a href="mailto:hello@shobuz.co.uk" class="email">hello@shobuz.co.uk</a></p>
@@ -1159,6 +1226,31 @@
         });
       }
     });
+
+      const tourButton = document.getElementById("tourButton");
+  const videoOverlay = document.getElementById("videoOverlay");
+  const closeVideo = document.getElementById("closeVideo");
+
+  // Show button after 1 second
+  window.addEventListener("load", () => {
+    setTimeout(() => {
+      tourButton.style.display = "block";
+    }, 1000);
+  });
+
+  // Open video
+  tourButton.addEventListener("click", () => {
+    videoOverlay.style.display = "block";
+  });
+
+  // Close video
+  closeVideo.addEventListener("click", () => {
+    videoOverlay.style.display = "none";
+
+    // Stop video playback
+    const iframe = videoOverlay.querySelector("iframe");
+    iframe.src = iframe.src;
+  });
   </script>
 </body>
 </html>
