@@ -31,56 +31,134 @@
       margin: 0;
       padding: 0;
     }
-#tourButton {
+#tourButton{
   position: fixed;
-  bottom: 20px;
-  right: 20px;
-  padding: 12px 18px;
-  font-size: 14px;
-  background: #111;
-  color: #fff;
+  bottom: 24px;
+  right: 24px;
+  z-index: 99999;
+  display: none;               /* shown by JS after 1s */
+  align-items: center;
+  gap: 10px;
+  padding: 0;
+  width: 64px;
+  height: 64px;
+  border-radius: 999px;
   border: none;
-  border-radius: 25px;
+  background: linear-gradient(180deg, rgba(139,195,74,0.95), rgba(75,111,68,0.95));
+  box-shadow: 0 8px 30px rgba(0,0,0,0.35);
   cursor: pointer;
-  z-index: 9999;
-  display: none;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transform-origin: center;
+  transition: transform 220ms cubic-bezier(.2,.9,.3,1), box-shadow .2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 12px;
 }
 
-#tourButton:hover {
-  background: #333;
+/* pulsing outer ring */
+#tourButton .tour-ring {
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  border-radius: 999px;
+  box-shadow: 0 0 0 0 rgba(139,195,74,0.25);
+  animation: tourPulse 2.2s infinite;
+  pointer-events: none;
 }
 
-/* Video overlay */
-#videoOverlay {
+@keyframes tourPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(139,195,74,0.22); transform: scale(1); }
+  50%  { box-shadow: 0 0 0 12px rgba(139,195,74,0.06); transform: scale(1.03); }
+  100% { box-shadow: 0 0 0 0 rgba(139,195,74,0.00); transform: scale(1); }
+}
+
+/* inner play core */
+#tourButton .tour-core{
+  position: relative;
+  width: 46px;
+  height: 46px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ffffff, rgba(255,255,255,0.9));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  transform: translateX(-6px);
+}
+
+/* small label to the right (keeps button compact) */
+#tourButton .tour-label{
+  margin-left: 8px;
+  font-size: 12px;
+  color: #0b2a0b;
+  font-weight:700;
+  padding-right: 6px;
+  display: none; /* hide on tiny screens */
+}
+
+/* show label on wider screens */
+@media(min-width:720px){
+  #tourButton { width: auto; padding: 0 12px 0 0; }
+  #tourButton .tour-core { transform: translateX(0); }
+  #tourButton .tour-label { display: inline-block; }
+}
+
+/* hover / active */
+#tourButton:hover { transform: translateY(-6px) scale(1.02); }
+#tourButton:active { transform: translateY(-2px) scale(.995); }
+
+/* --- Overlay --- */
+#videoOverlay{
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.9);
-  display: none;
-  z-index: 10000;
+  display: none;                /* toggled by JS */
+  z-index: 100000;
+  background: rgba(0,0,0,0.95);
+  align-items: center;
+  justify-content: center;
 }
 
-.videoWrapper {
+/* video wrapper to request fullscreen on */
+.videoWrapper{
   position: relative;
   width: 100%;
   height: 100%;
+  max-width: 1920px;
+  max-height: 1080px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.videoWrapper iframe {
+/* responsive iframe */
+#tourIframe{
   width: 100%;
   height: 100%;
+  border: 0;
+  max-width: 100%;
+  max-height: 100%;
+  background: black;
 }
 
-/* Close button */
-#closeVideo {
-  position: absolute;
-  top: 20px;
-  right: 20px;
+/* close button */
+#closeVideo{
+  position: fixed;
+  top: 22px;
+  right: 22px;
+  z-index: 100001;
   background: transparent;
-  color: white;
+  color: #fff;
+  border: 0;
   font-size: 30px;
-  border: none;
   cursor: pointer;
+  padding: 6px 10px;
+}
+
+/* mobile tweak: the wrapper is full screen on small viewports */
+@media(max-width:900px){
+  .videoWrapper { width: 100%; height: 100%; }
+  #tourIframe { height: 100%; }
+  #closeVideo { top: 10px; right: 10px; font-size: 26px; }
 }
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
@@ -1092,16 +1170,29 @@
   Click here for a narrated website tour
 </button>
 
-<!-- Fullscreen Video Overlay -->
-<div id="videoOverlay">
-  <div class="videoWrapper">
-    <iframe
-      src="https://www.youtube.com/embed/iM85K7eNKKw?autoplay=1"
+<button id="tourButton" aria-label="Click for narrated website tour" title="Click for narrated website tour">
+  <span class="tour-ring"></span>
+  <span class="tour-core" aria-hidden="true">
+    <!-- Play icon -->
+    <svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" focusable="false">
+      <circle cx="32" cy="32" r="30" fill="transparent"></circle>
+      <path d="M26 20 L46 32 L26 44 Z" fill="white"/>
+    </svg>
+  </span>
+  <span class="tour-label">Narrated website tour</span>
+</button>
+
+<!-- FULLSCREEN VIDEO OVERLAY (replace previous overlay) -->
+<div id="videoOverlay" aria-hidden="true">
+  <div class="videoWrapper" role="dialog" aria-modal="true" aria-label="Website tour video">
+    <iframe id="tourIframe"
+      src=""
       frameborder="0"
-      allow="autoplay; fullscreen"
-      allowfullscreen>
+      allow="autoplay; fullscreen; picture-in-picture"
+      allowfullscreen
+      title="Website tour">
     </iframe>
-    <button id="closeVideo">✕</button>
+    <button id="closeVideo" aria-label="Close tour">✕</button>
   </div>
 </div>
     
@@ -1227,30 +1318,89 @@
       }
     });
 
-      const tourButton = document.getElementById("tourButton");
-  const videoOverlay = document.getElementById("videoOverlay");
-  const closeVideo = document.getElementById("closeVideo");
+(() => {
+  const tourButton = document.getElementById('tourButton');
+  const videoOverlay = document.getElementById('videoOverlay');
+  const closeVideo = document.getElementById('closeVideo');
+  const tourIframe = document.getElementById('tourIframe');
 
-  // Show button after 1 second
-  window.addEventListener("load", () => {
+  // YouTube embed URL (we load it only after user clicks)
+  const youtubeID = 'iM85K7eNKKw';
+  const baseEmbed = `https://www.youtube.com/embed/${youtubeID}?rel=0&modestbranding=1&iv_load_policy=3&autoplay=1&enablejsapi=1`;
+
+  // show button 1s after load
+  window.addEventListener('load', () => {
     setTimeout(() => {
-      tourButton.style.display = "block";
+      tourButton.style.display = 'flex';
     }, 1000);
   });
 
-  // Open video
-  tourButton.addEventListener("click", () => {
-    videoOverlay.style.display = "block";
+  function tryRequestFullscreen(el) {
+    if (!el) return;
+    const requestFS = el.requestFullscreen || el.webkitRequestFullscreen || el.mozRequestFullScreen || el.msRequestFullscreen;
+    try {
+      if (requestFS) requestFS.call(el);
+    } catch (e) { /* ignore */ }
+  }
+
+  function tryExitFullscreen() {
+    const exitFS = document.exitFullscreen || document.webkitExitFullscreen || document.mozCancelFullScreen || document.msExitFullscreen;
+    try {
+      if (exitFS) exitFS.call(document);
+    } catch (e) { /* ignore */ }
+  }
+
+  // click handler: set src, show overlay, request fullscreen
+  tourButton.addEventListener('click', (e) => {
+    // Load iframe only when clicked (keeps resources free)
+    if (!tourIframe.src || tourIframe.src === '') {
+      tourIframe.src = baseEmbed;
+    }
+
+    // show overlay
+    videoOverlay.style.display = 'flex';
+    videoOverlay.setAttribute('aria-hidden', 'false');
+
+    // request fullscreen on the wrapper (user gesture present)
+    const wrapper = document.querySelector('.videoWrapper');
+    tryRequestFullscreen(wrapper);
+
+    // small delay to help browser settle then focus iframe
+    setTimeout(() => {
+      try {
+        // Attempt to send a play command (YouTube Player API command)
+        tourIframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+      } catch (err) {
+        // ignore - some browsers block cross origin postMessage initially
+      }
+      tourIframe.focus();
+    }, 250);
   });
 
-  // Close video
-  closeVideo.addEventListener("click", () => {
-    videoOverlay.style.display = "none";
+  // close handler: stop playback, clear src, hide overlay, exit fullscreen
+  closeVideo.addEventListener('click', (e) => {
+    // attempt to pause via postMessage
+    try {
+      tourIframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+    } catch (err) { /* ignore */ }
 
-    // Stop video playback
-    const iframe = videoOverlay.querySelector("iframe");
-    iframe.src = iframe.src;
+    // clear src to stop audio immediately
+    try { tourIframe.src = ''; } catch (e) { /* ignore */ }
+
+    videoOverlay.style.display = 'none';
+    videoOverlay.setAttribute('aria-hidden', 'true');
+
+    // exit fullscreen if active
+    tryExitFullscreen();
   });
+
+  // pressing Esc or clicking outside overlay also closes
+  document.addEventListener('keydown', (ev) => {
+    if (ev.key === 'Escape' && videoOverlay.style.display === 'flex') {
+      closeVideo.click();
+    }
+  });
+})();
   </script>
 </body>
 </html>
