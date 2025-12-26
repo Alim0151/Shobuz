@@ -1232,123 +1232,140 @@
     </div>
   </div>
 
-  <script>
-    // ========== PARALLAX SCROLLING ==========
-    (function () {
-      const layers = Array.from(document.querySelectorAll('.parallax-layer, .fw-layer'));
-      if (!layers.length) return;
+<script>
+  // === FULL JS: welcome-first scroll then parallax + other helpers ===
+  (function () {
+    'use strict';
 
-      const masthead = document.querySelector('.masthead');
-      let ticking = false;
+    // ----- Utility -----
+    const $ = selector => document.querySelector(selector);
+    const $$ = selector => Array.from(document.querySelectorAll(selector));
 
-      function updateParallax() {
-        const scrollY = window.scrollY || window.pageYOffset || 0;
-        const mh = masthead ? masthead.offsetHeight : window.innerHeight;
-        const progress = Math.min(1, Math.max(0, scrollY / (mh * 0.85)));
+    // ----- Elements -----
+    const layers = $$('.parallax-layer, .fw-layer');
+    const masthead = $('.masthead');
+    const welcomeEl = $('.welcome'); // ensure your welcome announcement has class="welcome"
+    let ticking = false;
 
+    // Set sensible defaults even if elements are missing
+    function getMastheadHeight() {
+      return masthead ? masthead.offsetHeight : window.innerHeight;
+    }
+    function getWelcomeHeight() {
+      return welcomeEl ? Math.max(welcomeEl.offsetHeight, Math.round(window.innerHeight * 0.6)) : 0;
+    }
+
+    // Ensure initial styles for welcome so it starts off-screen (below viewport)
+    function initWelcomeStyles() {
+      if (!welcomeEl) return;
+      // Use transform only (so normal document flow remains) and hardware-accelerate
+      welcomeEl.style.willChange = 'transform, opacity';
+      // start translated down by one viewport height
+      welcomeEl.style.transform = `translate3d(0, ${window.innerHeight}px, 0)`;
+      welcomeEl.style.opacity = '0';
+    }
+
+    // PARALLAX + WELCOME CONTROL
+    function updateParallaxAndWelcome() {
+      const scrollY = window.scrollY || window.pageYOffset || 0;
+      const mh = getMastheadHeight();
+      const welcomeH = getWelcomeHeight();
+
+      // 1) Welcome phase: 0 -> welcomeH
+      // welcomeProgress goes 0..1 as user scrolls the first welcomeH pixels
+      const welcomeProgress = welcomeH > 0 ? Math.min(1, Math.max(0, scrollY / welcomeH)) : 1;
+
+      if (welcomeEl) {
+        // Translate welcome from +100vh (off-screen below) -> 0 as progress goes 0->1
+        const welcomeTranslate = (1 - welcomeProgress) * window.innerHeight; // px
+        welcomeEl.style.transform = `translate3d(0, ${welcomeTranslate}px, 0)`;
+        // Fade in slightly as it comes up
+        welcomeEl.style.opacity = String(Math.min(1, Math.max(0, welcomeProgress * 1.1)));
+      }
+
+      // 2) Parallax only starts AFTER we've scrolled past the welcome area
+      const scrollAfterWelcome = Math.max(0, scrollY - welcomeH);
+
+      // Use the masthead height as the basis for parallax progression
+      const denom = mh * 0.85 || window.innerHeight;
+      const progress = Math.min(1, Math.max(0, scrollAfterWelcome / denom));
+
+      // Apply parallax to layers
+      if (layers && layers.length) {
         layers.forEach(layer => {
           const depth = parseFloat(layer.dataset.depth) || 0;
+          // negative translate (move up) proportional to progress and depth
           const translateY = -progress * depth * mh * 0.7;
+          // don't interfere with other transforms — here we set full transform; if you combine rotations/scale, adapt.
           layer.style.transform = `translate3d(0, ${translateY}px, 0)`;
+          layer.style.willChange = 'transform';
         });
-
-        ticking = false;
       }
 
-      function onScroll() {
-        if (!ticking) {
-          window.requestAnimationFrame(updateParallax);
-          ticking = true;
-        }
-      }
+      ticking = false;
+    }
 
-      window.addEventListener('scroll', onScroll, { passive: true });
-      window.addEventListener('resize', updateParallax);
-      updateParallax();
-    })();
-
-    // ========== SECTION NAVIGATION ==========
-    function showSection(sectionId, evt) {
-      const sections = document.querySelectorAll('.content-section');
-      sections.forEach(s => s.classList.remove('active'));
-      
-      const target = document.getElementById(sectionId);
-      if (target) {
-        target.classList.add('active');
-        
-        // Update active button
-        document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-        if (evt && evt.currentTarget) evt.currentTarget.classList.add('active');
-        
-        // Smooth scroll to section with offset for sticky nav
-        const offset = 100;
-        const topPos = target.getBoundingClientRect().top + window.scrollY - offset;
-        window.scrollTo({ top: topPos, behavior: 'smooth' });
+    function requestUpdate() {
+      if (!ticking) {
+        window.requestAnimationFrame(updateParallaxAndWelcome);
+        ticking = true;
       }
     }
 
-    // ========== SCROLL REVEAL ANIMATIONS ==========
+    // ----- SCROLL REVEAL (keeps same behaviour) -----
     function revealOnScroll() {
-      const elements = document.querySelectorAll('.column, .highlight-box, .benefits-list li, .founder-section');
-      
+      const elements = $$('.column, .highlight-box, .benefits-list li, .founder-section');
+      const viewportH = window.innerHeight || document.documentElement.clientHeight;
       elements.forEach(element => {
         const rect = element.getBoundingClientRect();
-        const isVisible = rect.top < window.innerHeight - 100;
-        
-        if (isVisible) {
+        if (rect.top < viewportH - 100) {
           element.style.opacity = '1';
           element.style.transform = 'translateY(0)';
         }
       });
     }
 
-    // ========== SMOOTH SCROLL FOR LINKS ==========
-    document.addEventListener('click', function(e) {
-      if (e.target.tagName === 'A' && e.target.getAttribute('href') && e.target.getAttribute('href').startsWith('#')) {
-        e.preventDefault();
-        const targetId = e.target.getAttribute('href').substring(1);
-        const targetElement = document.getElementById(targetId);
-        
-        if (targetElement) {
-          const offset = 100;
-          const topPos = targetElement.getBoundingClientRect().top + window.scrollY - offset;
-          window.scrollTo({ top: topPos, behavior: 'smooth' });
-        }
+    // ----- SECTION NAVIGATION -----
+    function showSection(sectionId, evt) {
+      const sections = $$('.content-section');
+      sections.forEach(s => s.classList.remove('active'));
+
+      const target = document.getElementById(sectionId);
+      if (target) {
+        target.classList.add('active');
+
+        // Update active button
+        $$('.nav-btn').forEach(b => b.classList.remove('active'));
+        if (evt && evt.currentTarget) evt.currentTarget.classList.add('active');
+
+        // Smooth scroll to section with offset for sticky nav
+        const offset = 100;
+        const topPos = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top: topPos, behavior: 'smooth' });
+      }
+    }
+    // make showSection globally available (if you call it from markup)
+    window.showSection = showSection;
+
+    // ----- SMOOTH SCROLL FOR HASH LINKS (robust) -----
+    document.addEventListener('click', function (e) {
+      const anchor = e.target.closest && e.target.closest('a[href^="#"]');
+      if (!anchor) return;
+      const href = anchor.getAttribute('href');
+      if (!href || href.length < 2) return;
+
+      e.preventDefault();
+      const targetId = href.substring(1);
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        const offset = 100;
+        const topPos = targetElement.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top: topPos, behavior: 'smooth' });
       }
     });
 
-    // ========== INITIALIZE ==========
-    document.addEventListener('DOMContentLoaded', function() {
-      // Set initial opacity for reveal elements
-      const revealElements = document.querySelectorAll('.column, .highlight-box, .benefits-list li, .founder-section');
-      revealElements.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-      });
-
-      // Trigger initial reveal
-      setTimeout(() => {
-        revealOnScroll();
-      }, 100);
-
-      // Add scroll listener
-      window.addEventListener('scroll', revealOnScroll, { passive: true });
-
-      // Add keyboard navigation for download box
-      const downloadBox = document.querySelector('.download-box');
-      if (downloadBox) {
-        downloadBox.addEventListener('keydown', function(e) {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            window.location.href = 'Grassroots%20Insurance%20public.docx';
-          }
-        });
-      }
-    });
-
-// ========== VIDEO PLAYER LOGIC (UPDATED) ==========
-    (() => {
+    // ----- VIDEO PLAYER LOGIC (keeps your improved logic and fixes string/template issues) -----
+    (function initVideoPlayer() {
       document.addEventListener('DOMContentLoaded', () => {
         const tourButton = document.getElementById('tourButton');
         const videoOverlay = document.getElementById('videoOverlay');
@@ -1361,69 +1378,131 @@
         const youtubeID = 'iM85K7eNKKw';
         const baseEmbed = `https://www.youtube.com/embed/${youtubeID}?rel=0&modestbranding=1&iv_load_policy=3&autoplay=1&enablejsapi=1&playsinline=1`;
 
+        // show the tour button after load (same as yours)
         window.addEventListener('load', () => {
           setTimeout(() => { tourButton.style.display = 'flex'; }, 1000);
         });
 
-        // 1. OPEN VIDEO
+        // OPEN VIDEO
         tourButton.addEventListener('click', () => {
-          tourIframe.src = baseEmbed; // Load video
-          videoOverlay.style.display = 'flex'; // Show overlay
+          tourIframe.src = baseEmbed;            // start video
+          videoOverlay.style.display = 'flex';  // show overlay
           videoOverlay.setAttribute('aria-hidden', 'false');
-          
-          // Enter fullscreen
+
+          // Try to enter fullscreen on wrapper
           if (videoWrapper.requestFullscreen) videoWrapper.requestFullscreen();
           else if (videoWrapper.webkitRequestFullscreen) videoWrapper.webkitRequestFullscreen();
           else if (videoWrapper.msRequestFullscreen) videoWrapper.msRequestFullscreen();
         });
 
-        // 2. CLOSE HELPER FUNCTION (Stops video & Hides Overlay)
+        // Close helper
         function fullyCloseVideo() {
-          tourIframe.src = ''; // This stops the sound
+          // Clear src to halt playback and audio
+          tourIframe.src = '';
           videoOverlay.style.display = 'none';
           videoOverlay.setAttribute('aria-hidden', 'true');
         }
 
-        // 3. LISTEN FOR BROWSER EXIT FULLSCREEN (The key fix!)
+        // Fullscreen change handler (covers vendor prefixes)
         function onFullscreenChange() {
-          // If the browser says we are NO LONGER in fullscreen...
-          if (!document.fullscreenElement && 
-              !document.webkitFullscreenElement && 
-              !document.mozFullScreenElement && 
-              !document.msFullscreenElement) {
-            
-            // ...force the overlay to close.
+          const fs = document.fullscreenElement ||
+                     document.webkitFullscreenElement ||
+                     document.mozFullScreenElement ||
+                     document.msFullscreenElement;
+          if (!fs) {
+            // When fullscreen is left, ensure overlay is closed and video stopped
             fullyCloseVideo();
           }
         }
 
-        // Add listeners for Esc key / Browser Back button
         document.addEventListener('fullscreenchange', onFullscreenChange);
         document.addEventListener('webkitfullscreenchange', onFullscreenChange);
         document.addEventListener('mozfullscreenchange', onFullscreenChange);
         document.addEventListener('MSFullscreenChange', onFullscreenChange);
 
-        // 4. MANUAL CLOSE BUTTON
+        // Manual close
         closeVideo.addEventListener('click', () => {
-          // If we are in fullscreen, exit it first. 
-          // This will trigger the 'fullscreenchange' event above, which handles the closing.
-          if (document.fullscreenElement) {
-            document.exitFullscreen();
+          if (document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement) {
+            // exit fullscreen; the fullscreenchange handler will close the overlay
+            if (document.exitFullscreen) document.exitFullscreen();
+            else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+            else if (document.msExitFullscreen) document.msExitFullscreen();
           } else {
-            // If not in fullscreen, just close immediately
             fullyCloseVideo();
           }
         });
 
-        // 5. CLICK OUTSIDE TO CLOSE
+        // Click outside to close
         videoOverlay.addEventListener('click', (ev) => {
           if (ev.target === videoOverlay) {
-             if (document.fullscreenElement) document.exitFullscreen();
-             else fullyCloseVideo();
+            if (document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement) {
+              if (document.exitFullscreen) document.exitFullscreen();
+              else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+              else if (document.msExitFullscreen) document.msExitFullscreen();
+            } else {
+              fullyCloseVideo();
+            }
+          }
+        });
+
+        // keyboard escape while overlay visible
+        document.addEventListener('keydown', (ev) => {
+          if (ev.key === 'Escape' && videoOverlay && videoOverlay.style.display === 'flex') {
+            if (document.exitFullscreen) document.exitFullscreen();
+            else fullyCloseVideo();
           }
         });
       });
     })();
-  </script>
+
+    // ----- INITIALISE & LISTENERS -----
+    document.addEventListener('DOMContentLoaded', function () {
+      // initial styles for reveal elements
+      const revealElements = $$('.column, .highlight-box, .benefits-list li, .founder-section');
+      revealElements.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      });
+
+      // initial welcome setup
+      initWelcomeStyles();
+
+      // initial parallax/layer state
+      updateParallaxAndWelcome();
+
+      // scroll listeners
+      window.addEventListener('scroll', requestUpdate, { passive: true });
+      window.addEventListener('scroll', revealOnScroll, { passive: true });
+
+      // resize listener — recalc heights & update transforms
+      window.addEventListener('resize', function () {
+        // reset welcome to be off-screen base on viewport
+        if (welcomeEl) {
+          welcomeEl.style.transform = `translate3d(0, ${window.innerHeight}px, 0)`;
+        }
+        updateParallaxAndWelcome();
+      });
+
+      // Set up keyboard navigation for download box (unchanged)
+      const downloadBox = document.querySelector('.download-box');
+      if (downloadBox) {
+        downloadBox.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            window.location.href = 'Grassroots%20Insurance%20public.docx';
+          }
+        });
+      }
+
+      // trigger initial reveal after a short delay
+      setTimeout(revealOnScroll, 100);
+    });
+
+    // expose update function if you need to call it manually
+    window._updateParallaxAndWelcome = updateParallaxAndWelcome;
+
+  })();
+</script>
 </body>
 </html>
