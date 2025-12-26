@@ -26,45 +26,140 @@
       --max-width: 1280px;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    /* tour button & video overlay (unchanged) */
-    #tourButton{
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      z-index: 99999;
-      display: none;
-      align-items: center;
-      gap: 10px;
+    * {
+      box-sizing: border-box;
+      margin: 0;
       padding: 0;
-      width: 64px;
-      height: 64px;
-      border-radius: 999px;
-      border: none;
-      background: linear-gradient(180deg, rgba(139,195,74,0.95), rgba(75,111,68,0.95));
-      box-shadow: 0 8px 30px rgba(0,0,0,0.35);
-      cursor: pointer;
-      transform-origin: center;
-      transition: transform 220ms cubic-bezier(.2,.9,.3,1), box-shadow .2s;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding-right: 12px;
     }
-    #tourButton .tour-ring { position: absolute; width: 64px; height: 64px; border-radius: 999px; box-shadow: 0 0 0 0 rgba(139,195,74,0.25); animation: tourPulse 2.2s infinite; pointer-events: none; }
-    @keyframes tourPulse { 0% { box-shadow: 0 0 0 0 rgba(139,195,74,0.22); transform: scale(1); } 50% { box-shadow: 0 0 0 12px rgba(139,195,74,0.06); transform: scale(1.03); } 100% { box-shadow: 0 0 0 0 rgba(139,195,74,0.00); transform: scale(1); } }
-    #tourButton .tour-core{ position: relative; width: 46px; height: 46px; border-radius: 999px; background: linear-gradient(135deg, #ffffff, rgba(255,255,255,0.9)); display:flex; align-items:center; justify-content:center; box-shadow: 0 6px 18px rgba(0,0,0,0.25); transform: translateX(-6px); }
-    #tourButton .tour-label{ margin-left: 8px; font-size: 12px; color: #0b2a0b; font-weight:700; padding-right: 6px; display: none; }
-    @media(min-width:720px){ #tourButton { width: auto; padding: 0 12px 0 0; } #tourButton .tour-core { transform: translateX(0); } #tourButton .tour-label { display: inline-block; } }
-    #tourButton:hover { transform: translateY(-6px) scale(1.02); } #tourButton:active { transform: translateY(-2px) scale(.995); }
+#tourButton{
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 99999;
+  display: none;               /* shown by JS after 1s */
+  align-items: center;
+  gap: 10px;
+  padding: 0;
+  width: 64px;
+  height: 64px;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(180deg, rgba(139,195,74,0.95), rgba(75,111,68,0.95));
+  box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+  cursor: pointer;
+  transform-origin: center;
+  transition: transform 220ms cubic-bezier(.2,.9,.3,1), box-shadow .2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 12px;
+}
 
-    #videoOverlay{ position: fixed; inset: 0; display: none; z-index: 100000; background: rgba(0,0,0,0.95); align-items: center; justify-content: center; }
-    .videoWrapper{ position: relative; width: 100%; height: 100%; max-width: 1920px; max-height: 1080px; display: flex; align-items: center; justify-content: center; }
-    #tourIframe{ width: 100%; height: 100%; border: 0; max-width: 100%; max-height: 100%; background: black; }
-    #closeVideo{ position: fixed; top: 22px; right: 22px; z-index: 100001; background: transparent; color: #fff; border: 0; font-size: 30px; cursor: pointer; padding: 6px 10px; }
-    @media(max-width:900px){ .videoWrapper { width: 100%; height: 100%; } #tourIframe { height: 100%; } #closeVideo { top: 10px; right: 10px; font-size: 26px; } }
+/* pulsing outer ring */
+#tourButton .tour-ring {
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  border-radius: 999px;
+  box-shadow: 0 0 0 0 rgba(139,195,74,0.25);
+  animation: tourPulse 2.2s infinite;
+  pointer-events: none;
+}
 
+@keyframes tourPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(139,195,74,0.22); transform: scale(1); }
+  50%  { box-shadow: 0 0 0 12px rgba(139,195,74,0.06); transform: scale(1.03); }
+  100% { box-shadow: 0 0 0 0 rgba(139,195,74,0.00); transform: scale(1); }
+}
+
+/* inner play core */
+#tourButton .tour-core{
+  position: relative;
+  width: 46px;
+  height: 46px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ffffff, rgba(255,255,255,0.9));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  transform: translateX(-6px);
+}
+
+/* small label to the right (keeps button compact) */
+#tourButton .tour-label{
+  margin-left: 8px;
+  font-size: 12px;
+  color: #0b2a0b;
+  font-weight:700;
+  padding-right: 6px;
+  display: none; /* hide on tiny screens */
+}
+
+/* show label on wider screens */
+@media(min-width:720px){
+  #tourButton { width: auto; padding: 0 12px 0 0; }
+  #tourButton .tour-core { transform: translateX(0); }
+  #tourButton .tour-label { display: inline-block; }
+}
+
+/* hover / active */
+#tourButton:hover { transform: translateY(-6px) scale(1.02); }
+#tourButton:active { transform: translateY(-2px) scale(.995); }
+
+/* --- Overlay --- */
+#videoOverlay{
+  position: fixed;
+  inset: 0;
+  display: none;                /* toggled by JS */
+  z-index: 100000;
+  background: rgba(0,0,0,0.95);
+  align-items: center;
+  justify-content: center;
+}
+
+/* video wrapper to request fullscreen on */
+.videoWrapper{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-width: 1920px;
+  max-height: 1080px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* responsive iframe */
+#tourIframe{
+  width: 100%;
+  height: 100%;
+  border: 0;
+  max-width: 100%;
+  max-height: 100%;
+  background: black;
+}
+
+/* close button */
+#closeVideo{
+  position: fixed;
+  top: 22px;
+  right: 22px;
+  z-index: 100001;
+  background: transparent;
+  color: #fff;
+  border: 0;
+  font-size: 30px;
+  cursor: pointer;
+  padding: 6px 10px;
+}
+
+/* mobile tweak: the wrapper is full screen on small viewports */
+@media(max-width:900px){
+  .videoWrapper { width: 100%; height: 100%; }
+  #tourIframe { height: 100%; }
+  #closeVideo { top: 10px; right: 10px; font-size: 26px; }
+}
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
       font-size: 1.0625rem;
@@ -75,7 +170,7 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ========== MASTHEAD ========== */
+    /* ========== MASTHEAD (unchanged) ========== */
     .masthead {
       position: relative;
       width: 100vw;
@@ -106,7 +201,6 @@
       pointer-events: none;
     }
 
-    /* Example backgrounds - replace file names as needed */
     .fw-layer-0 { z-index: 13; background-image: url('1B.svg'); }
     .fw-layer-1 { z-index: 14; background-image: url('2A.svg'); }
     .fw-layer-2 { z-index: 15; background-image: url('Firewatch green 3A.png'); }
@@ -141,11 +235,31 @@
       transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
-    .header-logo img:hover { transform: scale(1.05) rotate(2deg); }
+    .header-logo img:hover {
+      transform: scale(1.05) rotate(2deg);
+    }
 
     /* ========== LOADING ========== */
-    .loading-overlay { position: fixed; inset: 0; background: #0a1510; display: flex; justify-content: center; align-items: center; z-index: 9999; animation: fadeOut 0.6s ease-out 1.5s forwards; }
-    .loading-spinner { width: 50px; height: 50px; border: 3px solid rgba(139, 195, 74, 0.2); border-radius: 50%; border-top-color: var(--accent); animation: spin 1s linear infinite; }
+    .loading-overlay {
+      position: fixed;
+      inset: 0;
+      background: #0a1510;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      animation: fadeOut 0.6s ease-out 1.5s forwards;
+    }
+
+    .loading-spinner {
+      width: 50px;
+      height: 50px;
+      border: 3px solid rgba(139, 195, 74, 0.2);
+      border-radius: 50%;
+      border-top-color: var(--accent);
+      animation: spin 1s linear infinite;
+    }
+
     @keyframes spin { to { transform: rotate(360deg); } }
     @keyframes fadeOut { to { opacity: 0; visibility: hidden; } }
 
@@ -171,86 +285,137 @@
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     }
 
-    .nav-buttons { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; padding: 0 2rem; max-width: var(--max-width); margin: 0 auto; }
-    .nav-btn { padding: 0.75rem 1.5rem; background: rgba(75, 111, 68, 0.1); border: 1.5px solid rgba(139, 195, 74, 0.3); border-radius: 50px; color: var(--accent); font-weight: 600; font-size: 0.9375rem; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); white-space: nowrap; }
-    .nav-btn:hover { background: rgba(75, 111, 68, 0.2); border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(139, 195, 74, 0.2); }
-    .nav-btn.active { background: linear-gradient(135deg, var(--primary), var(--primary-light)); border-color: var(--accent); color: white; box-shadow: 0 4px 16px rgba(139, 195, 74, 0.3); }
-    .sparkle-btn { background: linear-gradient(135deg, #fff8e1, #ffeaa7) !important; border: 2px solid var(--gold) !important; color: #b8860b !important; position: relative; overflow: hidden; }
-    .sparkle-btn::before { content: '✨'; position: absolute; right: 8px; top: 50%; transform: translateY(-50%); font-size: 1rem; }
-
-    /* ========== INTRO BLOCK (announcement + timeline) ========== */
-    /* This wrapper groups the two elements that should be scrolled BEFORE parallax resumes. */
-    #introBlock {
-      max-width: var(--max-width);
-      margin: 2rem auto;
-      padding: 0 1rem;
-      z-index: 10;
-      position: relative;
-    }
-
-    .announcement {
-      background: linear-gradient(135deg, rgba(45, 90, 45, 0.9), rgba(30, 60, 30, 0.85));
-      border-radius: var(--radius-lg);
-      padding: 2rem;
-      margin-bottom: 2rem;
-      border: 1px solid var(--glass-border);
-      box-shadow: var(--shadow-lg);
-      backdrop-filter: blur(12px);
-      /* Start hidden - reveal when scrolled into view */
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    .announcement.revealed {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .announcement p { color: var(--text-secondary); line-height: 1.8; margin-bottom: 1rem; }
-    .announcement p:last-child { margin-bottom: 0; }
-    .announcement a { color: var(--accent); font-weight: 600; text-decoration: underline; transition: all 0.2s ease; }
-    .announcement a:hover { color: var(--gold); text-decoration: none; }
-    .announcement strong, .announcement em { color: var(--text-primary); }
-
-    /* Timeline responsive wrapper */
-    .timeline-wrapper {
+    .nav-buttons {
       display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
       justify-content: center;
-      align-items: center;
-      width: 100%;
-      padding: 0.75rem 0 2.5rem 0;
+      padding: 0 2rem;
+      max-width: var(--max-width);
+      margin: 0 auto;
     }
 
-    /* Make the svg responsive and constrained */
-    #timelineImg {
-      display: block;
-      width: 100%;
-      max-width: 1200px;      /* constrain maximum width so it looks 'normal' on large screens */
-      height: auto;
-      max-height: 70vh;       /* prevents an enormously tall svg from filling the whole page */
-      object-fit: contain;
-      border-radius: 10px;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.35);
-      opacity: 0;
-      transform: translateY(12px) scale(0.995);
-      transition: opacity 0.6s ease, transform 0.6s ease;
+    .nav-btn {
+      padding: 0.75rem 1.5rem;
+      background: rgba(75, 111, 68, 0.1);
+      border: 1.5px solid rgba(139, 195, 74, 0.3);
+      border-radius: 50px;
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 0.9375rem;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      white-space: nowrap;
     }
 
-    /* revealed state for timeline */
-    #timelineImg.revealed {
-      opacity: 1;
-      transform: translateY(0) scale(1);
+    .nav-btn:hover {
+      background: rgba(75, 111, 68, 0.2);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(139, 195, 74, 0.2);
+    }
+
+    .nav-btn.active {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      border-color: var(--accent);
+      color: white;
+      box-shadow: 0 4px 16px rgba(139, 195, 74, 0.3);
+    }
+
+    .sparkle-btn {
+      background: linear-gradient(135deg, #fff8e1, #ffeaa7) !important;
+      border: 2px solid var(--gold) !important;
+      color: #b8860b !important;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sparkle-btn::before {
+      content: '✨';
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1rem;
+    }
+
+.announcement {
+  background: linear-gradient(135deg, rgba(45, 90, 45, 0.9), rgba(30, 60, 30, 0.85));
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  margin-bottom: 3rem;
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-lg);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+
+    .announcement p {
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .announcement p:last-child {
+      margin-bottom: 0;
+    }
+
+    .announcement a {
+      color: var(--accent);
+      font-weight: 600;
+      text-decoration: underline;
+      transition: all 0.2s ease;
+    }
+
+    .announcement a:hover {
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    .announcement strong, .announcement em {
+      color: var(--text-primary);
+    }
+
+    @keyframes slideInUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
     }
 
     /* ========== CONTENT SECTIONS ========== */
-    .content-section { display: none; animation: fadeInScale 0.5s ease-out; }
-    .content-section.active { display: block; }
-    @keyframes fadeInScale { from { transform: scale(0.97); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    .content-section {
+      display: none;
+      animation: fadeInScale 0.5s ease-out;
+    }
+
+    .content-section.active {
+      display: block;
+    }
+
+    @keyframes fadeInScale {
+      from { transform: scale(0.97); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
 
     /* ========== SECTION TITLE ========== */
-    .section-title { font-size: 2.5rem; font-weight: 700; color: var(--accent); margin: 4rem 0 2rem 0; position: relative; display: inline-block; letter-spacing: -0.5px; }
-    .section-title::after { content: ''; position: absolute; bottom: -8px; left: 0; width: 60px; height: 4px; background: linear-gradient(90deg, var(--accent), transparent); border-radius: 2px; }
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin: 4rem 0 2rem 0;
+      position: relative;
+      display: inline-block;
+      letter-spacing: -0.5px;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      border-radius: 2px;
+    }
 
     /* ========== GOAL TEXT / HERO CARD ========== */
     .goal-text, .hero-card {
@@ -265,82 +430,411 @@
       overflow: hidden;
     }
 
-    .highlight-goal { color: var(--accent); font-weight: 700; font-size: 1.5rem; display: inline-block; margin-bottom: 1rem; }
-    .goal-text p { margin-top: 1rem; color: var(--text-secondary); }
+    .goal-text::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(139, 195, 74, 0.08), transparent 70%);
+      pointer-events: none;
+    }
+
+    .highlight-goal {
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 1.5rem;
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+
+    .goal-text p {
+      margin-top: 1rem;
+      color: var(--text-secondary);
+    }
 
     /* ========== TWO COLUMN GRID ========== */
-    .two-column { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 2.5rem 0; }
-    .column { background: var(--card-bg); border-radius: var(--radius-md); padding: 2rem; border: 1px solid rgba(139, 195, 74, 0.1); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden; }
-    .column::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--accent), transparent); transform: scaleX(0); transform-origin: left; transition: transform 0.3s ease; }
-    .column:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); border-color: rgba(139, 195, 74, 0.3); }
-    .column:hover::before { transform: scaleX(1); }
-    .column strong { display: block; font-size: 1.25rem; color: var(--accent); margin-bottom: 1rem; font-weight: 700; }
-    .column ul { margin: 1rem 0; padding-left: 1.5rem; color: var(--text-secondary); }
-    .column li { margin: 0.5rem 0; }
+    .two-column {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin: 2.5rem 0;
+    }
+
+    .column {
+      background: var(--card-bg);
+      border-radius: var(--radius-md);
+      padding: 2rem;
+      border: 1px solid rgba(139, 195, 74, 0.1);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .column::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+
+    .column:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+      border-color: rgba(139, 195, 74, 0.3);
+    }
+
+    .column:hover::before {
+      transform: scaleX(1);
+    }
+
+    .column strong {
+      display: block;
+      font-size: 1.25rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .column ul {
+      margin: 1rem 0;
+      padding-left: 1.5rem;
+      color: var(--text-secondary);
+    }
+
+    .column li {
+      margin: 0.5rem 0;
+    }
 
     /* ========== BENEFITS LIST ========== */
-    .benefits-list { margin: 2.5rem 0; }
-    .benefits-list ul { list-style: none; padding: 0; }
-    .benefits-list li { padding: 0.75rem 0 0.75rem 2.5rem; position: relative; transition: all 0.2s ease; border-radius: var(--radius-sm); margin: 0.5rem 0; color: var(--text-secondary); }
-    .benefits-list li::before { content: '✓'; position: absolute; left: 0; color: var(--accent); font-weight: bold; font-size: 1.3rem; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; background: rgba(139, 195, 74, 0.1); border-radius: 50%; transition: all 0.2s ease; }
-    .benefits-list li:hover { background: rgba(75, 111, 68, 0.1); transform: translateX(8px); }
-    .benefits-list li:hover::before { background: rgba(139, 195, 74, 0.2); transform: scale(1.1); }
+    .benefits-list {
+      margin: 2.5rem 0;
+    }
+
+    .benefits-list ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .benefits-list li {
+      padding: 0.75rem 0 0.75rem 2.5rem;
+      position: relative;
+      transition: all 0.2s ease;
+      border-radius: var(--radius-sm);
+      margin: 0.5rem 0;
+      color: var(--text-secondary);
+    }
+
+    .benefits-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: bold;
+      font-size: 1.3rem;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(139, 195, 74, 0.1);
+      border-radius: 50%;
+      transition: all 0.2s ease;
+    }
+
+    .benefits-list li:hover {
+      background: rgba(75, 111, 68, 0.1);
+      transform: translateX(8px);
+    }
+
+    .benefits-list li:hover::before {
+      background: rgba(139, 195, 74, 0.2);
+      transform: scale(1.1);
+    }
 
     /* ========== HIGHLIGHT BOX ========== */
-    .highlight-box { background: linear-gradient(135deg, rgba(33, 150, 243, 0.12), rgba(33, 150, 243, 0.06)); border-left: 4px solid #2196f3; border-radius: var(--radius-md); padding: 2rem; margin: 2.5rem 0; position: relative; box-shadow: var(--shadow-md); transition: all 0.3s ease; }
-    .highlight-box::before { content: '💡'; position: absolute; top: 1.5rem; right: 1.5rem; font-size: 2rem; opacity: 0.6; }
-    .highlight-box:hover { transform: translateX(8px); box-shadow: -8px 8px 24px rgba(33, 150, 243, 0.15); }
-    .highlight-box strong { display: block; font-size: 1.25rem; margin-bottom: 1rem; color: #64b5f6; }
-    .highlight-box p { color: var(--text-secondary); margin-top: 0.75rem; }
-    .highlight-box a { color: #64b5f6; text-decoration: underline; }
+    .highlight-box {
+      background: linear-gradient(135deg, rgba(33, 150, 243, 0.12), rgba(33, 150, 243, 0.06));
+      border-left: 4px solid #2196f3;
+      border-radius: var(--radius-md);
+      padding: 2rem;
+      margin: 2.5rem 0;
+      position: relative;
+      box-shadow: var(--shadow-md);
+      transition: all 0.3s ease;
+    }
 
-    /* other sections unchanged (risk-box, founder-section etc) — omitted for brevity but included later in full page*/
-    .risk-box { background: linear-gradient(135deg, rgba(139, 195, 74, 0.1), rgba(139, 195, 74, 0.05)); border-radius: var(--radius-lg); padding: 2.5rem; margin: 3rem 0; border: 2px dashed rgba(139, 195, 74, 0.3); box-shadow: var(--shadow-md); }
-    .risk-box h3 { color: var(--accent); font-size: 1.75rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; }
-    .risk-list { list-style: none; padding: 0; }
-    .risk-list li { padding: 0.75rem 0 0.75rem 2rem; position: relative; color: var(--text-secondary); margin: 0.75rem 0; }
-    .risk-list li::before { content: '✓'; position: absolute; left: 0; color: var(--accent); font-weight: bold; font-size: 1.2rem; }
+    .highlight-box::before {
+      content: '💡';
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      font-size: 2rem;
+      opacity: 0.6;
+    }
 
-    .highlight-section { background: linear-gradient(135deg, #fff8e1, #ffeaa7); border-radius: var(--radius-lg); padding: 2.5rem; margin: 3rem 0; border: 2px solid var(--gold); box-shadow: 0 8px 32px rgba(255, 215, 0, 0.3); position: relative; overflow: hidden; color: #6b5000; }
-    .highlight-section h2 { font-size: 2rem; margin-bottom: 1rem; font-weight: 700; color: #8b6914; }
-    .highlight-section p { font-size: 1.1rem; line-height: 1.7; margin: 1rem 0; }
-    .sparkle { position: absolute; width: 6px; height: 6px; background: var(--gold); border-radius: 50%; animation: sparkleAnim 2s ease-in-out infinite; pointer-events: none; }
-    @keyframes sparkleAnim { 0%, 100% { transform: translateY(0) scale(1); opacity: 1; } 50% { transform: translateY(-15px) scale(1.5); opacity: 0.4; } }
+    .highlight-box:hover {
+      transform: translateX(8px);
+      box-shadow: -8px 8px 24px rgba(33, 150, 243, 0.15);
+    }
 
-    .founder-section { background: var(--card-bg); border-radius: var(--radius-md); padding: 2rem; margin: 2rem 0; border: 1px solid rgba(139, 195, 74, 0.15); box-shadow: var(--shadow-md); }
-    .founder-section h3 { color: var(--accent); font-size: 1.5rem; margin-bottom: 1rem; }
-    .founder-section p { color: var(--text-secondary); margin: 0.75rem 0; }
-    .founder-section details { margin-top: 1rem; }
-    .founder-section summary { cursor: pointer; color: var(--accent); font-weight: 600; padding: 0.5rem 0; transition: color 0.2s ease; }
-    .founder-section summary:hover { color: var(--gold); }
+    .highlight-box strong {
+      display: block;
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      color: #64b5f6;
+    }
 
-    .involvement-box, .download-box { background: linear-gradient(135deg, rgba(75, 111, 68, 0.15), rgba(75, 111, 68, 0.05)); border: 2px solid var(--accent); border-radius: var(--radius-lg); padding: 2.5rem; margin: 3rem 0; transition: all 0.3s ease; box-shadow: var(--shadow-md); }
-    .involvement-box:hover, .download-box:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(139, 195, 74, 0.25); border-color: var(--gold); }
-    .involvement-box h3, .download-box h3 { color: var(--accent); font-size: 1.75rem; margin-bottom: 1rem; }
-    .involvement-box p, .download-box p { color: var(--text-secondary); margin: 0.75rem 0; }
-    .download-box { cursor: pointer; }
-    .download-box a { color: var(--accent); font-weight: 700; font-size: 1.15rem; text-decoration: underline; transition: all 0.2s ease; }
-    .download-box a:hover { color: var(--gold); }
+    .highlight-box p {
+      color: var(--text-secondary);
+      margin-top: 0.75rem;
+    }
 
-    .email { color: var(--accent) !important; font-weight: 600; text-decoration: underline; transition: all 0.2s ease; }
-    .email:hover { color: var(--gold) !important; text-decoration: none; }
+    .highlight-box a {
+      color: #64b5f6;
+      text-decoration: underline;
+    }
 
-    .footer-section { margin-top: 5rem; padding: 2.5rem 0; border-top: 1px solid var(--glass-border); text-align: center; color: var(--text-muted); }
-    .footer-section p { margin: 0.75rem 0; }
+    /* ========== RISK BOX ========== */
+    .risk-box {
+      background: linear-gradient(135deg, rgba(139, 195, 74, 0.1), rgba(139, 195, 74, 0.05));
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      margin: 3rem 0;
+      border: 2px dashed rgba(139, 195, 74, 0.3);
+      box-shadow: var(--shadow-md);
+    }
 
-    /* Responsive tweaks */
+    .risk-box h3 {
+      color: var(--accent);
+      font-size: 1.75rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .risk-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .risk-list li {
+      padding: 0.75rem 0 0.75rem 2rem;
+      position: relative;
+      color: var(--text-secondary);
+      margin: 0.75rem 0;
+    }
+
+    .risk-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    /* ========== HIGHLIGHT SECTION (Gold sparkle) ========== */
+    .highlight-section {
+      background: linear-gradient(135deg, #fff8e1, #ffeaa7);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      margin: 3rem 0;
+      border: 2px solid var(--gold);
+      box-shadow: 0 8px 32px rgba(255, 215, 0, 0.3);
+      position: relative;
+      overflow: hidden;
+      color: #6b5000;
+    }
+
+    .highlight-section h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      color: #8b6914;
+    }
+
+    .highlight-section p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      margin: 1rem 0;
+    }
+
+    .sparkle {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+      animation: sparkleAnim 2s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes sparkleAnim {
+      0%, 100% { transform: translateY(0) scale(1); opacity: 1; }
+      50% { transform: translateY(-15px) scale(1.5); opacity: 0.4; }
+    }
+
+    /* ========== FOUNDER SECTION ========== */
+    .founder-section {
+      background: var(--card-bg);
+      border-radius: var(--radius-md);
+      padding: 2rem;
+      margin: 2rem 0;
+      border: 1px solid rgba(139, 195, 74, 0.15);
+      box-shadow: var(--shadow-md);
+    }
+
+    .founder-section h3 {
+      color: var(--accent);
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .founder-section p {
+      color: var(--text-secondary);
+      margin: 0.75rem 0;
+    }
+
+    .founder-section details {
+      margin-top: 1rem;
+    }
+
+    .founder-section summary {
+      cursor: pointer;
+      color: var(--accent);
+      font-weight: 600;
+      padding: 0.5rem 0;
+      transition: color 0.2s ease;
+    }
+
+    .founder-section summary:hover {
+      color: var(--gold);
+    }
+
+    /* ========== INVOLVEMENT / DOWNLOAD BOX ========== */
+    .involvement-box, .download-box {
+      background: linear-gradient(135deg, rgba(75, 111, 68, 0.15), rgba(75, 111, 68, 0.05));
+      border: 2px solid var(--accent);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      margin: 3rem 0;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-md);
+    }
+
+    .involvement-box:hover, .download-box:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(139, 195, 74, 0.25);
+      border-color: var(--gold);
+    }
+
+    .involvement-box h3, .download-box h3 {
+      color: var(--accent);
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .involvement-box p, .download-box p {
+      color: var(--text-secondary);
+      margin: 0.75rem 0;
+    }
+
+    .download-box {
+      cursor: pointer;
+    }
+
+    .download-box a {
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 1.15rem;
+      text-decoration: underline;
+      transition: all 0.2s ease;
+    }
+
+    .download-box a:hover {
+      color: var(--gold);
+    }
+
+    /* ========== EMAIL LINK ========== */
+    .email {
+      color: var(--accent) !important;
+      font-weight: 600;
+      text-decoration: underline;
+      transition: all 0.2s ease;
+    }
+
+    .email:hover {
+      color: var(--gold) !important;
+      text-decoration: none;
+    }
+
+    /* ========== FOOTER ========== */
+    .footer-section {
+      margin-top: 5rem;
+      padding: 2.5rem 0;
+      border-top: 1px solid var(--glass-border);
+      text-align: center;
+      color: var(--text-muted);
+    }
+
+    .footer-section p {
+      margin: 0.75rem 0;
+    }
+
+    /* ========== RESPONSIVE ========== */
     @media (max-width: 768px) {
-      .container { padding: 2rem 1rem; }
-      .nav-wrapper { margin: -2rem -1rem 2rem -1rem; }
-      .nav-buttons { padding: 0 1rem; gap: 0.5rem; }
-      .nav-btn { padding: 0.65rem 1.25rem; font-size: 0.875rem; }
-      .section-title { font-size: 2rem; }
-      .two-column { grid-template-columns: 1fr; }
-      .goal-text, .hero-card, .announcement { padding: 1.5rem; }
-      .column { padding: 1.5rem; }
-      .highlight-box { padding: 1.5rem; }
-      .highlight-box::before { font-size: 1.5rem; top: 1rem; right: 1rem; }
-      #timelineImg { max-width: 95%; max-height: 60vh; }
+      .container {
+        padding: 2rem 1rem;
+      }
+
+      .nav-wrapper {
+        margin: -2rem -1rem 2rem -1rem;
+      }
+
+      .nav-buttons {
+        padding: 0 1rem;
+        gap: 0.5rem;
+      }
+
+      .nav-btn {
+        padding: 0.65rem 1.25rem;
+        font-size: 0.875rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .two-column {
+        grid-template-columns: 1fr;
+      }
+
+      .goal-text, .hero-card, .announcement {
+        padding: 1.5rem;
+      }
+
+      .column {
+        padding: 1.5rem;
+      }
+
+      .highlight-box {
+        padding: 1.5rem;
+      }
+
+      .highlight-box::before {
+        font-size: 1.5rem;
+        top: 1rem;
+        right: 1rem;
+      }
     }
   </style>
 </head>
@@ -379,31 +873,23 @@
       </div>
     </div>
 
-    <!-- INTRO BLOCK: Announcement + Timeline -->
-    <div id="introBlock" aria-hidden="false">
-      <div class="announcement" id="welcomeAnnouncement" role="region" aria-label="Welcome announcement">
-        <p>Welcome to Shobuz.co.uk. Here we'll be taking you along with our journey in us creating a grassroots insurance services business that focuses on giving back to society. This website is purely journalistic to share updates. Feel free to get in touch at <a href="mailto:hello@shobuz.co.uk">hello@shobuz.co.uk</a>.</p>
-
-        <p>We have officially launched the limited entity and are excited to announce the name of this company: <em>Grassroots Insurance™</em>. We have secured two important domain assets: <strong>Grassrootsinsurance.co.uk</strong> and <strong>Grassrootsguard.co.uk</strong>. We anticipate trading non-regulated services this year and beginning underwriting services in 2026. Check our company record: <a href="https://find-and-update.company-information.service.gov.uk/company/16680312" target="_blank" rel="noopener">GOV.UK company 16680312</a>.</p>
-
-        <p>Since our last website update, we don't have any new major announcements just yet. We're still working hard behind the scenes and look forward to sharing some exciting news soon.</p>
-
-        <p>- If you're new to the site, there's plenty to explore and learn about what we do.</p>
-        <p>- If you're a returning visitor, feel free to email us for the latest updates or to find out how you can get involved.</p>
-      </div>
-
-      <div class="timeline-wrapper" aria-hidden="false" aria-label="Timeline">
-        <!-- Make sure Timeline.svg exists in the same folder or correct the src -->
-        <img id="timelineImg" src="Timeline.svg" alt="Company timeline" />
-      </div>
+ <div class="announcement">
+  <p>Welcome to Shobuz.co.uk. Here we'll be taking you along with our journey in us creating a grassroots insurance services business that focuses on giving back to society. Feel free to get in touch at <a href="mailto:hello@shobuz.co.uk">hello@shobuz.co.uk</a>.</p>
+  <p>We have officially launched the limited entity and are excited to announce the name of this company: <em>Grassroots Insurance™</em>. We have secured two important domain assets: <strong>Grassrootsinsurance.co.uk</strong> and <strong>Grassrootsguard.co.uk</strong>. We anticipate trading non-regulated services this year and beginning underwriting services in 2026. Check our company record: <a href="https://find-and-update.company-information.service.gov.uk/company/16680312" target="_blank" rel="noopener">GOV.UK company 16680312</a>.</p>
+  <p>Since our last website update, we don't have any new major announcements just yet. We're still working hard behind the scenes and look forward to sharing some exciting news soon.</p>
+  <p>- If you're new to the site, there's plenty to explore and learn about what we do.</p>
+  <p>- If you're a returning visitor, feel free to email us for the latest updates or to find out how you can get involved.</p>
+</div>
+    <div class="highlight-box">
+<img src="Timeline.svg"/>
     </div>
-
+    
     <!-- OVERVIEW SECTION -->
     <div id="overview" class="content-section active">
       <div class="goal-text">
         <span class="highlight-goal">Our Goal</span>
         <p>To create a grassroots financial lines MGA with a view of becoming an outright insurer. We will achieve our goals with hard work instead of institutional support; patience instead of leverage; and with the British public at the heart of what we do.</p>
-        <p><strong>Grassroots Insurance</strong> is a project to create a new Financial Lines Managing General Agent (MGA) founded on the principles of sustainable growth, ethical underwriting, and community benefit. Our mission is to address unmet demand in the UK's complex financial lines insurance sector by offering fair, principled, and human-centred coverage.</p>
+        <p><strong>Grassroots Insurance</strong> is a project to create a new Financial Lines Managing General Agent (MGA) founded on the principles of sustainable growth, ethical underwriting, and community benefit. Our mission is to address unmet demand in the UK's complex financial lines insurance sector by offering fair, principled, and human-centered coverage.</p>
         <p>Unlike profit-driven insurers owned by private equity, we are built from the ground up as a <strong>community first MGA</strong>. We aim to become a full-fledged grassroots insurer within 10 years, serving UK businesses and professionals with integrity, clarity, and long-term value.</p>
       </div>
 
@@ -474,7 +960,7 @@
       <div class="highlight-box">
         <strong>Real Life Case Study</strong>
         <p>USA has "Obamacare", requiring insurers to spend at least 80% of premiums on medical care and quality improvement.</p>
-        <p>UnitedHealthcare has faced lawsuits for underpaying claims for out-of-network care.</p>
+        <p>UnitedHealthcare has faced lawsuits for underpaying claims while maintaining low premiums, allowing them to win business while failing to fairly support their customers. This has led to serious consequences for people's health and well-being.</p>
         <p><strong>Sources:</strong><br>
           <a href="https://www.benefitspro.com/2022/12/29/lawsuit-accuses-unitedhealthcare-group-of-underpaying-benefits-for-out-of-network-care/" target="_blank">BenefitsPro Article</a> |
           <a href="https://hallbenefitslaw.com/class-action-lawsuit-accuses-unitedhealthcare-group-of-underpaying-claims-for-out-of-network-care/" target="_blank">Hall Benefits Law</a> |
@@ -678,32 +1164,32 @@
       </div>
     </div>
 
-    <button id="tourButton" aria-label="Click for narrated website tour" title="Click for narrated website tour">
-      <span class="tour-ring"></span>
-      <span class="tour-core" aria-hidden="true">
-        <!-- Play icon -->
-        <svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" focusable="false">
-          <circle cx="32" cy="32" r="30" fill="transparent"></circle>
-          <path d="M26 20 L46 32 L26 44 Z" fill="white"/>
-        </svg>
-      </span>
-      <span class="tour-label">Click here for a narrated website tour</span>
-    </button>
+<button id="tourButton" aria-label="Click for narrated website tour" title="Click for narrated website tour">
+  <span class="tour-ring"></span>
+  <span class="tour-core" aria-hidden="true">
+    <!-- Play icon -->
+    <svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" focusable="false">
+      <circle cx="32" cy="32" r="30" fill="transparent"></circle>
+      <path d="M26 20 L46 32 L26 44 Z" fill="white"/>
+    </svg>
+  </span>
+  <span class="tour-label">Click here for a narrated website tour</span>
+</button>
 
-    <!-- FULLSCREEN VIDEO OVERLAY -->
-    <div id="videoOverlay" aria-hidden="true">
-      <div class="videoWrapper" role="dialog" aria-modal="true" aria-label="Website tour video">
-        <iframe id="tourIframe"
-          src=""
-          frameborder="0"
-          allow="autoplay; fullscreen; picture-in-picture"
-          allowfullscreen
-          title="Website tour">
-        </iframe>
-        <button id="closeVideo" aria-label="Close tour">✕</button>
-      </div>
-    </div>
-
+<!-- FULLSCREEN VIDEO OVERLAY (replace previous overlay) -->
+<div id="videoOverlay" aria-hidden="true">
+  <div class="videoWrapper" role="dialog" aria-modal="true" aria-label="Website tour video">
+    <iframe id="tourIframe"
+      src=""
+      frameborder="0"
+      allow="autoplay; fullscreen; picture-in-picture"
+      allowfullscreen
+      title="Website tour">
+    </iframe>
+    <button id="closeVideo" aria-label="Close tour">✕</button>
+  </div>
+</div>
+    
     <!-- FOOTER -->
     <div class="footer-section">
       <p>You can email your burning questions to <a href="mailto:hello@shobuz.co.uk" class="email">hello@shobuz.co.uk</a></p>
@@ -713,42 +1199,24 @@
   </div>
 
   <script>
-    // ====== PARALLAX: pause until introBlock scrolled past ======
+    // ========== PARALLAX SCROLLING ==========
     (function () {
-      const layers = Array.from(document.querySelectorAll('.fw-layer'));
+      const layers = Array.from(document.querySelectorAll('.parallax-layer, .fw-layer'));
       if (!layers.length) return;
 
       const masthead = document.querySelector('.masthead');
-      const introBlock = document.getElementById('introBlock');
-
       let ticking = false;
 
       function updateParallax() {
         const scrollY = window.scrollY || window.pageYOffset || 0;
         const mh = masthead ? masthead.offsetHeight : window.innerHeight;
+        const progress = Math.min(1, Math.max(0, scrollY / (mh * 0.85)));
 
-        // Calculate pause offset: parallax only begins AFTER masthead AND introBlock have been scrolled past
-        const introHeight = introBlock ? introBlock.offsetHeight : 0;
-        const pauseUntil = (masthead ? masthead.offsetHeight : 0) + introHeight;
-
-        // If still within the intro area, keep layers static (no parallax)
-        if (scrollY <= pauseUntil) {
-          layers.forEach(layer => {
-            // ensure no transform is applied while paused
-            layer.style.transform = 'translate3d(0, 0, 0)';
-          });
-        } else {
-          // start parallax relative to how far we've scrolled since pauseUntil
-          const effectiveScroll = scrollY - pauseUntil;
-          const progress = Math.min(1, Math.max(0, effectiveScroll / (mh * 0.85)));
-
-          layers.forEach(layer => {
-            const depth = parseFloat(layer.dataset.depth) || 0;
-            // multiplier tuned to be subtle and consistent
-            const translateY = -progress * depth * mh * 0.7;
-            layer.style.transform = `translate3d(0, ${translateY}px, 0)`;
-          });
-        }
+        layers.forEach(layer => {
+          const depth = parseFloat(layer.dataset.depth) || 0;
+          const translateY = -progress * depth * mh * 0.7;
+          layer.style.transform = `translate3d(0, ${translateY}px, 0)`;
+        });
 
         ticking = false;
       }
@@ -762,23 +1230,22 @@
 
       window.addEventListener('scroll', onScroll, { passive: true });
       window.addEventListener('resize', updateParallax);
-      // run once to set initial state correctly
       updateParallax();
     })();
 
-    // ====== SECTION NAVIGATION ======
+    // ========== SECTION NAVIGATION ==========
     function showSection(sectionId, evt) {
       const sections = document.querySelectorAll('.content-section');
       sections.forEach(s => s.classList.remove('active'));
-
+      
       const target = document.getElementById(sectionId);
       if (target) {
         target.classList.add('active');
-
+        
         // Update active button
         document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
         if (evt && evt.currentTarget) evt.currentTarget.classList.add('active');
-
+        
         // Smooth scroll to section with offset for sticky nav
         const offset = 100;
         const topPos = target.getBoundingClientRect().top + window.scrollY - offset;
@@ -786,38 +1253,14 @@
       }
     }
 
-    // ====== REVEAL: announcement + timeline (trigger before parallax) ======
-    (function () {
-      const welcome = document.getElementById('welcomeAnnouncement');
-      const timelineImg = document.getElementById('timelineImg');
-      const observerOptions = {
-        root: null,
-        rootMargin: '0px 0px -10% 0px', // trigger slightly before element fully enters
-        threshold: 0
-      };
-
-      const revealCallback = (entries, obs) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            if (entry.target === welcome) entry.target.classList.add('revealed');
-            if (entry.target === timelineImg) entry.target.classList.add('revealed');
-            // once revealed, we can unobserve that element
-            obs.unobserve(entry.target);
-          }
-        });
-      };
-
-      const io = new IntersectionObserver(revealCallback, observerOptions);
-      if (welcome) io.observe(welcome);
-      if (timelineImg) io.observe(timelineImg);
-    })();
-
-    // ====== GENERAL "reveal on scroll" for other elements ======
+    // ========== SCROLL REVEAL ANIMATIONS ==========
     function revealOnScroll() {
       const elements = document.querySelectorAll('.column, .highlight-box, .benefits-list li, .founder-section');
+      
       elements.forEach(element => {
         const rect = element.getBoundingClientRect();
         const isVisible = rect.top < window.innerHeight - 100;
+        
         if (isVisible) {
           element.style.opacity = '1';
           element.style.transform = 'translateY(0)';
@@ -825,13 +1268,13 @@
       });
     }
 
-    // ====== SMOOTH SCROLL FOR HASH LINKS ======
+    // ========== SMOOTH SCROLL FOR LINKS ==========
     document.addEventListener('click', function(e) {
       if (e.target.tagName === 'A' && e.target.getAttribute('href') && e.target.getAttribute('href').startsWith('#')) {
         e.preventDefault();
         const targetId = e.target.getAttribute('href').substring(1);
         const targetElement = document.getElementById(targetId);
-
+        
         if (targetElement) {
           const offset = 100;
           const topPos = targetElement.getBoundingClientRect().top + window.scrollY - offset;
@@ -840,9 +1283,9 @@
       }
     });
 
-    // ====== INITIALISE ======
+    // ========== INITIALIZE ==========
     document.addEventListener('DOMContentLoaded', function() {
-      // Set initial opacity for reveal elements (the larger reveal set)
+      // Set initial opacity for reveal elements
       const revealElements = document.querySelectorAll('.column, .highlight-box, .benefits-list li, .founder-section');
       revealElements.forEach(el => {
         el.style.opacity = '0';
@@ -850,15 +1293,15 @@
         el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
       });
 
-      // Trigger initial reveal (for elements already in view)
+      // Trigger initial reveal
       setTimeout(() => {
         revealOnScroll();
       }, 100);
 
-      // Add scroll listener for general reveals
+      // Add scroll listener
       window.addEventListener('scroll', revealOnScroll, { passive: true });
 
-      // Keyboard nav for download box
+      // Add keyboard navigation for download box
       const downloadBox = document.querySelector('.download-box');
       if (downloadBox) {
         downloadBox.addEventListener('keydown', function(e) {
@@ -868,15 +1311,9 @@
           }
         });
       }
-
-      // Tour button (show after small delay)
-      const tourButton = document.getElementById('tourButton');
-      if (tourButton) {
-        setTimeout(() => { tourButton.style.display = 'flex'; }, 1000);
-      }
     });
 
-    // ====== VIDEO PLAYER LOGIC ======
+// ========== VIDEO PLAYER LOGIC (UPDATED) ==========
     (() => {
       document.addEventListener('DOMContentLoaded', () => {
         const tourButton = document.getElementById('tourButton');
@@ -890,45 +1327,56 @@
         const youtubeID = 'iM85K7eNKKw';
         const baseEmbed = `https://www.youtube.com/embed/${youtubeID}?rel=0&modestbranding=1&iv_load_policy=3&autoplay=1&enablejsapi=1&playsinline=1`;
 
+        window.addEventListener('load', () => {
+          setTimeout(() => { tourButton.style.display = 'flex'; }, 1000);
+        });
+
         // 1. OPEN VIDEO
         tourButton.addEventListener('click', () => {
           tourIframe.src = baseEmbed; // Load video
           videoOverlay.style.display = 'flex'; // Show overlay
           videoOverlay.setAttribute('aria-hidden', 'false');
-
+          
           // Enter fullscreen
           if (videoWrapper.requestFullscreen) videoWrapper.requestFullscreen();
           else if (videoWrapper.webkitRequestFullscreen) videoWrapper.webkitRequestFullscreen();
           else if (videoWrapper.msRequestFullscreen) videoWrapper.msRequestFullscreen();
         });
 
-        // 2. CLOSE HELPER
+        // 2. CLOSE HELPER FUNCTION (Stops video & Hides Overlay)
         function fullyCloseVideo() {
           tourIframe.src = ''; // This stops the sound
           videoOverlay.style.display = 'none';
           videoOverlay.setAttribute('aria-hidden', 'true');
         }
 
-        // 3. FS change listener
+        // 3. LISTEN FOR BROWSER EXIT FULLSCREEN (The key fix!)
         function onFullscreenChange() {
-          if (!document.fullscreenElement &&
-              !document.webkitFullscreenElement &&
-              !document.mozFullScreenElement &&
+          // If the browser says we are NO LONGER in fullscreen...
+          if (!document.fullscreenElement && 
+              !document.webkitFullscreenElement && 
+              !document.mozFullScreenElement && 
               !document.msFullscreenElement) {
+            
+            // ...force the overlay to close.
             fullyCloseVideo();
           }
         }
 
+        // Add listeners for Esc key / Browser Back button
         document.addEventListener('fullscreenchange', onFullscreenChange);
         document.addEventListener('webkitfullscreenchange', onFullscreenChange);
         document.addEventListener('mozfullscreenchange', onFullscreenChange);
         document.addEventListener('MSFullscreenChange', onFullscreenChange);
 
-        // 4. MANUAL CLOSE
+        // 4. MANUAL CLOSE BUTTON
         closeVideo.addEventListener('click', () => {
+          // If we are in fullscreen, exit it first. 
+          // This will trigger the 'fullscreenchange' event above, which handles the closing.
           if (document.fullscreenElement) {
             document.exitFullscreen();
           } else {
+            // If not in fullscreen, just close immediately
             fullyCloseVideo();
           }
         });
