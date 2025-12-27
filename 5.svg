@@ -1,5 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1080" height="452">
-  <path d="m2991 337 2 1Z" fill="#eff6db"/>
+<g transform="translate(0, 110)">
+<path d="m2991 337 2 1Z" fill="#eff6db"/>
   <def>
     <g id="pine1" transform="translate(-100 -100) scale(-1 1)">
       <animateTransform attributeName="transform" type="rotate" values="-2 -250 220; 2 -250 220; -2 -250 220" keyTimes="0; 0.5; 1" dur="4s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1; 0.45 0 0.55 1"/>
@@ -28,4 +29,5 @@
   <use href="#pine1" transform="translate(340 250) scale(0.4)" fill="#0e4931"/>
   <use href="#pine1" transform="translate(1130 30) scale(0.4)" fill="#0e4931"/>
   <use href="#pine1" transform="translate(1100 186) scale(0.7)" fill="#002e13"/>
+</g>
 </svg>
