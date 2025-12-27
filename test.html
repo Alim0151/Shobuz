@@ -1313,7 +1313,6 @@
         });
       }
     });
-
 // ========== VIDEO PLAYER LOGIC (UPDATED) ==========
     (() => {
       document.addEventListener('DOMContentLoaded', () => {
@@ -1377,12 +1376,9 @@
           if (document.fullscreenElement) {
             document.exitFullscreen();
           } else {
-            // If not in fullscreen, just close immediately
             fullyCloseVideo();
           }
         });
-
-        // 5. CLICK OUTSIDE TO CLOSE
         videoOverlay.addEventListener('click', (ev) => {
           if (ev.target === videoOverlay) {
              if (document.fullscreenElement) document.exitFullscreen();
