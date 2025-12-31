@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="3440" height="1440">
   <g fill="#4a815c">
-    <rect width="200" height="800" x="2900" y="340"/>
+    <rect width="500" height="800" x="2900" y="340"/>
     <g transform="translate(-513,1432)">
       <path d="M3430 0
 c0 0 0 0 0 0 0 0 0 0 0 0H530v-900
