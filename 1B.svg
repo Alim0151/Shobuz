@@ -1,18 +1,11 @@
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="3440" height="1440">
-    <rect width="100%" height="50%" fill="#CCE791"/>
+  <rect width="100%" height="50%" fill="#CCE791"/>
   <defs>
-<radialGradient id="sunGrad" cx="50%" cy="40%" r="60%">
-  <!-- Brighter yellow centre -->
-  <stop offset="0%" stop-color="#fff176" stop-opacity="1" />
-  
-  <!-- Warm midtone, still quite bright -->
-  <stop offset="50%" stop-color="#ffeb3b" stop-opacity="0.1" />
-  
-  <!-- Outer ring fades smoothly to near-transparent -->
-  <stop offset="100%" stop-color="#ffd700" stop-opacity="0.0" />
-</radialGradient>
-
-    <!-- Cloud softness / shadow -->
+    <radialGradient id="sunGrad" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#fff176" stop-opacity="1"/>
+      <stop offset="50%" stop-color="#ffeb3b" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#ffd700" stop-opacity="0.0"/>
+    </radialGradient>
     <filter id="cloudBlur" x="-50%" y="-50%" width="200%" height="200%">
       <feGaussianBlur stdDeviation="6" result="cblur"/>
       <feOffset dx="0" dy="4" result="coff"/>
@@ -22,90 +15,55 @@
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
-
-    <!-- Cloud gradient (subtle shading to look more realistic) -->
     <linearGradient id="cloudGrad" x1="0" x2="0" y1="0" y2="1">
       <stop offset="0" stop-color="#ffffff" stop-opacity="1"/>
       <stop offset="1" stop-color="#f0f4f7" stop-opacity="0.95"/>
     </linearGradient>
-
   </defs>
-
-  <!-- Sun: centred at cx=1720 cy=200 -->
   <g transform="translate(1720,200)">
-    <!-- glow + pulsing applied to entire group -->
     <g filter="url(#sunGlow)">
-      <!-- larger subtle outer circle to increase visible glow -->
       <circle cx="0" cy="0" r="120" fill="url(#sunGrad)" opacity="0.65">
-        <!-- slow opacity shimmer for ambient light -->
         <animate attributeName="opacity" values="0.55;0.75;0.55" dur="6s" repeatCount="indefinite"/>
       </circle>
-      <!-- core of the sun -->
-      <circle cx="0" cy="0" r="80" fill="url(#sunGrad)" >
-        <!-- very gentle scale pulse so it feels organic -->
-        <animateTransform attributeName="transform" attributeType="XML" type="scale"
-          values="1;1.05;1" dur="6s" repeatCount="indefinite" />
+      <circle cx="0" cy="0" r="80" fill="url(#sunGrad)">
+        <animateTransform attributeName="transform" attributeType="XML" type="scale" values="1;1.05;1" dur="6s" repeatCount="indefinite"/>
       </circle>
     </g>
   </g>
-<!-- Define new gradient for clouds -->
-<radialGradient id="cloudSoftGlow1" cx="50%" cy="50%" r="70%">
-  <stop offset="0%" stop-color="white" stop-opacity="0.5"/>
-  <stop offset="100%" stop-color="#FFD700" stop-opacity="0.01"/>
-</radialGradient>
-
-
-
-  <!-- Clouds group (softer shapes, gradient shading, slower movement, subtle bobbing) -->
+  <radialGradient id="cloudSoftGlow1" cx="50%" cy="50%" r="70%">
+    <stop offset="0%" stop-color="white" stop-opacity="0.5"/>
+    <stop offset="100%" stop-color="#FFD700" stop-opacity="0.01"/>
+  </radialGradient>
   <g filter="url(#cloudBlur)" fill="url(#cloudGrad)" opacity="0.95">
-    <!-- NEW Cloud 4: centred in the green, much bigger, yellow at 10% opacity -->
-  <g id="cloud4" fill="url(#cloudSoftGlow1)" opacity="0.60">
-    <!-- large, soft composite cloud centred roughly at x=1720 y=360 -->
-    <ellipse cx="1720" cy="1100" rx="50%" ry="50%"/>
-    <ellipse cx="10%" cy="35%" rx="500" ry="250"/>
-    <ellipse cx="90%" cy="35%" rx="500" ry="250"/>
-    <!-- tiny, slow bob to keep it feeling alive (very subtle) -->
-    <animateTransform attributeName="transform" attributeType="XML" type="translate"
-      values="0,0;200,0;-200,0;0,0" dur="45s" repeatCount="indefinite" />
-  </g>
-    <!-- Cloud 1: left -> right slow -->
+    <g id="cloud4" fill="url(#cloudSoftGlow1)" opacity="0.60">
+      <ellipse cx="1720" cy="1100" rx="50%" ry="50%"/>
+      <ellipse cx="10%" cy="35%" rx="500" ry="250"/>
+      <ellipse cx="90%" cy="35%" rx="500" ry="250"/>
+      <animateTransform attributeName="transform" attributeType="XML" type="translate" values="0,0;200,0;-200,0;0,0" dur="45s" repeatCount="indefinite"/>
+    </g>
     <g id="cloud1" transform="translate(0,0)">
-      <!-- horizontal slow travel -->
-      <animateTransform attributeName="transform" attributeType="XML" type="translate"
-        from="-900,0" to="3440,0" dur="100s" repeatCount="indefinite" />
-      <!-- bobbing (vertical subtle) applied to internal shapes -->
+      <animateTransform attributeName="transform" attributeType="XML" type="translate" from="-900,0" to="3440,0" dur="100s" repeatCount="indefinite"/>
       <g>
-        <animateTransform attributeName="transform" attributeType="XML" type="translate"
-          values="0,0;0,6;0,0" dur="12s" repeatCount="indefinite" />
+        <animateTransform attributeName="transform" attributeType="XML" type="translate" values="0,0;0,6;0,0" dur="12s" repeatCount="indefinite"/>
         <ellipse cx="500" cy="150" rx="52" ry="30"/>
         <ellipse cx="550" cy="140" rx="65" ry="36"/>
         <ellipse cx="600" cy="150" rx="45" ry="28"/>
       </g>
     </g>
-
-    <!-- Cloud 2: middle, slightly faster but still slow -->
     <g id="cloud2" transform="translate(0,40)">
-      <animateTransform attributeName="transform" attributeType="XML" type="translate"
-        from="-1200,0" to="3440,0" dur="160s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" attributeType="XML" type="translate" from="-1200,0" to="3440,0" dur="160s" repeatCount="indefinite"/>
       <g>
-        <animateTransform attributeName="transform" attributeType="XML" type="translate"
-          values="0,0;0,5;0,0" dur="14s" repeatCount="indefinite" />
+        <animateTransform attributeName="transform" attributeType="XML" type="translate" values="0,0;0,5;0,0" dur="14s" repeatCount="indefinite"/>
         <ellipse cx="1000" cy="200" rx="48" ry="26"/>
         <ellipse cx="1050" cy="190" rx="60" ry="34"/>
         <ellipse cx="1100" cy="200" rx="38" ry="24"/>
-        <!-- small puff below to make shape more realistic -->
         <ellipse cx="1030" cy="215" rx="30" ry="18" opacity="0.95"/>
       </g>
     </g>
-
-    <!-- Cloud 3: right -> left (different direction for variety) -->
     <g id="cloud3" transform="translate(0,100)">
-      <!-- travel the other way slowly for depth -->
-      <animateTransform attributeName="transform" attributeType="XML" type="translate"
-        from="3440,0" to="-900,0" dur="220s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" attributeType="XML" type="translate" from="3440,0" to="-900,0" dur="220s" repeatCount="indefinite"/>
       <g>
-        <animateTransform attributeName="transform" attributeType="XML" type="translate"
-          values="0,0;0,8;0,0" dur="18s" repeatCount="indefinite" />
+        <animateTransform attributeName="transform" attributeType="XML" type="translate" values="0,0;0,8;0,0" dur="18s" repeatCount="indefinite"/>
         <ellipse cx="2500" cy="180" rx="70" ry="40"/>
         <ellipse cx="2550" cy="170" rx="88" ry="50"/>
         <ellipse cx="2600" cy="180" rx="60" ry="36"/>
